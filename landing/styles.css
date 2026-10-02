@@ -1971,43 +1971,6 @@ body[data-locale="ko"] .capability-rail__value {
   min-inline-size: 0;
 }
 
-.preview-item:has(.preview-item__moves) {
-  flex-direction: column;
-  align-items: stretch;
-  gap: var(--space-1);
-}
-
-.preview-item__moves {
-  display: none;
-  justify-content: flex-end;
-  gap: var(--space-1);
-}
-
-.preview-item:focus-within .preview-item__moves {
-  display: flex;
-}
-
-.chooser-preview.is-reordering .preview-item__moves {
-  display: none;
-}
-
-.preview-item__moves button {
-  min-block-size: var(--size-target);
-  padding: var(--space-1) var(--space-2);
-  font: inherit;
-  font-size: var(--type-label);
-  background: var(--color-paper);
-  color: var(--color-ink);
-  border: var(--rule-thin) solid currentColor;
-  border-radius: var(--radius-control);
-  cursor: pointer;
-}
-
-.preview-item__moves button:disabled {
-  opacity: 0.45;
-  cursor: default;
-}
-
 .chooser-preview--horizontal .preview-item {
   flex: 0 0 auto;
 }

@@ -382,10 +382,6 @@ function syncPreviewOrderMetadata() {
     const provider = state.byId.get(item.dataset.previewId);
     item.setAttribute("aria-posinset", String(index + 1));
     item.setAttribute("aria-setsize", String(items.length));
-    item.querySelectorAll("[data-move]").forEach((move) => {
-      const next = index + Number(move.dataset.move);
-      move.disabled = next < 0 || next >= items.length;
-    });
     const control = item.querySelector(".preview-reorder-button");
     control?.setAttribute(
       "aria-label",
@@ -654,36 +650,6 @@ function renderPreview() {
 
     wirePreviewReorderButton(button, provider);
     item.append(button);
-    if (state.selectedIds.length > 1) {
-      const moves = document.createElement("div");
-      moves.className = "preview-item__moves";
-      for (const [delta, label] of [
-        [-1, locale === "ko" ? "앞으로" : "Earlier"],
-        [1, locale === "ko" ? "뒤로" : "Later"],
-      ]) {
-        const move = document.createElement("button");
-        move.type = "button";
-        move.textContent = label;
-        move.dataset.move = String(delta);
-        move.setAttribute("aria-label", `${provider.name}: ${label}`);
-        move.disabled =
-          state.selectedIds.indexOf(id) + delta < 0 ||
-          state.selectedIds.indexOf(id) + delta >= state.selectedIds.length;
-        move.addEventListener("click", () => {
-          const index = state.selectedIds.indexOf(id);
-          movePreviewItem(id, index + delta);
-          const target = elements.preview.querySelector(
-            `[data-preview-id="${id}"] [data-move="${delta}"]:not(:disabled)`,
-          );
-          elements.preview
-            .querySelector(`[data-drag-id="${id}"]`)
-            ?.focus({ preventScroll: true });
-          target?.focus({ preventScroll: true });
-        });
-        moves.append(move);
-      }
-      item.append(moves);
-    }
     fragment.append(item);
   });
 
@@ -1240,7 +1206,6 @@ function updateExportState() {
 function renderAll(measuring = false) {
   const active = document.activeElement;
   const previewId = active?.closest("[data-preview-id]")?.dataset.previewId;
-  const move = active?.dataset.move;
   elements.catalogRetry.textContent =
     locale === "ko" ? "로고 다시 불러오기" : "Retry loading logos";
   syncProviderGrid();
@@ -1252,10 +1217,6 @@ function renderAll(measuring = false) {
     elements.preview
       .querySelector(`[data-drag-id="${previewId}"]`)
       ?.focus({ preventScroll: true });
-    const selector = move
-      ? `[data-preview-id="${previewId}"] [data-move="${move}"]:not(:disabled)`
-      : `[data-drag-id="${previewId}"]`;
-    elements.preview.querySelector(selector)?.focus({ preventScroll: true });
   }
 }
 
