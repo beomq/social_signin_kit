@@ -38,7 +38,6 @@ const state = {
   direction: "vertical",
   requestedShape: "rounded",
   requestedAppearance: "light",
-  itemAppearances: new Map(),
 };
 
 const dragSession = {
@@ -230,8 +229,7 @@ function effectiveListAppearance() {
 }
 
 function effectiveProviderAppearance(provider) {
-  const requested =
-    state.itemAppearances.get(provider.id) || requestedProviderAppearance();
+  const requested = requestedProviderAppearance();
   return supportsAppearance(provider, requested)
     ? requested
     : providerCapabilities(provider).appearances[0];
@@ -651,31 +649,6 @@ function renderPreview() {
 
     wirePreviewReorderButton(button, provider);
     item.append(button);
-    const appearance = document.createElement("select");
-    appearance.className = "preview-item__appearance";
-    appearance.setAttribute(
-      "aria-label",
-      `${provider.name}: ${locale === "ko" ? "서비스 외형" : "appearance"}`,
-    );
-    const availableAppearances = providerCapabilities(provider).appearances;
-    for (const [value, label] of [
-      ["providerDefault", locale === "ko" ? "제공자 기본값" : "Provider default"],
-      ["light", locale === "ko" ? "라이트" : "Light"],
-      ["dark", locale === "ko" ? "다크" : "Dark"],
-    ]) {
-      if (!supportsAppearance(provider, value)) continue;
-      const option = document.createElement("option");
-      option.value = value;
-      option.textContent = label;
-      appearance.append(option);
-    }
-    appearance.value = visual.appearance;
-    appearance.disabled = availableAppearances.length === 1;
-    appearance.addEventListener("change", () => {
-      state.itemAppearances.set(id, appearance.value);
-      renderAll();
-    });
-    item.append(appearance);
     fragment.append(item);
   });
 
@@ -987,8 +960,7 @@ function assetManifest(provider) {
           ),
         }
       : {}),
-    requestedAppearance:
-      state.itemAppearances.get(provider.id) || requestedProviderAppearance(),
+    requestedAppearance: requestedProviderAppearance(),
     effectiveAppearance: visual.appearance,
     effectiveAppearanceStyle: {
       background: visual.background,

@@ -1971,29 +1971,6 @@ body[data-locale="ko"] .capability-rail__value {
   min-inline-size: 0;
 }
 
-.preview-item:has(.preview-item__appearance) {
-  flex-direction: column;
-  align-items: stretch;
-  gap: var(--space-2);
-}
-
-.preview-item__appearance {
-  align-self: flex-end;
-  max-inline-size: 100%;
-  min-block-size: var(--size-target);
-  padding: var(--space-1) var(--space-2);
-  font: inherit;
-  font-size: var(--type-label);
-  color: var(--color-muted);
-  background: transparent;
-  border: var(--rule-thin) solid currentColor;
-  border-radius: var(--radius-control);
-}
-
-.preview-item--circle:has(.preview-item__appearance) {
-  align-items: center;
-}
-
 .chooser-preview--horizontal .preview-item {
   flex: 0 0 auto;
 }
