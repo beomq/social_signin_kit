@@ -4,7 +4,7 @@ Flutter 앱에서 35개 소셜 서비스의 로그인 버튼을 일관된 API로
 미게시 UI 패키지입니다. 버튼을 누르면 앱이 전달한 콜백만 실행합니다.
 OAuth, 토큰, 네트워크 요청, 로딩 상태는 앱에서 관리합니다.
 
-[랜딩페이지](https://beomq.github.io/social_signin_kit/) · [GitHub 저장소](https://github.com/beomq/social_signin_kit) · [pub.dev 게시 예정 주소](https://pub.dev/packages/social_signin_kit)
+[랜딩페이지](https://beomq.github.io/social_signin_kit/landing/index.html) · [GitHub 저장소](https://github.com/beomq/social_signin_kit) · [pub.dev 게시 예정 주소](https://pub.dev/packages/social_signin_kit)
 pub.dev에는 아직 게시되지 않았으므로 예정 링크는 현재 설치 가능한 릴리스를 뜻하지 않습니다.
 
 > 이 패키지의 색상, 모양, 상태 스타일은 공식 인증을 뜻하지 않습니다.
@@ -58,15 +58,30 @@ locale을 자동으로 상속하려면 통합할 때 이 명시적 `locale` 인�
 
 ## 빠른 시작
 
-소비 앱의 `pubspec.yaml`에 로컬 경로 의존성을 추가합니다.
+pub.dev에는 아직 게시되지 않았습니다. 소비 앱의 `pubspec.yaml`에 공개 Git
+저장소 의존성을 추가합니다.
 
 ```yaml
 dependencies:
   social_signin_kit:
-    path: ../social_signin_kit
+    git:
+      url: https://github.com/beomq/social_signin_kit.git
+      ref: main
 ```
 
-다른 컴퓨터에서는 실제 clone 경로로 바꾸고 다음 명령을 실행합니다.
+`main`은 첫 설치용이며 변경될 수 있습니다. 재현 가능한 설치가 필요하면
+`ref`를 검증한 커밋 SHA 또는 실제로 존재하는 릴리스 태그로 고정하세요.
+로컬 clone을 사용하려면 위 Git 항목 대신 아래 경로 의존성을 사용합니다.
+`/absolute/path/to/social_signin_kit`은 실제 clone 경로로 바꾸세요.
+앱의 형제 디렉터리에 둘 필요는 없습니다.
+
+```yaml
+dependencies:
+  social_signin_kit:
+    path: /absolute/path/to/social_signin_kit
+```
+
+선택한 의존성을 저장한 뒤 앱 디렉터리에서 다음 명령을 실행합니다.
 
 ```sh
 fvm flutter pub get
@@ -77,7 +92,7 @@ fvm flutter pub get
 ## 기본 로고
 
 `logo`를 생략하면 별도 앱 자산 설정 없이 패키지가 35개 제공자별
-제공자별 번들 PNG를 사용합니다. 이 중 제공자 원본 12개는 다음과
+번들 PNG를 사용합니다. 이 중 제공자 원본 12개는 다음과
 같습니다.
 
 | 제공자 | 패키지 자산 |

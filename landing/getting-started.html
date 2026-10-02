@@ -65,8 +65,8 @@
             press: OAuth, loading, errors, tokens, and navigation.
           </p>
           <p class="status-strip" data-i18n="getting.status">
-            All 35 providers include package PNG defaults: six are reviewed
-            provider-supplied originals, and the other 29 are package
+            All 35 providers include package PNG defaults: 12 are reviewed
+            provider-supplied originals (including GitHub), and the other 23 are package
             adaptations rendered from pinned Simple Icons SVGs. No
             consuming-app asset setup is required for the defaults.
           </p>
@@ -80,11 +80,17 @@
               01 / pubspec.yaml
             </p>
             <h2 data-i18n="getting.dependency.title">
-              Add the local dependency.
+              Add the Git dependency.
             </h2>
             <p data-i18n="getting.dependency.body">
-              This checkout is not published to pub.dev. Point the consuming
-              app at the package location you actually use.
+              Not yet published to pub.dev. Add this public Git dependency,
+              then run fvm flutter pub get in your app directory.
+            </p>
+            <p class="disclosure-note" data-i18n="getting.dependency.note">
+              main can change; pin ref to a verified commit or existing release
+              tag for reproducibility. For a local clone, replace git with
+              path: /absolute/path/to/social_signin_kit and substitute your actual
+              path. A sibling directory is not required.
             </p>
           </header>
 
@@ -121,7 +127,9 @@
             </div>
             <pre tabindex="0"><code id="dependency-code">dependencies:
   social_signin_kit:
-    path: ../social_signin_kit</code></pre>
+    git:
+      url: https://github.com/beomq/social_signin_kit.git
+      ref: main</code></pre>
           </div>
         </div>
       </section>
@@ -147,8 +155,8 @@
             </p>
             <p class="disclosure-note" data-i18n-html="getting.events.assets">
               All 35 providers have package PNG defaults, so this quick start
-              needs no consuming-app logo paths. Six are reviewed
-              provider-supplied originals; the other 29 are package
+              needs no consuming-app logo paths. 12 are reviewed
+              provider-supplied originals (including GitHub); the other 23 are package
               adaptations rendered from pinned Simple Icons SVGs.
             </p>
           </header>

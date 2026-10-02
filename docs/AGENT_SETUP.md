@@ -1,7 +1,8 @@
 # 에이전트 통합 프롬프트
 
-다음 프롬프트는 미게시 로컬 패키지를 Flutter 앱에 연결할 때 사용합니다.
-다른 컴퓨터에서는 패키지 경로만 실제 clone 경로로 바꾸세요.
+다음 프롬프트는 pub.dev에 미게시된 패키지를 공개 Git 저장소에서 Flutter 앱에
+연결할 때 사용합니다. 로컬 clone을 쓰는 경우에는 실제 경로로 바꾸세요.
+앱의 형제 디렉터리에 둘 필요는 없습니다.
 
 35개 제공자 가운데 사용할 항목과 순서·배치·모양을 먼저 정하려면 정식
 `landing/index.html` 선택기를 사용하세요. `?lang=en`과 `?lang=ko`로 언어를
@@ -22,20 +23,34 @@
 `flutter_svg` 같은 런타임 의존성을 설치하지 않습니다.
 
 ```text
-Integrate the unpublished local Flutter package `social_signin_kit` into the
+Integrate the Flutter package `social_signin_kit` (unpublished on pub.dev) into the
 current app.
 
-Package path:
-../social_signin_kit
+Public Git repository:
+https://github.com/beomq/social_signin_kit.git
 
 Requirements:
 1. Read the app's project instructions, pubspec, authentication entry points,
    asset conventions, and related tests before editing.
-2. Add this local dependency without changing Flutter or Dart SDK constraints:
+2. Reuse a valid existing dependency, or add this Git dependency without changing
+   Flutter or Dart SDK constraints:
 
    dependencies:
      social_signin_kit:
-       path: ../social_signin_kit
+       git:
+         url: https://github.com/beomq/social_signin_kit.git
+         ref: main
+
+   `main` is suitable for onboarding but can change. For reproducible installs,
+   pin `ref` to a verified commit SHA or an existing release tag.
+   Alternatively, replace the Git entry with:
+
+   dependencies:
+     social_signin_kit:
+       path: /absolute/path/to/social_signin_kit
+
+   Substitute the actual local clone path; a sibling directory is not required.
+   Run `fvm flutter pub get` in the app directory.
 
 3. Use `fvm flutter` and `fvm dart` for commands. Don't use a pub.dev version or
    an unverified Git URL.
@@ -63,7 +78,8 @@ Requirements:
 
    When `logo` is omitted, all 35 providers use PNGs bundled by the package.
    Google, Apple, Microsoft, Kakao, Naver, LINE, X, LinkedIn, Twitch, Spotify,
-   and Bitbucket use reviewed provider-supplied originals. The other 24 use package adaptations rendered
+   Bitbucket, and GitHub use reviewed provider-supplied originals (12 total).
+   The other 23 use package adaptations rendered
    from pinned Simple Icons SVGs and are not official provider controls. No
    consuming-app asset setup is required for these defaults. Pass a permitted
    app asset path when the app has a different approved asset, and register
