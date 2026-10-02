@@ -4,8 +4,8 @@ Flutter 앱에서 35개 소셜 서비스의 로그인 버튼을 일관된 API로
 미게시 UI 패키지입니다. 버튼을 누르면 앱이 전달한 콜백만 실행합니다.
 OAuth, 토큰, 네트워크 요청, 로딩 상태는 앱에서 관리합니다.
 
-[pub.dev 게시 예정 주소](https://pub.dev/packages/social_signin_kit) · [GitHub 생성 예정 저장소](https://github.com/beomq/social_signin_kit)
-아직 게시되지 않았으므로 예정 링크는 현재 설치 가능한 릴리스를 뜻하지 않습니다.
+[랜딩페이지](https://beomq.github.io/social_signin_kit/) · [GitHub 저장소](https://github.com/beomq/social_signin_kit) · [pub.dev 게시 예정 주소](https://pub.dev/packages/social_signin_kit)
+pub.dev에는 아직 게시되지 않았으므로 예정 링크는 현재 설치 가능한 릴리스를 뜻하지 않습니다.
 
 > 이 패키지의 색상, 모양, 상태 스타일은 공식 인증을 뜻하지 않습니다.
 > 35개 제공자 모두 정적 PNG를 포함하지만 출처가 다릅니다. Google, Apple,

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Add social_signin_kit to a Flutter app and connect each button to an app-owned event handler."
+    />
+    <title>Get started — social_signin_kit</title>
+    <link rel="icon" href="data:," />
+    <link rel="alternate" hreflang="en" href="getting-started.html" />
+    <link rel="alternate" hreflang="ko" href="getting-started.html?lang=ko" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="i18n.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="getting">
+    <a class="skip-link" href="#main" data-i18n="getting.skip"
+      >Skip to setup</a
+    >
+
+    <header class="page-grid site-header">
+      <div class="page-grid__content site-header__inner">
+        <a class="wordmark" href="index.html">social_signin_kit</a>
+        <nav
+          class="site-nav"
+          aria-label="Documentation"
+          data-i18n-aria-label="nav.label"
+        >
+          <a href="index.html" data-i18n="nav.chooser">Chooser</a>
+          <a
+            href="getting-started.html"
+            aria-current="page"
+            data-i18n="nav.getStarted"
+            >Get started</a
+          >
+          <a href="providers.html" data-i18n="nav.providerGuide"
+            >Provider guide</a
+          >
+          <a
+            class="language-link"
+            href="getting-started.html?lang=ko"
+            lang="ko"
+            data-language-toggle
+            data-i18n="language.toggle"
+            data-i18n-aria-label="language.toggleAria"
+            >한국어</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-grid doc-hero">
+        <div class="page-grid__content doc-hero__inner">
+          <p class="eyebrow" data-i18n="getting.eyebrow">
+            Get started / two steps
+          </p>
+          <h1 data-i18n="getting.title">
+            Add the package. Attach your events.
+          </h1>
+          <p class="hero__lead" data-i18n="getting.lead">
+            The widget owns the button UI. Your app owns what happens after a
+            press: OAuth, loading, errors, tokens, and navigation.
+          </p>
+          <p class="status-strip" data-i18n="getting.status">
+            All 35 providers include package PNG defaults: six are reviewed
+            provider-supplied originals, and the other 29 are package
+            adaptations rendered from pinned Simple Icons SVGs. No
+            consuming-app asset setup is required for the defaults.
+          </p>
+        </div>
+      </section>
+
+      <section class="page-grid page-grid--sheet section" id="dependency">
+        <div class="page-grid__content install-grid">
+          <header class="step-copy">
+            <p class="step-index" data-i18n="getting.dependency.index">
+              01 / pubspec.yaml
+            </p>
+            <h2 data-i18n="getting.dependency.title">
+              Add the local dependency.
+            </h2>
+            <p data-i18n="getting.dependency.body">
+              This checkout is not published to pub.dev. Point the consuming
+              app at the package location you actually use.
+            </p>
+          </header>
+
+          <div class="code-panel">
+            <div class="code-panel__toolbar">
+              <span
+                class="code-panel__language"
+                data-i18n="getting.dependency.language"
+                >YAML / dependency</span
+              >
+              <div class="copy-control">
+                <button
+                  class="copy-button"
+                  type="button"
+                  data-copy-target="dependency-code"
+                  data-copy-name="dependency YAML"
+                  aria-label="Copy dependency YAML"
+                  data-i18n-copy-name="getting.dependency.copyName"
+                  data-i18n-aria-label="getting.dependency.copyAria"
+                  data-copy-success-key="getting.dependency.copySuccess"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="8" y="8" width="11" height="11"></rect>
+                    <path d="M16 8V5H5v11h3"></path>
+                  </svg>
+                  <span
+                    class="copy-button__label"
+                    data-i18n="getting.dependency.copy"
+                    >Copy YAML</span
+                  >
+                </button>
+                <span class="copy-status" aria-live="polite"></span>
+              </div>
+            </div>
+            <pre tabindex="0"><code id="dependency-code">dependencies:
+  social_signin_kit:
+    path: ../social_signin_kit</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-grid section" id="events">
+        <div class="page-grid__content usage-grid">
+          <header class="step-copy">
+            <p class="step-index" data-i18n="getting.events.index">
+              02 / event handlers
+            </p>
+            <h2 data-i18n="getting.events.title">
+              Pass the events your app already owns.
+            </h2>
+            <p data-i18n-html="getting.events.body">
+              Each <code>SocialButton</code> receives its own
+              <code>onPressed</code>. Passing <code>null</code> disables that
+              button while your app is busy.
+            </p>
+            <p class="disclosure-note" data-i18n="getting.events.note">
+              A press starts your handler; it does not prove that sign-in
+              succeeded. Keep request state and authentication results in the
+              app.
+            </p>
+            <p class="disclosure-note" data-i18n-html="getting.events.assets">
+              All 35 providers have package PNG defaults, so this quick start
+              needs no consuming-app logo paths. Six are reviewed
+              provider-supplied originals; the other 29 are package
+              adaptations rendered from pinned Simple Icons SVGs.
+            </p>
+          </header>
+
+          <div class="code-panel">
+            <div class="code-panel__toolbar">
+              <span
+                class="code-panel__language"
+                data-i18n="getting.events.language"
+                >Dart / attach events</span
+              >
+              <div class="copy-control">
+                <button
+                  class="copy-button"
+                  type="button"
+                  data-copy-target="event-code"
+                  data-copy-name="event handler example"
+                  aria-label="Copy event handler example"
+                  data-i18n-copy-name="getting.events.copyName"
+                  data-i18n-aria-label="getting.events.copyAria"
+                  data-copy-success-key="getting.events.copySuccess"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="8" y="8" width="11" height="11"></rect>
+                    <path d="M16 8V5H5v11h3"></path>
+                  </svg>
+                  <span
+                    class="copy-button__label"
+                    data-i18n="getting.events.copy"
+                    >Copy Dart</span
+                  >
+                </button>
+                <span class="copy-status" aria-live="polite"></span>
+              </div>
+            </div>
+            <pre tabindex="0"><code id="event-code">import 'package:social_signin_kit/social_signin_kit.dart';
+
+SocialButtonList.vertical(
+  items: [
+    SocialButton(
+      social: Social.google,
+      onPressed: isSigningIn ? null : startGoogleSignIn,
+    ),
+    SocialButton(
+      social: Social.kakao,
+      onPressed: isSigningIn ? null : startKakaoSignIn,
+    ),
+    SocialButton(
+      social: Social.naver,
+      onPressed: isSigningIn ? null : startNaverSignIn,
+    ),
+  ],
+)</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-grid page-grid--ink next-step">
+        <div class="page-grid__content next-step__inner">
+          <div>
+            <p class="section-kicker" data-i18n="getting.next.kicker">
+              Compose the buttons
+            </p>
+            <h2 data-i18n="getting.next.title">
+              Choose providers, shape, and appearance together.
+            </h2>
+          </div>
+          <a
+            class="button-link"
+            href="index.html"
+            data-i18n="getting.next.link"
+            >Open the button chooser</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-grid page-grid--ink site-footer">
+      <div class="page-grid__content site-footer__inner">
+        <p data-i18n="footer.package">
+          Flutter UI package. Authentication stays in your app.
+        </p>
+        <div class="package-links">
+          <a href="https://pub.dev/packages/social_signin_kit">pub.dev <span data-i18n="links.comingSoon">(coming soon)</span></a>
+          <a href="https://github.com/beomq/social_signin_kit">GitHub</a>
+        </div>
+        <div class="cluster">
+          <a href="index.html" data-i18n="nav.chooser">Chooser</a>
+          <a href="providers.html" data-i18n="nav.providerGuide"
+            >Provider guide</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

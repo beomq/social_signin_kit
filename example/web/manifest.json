@@ -1,0 +1,11 @@
+{
+  "name": "Social Login Buttons Gallery",
+  "short_name": "Login Buttons",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F3F6F8",
+  "theme_color": "#176BFF",
+  "description": "A logo-free interactive gallery for social login button presets.",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false
+}

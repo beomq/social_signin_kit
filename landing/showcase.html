@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Landing primitives — social_signin_kit</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-grid showcase">
+      <div class="page-grid__content">
+        <header class="section-header">
+          <p class="section-kicker">Primitive showcase</p>
+          <h1>States before screens.</h1>
+          <p>
+            A visual harness for the editorial grid, status language, code
+            surface, copy controls, and the complete 35-provider logo set.
+          </p>
+        </header>
+
+        <div class="showcase-grid">
+          <section
+            class="showcase-card showcase-card--wide"
+            aria-labelledby="showcase-product"
+          >
+            <h2 id="showcase-product">Product specimen</h2>
+            <div class="product-specimen">
+              <div class="product-specimen__chrome">
+                <div class="product-specimen__dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+                <span>SocialButton / rendered preview</span>
+              </div>
+              <div class="product-specimen__layout">
+                <div class="specimen-code">
+                  <p class="specimen-code__label">Dart / public API</p>
+                  <pre><code><span class="token-accent">SocialButton</span>(
+  social: Social.google,
+  shape: SocialButtonShape.pill,
+  onPressed: startSignIn,
+)</code></pre>
+                </div>
+                <div class="specimen-preview" aria-hidden="true">
+                  <p class="specimen-preview__label">Neutral UI preview</p>
+                  <div class="specimen-tabs" aria-label="Available shape examples">
+                    <span class="specimen-tab">rounded</span>
+                    <span class="specimen-tab specimen-tab--active">pill</span>
+                    <span class="specimen-tab">circle</span>
+                  </div>
+                  <div class="specimen-list">
+                    <div
+                      class="specimen-button specimen-button--google specimen-button--pill"
+                    >
+                      <span class="specimen-logo" aria-hidden="true">
+                        <img
+                          src="../assets/social/google.png"
+                          alt=""
+                          width="24"
+                          height="24"
+                        />
+                      </span>
+                      <span>Sign in with Google</span>
+                    </div>
+                    <div
+                      class="specimen-button specimen-button--kakao specimen-button--pill specimen-button--disabled"
+                    >
+                      <span class="specimen-logo" aria-hidden="true">
+                        <img
+                          src="../assets/social/kakao.png"
+                          alt=""
+                          width="24"
+                          height="24"
+                        />
+                      </span>
+                      <span>Login with Kakao</span>
+                    </div>
+                  </div>
+                  <div class="specimen-list specimen-list--horizontal">
+                    <div
+                      class="specimen-button specimen-button--apple specimen-button--circle"
+                    >
+                      <span class="specimen-logo" aria-hidden="true">
+                        <img
+                          src="../assets/social/apple.png"
+                          alt=""
+                          width="24"
+                          height="24"
+                        />
+                      </span>
+                    </div>
+                    <div
+                      class="specimen-button specimen-button--line specimen-button--circle"
+                    >
+                      <span class="specimen-logo" aria-hidden="true">
+                        <img
+                          src="../assets/social/line.png"
+                          alt=""
+                          width="24"
+                          height="24"
+                        />
+                      </span>
+                    </div>
+                  </div>
+                  <p class="specimen-meta">
+                    6 provider originals / 29 pinned Simple Icons adaptations
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="capability-rail">
+              <div class="capability-rail__item">
+                <span class="capability-rail__value">35</span>
+                <span class="capability-rail__label">provider presets</span>
+              </div>
+              <div class="capability-rail__item">
+                <span class="capability-rail__value">3 shapes</span>
+                <span class="capability-rail__label">rounded / pill / circle</span>
+              </div>
+              <div class="capability-rail__item">
+                <span class="capability-rail__value">2 lists</span>
+                <span class="capability-rail__label">vertical / horizontal</span>
+              </div>
+              <div class="capability-rail__item">
+                <span class="capability-rail__value">KO + EN</span>
+                <span class="capability-rail__label">locale-aware labels</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="showcase-card" aria-labelledby="showcase-status">
+            <h2 id="showcase-status">Status strips</h2>
+            <div class="status-strip">
+              <span class="status-strip__label">Unpublished</span>
+              <span>Local path only. No pub.dev release.</span>
+            </div>
+            <div class="status-strip">
+              <span class="status-strip__label">Unofficial UI</span>
+              <span>Provider approval is not guaranteed.</span>
+            </div>
+          </section>
+
+          <section class="showcase-card" aria-labelledby="showcase-controls">
+            <h2 id="showcase-controls">Copy control states</h2>
+            <div class="page-grid--ink code-panel__toolbar">
+              <div class="copy-control">
+                <button class="copy-button" type="button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="8" y="8" width="11" height="11"></rect>
+                    <path d="M16 8V5H5v11h3"></path>
+                  </svg>
+                  <span class="copy-button__label">Copy YAML</span>
+                </button>
+                <span class="copy-status">Ready to copy.</span>
+              </div>
+            </div>
+            <div class="page-grid--ink code-panel__toolbar">
+              <div class="copy-control">
+                <button class="copy-button is-copied" type="button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m5 12 4 4L19 6"></path>
+                  </svg>
+                  <span class="copy-button__label">Copied</span>
+                </button>
+                <span class="copy-status" data-state="success"
+                  >Copied to clipboard.</span
+                >
+              </div>
+            </div>
+            <div class="page-grid--ink code-panel__toolbar">
+              <div class="copy-control">
+                <button class="copy-button is-failed" type="button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6 6 18"></path>
+                  </svg>
+                  <span class="copy-button__label">Select text</span>
+                </button>
+                <span class="copy-status" data-state="error"
+                  >Copy failed. Text selected for manual copy.</span
+                >
+              </div>
+            </div>
+          </section>
+
+          <section class="showcase-card" aria-labelledby="showcase-code">
+            <h2 id="showcase-code">Code panel</h2>
+            <div class="code-panel">
+              <div class="code-panel__toolbar">
+                <span class="code-panel__language">YAML / local path</span>
+              </div>
+              <pre><code>dependencies:
+  social_signin_kit:
+    path: ../social_signin_kit</code></pre>
+            </div>
+          </section>
+
+          <section class="showcase-card" aria-labelledby="showcase-preview">
+            <h2 id="showcase-preview">Unresolved provider state</h2>
+            <div class="preview-stage">
+              <p><code>Social.notion</code></p>
+              <p class="disclosure-note">
+                No generic glyph or invented mark is shown. Supply an explicit
+                permitted asset, or use the provider's required official
+                control.
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

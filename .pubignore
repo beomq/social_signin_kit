@@ -1,0 +1,17 @@
+.dart_tool/
+.fvm/
+.omo/
+.DS_Store
+**/.DS_Store
+build/
+example/build/
+example/.dart_tool/
+example/.fvm/
+pubspec.lock
+example/pubspec.lock
+landing/
+research/
+evidence/
+WORK_PLAN.md
+assets/original/**/*.zip
+dist/

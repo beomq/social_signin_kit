@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Choose, order, shape, theme, preview, and export Flutter social login buttons for 35 providers."
+    />
+    <title>Button chooser — social_signin_kit</title>
+    <link rel="icon" href="data:," />
+    <link rel="alternate" hreflang="en" href="index.html" />
+    <link rel="alternate" hreflang="ko" href="index.html?lang=ko" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="i18n.js" defer></script>
+    <script src="chooser.js" defer></script>
+  </head>
+  <body data-page="chooser">
+    <a class="skip-link" href="#chooser" data-i18n="chooser.skip"
+      >Skip to button chooser</a
+    >
+
+    <header class="page-grid site-header">
+      <div class="page-grid__content site-header__inner">
+        <a class="wordmark" href="index.html" aria-current="page"
+          >social_signin_kit</a
+        >
+        <nav
+          class="site-nav"
+          aria-label="Documentation"
+          data-i18n-aria-label="nav.label"
+        >
+          <a href="index.html" aria-current="page" data-i18n="nav.chooser"
+            >Chooser</a
+          >
+          <a href="getting-started.html" data-i18n="nav.getStarted"
+            >Get started</a
+          >
+          <a href="providers.html" data-i18n="nav.providerGuide"
+            >Provider guide</a
+          >
+          <a
+            class="language-link"
+            href="index.html?lang=ko"
+            lang="ko"
+            data-language-toggle
+            data-i18n="language.toggle"
+            data-i18n-aria-label="language.toggleAria"
+            >한국어</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="chooser">
+      <section class="page-grid chooser-hero">
+        <div class="page-grid__content chooser-hero__grid">
+          <div class="chooser-hero__copy">
+            <p class="eyebrow" data-i18n="chooser.eyebrow">
+              35 providers / one app-ready handoff
+            </p>
+            <h1 data-i18n="chooser.title">
+              Compose the login screen you want.
+            </h1>
+            <p class="hero__lead" data-i18n="chooser.lead">
+              Choose providers, set their order, then pick a list direction and
+              shape. The live preview, Dart, asset manifest, and agent handoff
+              stay in sync.
+            </p>
+          </div>
+          <div
+            class="chooser-hero__proof"
+            aria-label="Workflow summary"
+            data-i18n-aria-label="chooser.workflowAria"
+          >
+            <span data-i18n="chooser.workflow.compose">01 compose</span>
+            <span data-i18n="chooser.workflow.handoff">02 hand off</span>
+          </div>
+          <div class="status-strip chooser-hero__status">
+            <span
+              class="status-strip__label"
+              data-i18n="chooser.unpublished"
+              >Unpublished</span
+            >
+            <span data-i18n="chooser.unpublishedNote"
+              >The handoff resolves the existing package checkout. It never
+              invents a pub.dev version or hosted Git URL.</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="page-grid page-grid--sheet chooser-workspace">
+        <div class="page-grid__content chooser-stack">
+          <section class="chooser-step" aria-labelledby="compose-heading">
+            <header class="chooser-step__header">
+              <p class="step-index" data-i18n="chooser.compose.index">
+                01 / compose
+              </p>
+              <h2 id="compose-heading" data-i18n="chooser.compose.title">
+                Compose services, order, shape, and appearance.
+              </h2>
+              <p data-i18n="chooser.compose.body">
+                Choose providers, then drag them into exact order inside the
+                live preview. Restrictions come from provider-specific catalog
+                evidence; unverified options remain explicit package choices.
+              </p>
+              <p
+                class="catalog-status"
+                data-catalog-status
+                role="status"
+                aria-live="polite"
+                data-i18n="chooser.choose.loading"
+              >
+                Loading 35 provider logos…
+              </p>
+            </header>
+            <div class="compose-grid">
+              <div
+                class="compose-controls"
+                aria-label="Composition controls"
+                data-i18n-aria-label="chooser.compose.controlsAria"
+              >
+                <fieldset class="segment-fieldset">
+                  <legend data-i18n="chooser.direction.legend">
+                    List direction
+                  </legend>
+                  <div class="segment-control">
+                    <label>
+                      <input
+                        type="radio"
+                        name="direction"
+                        value="vertical"
+                        checked
+                      />
+                      <span data-i18n="chooser.direction.vertical"
+                        >Vertical</span
+                      >
+                    </label>
+                    <label>
+                      <input type="radio" name="direction" value="horizontal" />
+                      <span data-i18n="chooser.direction.horizontal"
+                        >Horizontal</span
+                      >
+                    </label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="segment-fieldset">
+                  <legend data-i18n="chooser.shape.legend">Button shape</legend>
+                  <div class="segment-control">
+                    <label>
+                      <input
+                        type="radio"
+                        name="shape"
+                        value="rounded"
+                        aria-describedby="shape-guidance"
+                        checked
+                      />
+                      <span data-i18n="chooser.shape.rounded">Rounded</span>
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="shape"
+                        value="pill"
+                        aria-describedby="shape-guidance"
+                      />
+                      <span data-i18n="chooser.shape.pill">Pill</span>
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="shape"
+                        value="circle"
+                        aria-describedby="shape-guidance"
+                      />
+                      <span data-i18n="chooser.shape.circle">Circle</span>
+                    </label>
+                  </div>
+                  <div
+                    class="capability-guidance"
+                    id="shape-guidance"
+                    data-shape-guidance
+                    role="status"
+                    aria-live="polite"
+                  ></div>
+                </fieldset>
+
+                <fieldset class="segment-fieldset">
+                  <legend data-i18n="chooser.appearance.legend">
+                    Service appearance
+                  </legend>
+                  <div class="segment-control">
+                    <label>
+                      <input
+                        type="radio"
+                        name="appearance"
+                        value="light"
+                        aria-describedby="appearance-guidance"
+                        checked
+                      />
+                      <span data-i18n="chooser.appearance.light">Light</span>
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="appearance"
+                        value="dark"
+                        aria-describedby="appearance-guidance"
+                      />
+                      <span data-i18n="chooser.appearance.dark">Dark</span>
+                    </label>
+                  </div>
+                  <div
+                    class="capability-guidance"
+                    id="appearance-guidance"
+                    data-appearance-guidance
+                    role="status"
+                    aria-live="polite"
+                  ></div>
+                </fieldset>
+
+                <p
+                  class="selection-status"
+                  data-selection-status
+                  role="status"
+                  aria-live="polite"
+                ></p>
+                <p
+                  class="empty-feedback"
+                  data-empty-feedback
+                  data-i18n="chooser.empty"
+                  hidden
+                >
+                  Choose at least one provider to generate the preview, Dart
+                  code, and agent handoff.
+                </p>
+              </div>
+
+              <div class="provider-picker">
+                <a
+                  class="button-link button-link--secondary preview-jump"
+                  href="#preview-panel"
+                  data-i18n="chooser.preview.jump"
+                  >Jump to live preview</a
+                >
+                <div class="provider-choice-grid" data-provider-grid></div>
+              </div>
+
+              <article
+                class="preview-card"
+                id="preview-panel"
+                tabindex="-1"
+                aria-labelledby="preview-heading"
+              >
+                <div class="panel-heading">
+                  <div>
+                    <p
+                      class="section-kicker"
+                      data-i18n="chooser.preview.kicker"
+                    >
+                      Live preview
+                    </p>
+                    <h3 id="preview-heading" data-i18n="chooser.preview.title">
+                      Your login screen
+                    </h3>
+                  </div>
+                  <span data-i18n="chooser.preview.note">real local logos</span>
+                </div>
+                <p
+                  class="preview-card__hint"
+                  id="preview-reorder-hint"
+                  data-i18n="chooser.preview.reorderHint"
+                >
+                  Drag a preview button to reorder. Arrow keys move the focused
+                  button.
+                </p>
+                <div
+                  class="chooser-preview"
+                  data-live-preview
+                  tabindex="0"
+                  role="list"
+                  aria-labelledby="preview-heading"
+                  aria-describedby="preview-reorder-hint"
+                >
+                  <p
+                    class="chooser-preview__empty"
+                    data-i18n="chooser.preview.loading"
+                  >
+                    Loading preview…
+                  </p>
+                </div>
+                <p
+                  class="visually-hidden"
+                  data-order-status
+                  role="status"
+                  aria-live="polite"
+                ></p>
+              </article>
+            </div>
+          </section>
+
+          <section class="chooser-step" aria-labelledby="handoff-heading">
+            <header class="chooser-step__header">
+              <p class="step-index" data-i18n="chooser.handoff.index">
+                02 / hand off
+              </p>
+              <h2 id="handoff-heading" data-i18n="chooser.handoff.title">
+                Inspect it, then give it to your agent.
+              </h2>
+              <p data-i18n="chooser.handoff.body">
+                The generated Dart uses explicit asset paths for your Flutter
+                app and callback placeholders. The handoff downloads canonical
+                sources, verifies hashes, rasterizes with existing tools, and
+                never pretends to implement OAuth.
+              </p>
+            </header>
+
+            <div class="handoff-grid">
+              <article class="code-panel" aria-labelledby="dart-heading">
+                <div class="code-panel__toolbar">
+                  <span
+                    class="code-panel__language"
+                    id="dart-heading"
+                    data-i18n="chooser.dart.heading"
+                    >Dart / generated</span
+                  >
+                  <div class="copy-control">
+                    <button class="copy-button" type="button" data-copy-dart>
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="8" y="8" width="11" height="11"></rect>
+                        <path d="M16 8V5H5v11h3"></path>
+                      </svg>
+                      <span
+                        class="copy-button__label"
+                        data-i18n="chooser.dart.copy"
+                        >Copy Dart</span
+                      >
+                    </button>
+                  </div>
+                </div>
+                <pre tabindex="0"><code data-dart-code data-i18n="chooser.dart.loading">Loading catalog…</code></pre>
+              </article>
+            </div>
+
+            <div class="export-panel">
+              <div class="export-panel__copy">
+                <p class="section-kicker" data-i18n="chooser.export.kicker">
+                  Agent-ready package
+                </p>
+                <h3 data-i18n="chooser.export.title">
+                  One handoff, exact sources and paths.
+                </h3>
+                <p data-i18n="chooser.export.body">
+                  Copy the complete instruction, or download the same data as
+                  human-readable text and machine-readable JSON.
+                </p>
+                <div class="export-actions">
+                  <button
+                    class="copy-button copy-button--light"
+                    type="button"
+                    data-copy-agent
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="8" y="8" width="11" height="11"></rect>
+                      <path d="M16 8V5H5v11h3"></path>
+                    </svg>
+                    <span
+                      class="copy-button__label"
+                      data-i18n="chooser.export.copy"
+                      >Copy for agent</span
+                    >
+                  </button>
+                  <button
+                    class="button-link button-link--secondary"
+                    type="button"
+                    data-download-text
+                    data-i18n="chooser.export.downloadText"
+                  >
+                    Download text
+                  </button>
+                  <button
+                    class="button-link button-link--secondary"
+                    type="button"
+                    data-download-json
+                    data-i18n="chooser.export.downloadJson"
+                  >
+                    Download JSON
+                  </button>
+                </div>
+                <p
+                  class="export-status"
+                  data-export-status
+                  role="status"
+                  aria-live="polite"
+                ></p>
+              </div>
+
+              <details class="handoff-details">
+                <summary data-i18n="chooser.export.handoffSummary">
+                  Review the complete agent handoff
+                </summary>
+                <textarea
+                  data-agent-handoff
+                  readonly
+                  aria-label="Complete agent handoff text"
+                  data-i18n-aria-label="chooser.export.handoffAria"
+                ></textarea>
+              </details>
+
+              <details class="handoff-details">
+                <summary data-i18n="chooser.export.manifestSummary">
+                  Review the JSON manifest
+                </summary>
+                <pre tabindex="0"><code data-manifest-preview data-i18n="chooser.export.loading">Loading catalog…</code></pre>
+              </details>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-grid page-grid--ink site-footer">
+      <div class="page-grid__content site-footer__inner">
+        <p data-i18n="footer.ui">
+          UI composition only. Authentication remains in the consuming app.
+        </p>
+        <div class="package-links">
+          <a href="https://pub.dev/packages/social_signin_kit">pub.dev <span data-i18n="links.comingSoon">(coming soon)</span></a>
+          <a href="https://github.com/beomq/social_signin_kit">GitHub</a>
+        </div>
+        <div class="cluster">
+          <a href="getting-started.html" data-i18n="nav.getStarted"
+            >Get started</a
+          >
+          <a href="providers.html" data-i18n="nav.providerGuide"
+            >Provider guide</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
