@@ -77,10 +77,16 @@ SocialButtonAppearance.dark
 ```
 
 - `providerDefault`: 기존 제공자 프리셋을 그대로 사용합니다.
-- `light`, `dark`: 공식 인증 컨트롤에서 해당 변형을 확인한 제공자만
-  적용합니다.
+- `light`, `dark`: 현재 제공자 데이터에 등록된 외형만 적용합니다.
+  공식 로그인 컨트롤뿐 아니라 일반 브랜드 자산과 패키지 맞춤 스타일을
+  근거로 한 외형도 포함되며, 제공자 승인을 뜻하지 않습니다.
 
-현재 Google, Microsoft, Slack, Apple은 `light`와 `dark`를 지원합니다.
+현재 GitHub, Microsoft, X, LINE, Discord, LinkedIn, Slack, Twitch,
+Spotify, Reddit, GitLab, Bitbucket, Telegram, Weibo, Kakao, Naver,
+Google, Apple은 `light`와 `dark`를 지원합니다. PayPal은 `light`만
+지원하며 나머지 16개는 `providerDefault`만 지원합니다.
+GitHub는 default/dark에 공식 White Invertocat PNG를, light에 공식 Black
+Invertocat PNG를 `assets/original/github/`에서 직접 선택합니다.
 Apple light는 공식 `color=white` 생성 endpoint의 검은 글리프·흰 컨트롤
 원본을 사용하며 기존 검정 PNG를 반전하거나 색칠하지 않습니다.
 지원하지 않는 제공자에 명시해도 검증되지 않은 팔레트를 만들지 않고
@@ -193,9 +199,11 @@ apple, tiktok, notion
 ```
 
 검토된 기본 자산은 `socialLoginProviderData(social).bundledLogoAsset`으로
-확인할 수 있습니다. 현재 값이 있는 식별자는 `line`, `kakao`, `naver`,
-`google`, `apple`입니다. `hasBundledLogo`는 같은 상태를 `bool`로
-반환합니다.
+확인할 수 있습니다. 35개 모두 경로가 있으며 `hasBundledLogo`는 모두
+`true`입니다. GitHub 기본 경로는
+`assets/original/github/GitHub_Invertocat_White.png`이고 나머지는
+`assets/social/<id>.png`입니다. 원본 출처 여부인 `assetOfficial`과 번들
+존재 여부는 별개이며, 출처가 공식이어도 사용·재배포 권한을 뜻하지 않습니다.
 
 ## 책임 경계
 

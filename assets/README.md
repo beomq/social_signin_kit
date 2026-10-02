@@ -2,10 +2,12 @@
 
 Checked and downloaded: 2026-09-30
 
-All 35 providers have a local runtime PNG under `social/`. Eleven use
-provider-supplied originals preserved under `original/`: ten unchanged runtime
+All 35 providers have a local runtime PNG. Twelve use
+provider-supplied originals preserved under `original/`: eleven use unchanged
 PNGs, plus Spotify's unchanged standalone source PNG and its resized runtime PNG.
-The other 24 providers use transparent 128×128 PNGs rendered from pinned
+GitHub maps directly to the white Invertocat under `original/github/` for
+default/dark and the black original for light; the other default mappings are
+under `social/`. The other 23 providers use transparent 128×128 PNGs rendered from pinned
 Simple Icons SVG sources preserved under `original/simple-icons/`. Slack also
 has a black `slack-light.png` variant rendered from the same pinned SVG for its
 white light appearance. Those
@@ -16,6 +18,8 @@ the package's logo slot remain preserved separately.
 | Provider | Runtime path | Preserved original | Official source | SHA-256 |
 | --- | --- | --- | --- | --- |
 | Google | `assets/social/google.png` | `assets/original/google/g-logo.png` | [Google custom-button standard-color G](https://developers.google.com/static/identity/images/g-logo.png), linked from the [branding guidelines](https://developers.google.com/identity/branding-guidelines) | `d1ce9c2af0b10a7333abc99bc706f9a6a199e5b65bf3e3009624f076b8638e6a` |
+| GitHub default/dark | `assets/original/github/GitHub_Invertocat_White.png` | `assets/original/github/GitHub_Invertocat_White.png` | [GitHub logo archive](https://brand.github.com/GitHub_Logos.zip), member `GitHub Logos/PNG/GitHub_Invertocat_White.png` | `0d4c235fef9efec54174a7c005fc0fe0ce2d63d35c21898ab5148587111397a9` |
+| GitHub light | `assets/original/github/GitHub_Invertocat_Black.png` | `assets/original/github/GitHub_Invertocat_Black.png` | [GitHub logo archive](https://brand.github.com/GitHub_Logos.zip), member `GitHub Logos/PNG/GitHub_Invertocat_Black.png` | `2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d` |
 | Apple default/dark | `assets/social/apple.png` | `assets/original/apple/apple-signin-logo-black-44@2x.png` | [Apple generated black logo](https://appleid.cdn-apple.com/appleid/button/logo?size=44&color=black&border=false&border_radius=8&scale=2) | `70b9af49f6f0dcea26ced9b12d736dcc498146d01f508a5c6e00f69347796356` |
 | Apple light | `assets/social/apple-light.png` | `assets/original/apple/apple-signin-logo-white-44@2x.png` | [Apple generated white logo control](https://appleid.cdn-apple.com/appleid/button/logo?size=44&color=white&border=false&border_radius=8&scale=2) | `7c17e56419a525c72076ef8b29e51346d31fe538cd4f2e08316b45bea387e354` |
 | Kakao | `assets/social/kakao.png` | `assets/original/kakao/kakao_login_light.png` | [Kakao resource tool](https://developers.kakao.com/tool/resource/login), archive `Kakao Login.zip`, member `Kakao Login/PNG @4x/kakao_login_light.png` | `52530053de4bd84aabb2ea0716c793a71076d43d5229488e873bc56db028d180` |
@@ -28,16 +32,19 @@ the package's logo slot remain preserved separately.
 | Spotify | `assets/social/spotify.png` | `assets/original/spotify/Spotify_Primary_Logo_RGB_Black.png` | [Spotify Logo and Brand Assets](https://newsroom.spotify.com/media-kit/logo-and-brand-assets/), direct [standalone black icon PNG](https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Black.png), resized without recoloring to 128×128 | source `14113bb619ec259ae51a713e4098038c2a51bc2e65ed5dd97da25aa72702d7a5`; runtime `baa60beb991e4b87d8b0e0e695d8e9cd60d79dddf67c2c0b0848b8b8be8b8cb6` |
 | Bitbucket | `assets/social/bitbucket.png` | `assets/original/bitbucket/Bitbucket_icon.png` | [Bitbucket app-logo archive](https://atlassian.design/assets/599d0f58b052/logos/bitbucket_app.zip), member `Bitbucket/PNG@2x/Bitbucket_icon.png` | `61e96e6984d1c54df8d9707f5f8288b324d033bf82b15a2dc967e6db796c3a85` |
 
-## Remaining 24 Simple Icons-derived runtime assets
+## Remaining 23 Simple Icons-derived runtime assets
 
 The source SVG markup is preserved from the pinned URL; the table records each
-canonical download hash. Each runtime PNG was rendered to a transparent
+canonical download hash, excluding the single trailing LF added to each
+preserved local SVG. Each runtime PNG was rendered to a transparent
 128×128 canvas, preserving the 24×24 view box and applying the package
 catalog's foreground color. The rasterization is a package adaptation, not a
-provider-approved color or button.
+provider-approved color or button. The retained
+`assets/original/simple-icons/github.svg` and `assets/social/github.png`
+are legacy files, not current GitHub runtime mappings.
 
 Simple Icons' repository is distributed under CC0-1.0, but its disclaimer says
-that does not establish CC0 for every individual icon. None of these 24 data
+that does not establish CC0 for every individual icon. None of these 23 data
 entries states an individual icon license. Trademark and provider brand terms
 remain separate. Attribution is retained here for provenance even where CC0
 does not require it.
@@ -51,7 +58,6 @@ shape approval are not inferred.
 | Provider | Preserved SVG | Canonical SVG | Canonical SVG SHA-256 | PNG color | Snapshot |
 | --- | --- | --- | --- | --- | --- |
 | Facebook | `assets/original/simple-icons/facebook.svg` | https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/facebook.svg | `b06d18d844ed621b89faffb1a33440cc0ec4f1ffea9f36191f50db19a47c59a6` | `#FFFFFF` | current |
-| GitHub | `assets/original/simple-icons/github.svg` | https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/github.svg | `3bf8cceead820aec50d4ee825a3fd02c5a1cd6665cc9cf4cbf3d9c8861a204bb` | `#FFFFFF` | current |
 | Discord | `assets/original/simple-icons/discord.svg` | https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/discord.svg | `1d364b72c9eaf1fe37d17ca88cd8fb541308dc0f3b09e2ab3b824f380b3493d5` | `#FFFFFF` | current |
 | Slack | `assets/original/simple-icons/slack.svg` | https://raw.githubusercontent.com/simple-icons/simple-icons/11.15.0/icons/slack.svg | `f23c317b279f53dcd2260a6cd2e279f7a696f87dcb3da259d6201f05bbc45b0d` | `#FFFFFF` default/dark; `#000000` light | historical 11.15.0 |
 | Steam | `assets/original/simple-icons/steam.svg` | https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/steam.svg | `5eef8f31106b81956ed908490bcf8c73abe476aa58bb9041acdf70b0d42ebcae` | `#FFFFFF` | current |
@@ -87,16 +93,21 @@ Archive intake records:
 
 | Archive | Bytes | SHA-256 |
 | --- | ---: | --- |
+| GitHub `assets/original/github/GitHub_Logos.zip` | 499228 | `e2a67d6cc51d990a52c46c1cf6bcab688db4830982174bca50e0be7a5c2f3194` |
 | Google `signin-assets.zip` | 855303 | `ba884069e12093b06bcfd776915081254a7c95094b80d50be2c5dc6bac1c1da1` |
 | Kakao `Kakao Login.zip` | 85515 | `7664a07cdd88ac5219282a4580571a169683468e2efc06c8a962dd87068b5600` |
 | Naver `NAVER_login_KR.zip` | 196133 | `e589e3c1daf62cfcb6c38906856b953ae955c97d1411b3c3ce85d29e61c4471c` |
 | LINE `LINE_Login_Button_Image.zip` | 956497 | `2357d4643557b3eca7c7d83bdd66c5fee7712fedd4f3c1abb75a2ffb30eb9111` |
 
 These records establish provenance, not blanket trademark permission or
-provider approval of the package's common button geometry. The 24 remaining
+provider approval of the package's common button geometry. The 23 remaining
 Simple Icons files are never described as official provider artwork.
 Historical entries must be rechecked when a current provider asset becomes
 available.
+
+GitHub's black and white originals are selected without inversion or
+recoloring. Their official origin does not establish permission for package
+redistribution or approval of a custom authentication button.
 
 Apple's `color=white` endpoint response is an opaque white 88×88 control with
 a black Apple glyph; it is not a recolored copy of the black endpoint response.

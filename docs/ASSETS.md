@@ -1,7 +1,7 @@
 # 로고 에셋
 
-`social_signin_kit`는 35개 제공자의 기본 PNG를 포함합니다. 11개는
-provider-supplied 원본이고 24개는 고정된 Simple Icons SVG에서 만든 패키지
+`social_signin_kit`는 35개 제공자의 기본 PNG를 포함합니다. 12개는
+provider-supplied 원본 기반이고 23개는 고정된 Simple Icons SVG에서 만든 패키지
 기본값입니다. 소비 앱은 별도 자산 설정 없이 사용할 수 있습니다.
 
 ## 기본 번들
@@ -12,6 +12,8 @@ provider-supplied 원본이고 24개는 고정된 Simple Icons SVG에서 만든 
 | 제공자 | 경로 | 공식 제공 형태 |
 | --- | --- | --- |
 | Google | `assets/social/google.png` | standalone standard-color gradient G |
+| GitHub default/dark | `assets/original/github/GitHub_Invertocat_White.png` | official white Invertocat PNG, byte-for-byte |
+| GitHub light | `assets/original/github/GitHub_Invertocat_Black.png` | official black Invertocat PNG, byte-for-byte |
 | Apple default/dark | `assets/social/apple.png` | generated black-button logo, 44@2x |
 | Apple light | `assets/social/apple-light.png` | generated white-button logo with black glyph, 44@2x |
 | Kakao | `assets/social/kakao.png` | `kakao_login_light.png`, PNG 4x |
@@ -83,9 +85,14 @@ SocialButton(
 `logo`는 파일 시스템 경로나 URL이 아니라 Flutter 앱 에셋 경로입니다.
 명시적 경로에는 package key를 붙이지 않습니다.
 
-## 나머지 24개 기본값
+GitHub는 공식 흰색·검정색 원본을 외형에 따라 직접 선택하며 반전하거나
+재색칠하지 않습니다. 공식 출처라는 사실은 패키지 재배포 권한이나 맞춤 인증
+버튼 승인을 뜻하지 않습니다. 남아 있는 `assets/social/github.png`와
+Simple Icons GitHub SVG는 현재 런타임 매핑이 아닌 이전 파일입니다.
 
-GitHub와 Notion을 포함한 나머지 24개도
+## 나머지 23개 기본값
+
+Notion을 포함한 나머지 23개도
 `assets/social/<id>.png`를 기본값으로 갖습니다. 이 파일들은 pinned Simple
 Icons SVG를 패키지 foreground 색상으로 래스터화한 식별용 기본값이며
 provider-supplied 자산이나 공식 로그인 컨트롤이 아닙니다. Simple Icons
