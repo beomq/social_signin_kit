@@ -659,27 +659,20 @@ function renderPreview() {
     );
     const availableAppearances = providerCapabilities(provider).appearances;
     for (const [value, label] of [
-      ["", locale === "ko" ? "목록 설정 따르기" : "Use list appearance"],
       ["providerDefault", locale === "ko" ? "제공자 기본값" : "Provider default"],
       ["light", locale === "ko" ? "라이트" : "Light"],
       ["dark", locale === "ko" ? "다크" : "Dark"],
     ]) {
-      if (value && !supportsAppearance(provider, value)) continue;
+      if (!supportsAppearance(provider, value)) continue;
       const option = document.createElement("option");
       option.value = value;
       option.textContent = label;
       appearance.append(option);
     }
-    if (availableAppearances.length === 1) {
-      appearance.querySelector('option[value=""]').remove();
-      appearance.value = availableAppearances[0];
-      appearance.disabled = true;
-    } else {
-      appearance.value = state.itemAppearances.get(id) || "";
-    }
+    appearance.value = visual.appearance;
+    appearance.disabled = availableAppearances.length === 1;
     appearance.addEventListener("change", () => {
-      if (appearance.value) state.itemAppearances.set(id, appearance.value);
-      else state.itemAppearances.delete(id);
+      state.itemAppearances.set(id, appearance.value);
       renderAll();
     });
     item.append(appearance);
@@ -1326,6 +1319,17 @@ function download(filename, content, type) {
   anchor.remove();
   URL.revokeObjectURL(url);
 }
+
+document.querySelector("[data-preview-toggle]").addEventListener("click", (event) => {
+  const toggle = event.currentTarget;
+  const collapsed = document.querySelector("#preview-panel").classList.toggle("is-collapsed");
+  toggle.setAttribute("aria-expanded", String(!collapsed));
+  toggle.dataset.i18n = collapsed
+    ? "chooser.preview.expand"
+    : "chooser.preview.collapse";
+  toggle.textContent = window.siteI18n.t(toggle.dataset.i18n);
+  window.siteI18n.refreshGeometry();
+});
 
 document.querySelectorAll('input[name="direction"]').forEach((input) => {
   input.addEventListener("change", () => {

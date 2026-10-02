@@ -1697,9 +1697,9 @@ body[data-locale="ko"] .capability-rail__value {
 
 .compose-grid {
   grid-template-areas:
+    "preview"
     "controls"
-    "providers"
-    "preview";
+    "providers";
   align-items: start;
   gap: var(--space-8);
 }
@@ -1896,6 +1896,16 @@ body[data-locale="ko"] .capability-rail__value {
   font-size: var(--type-small);
 }
 
+.preview-card__content {
+  display: grid;
+  gap: var(--space-6);
+  min-inline-size: 0;
+}
+
+.preview-toggle {
+  display: none;
+}
+
 .preview-card {
   display: grid;
   align-content: start;
@@ -1964,19 +1974,20 @@ body[data-locale="ko"] .capability-rail__value {
 .preview-item:has(.preview-item__appearance) {
   flex-direction: column;
   align-items: stretch;
-  gap: 6px;
+  gap: var(--space-2);
 }
 
 .preview-item__appearance {
   align-self: flex-end;
   max-inline-size: 100%;
-  padding: 4px 6px;
+  min-block-size: var(--size-target);
+  padding: var(--space-1) var(--space-2);
   font: inherit;
-  font-size: 11px;
-  color: var(--text-muted);
+  font-size: var(--type-label);
+  color: var(--color-muted);
   background: transparent;
-  border: 1px solid currentColor;
-  border-radius: 4px;
+  border: var(--rule-thin) solid currentColor;
+  border-radius: var(--radius-control);
 }
 
 .preview-item--circle:has(.preview-item__appearance) {
@@ -2250,6 +2261,56 @@ body[data-locale="ko"] .capability-rail__value {
       minmax(16rem, 0.8fr)
       minmax(0, 0.6fr)
       minmax(0, 0.6fr);
+  }
+}
+
+@media (max-width: 63.999rem) {
+  .compose-grid > .preview-card {
+    position: sticky;
+    inset-block-start: var(--space-2);
+    z-index: var(--layer-drag);
+    gap: var(--space-2);
+    padding: var(--space-3);
+    box-shadow: none;
+  }
+
+  .preview-card .panel-heading {
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .preview-card__note {
+    display: none;
+  }
+
+  .preview-toggle {
+    display: inline-flex;
+    flex-shrink: 0;
+    padding-inline: var(--space-2);
+    font-size: var(--type-label);
+  }
+
+  .preview-card__content {
+    gap: var(--space-2);
+  }
+
+  .preview-card__hint {
+    font-size: var(--type-label);
+  }
+
+  #preview-panel .chooser-preview {
+    min-block-size: 0;
+    max-block-size: 24dvb;
+    padding: var(--space-2);
+  }
+
+  .preview-card.is-collapsed .preview-card__content {
+    display: none;
+  }
+
+  .compose-controls,
+  .provider-choice {
+    scroll-margin-block-start: calc(40dvb + var(--space-4));
   }
 }
 

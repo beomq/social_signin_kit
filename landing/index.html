@@ -116,6 +116,66 @@
               </p>
             </header>
             <div class="compose-grid">
+              <article
+                class="preview-card"
+                id="preview-panel"
+                tabindex="-1"
+                aria-labelledby="preview-heading"
+              >
+                <div class="panel-heading">
+                  <div>
+                    <p
+                      class="section-kicker"
+                      data-i18n="chooser.preview.kicker"
+                    >
+                      Live preview
+                    </p>
+                    <h3 id="preview-heading" data-i18n="chooser.preview.title">
+                      Your login screen
+                    </h3>
+                  </div>
+                  <span class="preview-card__note" data-i18n="chooser.preview.note">real local logos</span>
+                  <button
+                    class="button-link button-link--secondary preview-toggle"
+                    type="button"
+                    data-preview-toggle
+                    data-i18n="chooser.preview.collapse"
+                    aria-expanded="true"
+                    aria-controls="preview-content"
+                  >Collapse preview</button>
+                </div>
+                <div class="preview-card__content" id="preview-content">
+                  <p
+                    class="preview-card__hint"
+                    id="preview-reorder-hint"
+                    data-i18n="chooser.preview.reorderHint"
+                  >
+                    Drag a preview button to reorder. Arrow keys move the focused
+                    button.
+                  </p>
+                  <div
+                    class="chooser-preview"
+                    data-live-preview
+                    tabindex="0"
+                    role="list"
+                    aria-labelledby="preview-heading"
+                    aria-describedby="preview-reorder-hint"
+                  >
+                    <p
+                      class="chooser-preview__empty"
+                      data-i18n="chooser.preview.loading"
+                    >
+                      Loading preview…
+                    </p>
+                  </div>
+                </div>
+                <p
+                  class="visually-hidden"
+                  data-order-status
+                  role="status"
+                  aria-live="polite"
+                ></p>
+              </article>
               <div
                 class="compose-controls"
                 aria-label="Composition controls"
@@ -239,65 +299,8 @@
               </div>
 
               <div class="provider-picker">
-                <a
-                  class="button-link button-link--secondary preview-jump"
-                  href="#preview-panel"
-                  data-i18n="chooser.preview.jump"
-                  >Jump to live preview</a
-                >
                 <div class="provider-choice-grid" data-provider-grid></div>
               </div>
-
-              <article
-                class="preview-card"
-                id="preview-panel"
-                tabindex="-1"
-                aria-labelledby="preview-heading"
-              >
-                <div class="panel-heading">
-                  <div>
-                    <p
-                      class="section-kicker"
-                      data-i18n="chooser.preview.kicker"
-                    >
-                      Live preview
-                    </p>
-                    <h3 id="preview-heading" data-i18n="chooser.preview.title">
-                      Your login screen
-                    </h3>
-                  </div>
-                  <span data-i18n="chooser.preview.note">real local logos</span>
-                </div>
-                <p
-                  class="preview-card__hint"
-                  id="preview-reorder-hint"
-                  data-i18n="chooser.preview.reorderHint"
-                >
-                  Drag a preview button to reorder. Arrow keys move the focused
-                  button.
-                </p>
-                <div
-                  class="chooser-preview"
-                  data-live-preview
-                  tabindex="0"
-                  role="list"
-                  aria-labelledby="preview-heading"
-                  aria-describedby="preview-reorder-hint"
-                >
-                  <p
-                    class="chooser-preview__empty"
-                    data-i18n="chooser.preview.loading"
-                  >
-                    Loading preview…
-                  </p>
-                </div>
-                <p
-                  class="visually-hidden"
-                  data-order-status
-                  role="status"
-                  aria-live="polite"
-                ></p>
-              </article>
             </div>
           </section>
 
