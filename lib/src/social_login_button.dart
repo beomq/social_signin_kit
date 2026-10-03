@@ -344,7 +344,15 @@ class _SocialButton extends StatelessWidget {
                 : Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    _LogoSlot(logo: logo, size: spec.logoSize ?? size / 2),
+                    _LogoSlot(
+                      logo: logo,
+                      size: spec.logoSize ?? size / 2,
+                      aspectRatio: switch (provider) {
+                        Social.zoom => 1426 / 321,
+                        Social.steam => 278 / 84,
+                        _ => 1,
+                      },
+                    ),
                     if (spec.separatorColor != null) ...[
                       SizedBox(width: spec.logoLabelSpacing),
                       Container(
@@ -717,14 +725,23 @@ _ProviderButtonSpec _buttonSpec(
 };
 
 class _LogoSlot extends StatelessWidget {
-  const _LogoSlot({required this.logo, required this.size});
+  const _LogoSlot({
+    required this.logo,
+    required this.size,
+    this.aspectRatio = 1,
+  });
 
   final Widget logo;
   final double size;
+  final double aspectRatio;
 
   @override
   Widget build(BuildContext context) =>
-      SizedBox.square(dimension: size, child: ExcludeSemantics(child: logo));
+      SizedBox(
+        width: size * aspectRatio,
+        height: size,
+        child: ExcludeSemantics(child: logo),
+      );
 }
 
 // Report each failed image once, while keeping the visual failure inside the

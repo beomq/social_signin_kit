@@ -30,6 +30,8 @@ jobs:
           cp landing/*.html landing/*.css landing/*.js landing/logo-catalog.json _site/landing/
           rsync -a --exclude='*.zip' --exclude='*.pdf' --exclude='*.psd' --exclude='*.ai' --exclude='.DS_Store' assets/ _site/assets/
           cp -R docs _site/docs
+          mkdir -p _site/research/official-default-replacement
+          cp research/official-default-replacement/replacement-receipts.json research/official-default-replacement/remaining-seven.md research/official-default-replacement/QA.md _site/research/official-default-replacement/
           cp README.md LICENSE THIRD_PARTY_NOTICES.md DOWNLOAD_GUIDE.md download-plan.json _site/
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@v3

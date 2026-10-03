@@ -2,10 +2,13 @@
 
 This source-backed reference covers every value in `Social`. It separates authentication from service authorization, official controls from package presets, and public evidence from unknowns. The primary evidence was checked on 2026-09-29.
 
-All 35 providers now have package PNG defaults. Google, Apple, Microsoft,
-Kakao, Naver, LINE, X, LinkedIn, Twitch, Spotify, and Bitbucket use reviewed
-provider-supplied originals. The other 24 use package adaptations rendered
-from pinned Simple Icons SVGs. `asset.official` records source origin only,
+All 35 providers have package PNG defaults. Twenty-eight now use official
+originals: twenty-five unchanged PNGs, plus Spotify's proportional resize,
+QQ's complete PSD-to-PNG composite and Steam's complete official website
+SVG-to-PNG mark. The remaining seven use pinned Simple Icons adaptations.
+The 2026-10-03 replacement receipts are in
+`research/official-default-replacement/replacement-receipts.json`.
+`asset.official` records source origin only,
 not provider approval or package-redistribution permission. Neither source
 category makes the shared `SocialButton` geometry an official provider control.
 

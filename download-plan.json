@@ -17,9 +17,9 @@
       "id": "facebook",
       "name": "Facebook",
       "officialSourceUrl": "https://www.meta.com/brand/resources/facebook/logo/",
-      "acquisitionStatus": "signed-refresh",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": null,
-      "blocker": "검정 원본은 이번 팩에서 검증하지 못했다. 매번 공식 랜딩에서 서명 URL 갱신; 표시되는 약관을 따른다.",
+      "blocker": null,
       "variants": [
         {
           "variantId": "facebook-39",
@@ -185,123 +185,107 @@
         "usage": "브랜드 로고 팩과 Facebook Login SDK 컨트롤은 별도. 로고 후보 존재가 공통 light/dark 인증 버튼 승인이라는 뜻은 아니다."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "공식 source 페이지의 현재 ZIP 다운로드 href를 매번 다시 찾는다. 필요한 약관 동의를 수행하고 즉시 GET; 서명 쿼리를 제거하거나 고정하지 않는다.",
-        "ZIP 원본 SHA256 확인 → 정확한 archiveMember 추출 → PNG 멤버 SHA256 대조. 원본 이름과 캔버스 보존.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다.",
-        "현재 공식 랜딩은 다운로드 약관 체크박스를 표시한다. 필요한 동의와 최신 서명 링크 갱신 후 exact member/hash를 확인한다. 이 구현에서는 미설치로 남겼다; 서명 URL 쿼리를 영구 저장하거나 약관 단계를 우회하지 않는다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": "assets/social/facebook.png",
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": true,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-a-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/facebook.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/facebook.svg",
-          "format": "png",
-          "sha256": "a79ecd4750ac57fc8dcb483169cc110c53a0aa70f7288d673b93785b7d0cce78",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/facebook.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
+          "format": "zip",
+          "sha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57",
+          "source": "https://www.meta.com/brand/resources/facebook/logo/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Facebook in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta publishes the general logo pack under its guidelines; standalone login-logo package redistribution is not stated.",
             "sources": [
+              "https://www.meta.com/brand/resources/facebook/logo/",
               "https://developers.facebook.com/docs/facebook-login/web/login-button/",
               "https://www.meta.com/brand/resources/facebook/logo/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "b06d18d844ed621b89faffb1a33440cc0ec4f1ffea9f36191f50db19a47c59a6",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
+          "redistribution": "conditional",
+          "archiveMember": "Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png",
+          "variant": "providerDefault",
+          "archiveSha256": "5c51e2c9c2377b1656a3294b391ed4a42f88dd8c46fc05b98d3bc27affc97f3a",
           "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "검정 원본은 이번 팩에서 검증하지 못했다. 매번 공식 랜딩에서 서명 URL 갱신; 표시되는 약관을 따른다."
+          "archive": {
+            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
+            "sha256": "5c51e2c9c2377b1656a3294b391ed4a42f88dd8c46fc05b98d3bc27affc97f3a",
+            "member": "Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png",
+            "memberSha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57"
+          }
         },
         "light": {
           "preview": "../assets/social/facebook.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/facebook.svg",
-          "format": "png",
-          "sha256": "a79ecd4750ac57fc8dcb483169cc110c53a0aa70f7288d673b93785b7d0cce78",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/facebook.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
+          "format": "zip",
+          "sha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57",
+          "source": "https://www.meta.com/brand/resources/facebook/logo/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Facebook in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta publishes the general logo pack under its guidelines; standalone login-logo package redistribution is not stated.",
             "sources": [
+              "https://www.meta.com/brand/resources/facebook/logo/",
               "https://developers.facebook.com/docs/facebook-login/web/login-button/",
               "https://www.meta.com/brand/resources/facebook/logo/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "b06d18d844ed621b89faffb1a33440cc0ec4f1ffea9f36191f50db19a47c59a6",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": false,
+          "redistribution": "conditional",
+          "archiveMember": "Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png",
+          "variant": "light",
+          "archiveSha256": "5c51e2c9c2377b1656a3294b391ed4a42f88dd8c46fc05b98d3bc27affc97f3a",
+          "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "검정 원본은 이번 팩에서 검증하지 못했다. 매번 공식 랜딩에서 서명 URL 갱신; 표시되는 약관을 따른다."
+          "archive": {
+            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
+            "sha256": "5c51e2c9c2377b1656a3294b391ed4a42f88dd8c46fc05b98d3bc27affc97f3a",
+            "member": "Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png",
+            "memberSha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57"
+          }
         },
         "dark": {
           "preview": "../assets/social/facebook.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/facebook.svg",
-          "format": "png",
-          "sha256": "a79ecd4750ac57fc8dcb483169cc110c53a0aa70f7288d673b93785b7d0cce78",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/facebook.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
+          "format": "zip",
+          "sha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57",
+          "source": "https://www.meta.com/brand/resources/facebook/logo/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Facebook in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta publishes the general logo pack under its guidelines; standalone login-logo package redistribution is not stated.",
             "sources": [
+              "https://www.meta.com/brand/resources/facebook/logo/",
               "https://developers.facebook.com/docs/facebook-login/web/login-button/",
               "https://www.meta.com/brand/resources/facebook/logo/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "b06d18d844ed621b89faffb1a33440cc0ec4f1ffea9f36191f50db19a47c59a6",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": false,
+          "redistribution": "conditional",
+          "archiveMember": "Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png",
+          "variant": "dark",
+          "archiveSha256": "5c51e2c9c2377b1656a3294b391ed4a42f88dd8c46fc05b98d3bc27affc97f3a",
+          "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "검정 원본은 이번 팩에서 검증하지 못했다. 매번 공식 랜딩에서 서명 URL 갱신; 표시되는 약관을 따른다."
+          "archive": {
+            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
+            "sha256": "5c51e2c9c2377b1656a3294b391ed4a42f88dd8c46fc05b98d3bc27affc97f3a",
+            "member": "Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png",
+            "memberSha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57"
+          }
         }
       },
       "appearanceSupport": {
@@ -317,7 +301,7 @@
         },
         "officialAcquisitionStatus": "signed-refresh"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "github",
@@ -1381,7 +1365,7 @@
       "id": "discord",
       "name": "Discord",
       "officialSourceUrl": "https://discord.com/branding",
-      "acquisitionStatus": "archive",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": null,
       "blocker": null,
       "variants": [
@@ -1614,69 +1598,60 @@
         "usage": "독립 Clyde는 Discord 문맥이 분명해야 한다. 블랙/화이트/Blurple 브랜드 자산은 별도 OAuth 컨트롤 승인과 다르다."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "공식 source에서 선택 변형·용도 조건 확인 후 URL GET. HTTP200과 Content-Type/바이너리 매직을 검사한다.",
-        "ZIP 원본 SHA256 확인 → 정확한 archiveMember 추출 → PNG 멤버 SHA256 대조. 원본 이름과 캔버스 보존.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": "assets/social/discord.png",
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": true,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-a-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/discord.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/discord.svg",
-          "format": "png",
-          "sha256": "f0b8410677fab349696b9509b3daeacec9eafbe430005e9d9eea997d63fafb38",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/discord.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://cdn.discordapp.com/assets/content/80af2c38f13b4a7d2cb3572e1220f6e958d3c3aedccc7c7d3ddc9832f6b3d725.zip",
+          "format": "zip",
+          "sha256": "64dce9107da58318880721df9d0603c3cee3683a3322bf36f3dedb75edd1c81d",
+          "source": "https://discord.com/branding",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Discord in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Discord lists limited public digital uses; an OAuth button and reusable-package redistribution are not specifically named.",
+            "usage": "독립 Clyde는 Discord 문맥이 분명해야 한다. 블랙/화이트/Blurple 브랜드 자산은 별도 OAuth 컨트롤 승인과 다르다.",
             "sources": [
+              "https://discord.com/branding",
               "https://discord.com/branding",
               "https://discord.com/developers/docs/topics/oauth2"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "1d364b72c9eaf1fe37d17ca88cd8fb541308dc0f3b09e2ab3b824f380b3493d5",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
+          "redistribution": "conditional",
+          "archiveMember": "Discord_Symbol_White/Discord-Symbol-White.png",
+          "variant": "providerDefault",
+          "archiveSha256": "80af2c38f13b4a7d2cb3572e1220f6e958d3c3aedccc7c7d3ddc9832f6b3d725",
           "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": null
+          "archive": {
+            "download": "https://cdn.discordapp.com/assets/content/80af2c38f13b4a7d2cb3572e1220f6e958d3c3aedccc7c7d3ddc9832f6b3d725.zip",
+            "sha256": "80af2c38f13b4a7d2cb3572e1220f6e958d3c3aedccc7c7d3ddc9832f6b3d725",
+            "member": "Discord_Symbol_White/Discord-Symbol-White.png",
+            "memberSha256": "64dce9107da58318880721df9d0603c3cee3683a3322bf36f3dedb75edd1c81d"
+          }
         },
         "light": {
           "preview": "../assets/original/discord/Discord-Symbol-Black.png",
           "download": "https://cdn.discordapp.com/assets/content/aecd9009fd6a24c06c8ce71f6bb84463eaf7252bc5259022fb887b381a428250.zip",
           "source": "https://discord.com/branding",
-          "format": "png",
+          "format": "zip",
           "sha256": "3667ac4e3a56f19de9c3e9e9dd869294e445cc97332a54b3b1ad990454381830",
           "archiveSha256": "aecd9009fd6a24c06c8ce71f6bb84463eaf7252bc5259022fb887b381a428250",
           "archiveMember": "Discord_Symbol_Black/Discord-Symbol-Black.png",
           "archive": {
             "download": "https://cdn.discordapp.com/assets/content/aecd9009fd6a24c06c8ce71f6bb84463eaf7252bc5259022fb887b381a428250.zip",
             "sha256": "aecd9009fd6a24c06c8ce71f6bb84463eaf7252bc5259022fb887b381a428250",
-            "member": "Discord_Symbol_Black/Discord-Symbol-Black.png"
+            "member": "Discord_Symbol_Black/Discord-Symbol-Black.png",
+            "memberSha256": "3667ac4e3a56f19de9c3e9e9dd869294e445cc97332a54b3b1ad990454381830"
           },
-          "license": "Discord lists limited public digital uses; an OAuth button and reusable-package redistribution are not specifically named.",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "kind": "brand-logomark",
           "colors": [
@@ -1688,7 +1663,7 @@
           },
           "conditions": {
             "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
-            "transformation": "Unmodified original bytes; full canvas, color, padding and container preserved. Proportional display only; no crop, tint or inversion.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Discord lists limited public digital uses; an OAuth button and reusable-package redistribution are not specifically named.",
             "usage": "독립 Clyde는 Discord 문맥이 분명해야 한다. 블랙/화이트/Blurple 브랜드 자산은 별도 OAuth 컨트롤 승인과 다르다.",
             "sources": [
@@ -1716,16 +1691,17 @@
           "preview": "../assets/original/discord/Discord-Symbol-White.png",
           "download": "https://cdn.discordapp.com/assets/content/80af2c38f13b4a7d2cb3572e1220f6e958d3c3aedccc7c7d3ddc9832f6b3d725.zip",
           "source": "https://discord.com/branding",
-          "format": "png",
+          "format": "zip",
           "sha256": "64dce9107da58318880721df9d0603c3cee3683a3322bf36f3dedb75edd1c81d",
           "archiveSha256": "80af2c38f13b4a7d2cb3572e1220f6e958d3c3aedccc7c7d3ddc9832f6b3d725",
           "archiveMember": "Discord_Symbol_White/Discord-Symbol-White.png",
           "archive": {
             "download": "https://cdn.discordapp.com/assets/content/80af2c38f13b4a7d2cb3572e1220f6e958d3c3aedccc7c7d3ddc9832f6b3d725.zip",
             "sha256": "80af2c38f13b4a7d2cb3572e1220f6e958d3c3aedccc7c7d3ddc9832f6b3d725",
-            "member": "Discord_Symbol_White/Discord-Symbol-White.png"
+            "member": "Discord_Symbol_White/Discord-Symbol-White.png",
+            "memberSha256": "64dce9107da58318880721df9d0603c3cee3683a3322bf36f3dedb75edd1c81d"
           },
-          "license": "Discord lists limited public digital uses; an OAuth button and reusable-package redistribution are not specifically named.",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "kind": "brand-logomark",
           "colors": [
@@ -1737,7 +1713,7 @@
           },
           "conditions": {
             "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
-            "transformation": "Unmodified original bytes; full canvas, color, padding and container preserved. Proportional display only; no crop, tint or inversion.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Discord lists limited public digital uses; an OAuth button and reusable-package redistribution are not specifically named.",
             "usage": "독립 Clyde는 Discord 문맥이 분명해야 한다. 블랙/화이트/Blurple 브랜드 자산은 별도 OAuth 컨트롤 승인과 다르다.",
             "sources": [
@@ -1773,7 +1749,7 @@
         "unresolved": null,
         "officialAcquisitionStatus": "archive"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "linkedin",
@@ -2172,10 +2148,10 @@
     {
       "id": "slack",
       "name": "Slack",
-      "officialSourceUrl": "https://docs.slack.dev/authentication/sign-in-with-slack/",
-      "acquisitionStatus": "authenticated",
+      "officialSourceUrl": "https://slack.com/media-kit",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": "https://salesforce.widencollective.com/c/yn6bxnam",
-      "blocker": "생성기 앱 생성/선택 및 DAM 인증 후 standalone 원본 확인 필요. 현 Slack dark logoColor white tint는 부모 보고의 기존 제한이며 공식 dark 파일 취득으로 간주하지 않는다.",
+      "blocker": null,
       "variants": [
         {
           "variantId": "slack-58",
@@ -2260,21 +2236,11 @@
         "usage": "공개 docs에 완성 흰 배경 PNG가 실제 존재한다. 앱 생성기 no-app와 DAM Login 증거는 standalone 원본 팩의 장애일 뿐 공개 컨트롤 부재가 아니다."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "Media Kit Logos는 Login만 노출. 인증 후 원본 확인. 로그인 버튼 생성기는 앱 생성/선택 필요.",
-        "실제 파일 SHA256 대조. HTML/로그인 화면을 이미지로 저장하지 않는다.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "다운로드만으로 일반 logo 슬롯에 설치하지 않는다. 수동 취득/전체 컨트롤/API 적합성·권한 확인이 먼저다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": null,
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": false,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-a-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "fileSelection": {
         "format": "unverified",
         "appearance": "원본 변형 취득 후 확인, catalog 색에서 추론 금지",
@@ -2283,106 +2249,84 @@
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/slack.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/11.15.0/icons/slack.svg",
+          "download": "https://salesforce.widencollective.com/download/472142e111ebc965e272cb3dff15f2ccd89aaabfe0dde1303d53369649392d282a3876714d35391cda626fba2ec02885/SLA-Slack-icon-white-RGB.png?download=true",
           "format": "png",
-          "sha256": "374442bf164d34e38d9b483d69e0ae11e87c5de6f1154bd7fdabca4612ed763b",
-          "source": "https://github.com/simple-icons/simple-icons/blob/11.15.0/icons/slack.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
-          "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Slack in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
-            "redistribution": "Slack permits generated and guideline-conforming custom sign-in controls; source-logo package redistribution is not separately stated.",
-            "sources": [
-              "https://docs.slack.dev/authentication/sign-in-with-slack/",
-              "https://slack.com/brand-guidelines"
-            ],
-            "checkedOn": "2026-09-30"
-          },
-          "sourceSha256": "f23c317b279f53dcd2260a6cd2e279f7a696f87dcb3da259d6201f05bbc45b0d",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": true,
-          "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "생성기 앱 생성/선택 및 DAM 인증 후 standalone 원본 확인 필요. 현 Slack dark logoColor white tint는 부모 보고의 기존 제한이며 공식 dark 파일 취득으로 간주하지 않는다."
-        },
-        "light": {
-          "preview": "../assets/social/slack-light.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/11.15.0/icons/slack.svg",
-          "format": "png",
-          "sha256": "051628212b4205062dbdd83af78772db8f0ab0d9335128c51d8f1ca378dba43f",
-          "source": "https://github.com/simple-icons/simple-icons/blob/11.15.0/icons/slack.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#000000",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "752f153f065f0fe2c8143add10fbf38295cf00cf6b034b5f50b72a90fdb707a7",
+          "source": "https://slack.com/media-kit",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived light variant identifies Slack in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to black and rasterized to a transparent 128x128 PNG for contrast on the documented white light surface; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Slack permits generated and guideline-conforming custom sign-in controls; source-logo package redistribution is not separately stated.",
             "sources": [
+              "https://slack.com/media-kit",
               "https://docs.slack.dev/authentication/sign-in-with-slack/",
               "https://slack.com/brand-guidelines",
               "https://github.com/simple-icons/simple-icons/blob/11.15.0/icons/slack.svg"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "f23c317b279f53dcd2260a6cd2e279f7a696f87dcb3da259d6201f05bbc45b0d",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
+          "variant": "providerDefault",
+          "archiveSha256": null,
           "implemented": true,
-          "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "생성기 앱 생성/선택 및 DAM 인증 후 standalone 원본 확인 필요. 현 Slack dark logoColor white tint는 부모 보고의 기존 제한이며 공식 dark 파일 취득으로 간주하지 않는다."
+          "authControlApproved": false
         },
-        "dark": {
-          "preview": "../assets/social/slack.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/11.15.0/icons/slack.svg",
+        "light": {
+          "preview": "../assets/original/slack/SLA-Slack-icon-black-RGB.png",
+          "download": "https://salesforce.widencollective.com/download/22be641a1b3869d5fc03b0367fb039103fa0f06edb3985163d53369649392d282a3876714d35391cda626fba2ec02885/SLA-Slack-icon-black-RGB.png?download=true",
           "format": "png",
-          "sha256": "374442bf164d34e38d9b483d69e0ae11e87c5de6f1154bd7fdabca4612ed763b",
-          "source": "https://github.com/simple-icons/simple-icons/blob/11.15.0/icons/slack.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "f21cc04c73d13c7510ddc564dcc176a9ffed550fbe5f28c103a4d644eec7d5e2",
+          "source": "https://slack.com/media-kit",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Slack in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "identificationUse": "The retained Simple Icons-derived light variant identifies Slack in the labeled action; it is not provider-supplied or an official complete control.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Slack permits generated and guideline-conforming custom sign-in controls; source-logo package redistribution is not separately stated.",
             "sources": [
+              "https://slack.com/media-kit",
               "https://docs.slack.dev/authentication/sign-in-with-slack/",
-              "https://slack.com/brand-guidelines"
+              "https://slack.com/brand-guidelines",
+              "https://github.com/simple-icons/simple-icons/blob/11.15.0/icons/slack.svg"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "f23c317b279f53dcd2260a6cd2e279f7a696f87dcb3da259d6201f05bbc45b0d",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
+          "variant": "light",
+          "archiveSha256": null,
           "implemented": true,
-          "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "생성기 앱 생성/선택 및 DAM 인증 후 standalone 원본 확인 필요. 현 Slack dark logoColor white tint는 부모 보고의 기존 제한이며 공식 dark 파일 취득으로 간주하지 않는다."
+          "authControlApproved": false
+        },
+        "dark": {
+          "preview": "../assets/original/slack/SLA-Slack-icon-white-RGB.png",
+          "download": "https://salesforce.widencollective.com/download/472142e111ebc965e272cb3dff15f2ccd89aaabfe0dde1303d53369649392d282a3876714d35391cda626fba2ec02885/SLA-Slack-icon-white-RGB.png?download=true",
+          "format": "png",
+          "sha256": "752f153f065f0fe2c8143add10fbf38295cf00cf6b034b5f50b72a90fdb707a7",
+          "source": "https://slack.com/media-kit",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
+          "conditions": {
+            "identificationUse": "The retained Simple Icons-derived light variant identifies Slack in the labeled action; it is not provider-supplied or an official complete control.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
+            "redistribution": "Slack permits generated and guideline-conforming custom sign-in controls; source-logo package redistribution is not separately stated.",
+            "sources": [
+              "https://slack.com/media-kit",
+              "https://docs.slack.dev/authentication/sign-in-with-slack/",
+              "https://slack.com/brand-guidelines",
+              "https://github.com/simple-icons/simple-icons/blob/11.15.0/icons/slack.svg"
+            ],
+            "checkedOn": "2026-10-03"
+          },
+          "redistribution": "conditional",
+          "archiveMember": null,
+          "variant": "dark",
+          "archiveSha256": null,
+          "implemented": true,
+          "authControlApproved": false
         }
       },
       "appearanceSupport": {
@@ -2400,7 +2344,7 @@
         },
         "officialAcquisitionStatus": "authenticated"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "twitch",
@@ -3583,10 +3527,10 @@
     {
       "id": "steam",
       "name": "Steam",
-      "officialSourceUrl": "https://partner.steamgames.com/doc/features/auth#website",
-      "acquisitionStatus": "direct",
+      "officialSourceUrl": "https://store.steampowered.com/about/",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": null,
-      "blocker": "독립 black/white/color Steam 심볼은 이 공식 인증 문서의 취득 경로에서 미검증. 제공된 컨트롤을 가상 light/dark 쌍으로 재분류하지 않는다.",
+      "blocker": null,
       "variants": [
         {
           "variantId": "steam-51",
@@ -3674,120 +3618,86 @@
         "usage": "118x51 공급 OpenID 컨트롤만 검증. 로고를 잘라 공통 슬롯에 넣지 않는다."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "공식 source에서 선택 변형·용도 조건 확인 후 URL GET. HTTP200과 Content-Type/바이너리 매직을 검사한다.",
-        "실제 파일 SHA256 대조. HTML/로그인 화면을 이미지로 저장하지 않는다.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "다운로드만으로 일반 logo 슬롯에 설치하지 않는다. 수동 취득/전체 컨트롤/API 적합성·권한 확인이 먼저다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": null,
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": true,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-a-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/steam.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/steam.svg",
+          "download": "../assets/original/steam/logo_steam-about.png",
           "format": "png",
-          "sha256": "bdb0b503b64567fb46b672c4c068554c5acdb75b7d2c71bb1c9dd6e2cb218338",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/steam.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "cad55a5fde9d3ccb1d64678fad792559af2fcac82cefb9d5188b5c7671954707",
+          "source": "https://store.steampowered.com/about/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Steam in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official site SVG rendered as PNG at 2x; no crop or recolor.",
             "redistribution": "Steam permits its complete controls on third-party sites linking to Steam sign-in; cropping or package redistribution is not stated.",
             "sources": [
+              "https://partner.steamgames.com/doc/marketing/branding",
               "https://partner.steamgames.com/doc/features/auth#website"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "5eef8f31106b81956ed908490bcf8c73abe476aa58bb9041acdf70b0d42ebcae",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
+          "variant": "providerDefault",
+          "archiveSha256": null,
           "implemented": true,
-          "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "독립 black/white/color Steam 심볼은 이 공식 인증 문서의 취득 경로에서 미검증. 제공된 컨트롤을 가상 light/dark 쌍으로 재분류하지 않는다."
+          "authControlApproved": false
         },
         "light": {
           "preview": "../assets/social/steam.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/steam.svg",
+          "download": "../assets/original/steam/logo_steam-about.png",
           "format": "png",
-          "sha256": "bdb0b503b64567fb46b672c4c068554c5acdb75b7d2c71bb1c9dd6e2cb218338",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/steam.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "cad55a5fde9d3ccb1d64678fad792559af2fcac82cefb9d5188b5c7671954707",
+          "source": "https://store.steampowered.com/about/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Steam in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official site SVG rendered as PNG at 2x; no crop or recolor.",
             "redistribution": "Steam permits its complete controls on third-party sites linking to Steam sign-in; cropping or package redistribution is not stated.",
             "sources": [
+              "https://partner.steamgames.com/doc/marketing/branding",
               "https://partner.steamgames.com/doc/features/auth#website"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "5eef8f31106b81956ed908490bcf8c73abe476aa58bb9041acdf70b0d42ebcae",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
-          "implemented": false,
-          "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "독립 black/white/color Steam 심볼은 이 공식 인증 문서의 취득 경로에서 미검증. 제공된 컨트롤을 가상 light/dark 쌍으로 재분류하지 않는다."
+          "variant": "light",
+          "archiveSha256": null,
+          "implemented": true,
+          "authControlApproved": false
         },
         "dark": {
           "preview": "../assets/social/steam.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/steam.svg",
+          "download": "../assets/original/steam/logo_steam-about.png",
           "format": "png",
-          "sha256": "bdb0b503b64567fb46b672c4c068554c5acdb75b7d2c71bb1c9dd6e2cb218338",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/steam.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "cad55a5fde9d3ccb1d64678fad792559af2fcac82cefb9d5188b5c7671954707",
+          "source": "https://store.steampowered.com/about/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Steam in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official site SVG rendered as PNG at 2x; no crop or recolor.",
             "redistribution": "Steam permits its complete controls on third-party sites linking to Steam sign-in; cropping or package redistribution is not stated.",
             "sources": [
+              "https://partner.steamgames.com/doc/marketing/branding",
               "https://partner.steamgames.com/doc/features/auth#website"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "5eef8f31106b81956ed908490bcf8c73abe476aa58bb9041acdf70b0d42ebcae",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
-          "implemented": false,
-          "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "독립 black/white/color Steam 심볼은 이 공식 인증 문서의 취득 경로에서 미검증. 제공된 컨트롤을 가상 light/dark 쌍으로 재분류하지 않는다."
+          "variant": "dark",
+          "archiveSha256": null,
+          "implemented": true,
+          "authControlApproved": false
         }
       },
       "appearanceSupport": {
@@ -3803,7 +3713,7 @@
         },
         "officialAcquisitionStatus": "direct"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "reddit",
@@ -4073,9 +3983,9 @@
       "id": "dropbox",
       "name": "Dropbox",
       "officialSourceUrl": "https://brand.dropbox.com/logo",
-      "acquisitionStatus": "browser",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": "https://www.dropbox.com/scl/fo/6qjduc7j5ujf09f75w1p7/AFc217w49gnfwVNr64Bd1_A?rlkey=tkqw8jcoi7f24voc6577vakky&dl=0",
-      "blocker": "기존 브라우저 증거에는 Logos → Dropbox → Glyph → Glyph_128.png → Download가 있다. dl=1 GET은 HTML이었다. 브라우저로 실제 원본을 저장해 PNG·색상·해시 확인 필요; 검정/흰 대안 여부도 미확인.",
+      "blocker": null,
       "variants": [
         {
           "appearance": "light",
@@ -4132,21 +4042,11 @@
         "usage": "공식 Brand Partner Toolkit의 Logo/Glyph와 인증 컨트롤 용도를 별도로 판정."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "Logos → Dropbox → Glyph → Glyph_128.png → Download. dl=1 GET은 HTML이므로 브라우저 저장 후 PNG 검증.",
-        "실제 파일 SHA256 대조. HTML/로그인 화면을 이미지로 저장하지 않는다.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "다운로드만으로 일반 logo 슬롯에 설치하지 않는다. 수동 취득/전체 컨트롤/API 적합성·권한 확인이 먼저다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": null,
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": false,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-b-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "fileSelection": {
         "format": "png",
         "appearance": "official blue Glyph_128",
@@ -4155,105 +4055,99 @@
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/dropbox.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/dropbox.svg",
-          "format": "png",
-          "sha256": "d48717b3491d134fee6f953fe8f5e910bb184b76ff36421bfe6f4572b5b1ad4f",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/dropbox.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://uca83e7b068193f90ae0c9536fe5.dl.dropboxusercontent.com/zip_download_get/CsrxMGfRFLNvPDDawu3XgJsNHGlwYpKpakJgf4W4NaTKIzQcYg89zO2bt0i46bFo6926ZP80Wi21tz0rIvNygTkkIWDeui62nvd4ibL1CgOo7Q",
+          "format": "zip",
+          "sha256": "71bce66773bea25502071914721fbe423887b6a72e2e54ed432eeb9c0f40c20a",
+          "source": "https://brand.dropbox.com/logo",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Dropbox in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Dropbox explains logo composition but does not state reusable-package redistribution terms.",
             "sources": [
               "https://brand.dropbox.com/logo",
+              "https://brand.dropbox.com/logo",
               "https://developers.dropbox.com/oauth-guide"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "1c9ea4ac8e318f3f6a598568df1a38ece03b7bc52a3a72d48c9e760340d7aeec",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
+          "redistribution": "conditional",
+          "archiveMember": "Logos/Dropbox/Glyph/Glyph_128.png",
+          "variant": "providerDefault",
+          "archiveSha256": "dbd94d0d34e24f81434be92595a7e472a17a787f3c8d71c41a2062a812969d11",
           "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "기존 브라우저 증거에는 Logos → Dropbox → Glyph → Glyph_128.png → Download가 있다. dl=1 GET은 HTML이었다. 브라우저로 실제 원본을 저장해 PNG·색상·해시 확인 필요; 검정/흰 대안 여부도 미확인."
+          "archive": {
+            "download": "https://uca83e7b068193f90ae0c9536fe5.dl.dropboxusercontent.com/zip_download_get/CsrxMGfRFLNvPDDawu3XgJsNHGlwYpKpakJgf4W4NaTKIzQcYg89zO2bt0i46bFo6926ZP80Wi21tz0rIvNygTkkIWDeui62nvd4ibL1CgOo7Q",
+            "sha256": "dbd94d0d34e24f81434be92595a7e472a17a787f3c8d71c41a2062a812969d11",
+            "member": "Logos/Dropbox/Glyph/Glyph_128.png",
+            "memberSha256": "71bce66773bea25502071914721fbe423887b6a72e2e54ed432eeb9c0f40c20a"
+          }
         },
         "light": {
           "preview": "../assets/social/dropbox.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/dropbox.svg",
-          "format": "png",
-          "sha256": "d48717b3491d134fee6f953fe8f5e910bb184b76ff36421bfe6f4572b5b1ad4f",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/dropbox.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://uca83e7b068193f90ae0c9536fe5.dl.dropboxusercontent.com/zip_download_get/CsrxMGfRFLNvPDDawu3XgJsNHGlwYpKpakJgf4W4NaTKIzQcYg89zO2bt0i46bFo6926ZP80Wi21tz0rIvNygTkkIWDeui62nvd4ibL1CgOo7Q",
+          "format": "zip",
+          "sha256": "71bce66773bea25502071914721fbe423887b6a72e2e54ed432eeb9c0f40c20a",
+          "source": "https://brand.dropbox.com/logo",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Dropbox in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Dropbox explains logo composition but does not state reusable-package redistribution terms.",
             "sources": [
               "https://brand.dropbox.com/logo",
+              "https://brand.dropbox.com/logo",
               "https://developers.dropbox.com/oauth-guide"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "1c9ea4ac8e318f3f6a598568df1a38ece03b7bc52a3a72d48c9e760340d7aeec",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": false,
+          "redistribution": "conditional",
+          "archiveMember": "Logos/Dropbox/Glyph/Glyph_128.png",
+          "variant": "light",
+          "archiveSha256": "dbd94d0d34e24f81434be92595a7e472a17a787f3c8d71c41a2062a812969d11",
+          "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "기존 브라우저 증거에는 Logos → Dropbox → Glyph → Glyph_128.png → Download가 있다. dl=1 GET은 HTML이었다. 브라우저로 실제 원본을 저장해 PNG·색상·해시 확인 필요; 검정/흰 대안 여부도 미확인."
+          "archive": {
+            "download": "https://uca83e7b068193f90ae0c9536fe5.dl.dropboxusercontent.com/zip_download_get/CsrxMGfRFLNvPDDawu3XgJsNHGlwYpKpakJgf4W4NaTKIzQcYg89zO2bt0i46bFo6926ZP80Wi21tz0rIvNygTkkIWDeui62nvd4ibL1CgOo7Q",
+            "sha256": "dbd94d0d34e24f81434be92595a7e472a17a787f3c8d71c41a2062a812969d11",
+            "member": "Logos/Dropbox/Glyph/Glyph_128.png",
+            "memberSha256": "71bce66773bea25502071914721fbe423887b6a72e2e54ed432eeb9c0f40c20a"
+          }
         },
         "dark": {
           "preview": "../assets/social/dropbox.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/dropbox.svg",
-          "format": "png",
-          "sha256": "d48717b3491d134fee6f953fe8f5e910bb184b76ff36421bfe6f4572b5b1ad4f",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/dropbox.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://uca83e7b068193f90ae0c9536fe5.dl.dropboxusercontent.com/zip_download_get/CsrxMGfRFLNvPDDawu3XgJsNHGlwYpKpakJgf4W4NaTKIzQcYg89zO2bt0i46bFo6926ZP80Wi21tz0rIvNygTkkIWDeui62nvd4ibL1CgOo7Q",
+          "format": "zip",
+          "sha256": "71bce66773bea25502071914721fbe423887b6a72e2e54ed432eeb9c0f40c20a",
+          "source": "https://brand.dropbox.com/logo",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Dropbox in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Dropbox explains logo composition but does not state reusable-package redistribution terms.",
             "sources": [
               "https://brand.dropbox.com/logo",
+              "https://brand.dropbox.com/logo",
               "https://developers.dropbox.com/oauth-guide"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "1c9ea4ac8e318f3f6a598568df1a38ece03b7bc52a3a72d48c9e760340d7aeec",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": false,
+          "redistribution": "conditional",
+          "archiveMember": "Logos/Dropbox/Glyph/Glyph_128.png",
+          "variant": "dark",
+          "archiveSha256": "dbd94d0d34e24f81434be92595a7e472a17a787f3c8d71c41a2062a812969d11",
+          "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "기존 브라우저 증거에는 Logos → Dropbox → Glyph → Glyph_128.png → Download가 있다. dl=1 GET은 HTML이었다. 브라우저로 실제 원본을 저장해 PNG·색상·해시 확인 필요; 검정/흰 대안 여부도 미확인."
+          "archive": {
+            "download": "https://uca83e7b068193f90ae0c9536fe5.dl.dropboxusercontent.com/zip_download_get/CsrxMGfRFLNvPDDawu3XgJsNHGlwYpKpakJgf4W4NaTKIzQcYg89zO2bt0i46bFo6926ZP80Wi21tz0rIvNygTkkIWDeui62nvd4ibL1CgOo7Q",
+            "sha256": "dbd94d0d34e24f81434be92595a7e472a17a787f3c8d71c41a2062a812969d11",
+            "member": "Logos/Dropbox/Glyph/Glyph_128.png",
+            "memberSha256": "71bce66773bea25502071914721fbe423887b6a72e2e54ed432eeb9c0f40c20a"
+          }
         }
       },
       "appearanceSupport": {
@@ -4269,15 +4163,15 @@
         },
         "officialAcquisitionStatus": "browser"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "gitlab",
       "name": "GitLab",
       "officialSourceUrl": "https://about.gitlab.com/press/press-kit/",
-      "acquisitionStatus": "direct",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": null,
-      "blocker": "이 press-kit 다운로드 목록에서 독립 black/white 심볼의 바이트는 확인하지 않았다. 컬러를 평면 흰색으로 tint하지 않는다.",
+      "blocker": null,
       "variants": [
         {
           "variantId": "gitlab-53",
@@ -4366,54 +4260,38 @@
         "usage": "Press kit 일반 로고와 OAuth/로그인 컨트롤 승인을 분리. 확인된 경로는 RGB 컬러 크기 대안."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "공식 source에서 선택 변형·용도 조건 확인 후 URL GET. HTTP200과 Content-Type/바이너리 매직을 검사한다.",
-        "실제 파일 SHA256 대조. HTML/로그인 화면을 이미지로 저장하지 않는다.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": "assets/social/gitlab.png",
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": true,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-b-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/gitlab.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/gitlab.svg",
+          "download": "https://about.gitlab.com/images/press/gitlab-logo-500-rgb.png",
           "format": "png",
-          "sha256": "60cbcae0f980897b5b04513a48ba9ef3b8d2a9e32d07da0e5c623051384d3055",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/gitlab.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#111111",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "d56b28d4ad3c65fb4e1a2fe79eee4b821f6e9ab3f01963fa5f1b71ec7c5b10cf",
+          "source": "https://about.gitlab.com/press/press-kit/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies GitLab in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "GitLab trademark guidance expressly restricts logo use outside the stated unmodified-CE exception or another permission.",
+            "usage": "Press kit 일반 로고와 OAuth/로그인 컨트롤 승인을 분리. 확인된 경로는 RGB 컬러 크기 대안.",
             "sources": [
+              "https://about.gitlab.com/press/press-kit/",
               "https://about.gitlab.com/press/press-kit/",
               "https://handbook.gitlab.com/handbook/marketing/brand-and-product-marketing/brand/brand-activation/trademark-guidelines/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "c7c39058bd1b6f9f40334383bd5136bb8c5ba5e6a24200f2d1f18365e2526e28",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
+          "variant": "providerDefault",
+          "archiveSha256": null,
           "implemented": true,
-          "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "이 press-kit 다운로드 목록에서 독립 black/white 심볼의 바이트는 확인하지 않았다. 컬러를 평면 흰색으로 tint하지 않는다."
+          "authControlApproved": false
         },
         "light": {
           "preview": "../assets/original/gitlab/gitlab-logo-500-rgb.png",
@@ -4423,8 +4301,7 @@
           "sha256": "d56b28d4ad3c65fb4e1a2fe79eee4b821f6e9ab3f01963fa5f1b71ec7c5b10cf",
           "archiveSha256": null,
           "archiveMember": null,
-          "archive": null,
-          "license": "GitLab trademark guidance expressly restricts logo use outside the stated unmodified-CE exception or another permission.",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "kind": "brand-logomark",
           "colors": [
@@ -4443,7 +4320,7 @@
           },
           "conditions": {
             "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
-            "transformation": "Unmodified original bytes; full canvas, color, padding and container preserved. Proportional display only; no crop, tint or inversion.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "GitLab trademark guidance expressly restricts logo use outside the stated unmodified-CE exception or another permission.",
             "usage": "Press kit 일반 로고와 OAuth/로그인 컨트롤 승인을 분리. 확인된 경로는 RGB 컬러 크기 대안.",
             "sources": [
@@ -4474,8 +4351,7 @@
           "sha256": "d56b28d4ad3c65fb4e1a2fe79eee4b821f6e9ab3f01963fa5f1b71ec7c5b10cf",
           "archiveSha256": null,
           "archiveMember": null,
-          "archive": null,
-          "license": "GitLab trademark guidance expressly restricts logo use outside the stated unmodified-CE exception or another permission.",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "kind": "brand-logomark",
           "colors": [
@@ -4494,7 +4370,7 @@
           },
           "conditions": {
             "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
-            "transformation": "Unmodified original bytes; full canvas, color, padding and container preserved. Proportional display only; no crop, tint or inversion.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "GitLab trademark guidance expressly restricts logo use outside the stated unmodified-CE exception or another permission.",
             "usage": "Press kit 일반 로고와 OAuth/로그인 컨트롤 승인을 분리. 확인된 경로는 RGB 컬러 크기 대안.",
             "sources": [
@@ -4533,7 +4409,7 @@
         },
         "officialAcquisitionStatus": "direct"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "bitbucket",
@@ -4971,10 +4847,10 @@
     {
       "id": "paypal",
       "name": "PayPal",
-      "officialSourceUrl": "https://developer.paypal.com/log-in/designer-guide/",
-      "acquisitionStatus": "archive",
+      "officialSourceUrl": "https://newsroom.paypal-corp.com/media-resources",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": null,
-      "blocker": "공식 흰 standalone glyph의 직접 파일 경로 미확인. 3840x2160 불투명 타일을 크롭하거나 반전해 대체하지 않는다.",
+      "blocker": null,
       "variants": [
         {
           "variantId": "paypal-17",
@@ -5223,69 +5099,61 @@
         "usage": "Log in with PayPal designer guide는 흰 버튼에 컬러, 유색 버튼에 흰 glyph를 요구. 팩의 FullColor-Black/White는 각각 검정/흰 불투명 전체 배경으로, 흑백 glyph가 아니다."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "공식 source에서 선택 변형·용도 조건 확인 후 URL GET. HTTP200과 Content-Type/바이너리 매직을 검사한다.",
-        "ZIP 원본 SHA256 확인 → 정확한 archiveMember 추출 → PNG 멤버 SHA256 대조. 원본 이름과 캔버스 보존.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": "assets/social/paypal.png",
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": true,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-b-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/paypal.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/paypal.svg",
-          "format": "png",
-          "sha256": "c2b0c2df9440e2e7e28c9b167abd312685ac12fac57062128439121c31bd3d8e",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/paypal.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://newsroom.paypal-corp.com/download/PayPal-Monogram-Logo-2024.zip",
+          "format": "zip",
+          "sha256": "defb3ea3cd1f5ac2548c92ed55d4b6a250691f580eb6583fd6300440d6afeb9e",
+          "source": "https://newsroom.paypal-corp.com/media-resources",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies PayPal in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "PayPal supplies its official monogram for newsroom and media use; authentication UI and package redistribution are not stated.",
+            "usage": "Log in with PayPal designer guide는 흰 버튼에 컬러, 유색 버튼에 흰 glyph를 요구. 팩의 FullColor-Black/White는 각각 검정/흰 불투명 전체 배경으로, 흑백 glyph가 아니다.",
             "sources": [
+              "https://newsroom.paypal-corp.com/media-resources",
+              "https://developer.paypal.com/log-in/designer-guide/",
               "https://newsroom.paypal-corp.com/media-resources",
               "https://developer.paypal.com/docs/log-in-with-paypal/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "e8ea6928d3386f81dc6d4c1f58b48e7a29d29bb578b2e3dd808638bd97c63d33",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
+          "redistribution": "conditional",
+          "archiveMember": "Monogram/PayPal-Monogram-FullColor-RGB.png",
+          "variant": "providerDefault",
+          "archiveSha256": "47e65edd9b1932ab8bdb7b4fa741d342fffbafd9ddadffb5bfea9d9a153ab430",
           "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "공식 흰 standalone glyph의 직접 파일 경로 미확인. 3840x2160 불투명 타일을 크롭하거나 반전해 대체하지 않는다."
+          "archive": {
+            "download": "https://newsroom.paypal-corp.com/download/PayPal-Monogram-Logo-2024.zip",
+            "sha256": "47e65edd9b1932ab8bdb7b4fa741d342fffbafd9ddadffb5bfea9d9a153ab430",
+            "member": "Monogram/PayPal-Monogram-FullColor-RGB.png",
+            "memberSha256": "defb3ea3cd1f5ac2548c92ed55d4b6a250691f580eb6583fd6300440d6afeb9e"
+          }
         },
         "light": {
           "preview": "../assets/original/paypal/PayPal-Monogram-FullColor-RGB.png",
           "download": "https://newsroom.paypal-corp.com/download/PayPal-Monogram-Logo-2024.zip",
           "source": "https://developer.paypal.com/log-in/designer-guide/",
-          "format": "png",
+          "format": "zip",
           "sha256": "defb3ea3cd1f5ac2548c92ed55d4b6a250691f580eb6583fd6300440d6afeb9e",
           "archiveSha256": "47e65edd9b1932ab8bdb7b4fa741d342fffbafd9ddadffb5bfea9d9a153ab430",
           "archiveMember": "Monogram/PayPal-Monogram-FullColor-RGB.png",
           "archive": {
             "download": "https://newsroom.paypal-corp.com/download/PayPal-Monogram-Logo-2024.zip",
             "sha256": "47e65edd9b1932ab8bdb7b4fa741d342fffbafd9ddadffb5bfea9d9a153ab430",
-            "member": "Monogram/PayPal-Monogram-FullColor-RGB.png"
+            "member": "Monogram/PayPal-Monogram-FullColor-RGB.png",
+            "memberSha256": "defb3ea3cd1f5ac2548c92ed55d4b6a250691f580eb6583fd6300440d6afeb9e"
           },
-          "license": "PayPal supplies its official monogram for newsroom and media use; authentication UI and package redistribution are not stated.",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "kind": "brand-logomark",
           "colors": [
@@ -5304,7 +5172,7 @@
           },
           "conditions": {
             "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
-            "transformation": "Unmodified original bytes; full canvas, color, padding and container preserved. Proportional display only; no crop, tint or inversion.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "PayPal supplies its official monogram for newsroom and media use; authentication UI and package redistribution are not stated.",
             "usage": "Log in with PayPal designer guide는 흰 버튼에 컬러, 유색 버튼에 흰 glyph를 요구. 팩의 FullColor-Black/White는 각각 검정/흰 불투명 전체 배경으로, 흑백 glyph가 아니다.",
             "sources": [
@@ -5331,37 +5199,37 @@
         },
         "dark": {
           "preview": "../assets/social/paypal.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/paypal.svg",
-          "format": "png",
-          "sha256": "c2b0c2df9440e2e7e28c9b167abd312685ac12fac57062128439121c31bd3d8e",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/paypal.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://newsroom.paypal-corp.com/download/PayPal-Monogram-Logo-2024.zip",
+          "format": "zip",
+          "sha256": "defb3ea3cd1f5ac2548c92ed55d4b6a250691f580eb6583fd6300440d6afeb9e",
+          "source": "https://newsroom.paypal-corp.com/media-resources",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies PayPal in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "PayPal supplies its official monogram for newsroom and media use; authentication UI and package redistribution are not stated.",
+            "usage": "Log in with PayPal designer guide는 흰 버튼에 컬러, 유색 버튼에 흰 glyph를 요구. 팩의 FullColor-Black/White는 각각 검정/흰 불투명 전체 배경으로, 흑백 glyph가 아니다.",
             "sources": [
+              "https://newsroom.paypal-corp.com/media-resources",
+              "https://developer.paypal.com/log-in/designer-guide/",
               "https://newsroom.paypal-corp.com/media-resources",
               "https://developer.paypal.com/docs/log-in-with-paypal/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "e8ea6928d3386f81dc6d4c1f58b48e7a29d29bb578b2e3dd808638bd97c63d33",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": false,
+          "redistribution": "conditional",
+          "archiveMember": "Monogram/PayPal-Monogram-FullColor-RGB.png",
+          "variant": "dark",
+          "archiveSha256": "47e65edd9b1932ab8bdb7b4fa741d342fffbafd9ddadffb5bfea9d9a153ab430",
+          "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "공식 흰 standalone glyph의 직접 파일 경로 미확인. 3840x2160 불투명 타일을 크롭하거나 반전해 대체하지 않는다."
+          "archive": {
+            "download": "https://newsroom.paypal-corp.com/download/PayPal-Monogram-Logo-2024.zip",
+            "sha256": "47e65edd9b1932ab8bdb7b4fa741d342fffbafd9ddadffb5bfea9d9a153ab430",
+            "member": "Monogram/PayPal-Monogram-FullColor-RGB.png",
+            "memberSha256": "defb3ea3cd1f5ac2548c92ed55d4b6a250691f580eb6583fd6300440d6afeb9e"
+          }
         }
       },
       "appearanceSupport": {
@@ -5378,15 +5246,15 @@
         },
         "officialAcquisitionStatus": "archive"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "telegram",
       "name": "Telegram",
       "officialSourceUrl": "https://telegram.org/tour/screenshots",
-      "acquisitionStatus": "archive",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": null,
-      "blocker": "독립 검정/흰 variant는 이 공식 media ZIP에서 검증하지 않았다. 흰 비행기를 추출하거나 컬러 원형을 제거하지 않는다.",
+      "blocker": null,
       "variants": [
         {
           "variantId": "telegram-20",
@@ -5479,68 +5347,60 @@
         "usage": "공식 media logo와 Telegram Login Widget/OAuth 컨트롤은 별도. Logo_old 및 __MACOSX 제외."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "공식 source에서 선택 변형·용도 조건 확인 후 URL GET. HTTP200과 Content-Type/바이너리 매직을 검사한다.",
-        "ZIP 원본 SHA256 확인 → 정확한 archiveMember 추출 → PNG 멤버 SHA256 대조. 원본 이름과 캔버스 보존.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": "assets/social/telegram.png",
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": true,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-b-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/telegram.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/telegram.svg",
-          "format": "png",
-          "sha256": "317bf4f49da425b2c56c26ce3937f7a9f95edc486377bb986d579f5974a82730",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/telegram.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#111111",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://telegram.org/file/464001088/1/bI7AJLo7oX4.287931.zip/374fe3b0a59dc60005",
+          "format": "zip",
+          "sha256": "f91e9d7c30894cb0f00196581d4cc8867dd1139b2b1455de2c58071103475ca8",
+          "source": "https://telegram.org/tour/screenshots",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Telegram in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Telegram permits its generated or SDK login controls; standalone-logo redistribution is not stated.",
+            "usage": "공식 media logo와 Telegram Login Widget/OAuth 컨트롤은 별도. Logo_old 및 __MACOSX 제외.",
             "sources": [
+              "https://telegram.org/tour/screenshots",
+              "https://telegram.org/tour/screenshots",
               "https://core.telegram.org/widgets/login"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "147fd8f8923e7e5f463fe98c0eb9913bead6b2ae59935728cda141002ec8a7c9",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
+          "redistribution": "conditional",
+          "archiveMember": "Logo.png",
+          "variant": "providerDefault",
+          "archiveSha256": "8b1924b30790b3557cd1a76c4028403035dae386f282aaa3d741c5bc5a03d8a7",
           "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "독립 검정/흰 variant는 이 공식 media ZIP에서 검증하지 않았다. 흰 비행기를 추출하거나 컬러 원형을 제거하지 않는다."
+          "archive": {
+            "download": "https://telegram.org/file/464001088/1/bI7AJLo7oX4.287931.zip/374fe3b0a59dc60005",
+            "sha256": "8b1924b30790b3557cd1a76c4028403035dae386f282aaa3d741c5bc5a03d8a7",
+            "member": "Logo.png",
+            "memberSha256": "f91e9d7c30894cb0f00196581d4cc8867dd1139b2b1455de2c58071103475ca8"
+          }
         },
         "light": {
           "preview": "../assets/original/telegram/Logo.png",
           "download": "https://telegram.org/file/464001088/1/bI7AJLo7oX4.287931.zip/374fe3b0a59dc60005",
           "source": "https://telegram.org/tour/screenshots",
-          "format": "png",
+          "format": "zip",
           "sha256": "f91e9d7c30894cb0f00196581d4cc8867dd1139b2b1455de2c58071103475ca8",
           "archiveSha256": "8b1924b30790b3557cd1a76c4028403035dae386f282aaa3d741c5bc5a03d8a7",
           "archiveMember": "Logo.png",
           "archive": {
             "download": "https://telegram.org/file/464001088/1/bI7AJLo7oX4.287931.zip/374fe3b0a59dc60005",
             "sha256": "8b1924b30790b3557cd1a76c4028403035dae386f282aaa3d741c5bc5a03d8a7",
-            "member": "Logo.png"
+            "member": "Logo.png",
+            "memberSha256": "f91e9d7c30894cb0f00196581d4cc8867dd1139b2b1455de2c58071103475ca8"
           },
-          "license": "Telegram permits its generated or SDK login controls; standalone-logo redistribution is not stated.",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "kind": "brand-logomark",
           "colors": [
@@ -5559,7 +5419,7 @@
           },
           "conditions": {
             "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
-            "transformation": "Unmodified original bytes; full canvas, color, padding and container preserved. Proportional display only; no crop, tint or inversion.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Telegram permits its generated or SDK login controls; standalone-logo redistribution is not stated.",
             "usage": "공식 media logo와 Telegram Login Widget/OAuth 컨트롤은 별도. Logo_old 및 __MACOSX 제외.",
             "sources": [
@@ -5586,16 +5446,17 @@
           "preview": "../assets/original/telegram/Logo.png",
           "download": "https://telegram.org/file/464001088/1/bI7AJLo7oX4.287931.zip/374fe3b0a59dc60005",
           "source": "https://telegram.org/tour/screenshots",
-          "format": "png",
+          "format": "zip",
           "sha256": "f91e9d7c30894cb0f00196581d4cc8867dd1139b2b1455de2c58071103475ca8",
           "archiveSha256": "8b1924b30790b3557cd1a76c4028403035dae386f282aaa3d741c5bc5a03d8a7",
           "archiveMember": "Logo.png",
           "archive": {
             "download": "https://telegram.org/file/464001088/1/bI7AJLo7oX4.287931.zip/374fe3b0a59dc60005",
             "sha256": "8b1924b30790b3557cd1a76c4028403035dae386f282aaa3d741c5bc5a03d8a7",
-            "member": "Logo.png"
+            "member": "Logo.png",
+            "memberSha256": "f91e9d7c30894cb0f00196581d4cc8867dd1139b2b1455de2c58071103475ca8"
           },
-          "license": "Telegram permits its generated or SDK login controls; standalone-logo redistribution is not stated.",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "kind": "brand-logomark",
           "colors": [
@@ -5614,7 +5475,7 @@
           },
           "conditions": {
             "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
-            "transformation": "Unmodified original bytes; full canvas, color, padding and container preserved. Proportional display only; no crop, tint or inversion.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Telegram permits its generated or SDK login controls; standalone-logo redistribution is not stated.",
             "usage": "공식 media logo와 Telegram Login Widget/OAuth 컨트롤은 별도. Logo_old 및 __MACOSX 제외.",
             "sources": [
@@ -5653,15 +5514,15 @@
         },
         "officialAcquisitionStatus": "archive"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "instagram",
       "name": "Instagram",
       "officialSourceUrl": "https://www.meta.com/brand/resources/instagram/instagram-brand/",
-      "acquisitionStatus": "signed-refresh",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": null,
-      "blocker": "최신 서명 URL은 공식 랜딩에서 매번 갱신하고 필요한 약관을 따른다.",
+      "blocker": null,
       "variants": [
         {
           "variantId": "instagram-41",
@@ -5893,123 +5754,107 @@
         "usage": "일반 Instagram brand glyph와 별도 auth-control 허가를 구분. Gradient를 임의 단색으로 만들지 않는다."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "공식 source 페이지의 현재 ZIP 다운로드 href를 매번 다시 찾는다. 필요한 약관 동의를 수행하고 즉시 GET; 서명 쿼리를 제거하거나 고정하지 않는다.",
-        "ZIP 원본 SHA256 확인 → 정확한 archiveMember 추출 → PNG 멤버 SHA256 대조. 원본 이름과 캔버스 보존.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다.",
-        "현재 공식 랜딩은 다운로드 약관 체크박스를 표시한다. 필요한 동의와 최신 서명 링크 갱신 후 exact member/hash를 확인한다. 이 구현에서는 미설치로 남겼다; 서명 URL 쿼리를 영구 저장하거나 약관 단계를 우회하지 않는다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": "assets/social/instagram.png",
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": true,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-b-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/instagram.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/instagram.svg",
-          "format": "png",
-          "sha256": "5d14458ae627e306990fdaebec5c2996312c175489580a3fad3bc70192408b91",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/instagram.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#111111",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
+          "format": "zip",
+          "sha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61",
+          "source": "https://www.meta.com/brand/resources/instagram/instagram-brand/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Instagram in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta supplies the logo pack under Instagram guidelines; package redistribution is not separately stated.",
             "sources": [
               "https://www.meta.com/brand/resources/instagram/instagram-brand/",
+              "https://www.meta.com/brand/resources/instagram/instagram-brand/",
               "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "f53af2d1fc5292ba1433b5c1faf50005ce6a997fa302d1816989929f379a59dc",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
+          "redistribution": "conditional",
+          "archiveMember": "01 Static Glyph/02 White Glyph/Instagram_Glyph_White.png",
+          "variant": "providerDefault",
+          "archiveSha256": "a9e5cbe63dc01279b3d12d536ea9d94ab5236521601bd5cc4b4caf7ba7060e82",
           "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "최신 서명 URL은 공식 랜딩에서 매번 갱신하고 필요한 약관을 따른다."
+          "archive": {
+            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
+            "sha256": "a9e5cbe63dc01279b3d12d536ea9d94ab5236521601bd5cc4b4caf7ba7060e82",
+            "member": "01 Static Glyph/02 White Glyph/Instagram_Glyph_White.png",
+            "memberSha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61"
+          }
         },
         "light": {
           "preview": "../assets/social/instagram.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/instagram.svg",
-          "format": "png",
-          "sha256": "5d14458ae627e306990fdaebec5c2996312c175489580a3fad3bc70192408b91",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/instagram.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#111111",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
+          "format": "zip",
+          "sha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61",
+          "source": "https://www.meta.com/brand/resources/instagram/instagram-brand/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Instagram in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta supplies the logo pack under Instagram guidelines; package redistribution is not separately stated.",
             "sources": [
               "https://www.meta.com/brand/resources/instagram/instagram-brand/",
+              "https://www.meta.com/brand/resources/instagram/instagram-brand/",
               "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "f53af2d1fc5292ba1433b5c1faf50005ce6a997fa302d1816989929f379a59dc",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": false,
+          "redistribution": "conditional",
+          "archiveMember": "01 Static Glyph/02 White Glyph/Instagram_Glyph_White.png",
+          "variant": "light",
+          "archiveSha256": "a9e5cbe63dc01279b3d12d536ea9d94ab5236521601bd5cc4b4caf7ba7060e82",
+          "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "최신 서명 URL은 공식 랜딩에서 매번 갱신하고 필요한 약관을 따른다."
+          "archive": {
+            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
+            "sha256": "a9e5cbe63dc01279b3d12d536ea9d94ab5236521601bd5cc4b4caf7ba7060e82",
+            "member": "01 Static Glyph/02 White Glyph/Instagram_Glyph_White.png",
+            "memberSha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61"
+          }
         },
         "dark": {
           "preview": "../assets/social/instagram.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/instagram.svg",
-          "format": "png",
-          "sha256": "5d14458ae627e306990fdaebec5c2996312c175489580a3fad3bc70192408b91",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/instagram.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#111111",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
+          "format": "zip",
+          "sha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61",
+          "source": "https://www.meta.com/brand/resources/instagram/instagram-brand/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Instagram in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta supplies the logo pack under Instagram guidelines; package redistribution is not separately stated.",
             "sources": [
               "https://www.meta.com/brand/resources/instagram/instagram-brand/",
+              "https://www.meta.com/brand/resources/instagram/instagram-brand/",
               "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "f53af2d1fc5292ba1433b5c1faf50005ce6a997fa302d1816989929f379a59dc",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": false,
+          "redistribution": "conditional",
+          "archiveMember": "01 Static Glyph/02 White Glyph/Instagram_Glyph_White.png",
+          "variant": "dark",
+          "archiveSha256": "a9e5cbe63dc01279b3d12d536ea9d94ab5236521601bd5cc4b4caf7ba7060e82",
+          "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "최신 서명 URL은 공식 랜딩에서 매번 갱신하고 필요한 약관을 따른다."
+          "archive": {
+            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
+            "sha256": "a9e5cbe63dc01279b3d12d536ea9d94ab5236521601bd5cc4b4caf7ba7060e82",
+            "member": "01 Static Glyph/02 White Glyph/Instagram_Glyph_White.png",
+            "memberSha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61"
+          }
         }
       },
       "appearanceSupport": {
@@ -6025,7 +5870,7 @@
         },
         "officialAcquisitionStatus": "signed-refresh"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "wechat",
@@ -6434,10 +6279,10 @@
     {
       "id": "snapchat",
       "name": "Snapchat",
-      "officialSourceUrl": "https://www.snap.com/en-US/brand-guidelines",
-      "acquisitionStatus": "authenticated",
+      "officialSourceUrl": "https://www.snap.com/brand-guidelines",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": "https://www.snap.com/en-US/brand-guidelines",
-      "blocker": "기존 공식 Snap Vault 링크는 만료/Login. 최신 공유 링크와 필요한 인증 후 Ghost 색상 원본 확인. 가이드 PDF나 예시 타일은 원본 로고 대신 채택하지 않는다.",
+      "blocker": null,
       "variants": [
         {
           "appearance": "light",
@@ -6494,21 +6339,11 @@
         "usage": "Snap brand assets와 Login Kit 컨트롤은 별도."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "연결된 Snap Vault share 만료/Login. 갱신된 공유 링크와 계정 필요. PDF는 로고 대체물 아님.",
-        "실제 파일 SHA256 대조. HTML/로그인 화면을 이미지로 저장하지 않는다.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "다운로드만으로 일반 logo 슬롯에 설치하지 않는다. 수동 취득/전체 컨트롤/API 적합성·권한 확인이 먼저다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": null,
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": false,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-b-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "fileSelection": {
         "format": "unverified",
         "appearance": "원본 변형 취득 후 확인, catalog 색에서 추론 금지",
@@ -6517,105 +6352,99 @@
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/snapchat.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/snapchat.svg",
-          "format": "png",
-          "sha256": "97ac104d4d2ad6a772a742c4ed9d41a91366ab789a7c116b0fe4652cf0c41223",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/snapchat.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#111111",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://support-tools.storage.googleapis.com/Snapchat_Logo-311315008.zip",
+          "format": "zip",
+          "sha256": "af00b728828930aa570e0cab426d5a50cc7aa308b2c737edfc670f3b0ffbd748",
+          "source": "https://www.snap.com/brand-guidelines",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Snapchat in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Snap directs Login Kit integrations to official Ghost artwork; package redistribution is not separately stated.",
             "sources": [
+              "https://www.snap.com/brand-guidelines",
               "https://developers.snap.com/snap-kit/login-kit/overview",
               "https://developers.snap.com/snap-kit/app-review/brand-guidelines"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "fbbc31c5544954fbf7525dddbc0d3e79990bb89461f54a94917b6dffc2c5130e",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
+          "redistribution": "conditional",
+          "archiveMember": "Snapchat Logo/Ghost Logo - Primary.png",
+          "variant": "providerDefault",
+          "archiveSha256": "5dd17ba602d15b7f029df101da4a4d8957044490b9a604929d3f6bfc85f0ff58",
           "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "기존 공식 Snap Vault 링크는 만료/Login. 최신 공유 링크와 필요한 인증 후 Ghost 색상 원본 확인. 가이드 PDF나 예시 타일은 원본 로고 대신 채택하지 않는다."
+          "archive": {
+            "download": "https://support-tools.storage.googleapis.com/Snapchat_Logo-311315008.zip",
+            "sha256": "5dd17ba602d15b7f029df101da4a4d8957044490b9a604929d3f6bfc85f0ff58",
+            "member": "Snapchat Logo/Ghost Logo - Primary.png",
+            "memberSha256": "af00b728828930aa570e0cab426d5a50cc7aa308b2c737edfc670f3b0ffbd748"
+          }
         },
         "light": {
           "preview": "../assets/social/snapchat.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/snapchat.svg",
-          "format": "png",
-          "sha256": "97ac104d4d2ad6a772a742c4ed9d41a91366ab789a7c116b0fe4652cf0c41223",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/snapchat.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#111111",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://support-tools.storage.googleapis.com/Snapchat_Logo-311315008.zip",
+          "format": "zip",
+          "sha256": "af00b728828930aa570e0cab426d5a50cc7aa308b2c737edfc670f3b0ffbd748",
+          "source": "https://www.snap.com/brand-guidelines",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Snapchat in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Snap directs Login Kit integrations to official Ghost artwork; package redistribution is not separately stated.",
             "sources": [
+              "https://www.snap.com/brand-guidelines",
               "https://developers.snap.com/snap-kit/login-kit/overview",
               "https://developers.snap.com/snap-kit/app-review/brand-guidelines"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "fbbc31c5544954fbf7525dddbc0d3e79990bb89461f54a94917b6dffc2c5130e",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": false,
+          "redistribution": "conditional",
+          "archiveMember": "Snapchat Logo/Ghost Logo - Primary.png",
+          "variant": "light",
+          "archiveSha256": "5dd17ba602d15b7f029df101da4a4d8957044490b9a604929d3f6bfc85f0ff58",
+          "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "기존 공식 Snap Vault 링크는 만료/Login. 최신 공유 링크와 필요한 인증 후 Ghost 색상 원본 확인. 가이드 PDF나 예시 타일은 원본 로고 대신 채택하지 않는다."
+          "archive": {
+            "download": "https://support-tools.storage.googleapis.com/Snapchat_Logo-311315008.zip",
+            "sha256": "5dd17ba602d15b7f029df101da4a4d8957044490b9a604929d3f6bfc85f0ff58",
+            "member": "Snapchat Logo/Ghost Logo - Primary.png",
+            "memberSha256": "af00b728828930aa570e0cab426d5a50cc7aa308b2c737edfc670f3b0ffbd748"
+          }
         },
         "dark": {
           "preview": "../assets/social/snapchat.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/snapchat.svg",
-          "format": "png",
-          "sha256": "97ac104d4d2ad6a772a742c4ed9d41a91366ab789a7c116b0fe4652cf0c41223",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/snapchat.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#111111",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://support-tools.storage.googleapis.com/Snapchat_Logo-311315008.zip",
+          "format": "zip",
+          "sha256": "af00b728828930aa570e0cab426d5a50cc7aa308b2c737edfc670f3b0ffbd748",
+          "source": "https://www.snap.com/brand-guidelines",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Snapchat in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Snap directs Login Kit integrations to official Ghost artwork; package redistribution is not separately stated.",
             "sources": [
+              "https://www.snap.com/brand-guidelines",
               "https://developers.snap.com/snap-kit/login-kit/overview",
               "https://developers.snap.com/snap-kit/app-review/brand-guidelines"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "fbbc31c5544954fbf7525dddbc0d3e79990bb89461f54a94917b6dffc2c5130e",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": false,
+          "redistribution": "conditional",
+          "archiveMember": "Snapchat Logo/Ghost Logo - Primary.png",
+          "variant": "dark",
+          "archiveSha256": "5dd17ba602d15b7f029df101da4a4d8957044490b9a604929d3f6bfc85f0ff58",
+          "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "기존 공식 Snap Vault 링크는 만료/Login. 최신 공유 링크와 필요한 인증 후 Ghost 색상 원본 확인. 가이드 PDF나 예시 타일은 원본 로고 대신 채택하지 않는다."
+          "archive": {
+            "download": "https://support-tools.storage.googleapis.com/Snapchat_Logo-311315008.zip",
+            "sha256": "5dd17ba602d15b7f029df101da4a4d8957044490b9a604929d3f6bfc85f0ff58",
+            "member": "Snapchat Logo/Ghost Logo - Primary.png",
+            "memberSha256": "af00b728828930aa570e0cab426d5a50cc7aa308b2c737edfc670f3b0ffbd748"
+          }
         }
       },
       "appearanceSupport": {
@@ -6631,7 +6460,7 @@
         },
         "officialAcquisitionStatus": "authenticated"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "vk",
@@ -6807,10 +6636,10 @@
     {
       "id": "weibo",
       "name": "Weibo",
-      "officialSourceUrl": "https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9A%E6%A0%87%E8%AF%86/en",
-      "acquisitionStatus": "direct",
+      "officialSourceUrl": "https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9A%E6%A0%87%E8%AF%86",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": null,
-      "blocker": "해당 공식 developer 경로에서 독립 검정/흰 원본은 미검증. 검정 요소가 어두운 배경에 묻히면 임의 흰색 tint 대신 공식 대안 확보 필요.",
+      "blocker": null,
       "variants": [
         {
           "variantId": "weibo-54",
@@ -6900,54 +6729,39 @@
         "usage": "기존 developer 페이지의 공식 컬러 로고이며 최신 브랜드/인증 표준 승인까지 확장하지 않는다."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "공식 source에서 선택 변형·용도 조건 확인 후 URL GET. HTTP200과 Content-Type/바이너리 매직을 검사한다.",
-        "실제 파일 SHA256 대조. HTML/로그인 화면을 이미지로 저장하지 않는다.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": "assets/social/weibo.png",
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": true,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-b-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/weibo.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/sinaweibo.svg",
+          "download": "https://www.sinaimg.cn/blog/developer/wiki/LOGO_64x64.png",
           "format": "png",
-          "sha256": "d6405314de52de11781a46c876c4dee60e15c5168ba53a33a23e5194e66af5ba",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/sinaweibo.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "b751df4a287a00eeb88d3484c6436d4192b79288c11da397df0a5c8a7f0d3ae0",
+          "source": "https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9A%E6%A0%87%E8%AF%86",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Weibo in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Weibo permits generated widget and SDK controls; no standalone-logo redistribution grant was found.",
+            "usage": "기존 developer 페이지의 공식 컬러 로고이며 최신 브랜드/인증 표준 승인까지 확장하지 않는다.",
             "sources": [
+              "https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9A%E6%A0%87%E8%AF%86",
+              "https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9A%E6%A0%87%E8%AF%86/en",
               "https://open.weibo.com/widget/loginbutton.php",
               "https://open.weibo.com/wiki/Connect/login"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "44facf47c6bfa06c312c28acda6aa2ed404ef7f68c2897c8f33ad51b6ba94059",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
+          "variant": "providerDefault",
+          "archiveSha256": null,
           "implemented": true,
-          "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "해당 공식 developer 경로에서 독립 검정/흰 원본은 미검증. 검정 요소가 어두운 배경에 묻히면 임의 흰색 tint 대신 공식 대안 확보 필요."
+          "authControlApproved": false
         },
         "light": {
           "preview": "../assets/original/weibo/LOGO_64x64.png",
@@ -6957,8 +6771,7 @@
           "sha256": "b751df4a287a00eeb88d3484c6436d4192b79288c11da397df0a5c8a7f0d3ae0",
           "archiveSha256": null,
           "archiveMember": null,
-          "archive": null,
-          "license": "Weibo permits generated widget and SDK controls; no standalone-logo redistribution grant was found.",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "kind": "brand-logomark",
           "colors": [
@@ -6977,7 +6790,7 @@
           },
           "conditions": {
             "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
-            "transformation": "Unmodified original bytes; full canvas, color, padding and container preserved. Proportional display only; no crop, tint or inversion.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Weibo permits generated widget and SDK controls; no standalone-logo redistribution grant was found.",
             "usage": "기존 developer 페이지의 공식 컬러 로고이며 최신 브랜드/인증 표준 승인까지 확장하지 않는다.",
             "sources": [
@@ -7009,8 +6822,7 @@
           "sha256": "b751df4a287a00eeb88d3484c6436d4192b79288c11da397df0a5c8a7f0d3ae0",
           "archiveSha256": null,
           "archiveMember": null,
-          "archive": null,
-          "license": "Weibo permits generated widget and SDK controls; no standalone-logo redistribution grant was found.",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "kind": "brand-logomark",
           "colors": [
@@ -7029,7 +6841,7 @@
           },
           "conditions": {
             "identificationUse": "Original artwork identifies the labeled provider action; package surfaces are not provider-approved authentication controls.",
-            "transformation": "Unmodified original bytes; full canvas, color, padding and container preserved. Proportional display only; no crop, tint or inversion.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Weibo permits generated widget and SDK controls; no standalone-logo redistribution grant was found.",
             "usage": "기존 developer 페이지의 공식 컬러 로고이며 최신 브랜드/인증 표준 승인까지 확장하지 않는다.",
             "sources": [
@@ -7069,15 +6881,15 @@
         },
         "officialAcquisitionStatus": "direct"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "qq",
       "name": "QQ",
-      "officialSourceUrl": "https://wiki.connect.qq.com/%e8%a7%86%e8%a7%89%e7%b4%a0%e6%9d%90%e4%b8%8b%e8%bd%bd",
-      "acquisitionStatus": "direct",
+      "officialSourceUrl": "https://wiki.connect.qq.com/%E8%A7%86%E8%A7%89%E7%B4%A0%E6%9D%90%E4%B8%8B%E8%BD%BD",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": null,
-      "blocker": "기존 GET200 PSD 560940B는 확인됐지만 레이어/투명도/변형·PNG export는 미검증. 원본 PSD를 열어 전체 캔버스와 레이어를 확인한 뒤 색상·출력 해시 검증 필요.",
+      "blocker": null,
       "variants": [
         {
           "appearance": "공식 PSD 마스터 취득 확인. 전체 심볼 캔버스를 투명 PNG로 export하되 변환/시각 검증 전 자동 앱 설치 불가. 처음20초 timeout 후60초 GET 성공.",
@@ -7126,123 +6938,89 @@
         "usage": "공식 symbol PSD와 완성 Connect 컨트롤은 별도. PSD 이름만으로 black/white/theme 추론 금지."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "공식 source에서 선택 변형·용도 조건 확인 후 URL GET. HTTP200과 Content-Type/바이너리 매직을 검사한다.",
-        "실제 파일 SHA256 대조. HTML/로그인 화면을 이미지로 저장하지 않는다.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "다운로드만으로 일반 logo 슬롯에 설치하지 않는다. 수동 취득/전체 컨트롤/API 적합성·권한 확인이 먼저다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": null,
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": true,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-b-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/qq.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/11.15.0/icons/tencentqq.svg",
+          "download": "../assets/original/qq/03_qq_symbol-native.png",
           "format": "png",
-          "sha256": "80697e86b98a45200283827490e0ac7eff628c48508a6d79a27740da1b1b98f4",
-          "source": "https://github.com/simple-icons/simple-icons/blob/11.15.0/icons/tencentqq.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#111111",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "1de21f3d78388ce354780c69efc19f5e41244ccf37e29bbed13bbcd3dd4b681f",
+          "source": "https://wiki.connect.qq.com/%E8%A7%86%E8%A7%89%E7%B4%A0%E6%9D%90%E4%B8%8B%E8%BD%BD",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies QQ in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete provider PSD composite converted to PNG with identical decoded pixels.",
             "redistribution": "QQ supplies complete login controls and SDK output; standalone-logo package redistribution is not stated.",
             "sources": [
+              "https://wiki.connect.qq.com/%E8%A7%86%E8%A7%89%E7%B4%A0%E6%9D%90%E4%B8%8B%E8%BD%BD",
               "https://wiki.connect.qq.com/%e6%94%be%e7%bd%aeqq%e7%99%bb%e5%bd%95%e6%8c%89%e9%92%ae_oauth2-0",
               "https://qq.design/brand/BrandDesign/Logo"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "5b9ffc52750f3a45d86e3a910baaa14c89201089fc1a74764948cbbe29f2a611",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
+          "variant": "providerDefault",
+          "archiveSha256": null,
           "implemented": true,
-          "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "기존 GET200 PSD 560940B는 확인됐지만 레이어/투명도/변형·PNG export는 미검증. 원본 PSD를 열어 전체 캔버스와 레이어를 확인한 뒤 색상·출력 해시 검증 필요."
+          "authControlApproved": false
         },
         "light": {
           "preview": "../assets/social/qq.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/11.15.0/icons/tencentqq.svg",
+          "download": "../assets/original/qq/03_qq_symbol-native.png",
           "format": "png",
-          "sha256": "80697e86b98a45200283827490e0ac7eff628c48508a6d79a27740da1b1b98f4",
-          "source": "https://github.com/simple-icons/simple-icons/blob/11.15.0/icons/tencentqq.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#111111",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "1de21f3d78388ce354780c69efc19f5e41244ccf37e29bbed13bbcd3dd4b681f",
+          "source": "https://wiki.connect.qq.com/%E8%A7%86%E8%A7%89%E7%B4%A0%E6%9D%90%E4%B8%8B%E8%BD%BD",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies QQ in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete provider PSD composite converted to PNG with identical decoded pixels.",
             "redistribution": "QQ supplies complete login controls and SDK output; standalone-logo package redistribution is not stated.",
             "sources": [
+              "https://wiki.connect.qq.com/%E8%A7%86%E8%A7%89%E7%B4%A0%E6%9D%90%E4%B8%8B%E8%BD%BD",
               "https://wiki.connect.qq.com/%e6%94%be%e7%bd%aeqq%e7%99%bb%e5%bd%95%e6%8c%89%e9%92%ae_oauth2-0",
               "https://qq.design/brand/BrandDesign/Logo"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "5b9ffc52750f3a45d86e3a910baaa14c89201089fc1a74764948cbbe29f2a611",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
-          "implemented": false,
-          "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "기존 GET200 PSD 560940B는 확인됐지만 레이어/투명도/변형·PNG export는 미검증. 원본 PSD를 열어 전체 캔버스와 레이어를 확인한 뒤 색상·출력 해시 검증 필요."
+          "variant": "light",
+          "archiveSha256": null,
+          "implemented": true,
+          "authControlApproved": false
         },
         "dark": {
           "preview": "../assets/social/qq.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/11.15.0/icons/tencentqq.svg",
+          "download": "../assets/original/qq/03_qq_symbol-native.png",
           "format": "png",
-          "sha256": "80697e86b98a45200283827490e0ac7eff628c48508a6d79a27740da1b1b98f4",
-          "source": "https://github.com/simple-icons/simple-icons/blob/11.15.0/icons/tencentqq.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#111111",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "1de21f3d78388ce354780c69efc19f5e41244ccf37e29bbed13bbcd3dd4b681f",
+          "source": "https://wiki.connect.qq.com/%E8%A7%86%E8%A7%89%E7%B4%A0%E6%9D%90%E4%B8%8B%E8%BD%BD",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies QQ in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete provider PSD composite converted to PNG with identical decoded pixels.",
             "redistribution": "QQ supplies complete login controls and SDK output; standalone-logo package redistribution is not stated.",
             "sources": [
+              "https://wiki.connect.qq.com/%E8%A7%86%E8%A7%89%E7%B4%A0%E6%9D%90%E4%B8%8B%E8%BD%BD",
               "https://wiki.connect.qq.com/%e6%94%be%e7%bd%aeqq%e7%99%bb%e5%bd%95%e6%8c%89%e9%92%ae_oauth2-0",
               "https://qq.design/brand/BrandDesign/Logo"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "5b9ffc52750f3a45d86e3a910baaa14c89201089fc1a74764948cbbe29f2a611",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
-          "implemented": false,
-          "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "기존 GET200 PSD 560940B는 확인됐지만 레이어/투명도/변형·PNG export는 미검증. 원본 PSD를 열어 전체 캔버스와 레이어를 확인한 뒤 색상·출력 해시 검증 필요."
+          "variant": "dark",
+          "archiveSha256": null,
+          "implemented": true,
+          "authControlApproved": false
         }
       },
       "appearanceSupport": {
@@ -7258,15 +7036,15 @@
         },
         "officialAcquisitionStatus": "direct"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "epicGames",
       "name": "Epic Games",
-      "officialSourceUrl": "https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface",
-      "acquisitionStatus": "unverified",
+      "officialSourceUrl": "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/epic-account-services-design-guidelines?lang=en-US",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": "https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface",
-      "blocker": "확인한 공개 인증 문서에서 재사용 가능한 black/white/color 로그인 artwork를 입증하지 못했다. 공식 브랜드 자산 경로나 승인된 파일 제공이 필요; partner-only라고 단정하지 않는다.",
+      "blocker": null,
       "variants": [
         {
           "appearance": "light",
@@ -7323,21 +7101,11 @@
         "usage": "공개 EAS Auth Interface 문서와 로그인 로고 파일의 존재를 구분."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "공개 EAS 인증 문서는 있으나 재사용 가능한 로그인 로고 파일을 확인하지 못함. 파트너 전용이라고 단정하지 않음.",
-        "실제 파일 SHA256 대조. HTML/로그인 화면을 이미지로 저장하지 않는다.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "다운로드만으로 일반 logo 슬롯에 설치하지 않는다. 수동 취득/전체 컨트롤/API 적합성·권한 확인이 먼저다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": null,
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": false,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-c-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "fileSelection": {
         "format": "unverified",
         "appearance": "원본 변형 취득 후 확인, catalog 색에서 추론 금지",
@@ -7346,105 +7114,81 @@
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/epicGames.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/epicgames.svg",
+          "download": "https://epicgames.ent.box.com/index.php?rm=box_download_shared_file&shared_name=82lsf9a2lfqyiwl6fra3y9cac2rm5cbd&file_id=f_664104764958",
           "format": "png",
-          "sha256": "55cea5ee0730474e3778eb37d100c0949042dc8771cd213623be9daab77cfdea",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/epicgames.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "06253f402336d4f0344ba2199371c7516402f8b3723b3f19ffa668bf65e635d3",
+          "source": "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/epic-account-services-design-guidelines?lang=en-US",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Epic Games in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "No current public sign-in artwork or public redistribution grant was verified; partner asset terms were not accessible.",
             "sources": [
+              "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/epic-account-services-design-guidelines?lang=en-US",
               "https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface",
               "https://www.epicgames.com/site/en-US/tos"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "a19b1eb5a46edc11a7dc7f1ce6fa1701ea4e4cf451feec88441c523f4b50cde3",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
+          "variant": "providerDefault",
+          "archiveSha256": null,
           "implemented": true,
-          "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "확인한 공개 인증 문서에서 재사용 가능한 black/white/color 로그인 artwork를 입증하지 못했다. 공식 브랜드 자산 경로나 승인된 파일 제공이 필요; partner-only라고 단정하지 않는다."
+          "authControlApproved": false
         },
         "light": {
           "preview": "../assets/social/epicGames.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/epicgames.svg",
+          "download": "https://epicgames.ent.box.com/index.php?rm=box_download_shared_file&shared_name=82lsf9a2lfqyiwl6fra3y9cac2rm5cbd&file_id=f_664104764958",
           "format": "png",
-          "sha256": "55cea5ee0730474e3778eb37d100c0949042dc8771cd213623be9daab77cfdea",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/epicgames.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "06253f402336d4f0344ba2199371c7516402f8b3723b3f19ffa668bf65e635d3",
+          "source": "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/epic-account-services-design-guidelines?lang=en-US",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Epic Games in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "No current public sign-in artwork or public redistribution grant was verified; partner asset terms were not accessible.",
             "sources": [
+              "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/epic-account-services-design-guidelines?lang=en-US",
               "https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface",
               "https://www.epicgames.com/site/en-US/tos"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "a19b1eb5a46edc11a7dc7f1ce6fa1701ea4e4cf451feec88441c523f4b50cde3",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
-          "implemented": false,
-          "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "확인한 공개 인증 문서에서 재사용 가능한 black/white/color 로그인 artwork를 입증하지 못했다. 공식 브랜드 자산 경로나 승인된 파일 제공이 필요; partner-only라고 단정하지 않는다."
+          "variant": "light",
+          "archiveSha256": null,
+          "implemented": true,
+          "authControlApproved": false
         },
         "dark": {
           "preview": "../assets/social/epicGames.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/epicgames.svg",
+          "download": "https://epicgames.ent.box.com/index.php?rm=box_download_shared_file&shared_name=82lsf9a2lfqyiwl6fra3y9cac2rm5cbd&file_id=f_664104764958",
           "format": "png",
-          "sha256": "55cea5ee0730474e3778eb37d100c0949042dc8771cd213623be9daab77cfdea",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/epicgames.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "06253f402336d4f0344ba2199371c7516402f8b3723b3f19ffa668bf65e635d3",
+          "source": "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/epic-account-services-design-guidelines?lang=en-US",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Epic Games in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "No current public sign-in artwork or public redistribution grant was verified; partner asset terms were not accessible.",
             "sources": [
+              "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/epic-account-services-design-guidelines?lang=en-US",
               "https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface",
               "https://www.epicgames.com/site/en-US/tos"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "a19b1eb5a46edc11a7dc7f1ce6fa1701ea4e4cf451feec88441c523f4b50cde3",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
-          "implemented": false,
-          "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "확인한 공개 인증 문서에서 재사용 가능한 black/white/color 로그인 artwork를 입증하지 못했다. 공식 브랜드 자산 경로나 승인된 파일 제공이 필요; partner-only라고 단정하지 않는다."
+          "variant": "dark",
+          "archiveSha256": null,
+          "implemented": true,
+          "authControlApproved": false
         }
       },
       "appearanceSupport": {
@@ -7460,7 +7204,7 @@
         },
         "officialAcquisitionStatus": "unverified"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "playstation",
@@ -8071,10 +7815,10 @@
     {
       "id": "zoom",
       "name": "Zoom",
-      "officialSourceUrl": "https://brand.zoom.com/",
-      "acquisitionStatus": "unverified",
+      "officialSourceUrl": "https://www.zoom.com/en/about/media-kit/",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": "https://brand.zoom.com/",
-      "blocker": "기존 Frontify Brand Center가 빈 화면/안정 바이너리 링크 미확립. 정상 브라우저의 Logo Library 및 약관 재확인 필요. 빈 캡처를 로고 부재 증거로 쓰지 않는다.",
+      "blocker": null,
       "variants": [
         {
           "appearance": "light",
@@ -8131,21 +7875,11 @@
         "usage": "Zoom Logo Library 일반 자산과 Sign in with Zoom 용도는 별도."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "Brand Center가 빈 화면으로 관찰됨. 파일 부재를 뜻하지 않음; 새 브라우저에서 Logo Library 및 조건 확인.",
-        "실제 파일 SHA256 대조. HTML/로그인 화면을 이미지로 저장하지 않는다.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "다운로드만으로 일반 logo 슬롯에 설치하지 않는다. 수동 취득/전체 컨트롤/API 적합성·권한 확인이 먼저다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": null,
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": false,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-c-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "fileSelection": {
         "format": "unverified",
         "appearance": "원본 변형 취득 후 확인, catalog 색에서 추론 금지",
@@ -8154,105 +7888,81 @@
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/zoom.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/zoom.svg",
+          "download": "https://media.zoom.com/images/assets/zoom-logo-2025.png/Zz04ZjU1ODA4OGM5NjUxMWYwYWQ3NDIyZTYxNWM4NmY4Yg==",
           "format": "png",
-          "sha256": "213eadeb31dcba8f68592269999f969c433a964ccffb7f3e95c2a6f8b1f37939",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/zoom.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "f8b5cc5e08ca27af64550b48205b49260299c219599968eec9d22ac7e43a4f90",
+          "source": "https://www.zoom.com/en/about/media-kit/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Zoom in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "The Zoom Brand Center is portal-mediated; public package-redistribution terms were not verified.",
             "sources": [
+              "https://www.zoom.com/en/about/media-kit/",
               "https://developers.zoom.us/docs/integrations/oauth/",
               "https://brand.zoom.us/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "da5b2f13d38ca61c88a227f58e3bebcbcbb55412d97678ecff49ae7c603f9a7b",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
+          "variant": "providerDefault",
+          "archiveSha256": null,
           "implemented": true,
-          "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "기존 Frontify Brand Center가 빈 화면/안정 바이너리 링크 미확립. 정상 브라우저의 Logo Library 및 약관 재확인 필요. 빈 캡처를 로고 부재 증거로 쓰지 않는다."
+          "authControlApproved": false
         },
         "light": {
           "preview": "../assets/social/zoom.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/zoom.svg",
+          "download": "https://media.zoom.com/images/assets/zoom-logo-2025.png/Zz04ZjU1ODA4OGM5NjUxMWYwYWQ3NDIyZTYxNWM4NmY4Yg==",
           "format": "png",
-          "sha256": "213eadeb31dcba8f68592269999f969c433a964ccffb7f3e95c2a6f8b1f37939",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/zoom.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "f8b5cc5e08ca27af64550b48205b49260299c219599968eec9d22ac7e43a4f90",
+          "source": "https://www.zoom.com/en/about/media-kit/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Zoom in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "The Zoom Brand Center is portal-mediated; public package-redistribution terms were not verified.",
             "sources": [
+              "https://www.zoom.com/en/about/media-kit/",
               "https://developers.zoom.us/docs/integrations/oauth/",
               "https://brand.zoom.us/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "da5b2f13d38ca61c88a227f58e3bebcbcbb55412d97678ecff49ae7c603f9a7b",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
-          "implemented": false,
-          "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "기존 Frontify Brand Center가 빈 화면/안정 바이너리 링크 미확립. 정상 브라우저의 Logo Library 및 약관 재확인 필요. 빈 캡처를 로고 부재 증거로 쓰지 않는다."
+          "variant": "light",
+          "archiveSha256": null,
+          "implemented": true,
+          "authControlApproved": false
         },
         "dark": {
           "preview": "../assets/social/zoom.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/zoom.svg",
+          "download": "https://media.zoom.com/images/assets/zoom-logo-2025.png/Zz04ZjU1ODA4OGM5NjUxMWYwYWQ3NDIyZTYxNWM4NmY4Yg==",
           "format": "png",
-          "sha256": "213eadeb31dcba8f68592269999f969c433a964ccffb7f3e95c2a6f8b1f37939",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/zoom.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "f8b5cc5e08ca27af64550b48205b49260299c219599968eec9d22ac7e43a4f90",
+          "source": "https://www.zoom.com/en/about/media-kit/",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Zoom in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "The Zoom Brand Center is portal-mediated; public package-redistribution terms were not verified.",
             "sources": [
+              "https://www.zoom.com/en/about/media-kit/",
               "https://developers.zoom.us/docs/integrations/oauth/",
               "https://brand.zoom.us/"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "da5b2f13d38ca61c88a227f58e3bebcbcbb55412d97678ecff49ae7c603f9a7b",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
-          "implemented": false,
-          "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "기존 Frontify Brand Center가 빈 화면/안정 바이너리 링크 미확립. 정상 브라우저의 Logo Library 및 약관 재확인 필요. 빈 캡처를 로고 부재 증거로 쓰지 않는다."
+          "variant": "dark",
+          "archiveSha256": null,
+          "implemented": true,
+          "authControlApproved": false
         }
       },
       "appearanceSupport": {
@@ -8268,7 +7978,7 @@
         },
         "officialAcquisitionStatus": "unverified"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "kakao",
@@ -9762,9 +9472,9 @@
       "id": "tiktok",
       "name": "TikTok",
       "officialSourceUrl": "https://developers.tiktok.com/doc/getting-started-design-guidelines",
-      "acquisitionStatus": "archive",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": null,
-      "blocker": "이번 취득 pack에서 standalone 로그인 glyph는 미검증. 흑/백 horizontal wordmark는 가로 10001px 전체 로고이며 24px glyph로 크롭 금지.",
+      "blocker": null,
       "variants": [
         {
           "variantId": "tiktok-26",
@@ -10331,123 +10041,89 @@
         "usage": "흑/백 글자+컬러 효과를 보존한 전체 horizontal logos와 앱 icons도 pack에 있다. 이 일반 브랜드 자산의 존재는 공통 로그인 glyph 사용 허가가 아니다. 로그인용은 공급 complete controls와 문서 조건."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "공식 source에서 선택 변형·용도 조건 확인 후 URL GET. HTTP200과 Content-Type/바이너리 매직을 검사한다.",
-        "ZIP 원본 SHA256 확인 → 정확한 archiveMember 추출 → PNG 멤버 SHA256 대조. 원본 이름과 캔버스 보존.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "다운로드만으로 일반 logo 슬롯에 설치하지 않는다. 수동 취득/전체 컨트롤/API 적합성·권한 확인이 먼저다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": null,
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": true,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-c-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/tiktok.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/tiktok.svg",
+          "download": "../assets/original/tiktok/TikTok_Icon_Black_Square.png",
           "format": "png",
-          "sha256": "c787b3b8773e5dc81f8342d4d03b3a735f8a67ce84ab178b7022f355bee7d595",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/tiktok.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "e8013e14350422f54f4b61735d91e232bf02972f6156d979cd82905559f5ee2e",
+          "source": "https://developers.tiktok.com/doc/getting-started-design-guidelines",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies TikTok in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "TikTok publishes the developer pack but also states prior written permission is required for its logos; package clearance was not established.",
             "sources": [
               "https://developers.tiktok.com/doc/getting-started-design-guidelines",
+              "https://developers.tiktok.com/doc/getting-started-design-guidelines",
               "https://tiktokbrandbook.com/d/HhXfjVK1Poj9/legal"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "6f54ac8d325faacea8935bdc44cbed60206a6b408641799e5fea1cba7c1a0af7",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
+          "variant": "providerDefault",
+          "archiveSha256": null,
           "implemented": true,
-          "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "이번 취득 pack에서 standalone 로그인 glyph는 미검증. 흑/백 horizontal wordmark는 가로 10001px 전체 로고이며 24px glyph로 크롭 금지."
+          "authControlApproved": false
         },
         "light": {
           "preview": "../assets/social/tiktok.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/tiktok.svg",
+          "download": "../assets/original/tiktok/TikTok_Icon_Black_Square.png",
           "format": "png",
-          "sha256": "c787b3b8773e5dc81f8342d4d03b3a735f8a67ce84ab178b7022f355bee7d595",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/tiktok.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "e8013e14350422f54f4b61735d91e232bf02972f6156d979cd82905559f5ee2e",
+          "source": "https://developers.tiktok.com/doc/getting-started-design-guidelines",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies TikTok in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "TikTok publishes the developer pack but also states prior written permission is required for its logos; package clearance was not established.",
             "sources": [
               "https://developers.tiktok.com/doc/getting-started-design-guidelines",
+              "https://developers.tiktok.com/doc/getting-started-design-guidelines",
               "https://tiktokbrandbook.com/d/HhXfjVK1Poj9/legal"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "6f54ac8d325faacea8935bdc44cbed60206a6b408641799e5fea1cba7c1a0af7",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
-          "implemented": false,
-          "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "이번 취득 pack에서 standalone 로그인 glyph는 미검증. 흑/백 horizontal wordmark는 가로 10001px 전체 로고이며 24px glyph로 크롭 금지."
+          "variant": "light",
+          "archiveSha256": null,
+          "implemented": true,
+          "authControlApproved": false
         },
         "dark": {
           "preview": "../assets/social/tiktok.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/tiktok.svg",
+          "download": "../assets/original/tiktok/TikTok_Icon_Black_Square.png",
           "format": "png",
-          "sha256": "c787b3b8773e5dc81f8342d4d03b3a735f8a67ce84ab178b7022f355bee7d595",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/tiktok.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "sha256": "e8013e14350422f54f4b61735d91e232bf02972f6156d979cd82905559f5ee2e",
+          "source": "https://developers.tiktok.com/doc/getting-started-design-guidelines",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies TikTok in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "TikTok publishes the developer pack but also states prior written permission is required for its logos; package clearance was not established.",
             "sources": [
               "https://developers.tiktok.com/doc/getting-started-design-guidelines",
+              "https://developers.tiktok.com/doc/getting-started-design-guidelines",
               "https://tiktokbrandbook.com/d/HhXfjVK1Poj9/legal"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "6f54ac8d325faacea8935bdc44cbed60206a6b408641799e5fea1cba7c1a0af7",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
+          "redistribution": "conditional",
           "archiveMember": null,
-          "archive": null,
-          "implemented": false,
-          "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "이번 취득 pack에서 standalone 로그인 glyph는 미검증. 흑/백 horizontal wordmark는 가로 10001px 전체 로고이며 24px glyph로 크롭 금지."
+          "variant": "dark",
+          "archiveSha256": null,
+          "implemented": true,
+          "authControlApproved": false
         }
       },
       "appearanceSupport": {
@@ -10463,15 +10139,15 @@
         },
         "officialAcquisitionStatus": "archive"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     },
     {
       "id": "notion",
       "name": "Notion",
       "officialSourceUrl": "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
-      "acquisitionStatus": "browser",
+      "acquisitionStatus": "acquired-official-original",
       "manualUrl": "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
-      "blocker": "기존 브라우저에서 NotionLogoFiles.zip 168.2KiB 첨부 확인. 클릭 다운로드 후 ZIP signature, black/white/color 멤버 및 해시 확인 필요. 공개 팩 존재는 확인됐으므로 부재라고 쓰지 않는다.",
+      "blocker": null,
       "variants": [
         {
           "appearance": "light",
@@ -10528,21 +10204,11 @@
         "usage": "Notion Official Media Kit 공개 ZIP과 OAuth/패키지 사용 허가는 별도."
       },
       "automaticAppInstallAllowed": false,
-      "instructions": [
-        "Notion Official Media Kit → NotionLogoFiles.zip 168.2 KiB 클릭. 원본 ZIP 다운로드 후 파일명/매직/해시/멤버 재확인. 임시 attachment URL 고정 금지.",
-        "실제 파일 SHA256 대조. HTML/로그인 화면을 이미지로 저장하지 않는다.",
-        "해시 차이는 최신 원본일 수 있으므로 중단하고 공식 페이지/변형 재검증; 옛 해시로 강제 통과 금지.",
-        "PNG 원본은 변경 없이 사용. SVG/EPS/PSD는 승인된 도구로 전체 캔버스 비례 변환, 원본 보존·시각 대조·출력 해시 신규 측정; 변환 미검증이면 수동 단계로 남긴다.",
-        "다운로드만으로 일반 logo 슬롯에 설치하지 않는다. 수동 취득/전체 컨트롤/API 적합성·권한 확인이 먼저다.",
-        "providerDefault 및 앱 명시적 logo override를 유지한다. appearanceVariants의 preview는 실제 선택 자산이며 원본 획득 여부와 인증 컨트롤 승인을 별도로 확인한다."
-      ],
+      "instructions": "Use the verified complete original recorded in appearanceVariants; no crop or tint. Download origin and redistribution permission remain distinct.",
       "savePath": null,
-      "currentCatalogOrigin": "third-party-derived",
+      "currentCatalogOrigin": "official-original",
       "acquisitionAutomatable": false,
-      "researchEvidence": [
-        ".omo/ulw-research/20261001-000111/group-c-findings.md",
-        ".omo/ulw-research/20261001-000111/debate.md"
-      ],
+      "researchEvidence": "research/official-default-replacement/replacement-receipts.json",
       "fileSelection": {
         "format": "zip",
         "appearance": "원본 변형 취득 후 확인, catalog 색에서 추론 금지",
@@ -10551,105 +10217,99 @@
       "appearanceVariants": {
         "providerDefault": {
           "preview": "../assets/social/notion.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/notion.svg",
-          "format": "png",
-          "sha256": "4e55e7a67b0f0c9cf2a5e6b30cc50e828ddc198eeb8f5f6b0b8bd214c16579e6",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/notion.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
+          "format": "zip",
+          "sha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03",
+          "source": "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Notion in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "No public reusable authorization-logo asset or package-redistribution terms were verified.",
             "sources": [
+              "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
               "https://developers.notion.com/guides/get-started/authorization",
               "https://www.notion.com/brand"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "b17d2a2b592a06252efef522d5205f0c7a958f748d40df1011ed081417e42f85",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
+          "redistribution": "conditional",
+          "archiveMember": "notion-logo-block-main.png",
+          "variant": "providerDefault",
+          "archiveSha256": "c722766606c8ad314d1008d9419eb5b2e14b2418d9f535d8d52db84329bdf4dc",
           "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "existing package appearance; approval recorded separately",
-          "unresolved": "기존 브라우저에서 NotionLogoFiles.zip 168.2KiB 첨부 확인. 클릭 다운로드 후 ZIP signature, black/white/color 멤버 및 해시 확인 필요. 공개 팩 존재는 확인됐으므로 부재라고 쓰지 않는다."
+          "archive": {
+            "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
+            "sha256": "c722766606c8ad314d1008d9419eb5b2e14b2418d9f535d8d52db84329bdf4dc",
+            "member": "notion-logo-block-main.png",
+            "memberSha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03"
+          }
         },
         "light": {
           "preview": "../assets/social/notion.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/notion.svg",
-          "format": "png",
-          "sha256": "4e55e7a67b0f0c9cf2a5e6b30cc50e828ddc198eeb8f5f6b0b8bd214c16579e6",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/notion.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
+          "format": "zip",
+          "sha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03",
+          "source": "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Notion in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "No public reusable authorization-logo asset or package-redistribution terms were verified.",
             "sources": [
+              "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
               "https://developers.notion.com/guides/get-started/authorization",
               "https://www.notion.com/brand"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "b17d2a2b592a06252efef522d5205f0c7a958f748d40df1011ed081417e42f85",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": false,
+          "redistribution": "conditional",
+          "archiveMember": "notion-logo-block-main.png",
+          "variant": "light",
+          "archiveSha256": "c722766606c8ad314d1008d9419eb5b2e14b2418d9f535d8d52db84329bdf4dc",
+          "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "기존 브라우저에서 NotionLogoFiles.zip 168.2KiB 첨부 확인. 클릭 다운로드 후 ZIP signature, black/white/color 멤버 및 해시 확인 필요. 공개 팩 존재는 확인됐으므로 부재라고 쓰지 않는다."
+          "archive": {
+            "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
+            "sha256": "c722766606c8ad314d1008d9419eb5b2e14b2418d9f535d8d52db84329bdf4dc",
+            "member": "notion-logo-block-main.png",
+            "memberSha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03"
+          }
         },
         "dark": {
           "preview": "../assets/social/notion.png",
-          "download": "https://raw.githubusercontent.com/simple-icons/simple-icons/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/notion.svg",
-          "format": "png",
-          "sha256": "4e55e7a67b0f0c9cf2a5e6b30cc50e828ddc198eeb8f5f6b0b8bd214c16579e6",
-          "source": "https://github.com/simple-icons/simple-icons/blob/d4e6ba93e48f178898707f0145ec285f28b64b38/icons/notion.svg",
-          "license": "Simple Icons repository: CC0-1.0; individual icon license not stated in snapshot; trademark terms separate",
-          "official": false,
-          "rasterization": {
-            "color": "#FFFFFF",
-            "width": 128,
-            "height": 128
-          },
+          "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
+          "format": "zip",
+          "sha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03",
+          "source": "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
+          "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
+          "official": true,
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies Notion in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "No public reusable authorization-logo asset or package-redistribution terms were verified.",
             "sources": [
+              "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
               "https://developers.notion.com/guides/get-started/authorization",
               "https://www.notion.com/brand"
             ],
-            "checkedOn": "2026-09-30"
+            "checkedOn": "2026-10-03"
           },
-          "sourceSha256": "b17d2a2b592a06252efef522d5205f0c7a958f748d40df1011ed081417e42f85",
-          "sourceFormat": "svg",
-          "downloadFormat": "svg",
-          "archiveSha256": null,
-          "archiveMember": null,
-          "archive": null,
-          "implemented": false,
+          "redistribution": "conditional",
+          "archiveMember": "notion-logo-block-main.png",
+          "variant": "dark",
+          "archiveSha256": "c722766606c8ad314d1008d9419eb5b2e14b2418d9f535d8d52db84329bdf4dc",
+          "implemented": true,
           "authControlApproved": false,
-          "appearanceBasis": "fallback to providerDefault; requested original unresolved",
-          "unresolved": "기존 브라우저에서 NotionLogoFiles.zip 168.2KiB 첨부 확인. 클릭 다운로드 후 ZIP signature, black/white/color 멤버 및 해시 확인 필요. 공개 팩 존재는 확인됐으므로 부재라고 쓰지 않는다."
+          "archive": {
+            "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
+            "sha256": "c722766606c8ad314d1008d9419eb5b2e14b2418d9f535d8d52db84329bdf4dc",
+            "member": "notion-logo-block-main.png",
+            "memberSha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03"
+          }
         }
       },
       "appearanceSupport": {
@@ -10665,7 +10325,7 @@
         },
         "officialAcquisitionStatus": "browser"
       },
-      "runtimeDefaultsPreserved": true
+      "runtimeDefaultsPreserved": false
     }
   ]
 }

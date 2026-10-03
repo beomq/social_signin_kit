@@ -305,13 +305,13 @@ function scaledLogoSize(provider, containerSize) {
   );
 }
 
-function createLogo(provider, size, source = provider.asset.preview) {
+function createLogo(provider, size, source = provider.asset.preview, aspectRatio = 1) {
   const image = document.createElement("img");
   image.src = source;
   image.alt = "";
-  image.width = size;
+  image.width = size * aspectRatio;
   image.height = size;
-  image.style.inlineSize = `${size}px`;
+  image.style.inlineSize = `${size * aspectRatio}px`;
   image.style.blockSize = `${size}px`;
   image.decoding = "async";
   return image;
@@ -637,9 +637,10 @@ function renderPreview() {
     const logo = document.createElement("span");
     logo.className = "generated-button__logo";
     const logoSize = runtimeLogoSize(provider);
-    logo.style.inlineSize = `${logoSize}px`;
+    const aspectRatio = shape === "circle" ? 1 : provider.rendering?.logoAspectRatio || 1;
+    logo.style.inlineSize = `${logoSize * aspectRatio}px`;
     logo.style.blockSize = `${logoSize}px`;
-    logo.append(createLogo(provider, logoSize, visual.preview));
+    logo.append(createLogo(provider, logoSize, visual.preview, aspectRatio));
     button.append(logo);
 
     if (shape !== "circle") {
@@ -949,6 +950,7 @@ function assetManifest(provider) {
     foreground: provider.foreground,
     rendering: {
       logoSize: runtimeLogoSize(provider),
+      logoAspectRatio: provider.rendering?.logoAspectRatio || 1,
     },
     capabilities: providerCapabilities(provider),
     ...(provider.appearances

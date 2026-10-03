@@ -1,7 +1,7 @@
 # 로고 에셋
 
-`social_signin_kit`는 35개 제공자의 기본 PNG를 포함합니다. 12개는
-provider-supplied 원본 기반이고 23개는 고정된 Simple Icons SVG에서 만든 패키지
+`social_signin_kit`는 35개 제공자의 기본 PNG를 포함합니다. 28개는
+공식 원본 기반이고 7개는 고정된 Simple Icons SVG에서 만든 패키지
 기본값입니다. 소비 앱은 별도 자산 설정 없이 사용할 수 있습니다.
 
 ## 기본 번들
@@ -31,6 +31,14 @@ provider-supplied 원본 기반이고 23개는 고정된 Simple Icons SVG에서 
 직접 받은 PNG 또는 ZIP에서 추출한 PNG인 경우에만 보존 원본과 바이트가
 같습니다. Spotify 원본 PNG는 바이트 그대로 보존하고, 런타임 PNG는 원색과
 구성을 유지해 128×128로 줄였으므로 원본과 바이트가 같지 않습니다.
+QQ는 전체 PSD composite를 동일 픽셀의 PNG로 변환하고, Steam은 공식 사이트
+전체 SVG를 투명 PNG로 렌더링합니다. 공식 PNG 25종은 바이트 그대로 보존합니다.
+
+추가 16종의 원본·해시·변환은
+[교체 영수증](../research/official-default-replacement/replacement-receipts.json)에 있습니다.
+Zoom·Steam은 전체 비율을 유지해 일반 버튼의 로고 영역을 넓힙니다.
+원형에서는 전체 파일을 사각 슬롯 안에 맞추므로 글자가 작게 보일 수 있습니다.
+Dropbox·GitLab·PayPal·Zoom의 흰색 바탕은 원본 대비를 위한 패키지 선택입니다.
 
 Google 런타임 PNG는 공식 커스텀 버튼 가이드가 직접 링크하는
 `g-logo.png`와 바이트가 같습니다. 이전 no-text square PNG는 독립 로고가

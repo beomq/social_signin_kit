@@ -8,10 +8,10 @@ OAuth, 토큰, 네트워크 요청, 로딩 상태는 앱에서 관리합니다.
 pub.dev에는 아직 게시되지 않았으므로 예정 링크는 현재 설치 가능한 릴리스를 뜻하지 않습니다.
 
 > 이 패키지의 색상, 모양, 상태 스타일은 공식 인증을 뜻하지 않습니다.
-> 35개 제공자 모두 정적 PNG를 포함하지만 출처가 다릅니다. Google, Apple,
-> Microsoft, Kakao, Naver, LINE, X, LinkedIn, Twitch, Spotify, Bitbucket, GitHub는
-> 검토된 제공자 원본이고, 나머지 23개 기본값은 고정된 Simple Icons SVG에서 만든
-> 패키지용 단색 PNG입니다. `official`은 파일 출처만 뜻하며 제공자 승인이나
+> 35개 제공자 모두 정적 PNG를 포함하지만 출처가 다릅니다. 공식 원본 기반은
+> 28종이며, 25종은 PNG 바이트 그대로 사용합니다. Spotify는 축소, QQ는 PSD→PNG,
+> Steam은 전체 공식 사이트 SVG→PNG를 적용합니다. 나머지 7종은 고정된
+> Simple Icons 기본값입니다. `official`은 파일 출처만 뜻하며 제공자 승인이나
 > 재배포 허가를 뜻하지 않습니다. 출시 전
 > [제공자 자산 가이드](docs/PROVIDER_GUIDE.md)와 각 제공자의 최신 규칙을
 > 확인하세요.

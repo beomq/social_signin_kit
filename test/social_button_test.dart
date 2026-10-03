@@ -9,6 +9,33 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:social_signin_kit/social_signin_kit.dart';
 
 void main() {
+  testWidgets('complete official wide marks keep proportional logo slots', (
+    tester,
+  ) async {
+    for (final (social, ratio) in [
+      (Social.zoom, 1426 / 321),
+      (Social.steam, 278 / 84),
+    ]) {
+      await _pump(tester, SocialButton(social: social, onPressed: _noop));
+      final image = tester.widget<Image>(find.byType(Image));
+      final dimensions = tester.getSize(find.byType(Image));
+      expect(image.color, isNull);
+      expect(dimensions.width / dimensions.height, closeTo(ratio, 0.001));
+
+      await _pump(
+        tester,
+        SocialButton(
+          social: social,
+          shape: SocialButtonShape.circle,
+          onPressed: _noop,
+        ),
+      );
+      final circular = tester.getSize(find.byType(Image));
+      expect(circular.width, circular.height);
+      expect(tester.takeException(), isNull);
+    }
+  });
+
   testWidgets('provider typography keeps app font without theme foreground', (
     tester,
   ) async {
@@ -596,7 +623,7 @@ void main() {
     );
     image = tester.widget<Image>(find.byType(Image));
     asset = image.image as AssetImage;
-    expect(asset.assetName, 'assets/social/slack-light.png');
+    expect(asset.assetName, 'assets/original/slack/SLA-Slack-icon-black-RGB.png');
     expect(asset.package, 'social_signin_kit');
     expect(image.color, isNull);
   });
@@ -610,9 +637,9 @@ void main() {
 
   test('Slack light provider asset is bundled and loadable', () async {
     final bytes = await rootBundle.load(
-      'packages/social_signin_kit/assets/social/slack-light.png',
+      'packages/social_signin_kit/assets/original/slack/SLA-Slack-icon-black-RGB.png',
     );
-    expect(bytes.lengthInBytes, 3320);
+    expect(bytes.lengthInBytes, 33639);
   });
 
   testWidgets('GitHub appearances select supplied untinted originals', (

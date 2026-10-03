@@ -1,0 +1,162 @@
+[
+  {
+    "id": "facebook",
+    "path": "assets/social/facebook.png",
+    "original": "assets/original/facebook/Facebook_Logo_Secondary.png",
+    "sha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57",
+    "width": 2084,
+    "height": 2084,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://www.meta.com/brand/resources/facebook/logo/"
+  },
+  {
+    "id": "instagram",
+    "path": "assets/social/instagram.png",
+    "original": "assets/original/instagram/Instagram_Glyph_White.png",
+    "sha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61",
+    "width": 4322,
+    "height": 4320,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://www.meta.com/brand/resources/instagram/instagram-brand/"
+  },
+  {
+    "id": "snapchat",
+    "path": "assets/social/snapchat.png",
+    "original": "assets/original/snapchat/Ghost Logo - Primary.png",
+    "sha256": "af00b728828930aa570e0cab426d5a50cc7aa308b2c737edfc670f3b0ffbd748",
+    "width": 2000,
+    "height": 2000,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://www.snap.com/brand-guidelines"
+  },
+  {
+    "id": "dropbox",
+    "path": "assets/social/dropbox.png",
+    "original": "assets/original/dropbox/Glyph_128.png",
+    "sha256": "71bce66773bea25502071914721fbe423887b6a72e2e54ed432eeb9c0f40c20a",
+    "width": 129,
+    "height": 128,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://brand.dropbox.com/logo"
+  },
+  {
+    "id": "notion",
+    "path": "assets/social/notion.png",
+    "original": "assets/original/notion/notion-logo-block-main.png",
+    "sha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03",
+    "width": 1340,
+    "height": 1400,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286"
+  },
+  {
+    "id": "slack",
+    "path": "assets/social/slack.png",
+    "original": "assets/original/slack/SLA-Slack-icon-white-RGB.png",
+    "sha256": "752f153f065f0fe2c8143add10fbf38295cf00cf6b034b5f50b72a90fdb707a7",
+    "width": 800,
+    "height": 800,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://slack.com/media-kit"
+  },
+  {
+    "id": "qq",
+    "path": "assets/social/qq.png",
+    "original": "assets/original/qq/03_qq_symbol-native.png",
+    "sha256": "1de21f3d78388ce354780c69efc19f5e41244ccf37e29bbed13bbcd3dd4b681f",
+    "width": 1181,
+    "height": 1417,
+    "transformation": "Complete official PSD composite converted to PNG with identical decoded pixels; no crop or recolor.",
+    "source": "https://wiki.connect.qq.com/%E8%A7%86%E8%A7%89%E7%B4%A0%E6%9D%90%E4%B8%8B%E8%BD%BD"
+  },
+  {
+    "id": "zoom",
+    "path": "assets/social/zoom.png",
+    "original": "assets/original/zoom/zoom-logo-2025.png",
+    "sha256": "f8b5cc5e08ca27af64550b48205b49260299c219599968eec9d22ac7e43a4f90",
+    "width": 1426,
+    "height": 321,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://www.zoom.com/en/about/media-kit/"
+  },
+  {
+    "id": "steam",
+    "path": "assets/social/steam.png",
+    "original": "assets/original/steam/logo_steam-about.png",
+    "sha256": "cad55a5fde9d3ccb1d64678fad792559af2fcac82cefb9d5188b5c7671954707",
+    "width": 556,
+    "height": 168,
+    "transformation": "Complete official site SVG rendered at 2x as transparent PNG; no crop or recolor.",
+    "source": "https://partner.steamgames.com/doc/marketing/branding"
+  },
+  {
+    "id": "discord",
+    "path": "assets/social/discord.png",
+    "original": "assets/original/discord/Discord-Symbol-White.png",
+    "sha256": "64dce9107da58318880721df9d0603c3cee3683a3322bf36f3dedb75edd1c81d",
+    "width": 528,
+    "height": 400,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://discord.com/branding"
+  },
+  {
+    "id": "gitlab",
+    "path": "assets/social/gitlab.png",
+    "original": "assets/original/gitlab/gitlab-logo-500-rgb.png",
+    "sha256": "d56b28d4ad3c65fb4e1a2fe79eee4b821f6e9ab3f01963fa5f1b71ec7c5b10cf",
+    "width": 380,
+    "height": 380,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://about.gitlab.com/press/press-kit/"
+  },
+  {
+    "id": "paypal",
+    "path": "assets/social/paypal.png",
+    "original": "assets/original/paypal/PayPal-Monogram-FullColor-RGB.png",
+    "sha256": "defb3ea3cd1f5ac2548c92ed55d4b6a250691f580eb6583fd6300440d6afeb9e",
+    "width": 901,
+    "height": 1086,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://newsroom.paypal-corp.com/media-resources"
+  },
+  {
+    "id": "telegram",
+    "path": "assets/social/telegram.png",
+    "original": "assets/original/telegram/Logo.png",
+    "sha256": "f91e9d7c30894cb0f00196581d4cc8867dd1139b2b1455de2c58071103475ca8",
+    "width": 1000,
+    "height": 1000,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://telegram.org/tour/screenshots"
+  },
+  {
+    "id": "weibo",
+    "path": "assets/social/weibo.png",
+    "original": "assets/original/weibo/LOGO_64x64.png",
+    "sha256": "b751df4a287a00eeb88d3484c6436d4192b79288c11da397df0a5c8a7f0d3ae0",
+    "width": 64,
+    "height": 64,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9A%E6%A0%87%E8%AF%86"
+  },
+  {
+    "id": "epicGames",
+    "path": "assets/social/epicGames.png",
+    "original": "assets/original/epicGames/EpicGames_white.png",
+    "sha256": "06253f402336d4f0344ba2199371c7516402f8b3723b3f19ffa668bf65e635d3",
+    "width": 1024,
+    "height": 1024,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/epic-account-services-design-guidelines?lang=en-US"
+  },
+  {
+    "id": "tiktok",
+    "path": "assets/social/tiktok.png",
+    "original": "assets/original/tiktok/TikTok_Icon_Black_Square.png",
+    "sha256": "e8013e14350422f54f4b61735d91e232bf02972f6156d979cd82905559f5ee2e",
+    "width": 1200,
+    "height": 1200,
+    "transformation": "Unmodified provider PNG bytes, including full canvas and padding.",
+    "source": "https://developers.tiktok.com/doc/getting-started-design-guidelines"
+  }
+]

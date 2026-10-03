@@ -183,6 +183,7 @@ final class SocialLoginProviderData {
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,
           borderColor: borderColor,
+          asset: bundledLogoAsset,
         );
   }
 }
@@ -350,6 +351,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
     Map<SocialLoginProvider, SocialLoginProviderData>.unmodifiable({
       SocialLoginProvider.facebook: _data(
         provider: SocialLoginProvider.facebook,
+        bundledLogoAsset: 'assets/social/facebook.png',
+        officialAssetSource: 'https://www.meta.com/brand/resources/facebook/logo/',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         displayName: 'Facebook',
         labelKo: 'Facebook 로그인',
         labelEn: 'Continue with Facebook',
@@ -521,6 +526,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       SocialLoginProvider.discord: _data(
         provider: SocialLoginProvider.discord,
         displayName: 'Discord',
+        bundledLogoAsset: 'assets/social/discord.png',
+        officialAssetSource: 'https://discord.com/branding',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         labelKo: 'Discord 로그인',
         labelEn: 'Continue with Discord',
         guidance: SocialLoginGuidance.generalBrand,
@@ -590,6 +599,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       ),
       SocialLoginProvider.slack: _data(
         provider: SocialLoginProvider.slack,
+        bundledLogoAsset: 'assets/social/slack.png',
+        officialAssetSource: 'https://slack.com/media-kit',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         displayName: 'Slack',
         labelKo: 'Slack 로그인',
         labelEn: 'Sign in with Slack',
@@ -610,12 +623,12 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
             backgroundColor: Color(0xFFFFFFFF),
             foregroundColor: Color(0xFF000000),
             borderColor: Color(0xFFDDDDDD),
-            asset: 'assets/social/slack-light.png',
+            asset: 'assets/original/slack/SLA-Slack-icon-black-RGB.png',
           ),
           SocialButtonAppearance.dark: SocialButtonAppearanceStyle(
             backgroundColor: Color(0xFF4A154B),
             foregroundColor: Color(0xFFFFFFFF),
-            logoColor: Color(0xFFFFFFFF),
+            asset: 'assets/original/slack/SLA-Slack-icon-white-RGB.png',
           ),
         },
         shapeSupport: const {
@@ -714,6 +727,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       ),
       SocialLoginProvider.steam: _data(
         provider: SocialLoginProvider.steam,
+        bundledLogoAsset: 'assets/social/steam.png',
+        officialAssetSource: 'https://partner.steamgames.com/doc/marketing/branding',
+        assetTransformation:
+            'Complete official website SVG rendered as transparent PNG at 2x; no crop or recolor.',
         displayName: 'Steam',
         labelKo: 'Steam 로그인',
         labelEn: 'Continue with Steam',
@@ -760,6 +777,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       ),
       SocialLoginProvider.dropbox: _data(
         provider: SocialLoginProvider.dropbox,
+        bundledLogoAsset: 'assets/social/dropbox.png',
+        officialAssetSource: 'https://brand.dropbox.com/logo',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         displayName: 'Dropbox',
         labelKo: 'Dropbox 연결',
         labelEn: 'Connect Dropbox',
@@ -772,12 +793,18 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
             'Use the official full Dropbox logo for a general brand context.',
         limitations:
             'The Tab or glyph is not documented as a login icon, and numeric login colors are unverified.',
-        backgroundColor: const Color(0xFF0061FF),
+        backgroundColor: const Color(0xFFFFFFFF),
+        foregroundColor: const Color(0xFF111111),
+        borderColor: const Color(0xFFDDDDDD),
         paletteSource: _brandColorReference,
       ),
       SocialLoginProvider.gitlab: _data(
         provider: SocialLoginProvider.gitlab,
         displayName: 'GitLab',
+        bundledLogoAsset: 'assets/social/gitlab.png',
+        officialAssetSource: 'https://about.gitlab.com/press/press-kit/',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         labelKo: 'GitLab 로그인',
         labelEn: 'Continue with GitLab',
         guidance: SocialLoginGuidance.generalBrand,
@@ -789,9 +816,9 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
             'Use an official RGB SVG, with an official PNG as the raster alternative.',
         limitations:
             'Public trademark terms restrict generic third-party logo use; a press-kit download is not permission to redistribute login artwork.',
-        backgroundColor: const Color(0xFFFC6D26),
+        backgroundColor: const Color(0xFFFFFFFF),
         foregroundColor: const Color(0xFF111111),
-        borderColor: null,
+        borderColor: const Color(0xFFDDDDDD),
         paletteBasis: SocialLoginPaletteBasis.sourceAdapted,
         paletteSource: _brandColorReference,
         appearanceStyles: const {
@@ -847,6 +874,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       SocialLoginProvider.paypal: _data(
         provider: SocialLoginProvider.paypal,
         displayName: 'PayPal',
+        bundledLogoAsset: 'assets/social/paypal.png',
+        officialAssetSource: 'https://newsroom.paypal-corp.com/media-resources',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         labelKo: 'PayPal 로그인',
         labelEn: 'Log in with PayPal',
         guidance: SocialLoginGuidance.generalBrand,
@@ -858,9 +889,9 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
             'Use an official black or white PayPal PNG appropriate to the surrounding surface.',
         limitations:
             'The login documentation body was access-limited, and newsroom assets are not confirmed for authentication UI.',
-        backgroundColor: const Color(0xFF002991),
-        foregroundColor: const Color(0xFFFFFFFF),
-        borderColor: null,
+        backgroundColor: const Color(0xFFFFFFFF),
+        foregroundColor: const Color(0xFF111111),
+        borderColor: const Color(0xFFDDDDDD),
         paletteBasis: SocialLoginPaletteBasis.sourceAdapted,
         paletteSource: _brandColorReference,
         appearanceStyles: const {
@@ -875,6 +906,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       SocialLoginProvider.telegram: _data(
         provider: SocialLoginProvider.telegram,
         displayName: 'Telegram',
+        bundledLogoAsset: 'assets/social/telegram.png',
+        officialAssetSource: 'https://telegram.org/tour/screenshots',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         labelKo: 'Telegram 로그인',
         labelEn: 'Continue with Telegram',
         guidance: SocialLoginGuidance.signInButton,
@@ -905,6 +940,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       ),
       SocialLoginProvider.instagram: _data(
         provider: SocialLoginProvider.instagram,
+        bundledLogoAsset: 'assets/social/instagram.png',
+        officialAssetSource: 'https://www.meta.com/brand/resources/instagram/instagram-brand/',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         displayName: 'Instagram',
         labelKo: 'Instagram 연결',
         labelEn: 'Connect Instagram',
@@ -955,6 +994,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       ),
       SocialLoginProvider.snapchat: _data(
         provider: SocialLoginProvider.snapchat,
+        bundledLogoAsset: 'assets/social/snapchat.png',
+        officialAssetSource: 'https://www.snap.com/brand-guidelines',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         displayName: 'Snapchat',
         labelKo: 'Snapchat 로그인',
         labelEn: 'Log in with Snapchat',
@@ -1016,6 +1059,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       SocialLoginProvider.weibo: _data(
         provider: SocialLoginProvider.weibo,
         displayName: 'Weibo',
+        bundledLogoAsset: 'assets/social/weibo.png',
+        officialAssetSource: 'https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9A%E6%A0%87%E8%AF%86',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         labelKo: 'Weibo 로그인',
         labelEn: 'Continue with Weibo',
         guidance: SocialLoginGuidance.signInButton,
@@ -1048,6 +1095,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       ),
       SocialLoginProvider.qq: _data(
         provider: SocialLoginProvider.qq,
+        bundledLogoAsset: 'assets/social/qq.png',
+        officialAssetSource: 'https://wiki.connect.qq.com/%E8%A7%86%E8%A7%89%E7%B4%A0%E6%9D%90%E4%B8%8B%E8%BD%BD',
+        assetTransformation:
+            'Complete provider PSD composite converted to PNG with identical decoded pixels; no crop or recolor.',
         displayName: 'QQ',
         labelKo: 'QQ 로그인',
         labelEn: 'Continue with QQ',
@@ -1072,6 +1123,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       SocialLoginProvider.epicGames: _data(
         provider: SocialLoginProvider.epicGames,
         displayName: 'Epic Games',
+        bundledLogoAsset: 'assets/social/epicGames.png',
+        officialAssetSource: 'https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/epic-account-services-design-guidelines?lang=en-US',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         labelKo: 'Epic Games 로그인',
         labelEn: 'Continue with Epic Games',
         guidance: SocialLoginGuidance.unverified,
@@ -1138,6 +1193,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       ),
       SocialLoginProvider.zoom: _data(
         provider: SocialLoginProvider.zoom,
+        bundledLogoAsset: 'assets/social/zoom.png',
+        officialAssetSource: 'https://www.zoom.com/en/about/media-kit/',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         displayName: 'Zoom',
         labelKo: 'Zoom 연결',
         labelEn: 'Connect Zoom',
@@ -1150,7 +1209,9 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
             'Confirm assets and permitted use through the Zoom Brand Center or partner channel.',
         limitations:
             'OAuth documentation is not button design guidance, and the portal theme color is not a login color.',
-        backgroundColor: const Color(0xFF0B5CFF),
+        backgroundColor: const Color(0xFFFFFFFF),
+        foregroundColor: const Color(0xFF111111),
+        borderColor: const Color(0xFFDDDDDD),
         paletteSource: _brandColorReference,
       ),
       SocialLoginProvider.kakao: _data(
@@ -1381,6 +1442,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       SocialLoginProvider.tiktok: _data(
         provider: SocialLoginProvider.tiktok,
         displayName: 'TikTok',
+        bundledLogoAsset: 'assets/social/tiktok.png',
+        officialAssetSource: 'https://developers.tiktok.com/doc/getting-started-design-guidelines',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         labelKo: 'TikTok 로그인',
         labelEn: 'Continue with TikTok',
         guidance: SocialLoginGuidance.signInButton,
@@ -1397,6 +1462,10 @@ final Map<SocialLoginProvider, SocialLoginProviderData> _catalog =
       ),
       SocialLoginProvider.notion: _data(
         provider: SocialLoginProvider.notion,
+        bundledLogoAsset: 'assets/social/notion.png',
+        officialAssetSource: 'https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286',
+        assetTransformation:
+            'Complete provider PNG preserved byte-for-byte; no crop, tint, or repadding.',
         displayName: 'Notion',
         labelKo: 'Notion 연결',
         labelEn: 'Connect Notion',

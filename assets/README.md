@@ -2,15 +2,42 @@
 
 Checked and downloaded: 2026-09-30
 
-All 35 providers have a local runtime PNG. Twelve use
-provider-supplied originals preserved under `original/`: eleven use unchanged
-PNGs, plus Spotify's unchanged standalone source PNG and its resized runtime PNG.
+## 2026-10-03 official default replacement
+
+The 16 defaults below replace their earlier Simple Icons runtime files.
+Full PNG canvas and source bytes are preserved unless the transformation is shown.
+Slack light/dark use black/white original PNGs; Steam/Zoom use full wide marks.
+
+| Provider | Runtime | Original | SHA-256 | Transformation |
+| --- | --- | --- | --- | --- |
+| facebook | `assets/social/facebook.png` | `assets/original/facebook/Facebook_Logo_Secondary.png` | `eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57` | Unmodified provider PNG bytes, including full canvas and padding. |
+| instagram | `assets/social/instagram.png` | `assets/original/instagram/Instagram_Glyph_White.png` | `10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61` | Unmodified provider PNG bytes, including full canvas and padding. |
+| snapchat | `assets/social/snapchat.png` | `assets/original/snapchat/Ghost Logo - Primary.png` | `af00b728828930aa570e0cab426d5a50cc7aa308b2c737edfc670f3b0ffbd748` | Unmodified provider PNG bytes, including full canvas and padding. |
+| dropbox | `assets/social/dropbox.png` | `assets/original/dropbox/Glyph_128.png` | `71bce66773bea25502071914721fbe423887b6a72e2e54ed432eeb9c0f40c20a` | Unmodified provider PNG bytes, including full canvas and padding. |
+| notion | `assets/social/notion.png` | `assets/original/notion/notion-logo-block-main.png` | `1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03` | Unmodified provider PNG bytes, including full canvas and padding. |
+| slack | `assets/social/slack.png` | `assets/original/slack/SLA-Slack-icon-white-RGB.png` | `752f153f065f0fe2c8143add10fbf38295cf00cf6b034b5f50b72a90fdb707a7` | Unmodified provider PNG bytes, including full canvas and padding. |
+| qq | `assets/social/qq.png` | `assets/original/qq/03_qq_symbol-native.png` | `1de21f3d78388ce354780c69efc19f5e41244ccf37e29bbed13bbcd3dd4b681f` | Complete official PSD composite converted to PNG with identical decoded pixels; no crop or recolor. |
+| zoom | `assets/social/zoom.png` | `assets/original/zoom/zoom-logo-2025.png` | `f8b5cc5e08ca27af64550b48205b49260299c219599968eec9d22ac7e43a4f90` | Unmodified provider PNG bytes, including full canvas and padding. |
+| steam | `assets/social/steam.png` | `assets/original/steam/logo_steam-about.png` | `cad55a5fde9d3ccb1d64678fad792559af2fcac82cefb9d5188b5c7671954707` | Complete official site SVG rendered at 2x as transparent PNG; no crop or recolor. |
+| discord | `assets/social/discord.png` | `assets/original/discord/Discord-Symbol-White.png` | `64dce9107da58318880721df9d0603c3cee3683a3322bf36f3dedb75edd1c81d` | Unmodified provider PNG bytes, including full canvas and padding. |
+| gitlab | `assets/social/gitlab.png` | `assets/original/gitlab/gitlab-logo-500-rgb.png` | `d56b28d4ad3c65fb4e1a2fe79eee4b821f6e9ab3f01963fa5f1b71ec7c5b10cf` | Unmodified provider PNG bytes, including full canvas and padding. |
+| paypal | `assets/social/paypal.png` | `assets/original/paypal/PayPal-Monogram-FullColor-RGB.png` | `defb3ea3cd1f5ac2548c92ed55d4b6a250691f580eb6583fd6300440d6afeb9e` | Unmodified provider PNG bytes, including full canvas and padding. |
+| telegram | `assets/social/telegram.png` | `assets/original/telegram/Logo.png` | `f91e9d7c30894cb0f00196581d4cc8867dd1139b2b1455de2c58071103475ca8` | Unmodified provider PNG bytes, including full canvas and padding. |
+| weibo | `assets/social/weibo.png` | `assets/original/weibo/LOGO_64x64.png` | `b751df4a287a00eeb88d3484c6436d4192b79288c11da397df0a5c8a7f0d3ae0` | Unmodified provider PNG bytes, including full canvas and padding. |
+| epicGames | `assets/social/epicGames.png` | `assets/original/epicGames/EpicGames_white.png` | `06253f402336d4f0344ba2199371c7516402f8b3723b3f19ffa668bf65e635d3` | Unmodified provider PNG bytes, including full canvas and padding. |
+| tiktok | `assets/social/tiktok.png` | `assets/original/tiktok/TikTok_Icon_Black_Square.png` | `e8013e14350422f54f4b61735d91e232bf02972f6156d979cd82905559f5ee2e` | Unmodified provider PNG bytes, including full canvas and padding. |
+
+
+All 35 providers have a local runtime PNG. Twenty-eight use official originals
+preserved under `original/`: twenty-five use unchanged PNG bytes. Spotify is
+resized proportionally, QQ's complete PSD composite is converted to PNG with
+identical decoded pixels, and Steam's complete official site SVG is rendered
+as transparent PNG without cropping or recoloring.
 GitHub maps directly to the white Invertocat under `original/github/` for
 default/dark and the black original for light; the other default mappings are
-under `social/`. The other 23 providers use transparent 128×128 PNGs rendered from pinned
-Simple Icons SVG sources preserved under `original/simple-icons/`. Slack also
-has a black `slack-light.png` variant rendered from the same pinned SVG for its
-white light appearance. Those
+under `social/`. The other seven providers use transparent 128×128 PNGs rendered from pinned
+Simple Icons SVG sources preserved under `original/simple-icons/`. Slack light
+and dark now use official black and white original PNGs. Those
 community-maintained SVGs are practical provider identifiers, not
 provider-supplied sign-in controls. Complete provider controls that cannot fit
 the package's logo slot remain preserved separately.
@@ -32,7 +59,13 @@ the package's logo slot remain preserved separately.
 | Spotify | `assets/social/spotify.png` | `assets/original/spotify/Spotify_Primary_Logo_RGB_Black.png` | [Spotify Logo and Brand Assets](https://newsroom.spotify.com/media-kit/logo-and-brand-assets/), direct [standalone black icon PNG](https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Black.png), resized without recoloring to 128×128 | source `14113bb619ec259ae51a713e4098038c2a51bc2e65ed5dd97da25aa72702d7a5`; runtime `baa60beb991e4b87d8b0e0e695d8e9cd60d79dddf67c2c0b0848b8b8be8b8cb6` |
 | Bitbucket | `assets/social/bitbucket.png` | `assets/original/bitbucket/Bitbucket_icon.png` | [Bitbucket app-logo archive](https://atlassian.design/assets/599d0f58b052/logos/bitbucket_app.zip), member `Bitbucket/PNG@2x/Bitbucket_icon.png` | `61e96e6984d1c54df8d9707f5f8288b324d033bf82b15a2dc967e6db796c3a85` |
 
-## Remaining 23 Simple Icons-derived runtime assets
+## Historical Simple Icons source inventory
+
+This table records the earlier 23 generated files and their source hashes.
+Only Reddit, PlayStation, VK, Pinterest, Nintendo, Xbox and WeChat still use
+these runtime files. For the replaced sixteen, the current original and hash
+are in the 2026-10-03 replacement table above; old runtime hashes below are
+historical, not the current assets/social bytes.
 
 The source SVG markup is preserved from the pinned URL; the table records each
 canonical download hash, excluding the single trailing LF added to each

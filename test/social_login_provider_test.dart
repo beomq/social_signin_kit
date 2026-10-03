@@ -254,9 +254,25 @@ void main() {
       }
     });
 
-    test('records the exact Simple Icons source for 23 bundled logos', () {
+    test('records the exact Simple Icons source for seven bundled logos', () {
       const providerSupplied = {
         Social.github,
+        Social.facebook,
+        Social.discord,
+        Social.slack,
+        Social.steam,
+        Social.dropbox,
+        Social.gitlab,
+        Social.paypal,
+        Social.telegram,
+        Social.instagram,
+        Social.snapchat,
+        Social.weibo,
+        Social.qq,
+        Social.epicGames,
+        Social.zoom,
+        Social.tiktok,
+        Social.notion,
         Social.microsoft,
         Social.x,
         Social.line,
@@ -281,7 +297,7 @@ void main() {
         Social.epicGames: 'epicgames',
       };
 
-      expect(Social.values.length - providerSupplied.length, 23);
+      expect(Social.values.length - providerSupplied.length, 7);
       for (final provider in Social.values.where(
         (provider) => !providerSupplied.contains(provider),
       )) {
@@ -302,6 +318,22 @@ void main() {
 
     test('separates provider-original provenance for all 35 providers', () {
       const providerOriginals = {
+        Social.facebook,
+        Social.discord,
+        Social.slack,
+        Social.steam,
+        Social.dropbox,
+        Social.gitlab,
+        Social.paypal,
+        Social.telegram,
+        Social.instagram,
+        Social.snapchat,
+        Social.weibo,
+        Social.qq,
+        Social.epicGames,
+        Social.zoom,
+        Social.tiktok,
+        Social.notion,
         Social.github,
         Social.microsoft,
         Social.x,
@@ -484,12 +516,12 @@ void main() {
       final slack = socialLoginProviderData(Social.slack);
 
       final light = slack.appearanceStyle(SocialButtonAppearance.light);
-      expect(light.asset, 'assets/social/slack-light.png');
+      expect(light.asset, 'assets/original/slack/SLA-Slack-icon-black-RGB.png');
       expect(light.logoColor, isNull);
 
       final dark = slack.appearanceStyle(SocialButtonAppearance.dark);
-      expect(dark.asset, isNull);
-      expect(dark.logoColor, const Color(0xFFFFFFFF));
+      expect(dark.asset, 'assets/original/slack/SLA-Slack-icon-white-RGB.png');
+      expect(dark.logoColor, isNull);
     });
   });
 
@@ -620,10 +652,10 @@ void main() {
         Social.spotify: 0xFF1ED760,
         Social.steam: 0xFF000000,
         Social.reddit: 0xFFFF4500,
-        Social.dropbox: 0xFF0061FF,
-        Social.gitlab: 0xFFFC6D26,
+        Social.dropbox: 0xFFFFFFFF,
+        Social.gitlab: 0xFFFFFFFF,
         Social.bitbucket: 0xFF0052CC,
-        Social.paypal: 0xFF002991,
+        Social.paypal: 0xFFFFFFFF,
         Social.telegram: 0xFF26A5E4,
         Social.instagram: 0xFFFF0069,
         Social.wechat: 0xFF07C160,
@@ -636,7 +668,7 @@ void main() {
         Social.playstation: 0xFF0070D1,
         Social.nintendo: 0xFFE60012,
         Social.xbox: 0xFF107C10,
-        Social.zoom: 0xFF0B5CFF,
+        Social.zoom: 0xFFFFFFFF,
         Social.kakao: 0xFFFEE500,
         Social.naver: 0xFF05AC4F,
         Social.google: 0xFFFFFFFF,
@@ -646,6 +678,7 @@ void main() {
       };
       const darkText = {
         Social.spotify, Social.reddit, Social.gitlab,
+        Social.dropbox, Social.paypal, Social.zoom,
         Social.telegram, Social.instagram, Social.wechat, Social.snapchat,
         Social.qq,
       };
@@ -675,7 +708,13 @@ void main() {
         } else {
           expect(data.foregroundColor.toARGB32(),
               darkText.contains(provider) ? 0xFF111111 : 0xFFFFFFFF);
-          expect(data.borderColor, isNull);
+          expect(
+            data.borderColor?.toARGB32(),
+            {Social.dropbox, Social.gitlab, Social.paypal, Social.zoom}
+                    .contains(provider)
+                ? 0xFFDDDDDD
+                : null,
+          );
           expect(data.paletteBasis, SocialLoginPaletteBasis.sourceAdapted);
         }
       }

@@ -21,6 +21,8 @@ flutter:
     - assets/original/x/logo-white.png
     - assets/original/discord/Discord-Symbol-Black.png
     - assets/original/discord/Discord-Symbol-White.png
+    - assets/original/slack/SLA-Slack-icon-black-RGB.png
+    - assets/original/slack/SLA-Slack-icon-white-RGB.png
     - assets/original/linkedin/LI-In-Bug.png
     - assets/original/linkedin/InBug-White.png
     - assets/original/twitch/glitch_flat_black-ops.png

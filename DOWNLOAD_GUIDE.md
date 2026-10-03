@@ -6,6 +6,21 @@
 
 ## 먼저 구분할 것
 
+### 2026-10-03 기본 로고 교체
+
+Facebook, Instagram, Discord, Slack, Dropbox, GitLab, Zoom, Notion, Steam,
+Epic Games, PayPal, Telegram, Weibo, QQ, Snapchat, TikTok의 기본 로고를 공식
+원본 기반으로 교체했습니다. 이전의 획득 차단·기본값 보존 기록은 당시 관찰이며,
+현재 기본 경로는 `download-plan.json`의 `appearanceVariants`와
+`landing/logo-catalog.json`을 따릅니다. 실제 원본·해시·변환은
+`research/official-default-replacement/replacement-receipts.json`에 있습니다.
+Steam은 EPS에서 심볼을 잘라낸 것이 아니라 공식 사이트 전체 마크를 렌더링했고,
+QQ는 독립 심볼 PSD 전체 composite를 같은 픽셀의 PNG로 변환했습니다.
+
+남은 Reddit, PlayStation, VK, Pinterest, Nintendo, Xbox, WeChat은 현재 기본값을
+유지합니다. 승인·계정·실파일 확인 순서는
+`research/official-default-replacement/remaining-seven.md`에 구분했습니다.
+
 로고 작업에는 서로 다른 세 가지 판단이 있다.
 
 1. **다운로드 가능 여부**: 공식 페이지나 공식 CDN에서 파일을 받을 수 있는가.
