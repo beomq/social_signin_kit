@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:social_signin_kit/social_signin_kit.dart';
 
+import 'demo_logo.dart';
 import 'gallery_design.dart';
 
 Future<void> main() async {
@@ -24,10 +25,10 @@ class SocialLoginExampleApp extends StatefulWidget {
 }
 
 class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
+  final _demoAssets = DemoLogoAssetBundle();
   Locale _locale = const Locale('ko');
   SocialButtonShape _shape = SocialButtonShape.pill;
-  SocialButtonAppearance _appearance =
-      SocialButtonAppearance.providerDefault;
+  SocialButtonAppearance _appearance = SocialButtonAppearance.providerDefault;
   Social _selectedProvider = Social.google;
   bool _disabled = false;
   int _activationCount = 0;
@@ -48,6 +49,9 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      builder:
+          (context, child) =>
+              DefaultAssetBundle(bundle: _demoAssets, child: child!),
       home: Scaffold(
         body: SafeArea(
           child: CustomScrollView(
@@ -92,8 +96,8 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
                 GalleryTag(
                   label:
                       _isKorean
-                          ? '35개 프로바이더 · UI 전용'
-                          : '35 providers · UI only',
+                          ? '35개 프로바이더 · 코드 전용 프리셋'
+                          : '35 providers · Code-only presets',
                   foreground: GalleryColors.accent,
                   background: GalleryColors.surface,
                 ),
@@ -114,8 +118,8 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
                   ),
                   child: Text(
                     _isKorean
-                        ? '35개 로고를 패키지 기본값으로 표시하는 UI 프리셋입니다. 인증을 수행하거나 제공자 승인을 보장하지 않습니다.'
-                        : 'These UI presets bundle defaults for all 35 logos. They do not authenticate users or guarantee provider approval.',
+                        ? '색상과 문구를 비교하는 코드 전용 UI 프리셋입니다. 로고 자리는 앱이 제공한 중립 데모 이미지이며 브랜드 로고가 아닙니다. 인증을 수행하지 않습니다.'
+                        : 'Code-only UI presets for comparing colors and labels. Logo slots use an app-supplied neutral demo placeholder, not brand artwork. These buttons do not authenticate users.',
                     style: GalleryTextStyles.bodyLarge,
                   ),
                 ),
@@ -155,8 +159,8 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
                     _isKorean ? '35개 프로바이더 미리보기' : 'All 35 provider previews',
                 description:
                     _isKorean
-                        ? '모든 항목은 logo를 생략한 SocialButton이며 35개 패키지 기본 PNG를 자동으로 사용합니다.'
-                        : 'Every item omits logo and automatically uses one of the 35 bundled PNG defaults.',
+                        ? '모든 SocialButton에 앱 소유 데모 이미지 경로를 logo로 전달합니다. 패키지는 브랜드 이미지를 포함하지 않습니다.'
+                        : 'Every SocialButton receives the app-owned demo image path via logo. The package includes no brand images.',
               ),
               const SizedBox(height: GallerySpace.x6),
               _buildProviderGrid(),
@@ -377,7 +381,9 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
         ),
         const SizedBox(height: GallerySpace.x5),
         Text(
-          data.assetGuidance,
+          _isKorean
+              ? '앱이 제공한 중립 데모 이미지입니다. 실제 서비스에서는 앱 소유 로고를 전달하세요.'
+              : 'This neutral demo image is supplied by the app. Supply your own logo in a real application.',
           style: GalleryTextStyles.body.copyWith(
             color: GalleryColors.onDarkMuted,
           ),
@@ -425,6 +431,7 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
             SocialButton(
               key: const ValueKey<String>('selected-provider-button'),
               social: _selectedProvider,
+              logo: demoLogoAsset,
               onPressed:
                   _disabled ? null : () => _recordActivation(_selectedProvider),
               shape: _shape,
@@ -434,8 +441,8 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
             const SizedBox(height: GallerySpace.x4),
             Text(
               _isKorean
-                  ? '패키지 기본 로고 · 앱 자산은 logo로 교체 가능'
-                  : 'Package default · replaceable with an app asset via logo',
+                  ? '앱 제공 데모 자리표시자 · 브랜드 로고 아님'
+                  : 'App-supplied demo placeholder · not a brand logo',
               textAlign: TextAlign.center,
               style: GalleryTextStyles.small.copyWith(
                 color: GalleryColors.onDarkMuted,
@@ -522,6 +529,7 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
           (social) => SocialButton(
             key: ValueKey<String>('$direction-list-${social.name}'),
             social: social,
+            logo: demoLogoAsset,
             onPressed: _disabled ? null : () => _recordActivation(social),
           ),
         )
@@ -563,8 +571,8 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
               _isKorean ? '실제 목록 위젯과 필 모양' : 'Real list widgets and pill shape',
           description:
               _isKorean
-                  ? '모든 버튼은 logo를 생략하고 각 프로바이더의 패키지 기본 PNG를 자동으로 읽습니다.'
-                  : 'Every button omits logo and automatically loads its provider package PNG.',
+                  ? '목록의 모든 버튼에도 앱이 제공한 동일한 중립 데모 이미지를 logo로 전달합니다.'
+                  : 'Every list button also receives the same app-supplied neutral demo image via logo.',
         ),
         const SizedBox(height: GallerySpace.x6),
         LayoutBuilder(
@@ -624,7 +632,9 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
                     paletteLabel: _paletteLabel,
                     purposeLabel: _purposeLabel,
                     sourceLabel:
-                        _isKorean ? '출처 및 참고자료' : 'Sources and references',
+                        _isKorean
+                            ? '프리셋 참고자료 · 데모 이미지 출처 아님'
+                            : 'Preset references · not demo image sources',
                   ),
                 ),
               )
@@ -766,6 +776,7 @@ class _ProviderCard extends StatelessWidget {
           SocialButton(
             key: ValueKey<String>('provider-button-${provider.name}'),
             social: provider,
+            logo: demoLogoAsset,
             onPressed: disabled ? null : onPressed,
             shape: shape,
             appearance: appearance,
@@ -774,8 +785,8 @@ class _ProviderCard extends StatelessWidget {
           const SizedBox(height: GallerySpace.x3),
           Text(
             locale.languageCode == 'ko'
-                ? '패키지 기본 로고'
-                : 'Package default logo',
+                ? '앱 제공 중립 데모 자리표시자'
+                : 'App-supplied neutral demo placeholder',
             textAlign: TextAlign.center,
             style: GalleryTextStyles.small.copyWith(
               color: GalleryColors.inkFaint,
@@ -793,7 +804,9 @@ class _ProviderCard extends StatelessWidget {
           ),
           const SizedBox(height: GallerySpace.x4),
           Text(
-            data.assetGuidance,
+            locale.languageCode == 'ko'
+                ? '브랜드 로고가 아닌 앱 소유 데모 이미지입니다. 실제 서비스의 로고는 앱에서 제공하세요.'
+                : 'This app-owned demo image is not a brand logo. Supply your application’s own logo for production.',
             style: GalleryTextStyles.body.copyWith(color: GalleryColors.ink),
           ),
           const SizedBox(height: GallerySpace.x3),
@@ -827,6 +840,7 @@ class _ProviderCard extends StatelessWidget {
     );
   }
 }
+
 class _ListSpecimen extends StatelessWidget {
   const _ListSpecimen({
     required this.title,

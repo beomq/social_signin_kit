@@ -36,16 +36,15 @@ SocialLoginButton(
 ```dart
 SocialButton(
   social: Social.google,
+  logo: 'assets/brand/google.png',
   onPressed: startGoogleSignIn,
 )
 ```
 
-현재 API의 `logo`는 `Widget`이 아니라 선택적인 앱 에셋 경로 문자열입니다.
-생략하면 Google은 패키지에 포함된 `assets/social/google.png`를
-`package: 'social_signin_kit'`로 읽으므로 소비 앱 자산 등록이 필요
-없습니다. 기본 자산이 없는 제공자는 미번들 상태 아이콘을 표시합니다.
-
-다른 경로를 유지할 때:
+현재 API의 `logo`는 필수 소비 앱 자산 경로 문자열입니다.
+패키지에는 브랜드 이미지가 없으므로 앱이 파일을 취득하고
+`flutter/assets`에 선언해야 합니다. 커스텀 위젯은 기존
+`SocialLoginButton` API를 사용하세요.
 
 ```dart
 SocialButton(
@@ -62,6 +61,7 @@ SocialButton(
 ```dart
 SocialButton(
   social: Social.microsoft,
+  logo: 'assets/brand/microsoft.png',
   shape: SocialButtonShape.rounded,
   onPressed: startMicrosoftSignIn,
 )
@@ -72,6 +72,7 @@ SocialButton(
 ```dart
 SocialButton(
   social: Social.apple,
+  logo: 'assets/brand/apple.png',
   shape: SocialButtonShape.circle,
   onPressed: startAppleSignIn,
 )
@@ -87,6 +88,7 @@ SocialButton(
 ```dart
 SocialButton(
   social: Social.naver,
+  logo: 'assets/brand/naver.png',
   size: 56,
   onPressed: startNaverSignIn,
 )
@@ -125,10 +127,12 @@ SocialButtonList.vertical(
   items: [
     SocialButton(
       social: Social.google,
+      logo: 'assets/brand/google.png',
       onPressed: startGoogleSignIn,
     ),
     SocialButton(
       social: Social.apple,
+      logo: 'assets/brand/apple.png',
       onPressed: startAppleSignIn,
     ),
   ],
@@ -154,6 +158,7 @@ SocialButtonList.vertical(
 ```dart
 SocialButton(
   social: Social.notion,
+  logo: 'assets/brand/notion.png',
   onPressed: isSigningIn ? null : startNotionSignIn,
 )
 ```
@@ -169,7 +174,7 @@ SocialButton(
 - `provider`를 `social`로 바꿉니다.
 - `SocialLoginProvider`를 `Social`로 바꿉니다.
 - `rectangle`을 `rounded`로 바꿉니다.
-- `Image.asset` 위젯 대신 문자열 경로를 전달하거나 기본 경로를 준비합니다.
+- `Image.asset` 위젯 대신 앱에서 선언한 필수 문자열 경로를 전달합니다.
 - 반복된 세로와 가로 레이아웃을 목록 API로 바꿀지 결정합니다.
 - 비활성, locale, 접근성 이름, 콜백을 실제 화면에서 확인합니다.
 - 앱의 관련 테스트와 `fvm flutter analyze`를 실행합니다.

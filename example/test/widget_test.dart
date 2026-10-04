@@ -1,10 +1,29 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:social_signin_kit/social_signin_kit.dart';
+import 'package:social_signin_kit_example/demo_logo.dart';
 import 'package:social_signin_kit_example/gallery_design.dart';
 import 'package:social_signin_kit_example/main.dart';
 
 void main() {
+  testWidgets('consumer demo bundle supplies a decodable neutral PNG', (
+    tester,
+  ) async {
+    await tester.runAsync(() async {
+      final data = await DemoLogoAssetBundle().load(demoLogoAsset);
+      final codec = await ui.instantiateImageCodec(
+        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
+      );
+      final frame = await codec.getNextFrame();
+      expect(frame.image.width, 16);
+      expect(frame.image.height, 16);
+      frame.image.dispose();
+      codec.dispose();
+    });
+  });
+
   test('gallery theme uses the bundled Korean font family', () {
     final theme = buildGalleryTheme();
 
@@ -60,12 +79,9 @@ void main() {
     );
     expect(selected.social, Social.google);
     expect(selected.shape, SocialButtonShape.pill);
-    expect(
-      selected.appearance,
-      SocialButtonAppearance.providerDefault,
-    );
+    expect(selected.appearance, SocialButtonAppearance.providerDefault);
     expect(selected.locale, const Locale('ko'));
-    expect(selected.logo, isNull);
+    expect(selected.logo, demoLogoAsset);
     expect(selected.onPressed, isNotNull);
     expect(
       tester
@@ -73,7 +89,7 @@ void main() {
             find.byKey(const ValueKey<String>('provider-button-notion')),
           )
           .logo,
-      isNull,
+      demoLogoAsset,
     );
     for (final provider in Social.values) {
       expect(
@@ -82,9 +98,26 @@ void main() {
               find.byKey(ValueKey<String>('provider-button-${provider.name}')),
             )
             .logo,
-        isNull,
+        demoLogoAsset,
       );
     }
+    for (final button in tester.widgetList<SocialButton>(
+      find.byType(SocialButton),
+    )) {
+      expect(button.logo, demoLogoAsset);
+    }
+    final selectedImage = find.descendant(
+      of: find.byKey(const ValueKey<String>('selected-provider-button')),
+      matching: find.byType(Image),
+    );
+    final image = tester.widget<Image>(selectedImage);
+    final assetImage = image.image as AssetImage;
+    expect(assetImage.assetName, demoLogoAsset);
+    expect(assetImage.package, isNull);
+    expect(
+      DefaultAssetBundle.of(tester.element(selectedImage)),
+      isA<DemoLogoAssetBundle>(),
+    );
     expect(
       tester
           .widget<Text>(find.byKey(const ValueKey<String>('callback-count')))

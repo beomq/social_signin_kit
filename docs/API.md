@@ -8,8 +8,8 @@
 ```dart
 SocialButton(
   social: Social.notion,
+  logo: 'assets/brand/notion.png',
   onPressed: startNotionSignIn,
-  logo: 'assets/social/notion.png',
   shape: SocialButtonShape.rounded,
   appearance: SocialButtonAppearance.providerDefault,
   size: 48,
@@ -22,7 +22,8 @@ SocialButton(
 | --- | --- | --- |
 | `social` | `Social` | 표시할 제공자, 필수 |
 | `onPressed` | `VoidCallback?` | 앱의 인증 진입 콜백, `null`이면 비활성 |
-| `logo` | `String?` | 패키지 기본 로고를 덮어쓸 소비 앱 에셋 경로 |
+| `logo` | `String` | 필수 소비 앱 이미지 자산 경로 |
+| `logoAspectRatio` | `double` | 원본 너비/높이 비율, 기본 1; 원형은 정사각형 슬롯 |
 | `shape` | `SocialButtonShape?` | `rounded`, `pill`, `circle` |
 | `appearance` | `SocialButtonAppearance?` | `providerDefault`, `light`, `dark` |
 | `size` | `double?` | 버튼 높이, `circle`에서는 지름 |
@@ -30,10 +31,9 @@ SocialButton(
 | `label` | `String?` | 화면과 기본 접근성 이름에 사용할 앱 소유 문구 |
 | `semanticLabel` | `String?` | 화면 문구와 다른 접근성 이름이 필요할 때 사용 |
 
-단독 버튼에서 생략한 값은 패키지 기본값을 사용합니다.
+`logo`는 필수 소비 앱 자산 경로이며 자동 선택·재색칠하지 않습니다.
+단독 버튼의 선택 인자를 생략하면 다음 기본값을 사용합니다.
 
-- `logo`: 35개 제공자의 패키지 번들 PNG. 지원 외형에 맞는 변형을 자동 선택하며
-  명시적 앱 자산 경로를 전달하면 그 경로를 유지합니다.
 - `shape`: `SocialButtonShape.rounded`
 - `appearance`: `SocialButtonAppearance.providerDefault`
 - `size`: `48`
@@ -85,10 +85,7 @@ SocialButtonAppearance.dark
 Spotify, Reddit, GitLab, Bitbucket, Telegram, Weibo, Kakao, Naver,
 Google, Apple은 `light`와 `dark`를 지원합니다. PayPal은 `light`만
 지원하며 나머지 16개는 `providerDefault`만 지원합니다.
-GitHub는 default/dark에 공식 White Invertocat PNG를, light에 공식 Black
-Invertocat PNG를 `assets/original/github/`에서 직접 선택합니다.
-Apple light는 공식 `color=white` 생성 endpoint의 검은 글리프·흰 컨트롤
-원본을 사용하며 기존 검정 PNG를 반전하거나 색칠하지 않습니다.
+로고는 외형과 별개이며, 앱에서 해당 모드에 사용할 파일을 직접 선택합니다.
 지원하지 않는 제공자에 명시해도 검증되지 않은 팔레트를 만들지 않고
 `providerDefault`로 결정됩니다. 단일 버튼의 명시값은 목록의 값을 덮어씁니다.
 
@@ -123,10 +120,12 @@ SocialButtonList.vertical(
   items: [
     SocialButton(
       social: Social.google,
+      logo: 'assets/brand/google.png',
       onPressed: startGoogleSignIn,
     ),
     SocialButton(
       social: Social.apple,
+      logo: 'assets/brand/apple.png',
       onPressed: startAppleSignIn,
     ),
   ],
@@ -148,10 +147,12 @@ SocialButtonList.horizontal(
   items: [
     SocialButton(
       social: Social.google,
+      logo: 'assets/brand/google.png',
       onPressed: startGoogleSignIn,
     ),
     SocialButton(
       social: Social.apple,
+      logo: 'assets/brand/apple.png',
       onPressed: startAppleSignIn,
     ),
   ],
@@ -198,37 +199,6 @@ epicGames, playstation, nintendo, xbox, zoom, kakao, naver, google,
 apple, tiktok, notion
 ```
 
-검토된 기본 자산은 `socialLoginProviderData(social).bundledLogoAsset`으로
-확인할 수 있습니다. 35개 모두 경로가 있으며 `hasBundledLogo`는 모두
-`true`입니다. GitHub 기본 경로는
-`assets/original/github/GitHub_Invertocat_White.png`이고 나머지는
-`assets/social/<id>.png`입니다. 원본 출처 여부인 `assetOfficial`과 번들
-존재 여부는 별개이며, 출처가 공식이어도 사용·재배포 권한을 뜻하지 않습니다.
-
-## 책임 경계
-
-패키지가 하는 일:
-
-- 제공자별 공통 UI 프리셋 렌더링
-- locale에 맞는 기본 레이블 결정
-- 활성, hover, focus, pressed, disabled 스타일 적용
-- `onPressed` 호출
-
-소비 앱이 하는 일:
-
-- 미번들 제공자의 로고를 쓸 경우 자산 준비와 `pubspec.yaml` 등록
-- OAuth, OpenID 또는 제공자 SDK 연결
-- 로딩, 오류, 재시도, 중복 요청 방지
-- 토큰과 사용자 상태 관리
-- 최신 브랜드 규칙과 자산 사용 권한 확인
-
-## 기존 API 호환
-
-현재 공개 export에는 `SocialLoginButton`, `SocialLoginProvider`,
-`SocialLoginButtonShape`도 호환 API로 남아 있습니다. 새 코드는 편의 API인
-`SocialButton`, `Social`, `SocialButtonShape`를 사용하세요. 기존 코드는
-즉시 깨지지 않지만 새 목록과 문자열 로고 경로 기능을 쓰려면
-[마이그레이션](MIGRATION.md)을 참고하세요.
-
-관련 문서: [로컬라이제이션](LOCALIZATION.md),
-[에셋](ASSETS.md), [상태와 접근성](STATES.md)
+패키지는 브랜드 이미지와 번들 로고 메타데이터를 배포하지 않습니다.
+`SocialLoginProviderData`는 제공자 문구·팔레트·지원 근거를 제공합니다.
+앱에서 로고를 취득하고 자산 선언·사용 조건을 확인하세요.

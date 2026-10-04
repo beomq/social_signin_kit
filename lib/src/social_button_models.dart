@@ -24,22 +24,11 @@ final class SocialButtonAppearanceStyle {
     required this.backgroundColor,
     required this.foregroundColor,
     this.borderColor,
-    this.asset,
-    this.logoColor,
-    this.logoBackgroundColor,
   });
 
   final Color backgroundColor;
   final Color foregroundColor;
   final Color? borderColor;
-  final String? asset;
-
-  /// Runtime treatment for a package-adapted monochrome source.
-  final Color? logoColor;
-
-  /// Required backing behind a multicolor logo, such as Google's G.
-  final Color? logoBackgroundColor;
-
 }
 
 final class SocialButtonCapabilities {
@@ -71,7 +60,8 @@ final class SocialButtonCapabilities {
 
   SocialButtonAppearance effectiveAppearance(
     SocialButtonAppearance requestedAppearance,
-  ) => appearances.contains(requestedAppearance)
-      ? requestedAppearance
-      : SocialButtonAppearance.providerDefault;
+  ) =>
+      appearances.contains(requestedAppearance)
+          ? requestedAppearance
+          : SocialButtonAppearance.providerDefault;
 }

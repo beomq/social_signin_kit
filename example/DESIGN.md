@@ -102,13 +102,16 @@ desktop gutters. The document is the sole vertical scroll owner.
 - Layout: repeated card-grid item.
 
 ### ProviderAsset
-- Structure: every preview omits `logo` and exercises the package default.
-- States: Google, Apple, Kakao, Naver, and LINE render reviewed
-  provider-supplied PNGs; other providers render the explicit unbundled marker.
+- Structure: every preview passes the consumer-owned `demoLogoAsset` path to
+  `SocialButton.logo`, exercising the required caller asset API.
+- States: all providers use the same neutral square demo placeholder, never
+  brand artwork. `DemoLogoAssetBundle` supplies its embedded PNG bytes inside
+  the gallery; other assets, including NotoSansKR, delegate to `rootBundle`.
 - Accessibility: the logo/status slot is excluded from semantics because the
   button label remains the accessible name.
-- Provenance: package asset URLs, source archive members, byte counts, and
-  hashes are recorded in `../assets/README.md`.
+- Provenance: the example creates the neutral PNG in `lib/demo_logo.dart`.
+  Provider reference links describe code presets, not image-file origins.
+  Real consuming applications declare their own logos under `flutter/assets`.
 - Layout: fixed package-owned slot derived from the common button size.
 
 ### SocialButtonListSpecimens

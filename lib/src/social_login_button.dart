@@ -10,15 +10,16 @@ final _reportedAppearanceFallbacks = <(Social, SocialButtonAppearance)>{};
 
 /// A UI-only sign-in button. The application owns the callback.
 ///
-/// The provider's bundled package logo is used by default. An explicit [logo]
-/// always loads from the consuming application's asset bundle.
+/// The required [logo] loads from the consuming application's asset bundle.
+/// This package does not include or redistribute provider logos.
 /// Explicit settings override the enclosing [SocialButtonList].
 class SocialButton extends StatelessWidget {
   const SocialButton({
     super.key,
     required this.social,
     required this.onPressed,
-    this.logo,
+    required this.logo,
+    this.logoAspectRatio = 1,
     this.shape,
     this.appearance,
     this.size,
@@ -29,7 +30,10 @@ class SocialButton extends StatelessWidget {
 
   final Social social;
   final VoidCallback? onPressed;
-  final String? logo;
+  final String logo;
+
+  /// Width divided by height of the caller-supplied logo. Circles stay square.
+  final double logoAspectRatio;
 
   /// Null inherits the list shape, then defaults to [SocialButtonShape.rounded].
   final SocialButtonShape? shape;
@@ -51,7 +55,11 @@ class SocialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    assert(logo == null || logo!.trim().isNotEmpty, 'logo must not be blank.');
+    assert(logo.trim().isNotEmpty, 'logo must not be blank.');
+    assert(
+      logoAspectRatio.isFinite && logoAspectRatio > 0,
+      'logoAspectRatio must be positive and finite.',
+    );
     final defaults = _SocialButtonDefaults.maybeOf(context);
     final data = socialLoginProviderData(social);
     final requestedShape =
@@ -76,42 +84,15 @@ class SocialButton extends StatelessWidget {
       }
       return true;
     }());
-    final appearanceStyle = data.appearanceStyle(effectiveAppearance);
-    final usesBundledLogo = logo == null;
-    final bundledPath =
-        appearanceStyle.asset ?? data.bundledLogoAsset;
-    final path = logo ?? bundledPath;
-    Widget logoWidget = Image.asset(
-      path,
-      key: ValueKey(path),
-      package: usesBundledLogo ? 'social_signin_kit' : null,
+    final logoWidget = Image.asset(
+      logo,
+      key: ValueKey(logo),
       fit: BoxFit.contain,
-      color:
-          onPressed == null && social == Social.line && usesBundledLogo
-              ? const Color(0x331E1E1E)
-              : usesBundledLogo
-              ? appearanceStyle.logoColor
-              : null,
-      colorBlendMode:
-          onPressed == null && social == Social.line && usesBundledLogo
-              ? BlendMode.srcIn
-              : usesBundledLogo && appearanceStyle.logoColor != null
-              ? BlendMode.srcIn
-              : null,
       excludeFromSemantics: true,
-      errorBuilder: (context, error, stackTrace) => _LogoAssetError(
-        path: path,
-        bundled: usesBundledLogo,
-        error: error,
-        stackTrace: stackTrace,
-      ),
+      errorBuilder:
+          (context, error, stackTrace) =>
+              _LogoAssetError(path: logo, error: error, stackTrace: stackTrace),
     );
-    if (appearanceStyle.logoBackgroundColor != null) {
-      logoWidget = ColoredBox(
-        color: appearanceStyle.logoBackgroundColor!,
-        child: logoWidget,
-      );
-    }
     return _SocialButton(
       provider: social,
       logo: logoWidget,
@@ -124,6 +105,7 @@ class SocialButton extends StatelessWidget {
       semanticLabel: semanticLabel,
       expand: defaults?.expand ?? true,
       usesProviderLogoLayout: true,
+      logoAspectRatio: logoAspectRatio,
     );
   }
 }
@@ -179,32 +161,42 @@ class SocialButtonList extends StatelessWidget {
       size: size,
       locale: locale,
       expand: _vertical,
-      child: _vertical
-          ? LayoutBuilder(
-              builder: (context, constraints) => SizedBox(
-                width: constraints.hasBoundedWidth ? constraints.maxWidth : 280,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    for (var index = 0; index < items.length; index++) ...[
-                      if (index > 0) SizedBox(height: spacing),
-                      items[index],
-                    ],
-                  ],
-                ),
+      child:
+          _vertical
+              ? LayoutBuilder(
+                builder:
+                    (context, constraints) => SizedBox(
+                      width:
+                          constraints.hasBoundedWidth
+                              ? constraints.maxWidth
+                              : 280,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          for (
+                            var index = 0;
+                            index < items.length;
+                            index++
+                          ) ...[
+                            if (index > 0) SizedBox(height: spacing),
+                            items[index],
+                          ],
+                        ],
+                      ),
+                    ),
+              )
+              : LayoutBuilder(
+                builder:
+                    (context, constraints) => SizedBox(
+                      width: constraints.hasBoundedWidth ? null : 280,
+                      child: Wrap(
+                        spacing: spacing,
+                        runSpacing: spacing,
+                        children: items,
+                      ),
+                    ),
               ),
-            )
-          : LayoutBuilder(
-              builder: (context, constraints) => SizedBox(
-                width: constraints.hasBoundedWidth ? null : 280,
-                child: Wrap(
-                  spacing: spacing,
-                  runSpacing: spacing,
-                  children: items,
-                ),
-              ),
-            ),
     );
   }
 }
@@ -266,10 +258,9 @@ class SocialLoginButton extends StatelessWidget {
         shape == SocialLoginButtonShape.circle
             ? SocialButtonShape.circle
             : SocialButtonShape.rounded;
-    final effectiveShape =
-        socialLoginProviderData(provider).capabilities.effectiveShape(
-          requestedShape,
-        );
+    final effectiveShape = socialLoginProviderData(
+      provider,
+    ).capabilities.effectiveShape(requestedShape);
     return _SocialButton(
       provider: provider,
       logo: logo,
@@ -299,6 +290,7 @@ class _SocialButton extends StatelessWidget {
     required this.semanticLabel,
     required this.expand,
     required this.usesProviderLogoLayout,
+    this.logoAspectRatio = 1,
   });
 
   final Social provider;
@@ -312,6 +304,7 @@ class _SocialButton extends StatelessWidget {
   final String? semanticLabel;
   final bool expand;
   final bool usesProviderLogoLayout;
+  final double logoAspectRatio;
 
   @override
   Widget build(BuildContext context) {
@@ -347,11 +340,7 @@ class _SocialButton extends StatelessWidget {
                     _LogoSlot(
                       logo: logo,
                       size: spec.logoSize ?? size / 2,
-                      aspectRatio: switch (provider) {
-                        Social.zoom => 1426 / 321,
-                        Social.steam => 278 / 84,
-                        _ => 1,
-                      },
+                      aspectRatio: logoAspectRatio,
                     ),
                     if (spec.separatorColor != null) ...[
                       SizedBox(width: spec.logoLabelSpacing),
@@ -438,11 +427,10 @@ class _SocialButton extends StatelessWidget {
     // so all disabled colors remain opaque and independent of the app surface.
     // These derived states are package presets, not provider specifications.
     // The caller-owned logo is never tinted or faded.
-    final compositedForeground =
-        Color.alphaBlend(
-          appearanceStyle.foregroundColor,
-          appearanceStyle.backgroundColor,
-        );
+    final compositedForeground = Color.alphaBlend(
+      appearanceStyle.foregroundColor,
+      appearanceStyle.backgroundColor,
+    );
     final disabledBackground =
         spec.disabledBackground ??
         Color.lerp(
@@ -469,15 +457,16 @@ class _SocialButton extends StatelessWidget {
     final overlayBase =
         appearanceStyle.foregroundColor.computeLuminance() > 0.5
             ? (appearanceStyle.backgroundColor.computeLuminance() < 0.02
-                ? Colors.white : Colors.black)
+                ? Colors.white
+                : Colors.black)
             : (appearanceStyle.backgroundColor.computeLuminance() < 0.8
-                ? Colors.white : Colors.black);
+                ? Colors.white
+                : Colors.black);
     Color foregroundFor(Set<WidgetState> states) {
       if (states.contains(WidgetState.disabled)) {
         return disabledForeground;
       }
-      if (states.contains(WidgetState.pressed) &&
-          spec.pressedOpacity != null) {
+      if (states.contains(WidgetState.pressed) && spec.pressedOpacity != null) {
         return appearanceStyle.foregroundColor.withValues(
           alpha: spec.pressedOpacity!,
         );
@@ -492,29 +481,24 @@ class _SocialButton extends StatelessWidget {
 
     return ButtonStyle(
       elevation: const WidgetStatePropertyAll(0),
-      backgroundColor: WidgetStateProperty.resolveWith(
-        (states) {
-          if (states.contains(WidgetState.disabled)) {
-            return disabledBackground;
-          }
-          if (states.contains(WidgetState.pressed) &&
-              spec.pressedOpacity != null) {
-            return appearanceStyle.backgroundColor.withValues(
-              alpha: spec.pressedOpacity!,
-            );
-          }
-          if (states.contains(WidgetState.hovered) &&
-              spec.hoverOpacity != null) {
-            return appearanceStyle.backgroundColor.withValues(
-              alpha: spec.hoverOpacity!,
-            );
-          }
-          return appearanceStyle.backgroundColor;
-        },
-      ),
-      foregroundColor: WidgetStateProperty.resolveWith(
-        foregroundFor,
-      ),
+      backgroundColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.disabled)) {
+          return disabledBackground;
+        }
+        if (states.contains(WidgetState.pressed) &&
+            spec.pressedOpacity != null) {
+          return appearanceStyle.backgroundColor.withValues(
+            alpha: spec.pressedOpacity!,
+          );
+        }
+        if (states.contains(WidgetState.hovered) && spec.hoverOpacity != null) {
+          return appearanceStyle.backgroundColor.withValues(
+            alpha: spec.hoverOpacity!,
+          );
+        }
+        return appearanceStyle.backgroundColor;
+      }),
+      foregroundColor: WidgetStateProperty.resolveWith(foregroundFor),
       overlayColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
           return null;
@@ -538,26 +522,20 @@ class _SocialButton extends StatelessWidget {
           return BorderSide(color: disabledBorder);
         }
         if (states.contains(WidgetState.focused)) {
-          return BorderSide(
-            color: appearanceStyle.foregroundColor,
-            width: 2,
-          );
+          return BorderSide(color: appearanceStyle.foregroundColor, width: 2);
         }
         final borderColor = appearanceStyle.borderColor;
         return borderColor == null
             ? BorderSide.none
             : BorderSide(color: borderColor);
       }),
-      shape: WidgetStatePropertyAll(
-        switch (shape) {
-          SocialButtonShape.circle => const CircleBorder(),
-          SocialButtonShape.pill => const StadiumBorder(),
-          SocialButtonShape.rounded =>
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(spec.cornerRadius),
-            ),
-        },
-      ),
+      shape: WidgetStatePropertyAll(switch (shape) {
+        SocialButtonShape.circle => const CircleBorder(),
+        SocialButtonShape.pill => const StadiumBorder(),
+        SocialButtonShape.rounded => RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(spec.cornerRadius),
+        ),
+      }),
       textStyle: WidgetStateProperty.resolveWith(
         (states) => themeTextStyle.copyWith(
           fontSize: spec.fontSize,
@@ -580,8 +558,7 @@ class _SocialButton extends StatelessWidget {
             ? Size.square(size)
             : Size(0, size < spec.minimumHeight ? spec.minimumHeight : size),
       ),
-      fixedSize:
-          isCircle ? WidgetStatePropertyAll(Size.square(size)) : null,
+      fixedSize: isCircle ? WidgetStatePropertyAll(Size.square(size)) : null,
       maximumSize: const WidgetStatePropertyAll(Size.infinite),
       visualDensity: VisualDensity.standard,
       tapTargetSize: MaterialTapTargetSize.padded,
@@ -719,9 +696,7 @@ _ProviderButtonSpec _buttonSpec(
     logoSize: 24,
     logoLabelSpacing: 12,
   ),
-  _ => _ProviderButtonSpec(
-    logoSize: usesProviderLogoLayout ? 24 : null,
-  ),
+  _ => _ProviderButtonSpec(logoSize: usesProviderLogoLayout ? 24 : null),
 };
 
 class _LogoSlot extends StatelessWidget {
@@ -736,12 +711,11 @@ class _LogoSlot extends StatelessWidget {
   final double aspectRatio;
 
   @override
-  Widget build(BuildContext context) =>
-      SizedBox(
-        width: size * aspectRatio,
-        height: size,
-        child: ExcludeSemantics(child: logo),
-      );
+  Widget build(BuildContext context) => SizedBox(
+    width: size * aspectRatio,
+    height: size,
+    child: ExcludeSemantics(child: logo),
+  );
 }
 
 // Report each failed image once, while keeping the visual failure inside the
@@ -750,13 +724,11 @@ class _LogoSlot extends StatelessWidget {
 class _LogoAssetError extends StatefulWidget {
   const _LogoAssetError({
     required this.path,
-    required this.bundled,
     required this.error,
     required this.stackTrace,
   });
 
   final String path;
-  final bool bundled;
   final Object error;
   final StackTrace? stackTrace;
 
@@ -779,23 +751,23 @@ class _LogoAssetErrorState extends State<_LogoAssetError> {
     }
   }
 
-  void _report() => FlutterError.reportError(FlutterErrorDetails(
-    exception: FlutterError.fromParts([
-      ErrorSummary('Unable to load SocialButton logo asset: "${widget.path}".'),
-      ErrorDescription(
-        widget.bundled
-            ? 'The package-declared logo at "${widget.path}" could not be '
-                'loaded. Re-run flutter pub get and report the package asset '
-                'failure.'
-            : 'Expected an image at "${widget.path}" in the application asset '
-                'bundle. Add and declare it under flutter/assets in '
-                'pubspec.yaml, or pass a different logo path.',
-      ),
-      DiagnosticsProperty<Object>('Asset error', widget.error),
-    ]),
-    stack: widget.stackTrace,
-    library: 'social_signin_kit',
-  ));
+  void _report() => FlutterError.reportError(
+    FlutterErrorDetails(
+      exception: FlutterError.fromParts([
+        ErrorSummary(
+          'Unable to load SocialButton logo asset: "${widget.path}".',
+        ),
+        ErrorDescription(
+          'Expected an image at "${widget.path}" in the application asset '
+          'bundle. Add and declare it under flutter/assets in '
+          'pubspec.yaml, or pass a different logo path.',
+        ),
+        DiagnosticsProperty<Object>('Asset error', widget.error),
+      ]),
+      stack: widget.stackTrace,
+      library: 'social_signin_kit',
+    ),
+  );
 
   @override
   Widget build(BuildContext context) => Tooltip(

@@ -1,20 +1,16 @@
 # social_signin_kit
 
 Flutter 앱에서 35개 소셜 서비스의 로그인 버튼을 일관된 API로 표시하는
-미게시 UI 패키지입니다. 버튼을 누르면 앱이 전달한 콜백만 실행합니다.
+UI 패키지입니다. 버튼을 누르면 앱이 전달한 콜백만 실행합니다.
 OAuth, 토큰, 네트워크 요청, 로딩 상태는 앱에서 관리합니다.
 
-[랜딩페이지](https://beomq.github.io/social_signin_kit/landing/index.html) · [GitHub 저장소](https://github.com/beomq/social_signin_kit) · [pub.dev 게시 예정 주소](https://pub.dev/packages/social_signin_kit)
-pub.dev에는 아직 게시되지 않았으므로 예정 링크는 현재 설치 가능한 릴리스를 뜻하지 않습니다.
+[랜딩페이지](https://beomq.github.io/social_signin_kit/landing/index.html) · [GitHub 저장소](https://github.com/beomq/social_signin_kit) · [pub.dev](https://pub.dev/packages/social_signin_kit)
 
 > 이 패키지의 색상, 모양, 상태 스타일은 공식 인증을 뜻하지 않습니다.
-> 35개 제공자 모두 정적 PNG를 포함하지만 출처가 다릅니다. 공식 원본 기반은
-> 28종이며, 25종은 PNG 바이트 그대로 사용합니다. Spotify는 축소, QQ는 PSD→PNG,
-> Steam은 전체 공식 사이트 SVG→PNG를 적용합니다. 나머지 7종은 고정된
-> Simple Icons 기본값입니다. `official`은 파일 출처만 뜻하며 제공자 승인이나
-> 재배포 허가를 뜻하지 않습니다. 출시 전
-> [제공자 자산 가이드](docs/PROVIDER_GUIDE.md)와 각 제공자의 최신 규칙을
-> 확인하세요.
+> 패키지는 35개 제공자의 UI 스타일·한국어/영어 문구만 제공합니다.
+> 브랜드 로고 이미지를 포함하지 않습니다. 앱에서 사용 권한을 확인한
+> 이미지 경로를 필수 `logo`로 전달하세요. 외형은 패키지 프리셋이며
+> 제공자의 승인된 로그인 컨트롤이나 인증 구현을 보장하지 않습니다.
 
 ## 로그인 화면 선택기
 
@@ -33,9 +29,8 @@ pub.dev에는 아직 게시되지 않았으므로 예정 링크는 현재 설치
 - 소비 앱의 명시적 로고 경로가 포함된 Dart 코드
 - 에이전트용 작업 지시 텍스트와 JSON 매니페스트
 
-내보낸 전달문은 현재 앱에서 이미 사용할 수 있는 이 미게시 패키지 의존성을
-찾도록 지시합니다. pub.dev 버전이나 게시되지 않은 GitHub URL을 만들지
-않습니다. 또한 각 로고의 출처 페이지, canonical 다운로드 URL, 원본 형식,
+내보낸 전달문은 현재 앱에서 이미 사용할 수 있는 패키지 의존성을
+찾도록 지시합니다. 존재하지 않는 버전이나 GitHub URL을 만들지 않습니다. 또한 각 로고의 출처 페이지, canonical 다운로드 URL, 원본 형식,
 SHA-256, 라이선스, 공식/서드파티 구분, 저장 경로를 포함합니다.
 카탈로그의 `archiveMember`·`archiveSha256`과
 `rasterization { color, width, height }`가 있으면 그대로 보존하며,
@@ -58,20 +53,14 @@ locale을 자동으로 상속하려면 통합할 때 이 명시적 `locale` 인�
 
 ## 빠른 시작
 
-pub.dev에는 아직 게시되지 않았습니다. 소비 앱의 `pubspec.yaml`에 공개 Git
-저장소 의존성을 추가합니다.
+소비 앱의 `pubspec.yaml`에 패키지 의존성을 추가합니다.
 
 ```yaml
 dependencies:
-  social_signin_kit:
-    git:
-      url: https://github.com/beomq/social_signin_kit.git
-      ref: main
+  social_signin_kit: ^0.1.0
 ```
 
-`main`은 첫 설치용이며 변경될 수 있습니다. 재현 가능한 설치가 필요하면
-`ref`를 검증한 커밋 SHA 또는 실제로 존재하는 릴리스 태그로 고정하세요.
-로컬 clone을 사용하려면 위 Git 항목 대신 아래 경로 의존성을 사용합니다.
+로컬 clone을 사용하려면 위 버전 항목 대신 아래 경로 의존성을 사용합니다.
 `/absolute/path/to/social_signin_kit`은 실제 clone 경로로 바꾸세요.
 앱의 형제 디렉터리에 둘 필요는 없습니다.
 
@@ -89,45 +78,26 @@ fvm flutter pub get
 
 이 패키지를 추가하려고 앱의 Flutter 또는 Dart SDK 제약을 올리지 마세요.
 
-## 기본 로고
+## 앱에서 로고 제공하기
 
-`logo`를 생략하면 별도 앱 자산 설정 없이 패키지가 35개 제공자별
-번들 PNG를 사용합니다. 이 중 제공자 원본 12개는 다음과
-같습니다.
+`SocialButton.logo`는 필수 소비 앱 이미지 자산 경로입니다. 앱의
+`pubspec.yaml`에 선언하며 패키지 자산 경로나 자동 로고 대체가 없습니다.
 
-| 제공자 | 패키지 자산 |
-| --- | --- |
-| Google | `assets/social/google.png` |
-| Apple | `assets/social/apple.png` |
-| Microsoft | `assets/social/microsoft.png` |
-| Kakao | `assets/social/kakao.png` |
-| Naver | `assets/social/naver.png` |
-| LINE | `assets/social/line.png` |
-| X | `assets/social/x.png` |
-| LinkedIn | `assets/social/linkedin.png` |
-| Twitch | `assets/social/twitch.png` |
-| Spotify | `assets/social/spotify.png` |
-| Bitbucket | `assets/social/bitbucket.png` |
-| GitHub | `assets/original/github/GitHub_Invertocat_White.png` |
-
-Notion을 포함한 나머지 23개 기본값은 고정된 Simple Icons SVG를
-`foreground` 색상의 투명 128×128 PNG로 빌드한 패키지 기본값입니다.
-Simple Icons 배포 파일은 제공자 원본이나 공식 로그인 컨트롤이 아니며,
-저장소 라이선스와 개별 상표 조건은 별도로 확인해야 합니다. 앱에서 사용
-권한을 확인한 다른 자산이 있다면 `logo`에 소비 앱의 문자열 에셋 경로를
-전달할 수 있습니다.
-
-```dart
-SocialButton(
-  social: Social.notion,
-  logo: 'assets/brand/notion.png',
-  onPressed: startNotionSignIn,
-)
+```yaml
+flutter:
+  assets:
+    - assets/brand/
 ```
 
-명시적 `logo`는 패키지 기본값보다 항상 우선하며 소비 앱 자산으로
-해석됩니다. 지원 근거와 원본 해시는 [에셋 가이드](docs/ASSETS.md)와
-[자산 매니페스트](assets/README.md)를 참고하세요.
+패키지는 로고를 재색칠·자르지 않으며 `BoxFit.contain`으로 표시합니다.
+라이트·다크 모드에서 필요한 파일을 앱이 직접 선택하세요. 가로 마크는
+`logoAspectRatio`에 원본 너비/높이를 전달하면 일반 버튼에서 비율을 유지합니다.
+기본값은 1이고 원형 버튼은 정사각형 슬롯 안에 전체 이미지를 표시합니다.
+커스텀 위젯은 `SocialLoginButton(logo: widget, ...)`로 전달할 수 있습니다.
+
+브랜드 파일의 사용 조건은 앱에서 별도로 확인해야 합니다.
+[로고 조건과 기존 자산 기록](https://github.com/beomq/social_signin_kit/blob/main/docs/ASSETS.md)은
+저장소 참고 자료이며 패키지 번들 또는 사용 허가가 아닙니다.
 
 ## 버튼 하나 사용하기
 
@@ -137,6 +107,7 @@ import 'package:social_signin_kit/social_signin_kit.dart';
 
 SocialButton(
   social: Social.notion,
+  logo: 'assets/brand/notion.png',
   onPressed: startNotionSignIn,
 )
 ```
@@ -146,7 +117,7 @@ SocialButton(
 - 모양: `SocialButtonShape.rounded`
 - 표시 모드: `SocialButtonAppearance.providerDefault`
 - 높이와 원형 지름: `48`
-- 로고: 35개 제공자별 패키지 기본 PNG
+- 로고: 앱에서 전달한 필수 이미지 자산 경로
 - 언어: 현재 앱의 `Locale`, 한국어 외 언어는 영어
 
 `size`가 `48`보다 작아도 최소 터치 영역은 48 logical pixel을 유지합니다.
@@ -157,6 +128,7 @@ SocialButton(
 ```dart
 SocialButton(
   social: Social.apple,
+  logo: 'assets/brand/apple.png',
   onPressed: startAppleSignIn,
   shape: SocialButtonShape.pill,
   size: 56,
@@ -165,20 +137,15 @@ SocialButton(
 
 공식 출처로 확인된 제공자는 `light`/`dark` 표시 모드를 선택할 수 있습니다.
 지원 목록은 `socialLoginProviderData(Social.notion).capabilities.appearances`로
-확인할 수 있습니다. GitHub는 light에서 검정, dark에서 흰 공식 원본을 선택하며,
-Google과 Microsoft는 컬러 원본을 유지합니다. 제공자별 지원·취득 경로는
-[다운로드 가이드](DOWNLOAD_GUIDE.md)를 참고하세요.
-Apple light는 공식 `color=white` 생성 endpoint의 흰 컨트롤·검은 글리프
-원본을 사용하며, 기존 검정 PNG를 반전하거나 색칠하지 않습니다. 흰 Apple
-스타일은 주변 배경과 충분한 대비를 확보해야 합니다. 지원하지 않는 모드를
-요청하면 검증되지 않은 색을 만들지 않고 `providerDefault`로 결정됩니다.
-디버그 모드에서는 제공자·요청 외형 조합마다 한 번 콘솔에 fallback 이유와
-지원 목록을 표시합니다. 목록에서 상속받은 외형에도 동일하게 적용되며,
-프로파일·릴리스에서는 출력하지 않습니다. 앱이 명시한 `logo` 경로는 유지합니다.
+확인할 수 있습니다. 외형 설정은 배경·문자·테두리에만 적용됩니다.
+로고 경로와 색상은 앱의 책임이며 자동으로 교체하거나 색칠하지 않습니다.
+지원되지 않은 외형을 요청하면 제공자 기본 외형으로 돌아가며 디버그에서
+한 번 안내합니다. 프로파일·릴리스에서는 출력하지 않습니다. 앱이 명시한 `logo` 경로는 유지합니다.
 
 ```dart
 SocialButton(
   social: Social.google,
+  logo: 'assets/brand/google.png',
   appearance: SocialButtonAppearance.dark,
   onPressed: startGoogleSignIn,
 )
@@ -189,6 +156,7 @@ SocialButton(
 ```dart
 SocialButton(
   social: Social.github,
+  logo: 'assets/brand/github.png',
   onPressed: startGitHubSignIn,
   shape: SocialButtonShape.circle,
 )
@@ -212,14 +180,17 @@ SocialButtonList.vertical(
   items: [
     SocialButton(
       social: Social.google,
+      logo: 'assets/brand/google.png',
       onPressed: startGoogleSignIn,
     ),
     SocialButton(
       social: Social.apple,
+      logo: 'assets/brand/apple.png',
       onPressed: startAppleSignIn,
     ),
     SocialButton(
       social: Social.notion,
+      logo: 'assets/brand/notion.png',
       onPressed: startNotionSignIn,
     ),
   ],
@@ -238,10 +209,12 @@ SocialButtonList.vertical(
   items: [
     SocialButton(
       social: Social.kakao,
+      logo: 'assets/brand/kakao.png',
       onPressed: startKakaoSignIn,
     ),
     SocialButton(
       social: Social.naver,
+      logo: 'assets/brand/naver.png',
       onPressed: startNaverSignIn,
       size: 48,
     ),
@@ -264,14 +237,17 @@ SocialButtonList.horizontal(
   items: [
     SocialButton(
       social: Social.google,
+      logo: 'assets/brand/google.png',
       onPressed: startGoogleSignIn,
     ),
     SocialButton(
       social: Social.apple,
+      logo: 'assets/brand/apple.png',
       onPressed: startAppleSignIn,
     ),
     SocialButton(
       social: Social.notion,
+      logo: 'assets/brand/notion.png',
       onPressed: startNotionSignIn,
     ),
   ],
@@ -286,6 +262,7 @@ SocialButtonList.horizontal(
 ```dart
 SocialButton(
   social: Social.notion,
+  logo: 'assets/brand/notion.png',
   onPressed: startNotionSignIn,
   label: '팀 Notion으로 계속',
 )
@@ -302,13 +279,14 @@ MaterialApp(
   supportedLocales: context.supportedLocales,
   home: SocialButton(
     social: Social.notion,
+    logo: 'assets/brand/notion.png',
     label: 'auth.continue_with_notion'.tr(),
     onPressed: startNotionSignIn,
   ),
 )
 ```
 
-자세한 규칙은 [로컬라이제이션](docs/LOCALIZATION.md)을 참고하세요.
+자세한 규칙은 [로컬라이제이션](https://github.com/beomq/social_signin_kit/blob/main/docs/LOCALIZATION.md)을 참고하세요.
 
 ## 비활성과 로딩
 
@@ -318,6 +296,7 @@ MaterialApp(
 ```dart
 SocialButton(
   social: Social.naver,
+  logo: 'assets/brand/naver.png',
   onPressed: isSigningIn ? null : startNaverSignIn,
 )
 ```
@@ -326,7 +305,7 @@ SocialButton(
 공개된 상태·간격·크기 값을 렌더러에 반영하고, 나머지는 제공자 팔레트에서
 패키지 상태를 계산합니다. 이 구현이 제공자의 완성형 컨트롤 인증을 보장하지는
 않습니다.
-자세한 내용은 [상태와 접근성](docs/STATES.md)을 참고하세요.
+자세한 내용은 [상태와 접근성](https://github.com/beomq/social_signin_kit/blob/main/docs/STATES.md)을 참고하세요.
 
 ## 지원 범위
 
@@ -339,18 +318,20 @@ SocialButton(
 
 ## 상세 문서
 
-- [API](docs/API.md)
-- [로컬라이제이션](docs/LOCALIZATION.md)
-- [에셋](docs/ASSETS.md)
-- [상태와 접근성](docs/STATES.md)
-- [문제 해결](docs/TROUBLESHOOTING.md)
-- [이전 API에서 마이그레이션](docs/MIGRATION.md)
-- [제공자별 출처와 한계](docs/PROVIDER_GUIDE.md)
-- [테마·형태 지원 근거](research/theme-shape-support.md)
-- [에이전트 통합 프롬프트](docs/AGENT_SETUP.md)
-- [웹 선택기 자산 계약](docs/LANDING_ASSETS.md)
+- [API](https://github.com/beomq/social_signin_kit/blob/main/docs/API.md)
+- [로컬라이제이션](https://github.com/beomq/social_signin_kit/blob/main/docs/LOCALIZATION.md)
+- [에셋](https://github.com/beomq/social_signin_kit/blob/main/docs/ASSETS.md)
+- [상태와 접근성](https://github.com/beomq/social_signin_kit/blob/main/docs/STATES.md)
+- [문제 해결](https://github.com/beomq/social_signin_kit/blob/main/docs/TROUBLESHOOTING.md)
+- [이전 API에서 마이그레이션](https://github.com/beomq/social_signin_kit/blob/main/docs/MIGRATION.md)
+- [제공자별 출처와 한계](https://github.com/beomq/social_signin_kit/blob/main/docs/PROVIDER_GUIDE.md)
+- [테마·형태 지원 근거](https://github.com/beomq/social_signin_kit/blob/main/research/theme-shape-support.md)
+- [에이전트 통합 프롬프트](https://github.com/beomq/social_signin_kit/blob/main/docs/AGENT_SETUP.md)
+- [웹 선택기 자산 계약](https://github.com/beomq/social_signin_kit/blob/main/docs/LANDING_ASSETS.md)
 
-## 게시 상태
+## 게시 준비와 검증
 
-이 패키지는 pub.dev에 게시되지 않았습니다. 커밋, 배포, 실제 인증 성공 여부는
-버튼 렌더링과 별도로 확인해야 합니다.
+게시 전
+`fvm flutter pub publish --dry-run`의 포함 파일과 경고를 확인하세요.
+코드 전용 패키지는 브랜드 이미지·취득 기록을 배포하지 않습니다.
+[게시 검증 기록](https://github.com/beomq/social_signin_kit/blob/main/docs/PUBLISHING.md)을 참고하세요.

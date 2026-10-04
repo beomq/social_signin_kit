@@ -240,161 +240,6 @@ void main() {
       }
     });
 
-    test('exposes a bundled logo path for all 35 providers', () {
-      for (final provider in Social.values) {
-        final data = socialLoginProviderData(provider);
-        expect(
-          data.bundledLogoAsset,
-          provider == Social.github
-              ? 'assets/original/github/GitHub_Invertocat_White.png'
-              : 'assets/social/${provider.name}.png',
-          reason: provider.name,
-        );
-        expect(data.hasBundledLogo, isTrue, reason: provider.name);
-      }
-    });
-
-    test('records the exact Simple Icons source for seven bundled logos', () {
-      const providerSupplied = {
-        Social.github,
-        Social.facebook,
-        Social.discord,
-        Social.slack,
-        Social.steam,
-        Social.dropbox,
-        Social.gitlab,
-        Social.paypal,
-        Social.telegram,
-        Social.instagram,
-        Social.snapchat,
-        Social.weibo,
-        Social.qq,
-        Social.epicGames,
-        Social.zoom,
-        Social.tiktok,
-        Social.notion,
-        Social.microsoft,
-        Social.x,
-        Social.line,
-        Social.linkedin,
-        Social.twitch,
-        Social.spotify,
-        Social.bitbucket,
-        Social.kakao,
-        Social.naver,
-        Social.google,
-        Social.apple,
-      };
-      const historical = {
-        Social.slack,
-        Social.qq,
-        Social.nintendo,
-        Social.xbox,
-      };
-      const sourceSlugs = {
-        Social.weibo: 'sinaweibo',
-        Social.qq: 'tencentqq',
-        Social.epicGames: 'epicgames',
-      };
-
-      expect(Social.values.length - providerSupplied.length, 7);
-      for (final provider in Social.values.where(
-        (provider) => !providerSupplied.contains(provider),
-      )) {
-        final revision = historical.contains(provider)
-            ? '11.15.0'
-            : 'd4e6ba93e48f178898707f0145ec285f28b64b38';
-        final slug = sourceSlugs[provider] ?? provider.name;
-        expect(
-          socialLoginProviderData(provider).sourceUrls,
-          contains(
-            'https://github.com/simple-icons/simple-icons/blob/'
-            '$revision/icons/$slug.svg',
-          ),
-          reason: provider.name,
-        );
-      }
-    });
-
-    test('separates provider-original provenance for all 35 providers', () {
-      const providerOriginals = {
-        Social.facebook,
-        Social.discord,
-        Social.slack,
-        Social.steam,
-        Social.dropbox,
-        Social.gitlab,
-        Social.paypal,
-        Social.telegram,
-        Social.instagram,
-        Social.snapchat,
-        Social.weibo,
-        Social.qq,
-        Social.epicGames,
-        Social.zoom,
-        Social.tiktok,
-        Social.notion,
-        Social.github,
-        Social.microsoft,
-        Social.x,
-        Social.line,
-        Social.linkedin,
-        Social.twitch,
-        Social.spotify,
-        Social.bitbucket,
-        Social.kakao,
-        Social.naver,
-        Social.google,
-        Social.apple,
-      };
-
-      for (final provider in Social.values) {
-        final data = socialLoginProviderData(provider);
-        expect(data.assetOfficial, providerOriginals.contains(provider));
-        expect(Uri.parse(data.assetSourceUrl).scheme, 'https');
-        expect(data.assetIdentificationUse, isNotEmpty);
-        expect(data.assetTransformation, isNotEmpty);
-        expect(data.assetRedistribution, isNotEmpty);
-        expect(data.assetConditionsSources, isNotEmpty);
-        expect(data.assetConditionsCheckedOn, '2026-09-30');
-      }
-    });
-
-    test('uses the direct official standalone Google G source', () {
-      final google = socialLoginProviderData(Social.google);
-
-      expect(
-        google.assetSourceUrl,
-        'https://developers.google.com/static/identity/images/g-logo.png',
-      );
-      expect(google.sourceUrls, contains(google.assetSourceUrl));
-      expect(
-        google.sourceUrls,
-        contains(
-          'https://developers.google.com/static/identity/images/'
-          'signin-assets.zip',
-        ),
-      );
-    });
-
-    test('uses the official standalone Spotify black icon source', () {
-      final spotify = socialLoginProviderData(Social.spotify);
-
-      expect(
-        spotify.assetSourceUrl,
-        'https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/'
-        'Spotify_Primary_Logo_RGB_Black.png',
-      );
-      expect(
-        spotify.sourceUrls,
-        contains(
-          'https://newsroom.spotify.com/media-kit/logo-and-brand-assets/',
-        ),
-      );
-      expect(spotify.assetTransformation, contains('128×128'));
-      expect(spotify.assetTransformation, contains('without recoloring'));
-    });
-
     test('exposes complete immutable capabilities for all 35 providers', () {
       for (final provider in Social.values) {
         final capabilities = socialLoginProviderData(provider).capabilities;
@@ -423,8 +268,9 @@ void main() {
           throwsUnsupportedError,
         );
         expect(
-          () => capabilities.shapes[SocialButtonShape.circle] =
-              SocialButtonSupport.supported,
+          () =>
+              capabilities.shapes[SocialButtonShape.circle] =
+                  SocialButtonSupport.supported,
           throwsUnsupportedError,
         );
       }
@@ -446,20 +292,13 @@ void main() {
         SocialButtonShape.pill,
         SocialButtonShape.circle,
       ]) {
-        expect(
-          kakao.shapeSupport(restricted),
-          SocialButtonSupport.restricted,
-        );
+        expect(kakao.shapeSupport(restricted), SocialButtonSupport.restricted);
         expect(kakao.effectiveShape(restricted), restricted);
       }
 
-      final microsoft =
-          socialLoginProviderData(Social.microsoft).capabilities;
+      final microsoft = socialLoginProviderData(Social.microsoft).capabilities;
       for (final shape in SocialButtonShape.values) {
-        expect(
-          microsoft.shapeSupport(shape),
-          SocialButtonSupport.unverified,
-        );
+        expect(microsoft.shapeSupport(shape), SocialButtonSupport.unverified);
         expect(microsoft.effectiveShape(shape), shape);
       }
     });
@@ -491,16 +330,16 @@ void main() {
           capabilities.appearances,
           themed.contains(provider)
               ? const [
-                  SocialButtonAppearance.providerDefault,
-                  SocialButtonAppearance.light,
-                  SocialButtonAppearance.dark,
-                ]
+                SocialButtonAppearance.providerDefault,
+                SocialButtonAppearance.light,
+                SocialButtonAppearance.dark,
+              ]
               : provider == Social.paypal
-                  ? const [
-                      SocialButtonAppearance.providerDefault,
-                      SocialButtonAppearance.light,
-                    ]
-                  : const [SocialButtonAppearance.providerDefault],
+              ? const [
+                SocialButtonAppearance.providerDefault,
+                SocialButtonAppearance.light,
+              ]
+              : const [SocialButtonAppearance.providerDefault],
           reason: provider.name,
         );
         expect(
@@ -512,16 +351,24 @@ void main() {
       }
     });
 
-    test('uses a dedicated Slack asset for the light appearance', () {
+    test('appearance styles contain the contracted palette colors', () {
+      const style = SocialButtonAppearanceStyle(
+        backgroundColor: Color(0xFFFFFFFF),
+        foregroundColor: Color(0xFF000000),
+        borderColor: Color(0xFFDDDDDD),
+      );
+      expect(style.backgroundColor, const Color(0xFFFFFFFF));
+      expect(style.foregroundColor, const Color(0xFF000000));
+      expect(style.borderColor, const Color(0xFFDDDDDD));
       final slack = socialLoginProviderData(Social.slack);
-
       final light = slack.appearanceStyle(SocialButtonAppearance.light);
-      expect(light.asset, 'assets/original/slack/SLA-Slack-icon-black-RGB.png');
-      expect(light.logoColor, isNull);
-
+      expect(light.backgroundColor, const Color(0xFFFFFFFF));
+      expect(light.foregroundColor, const Color(0xFF000000));
+      expect(light.borderColor, const Color(0xFFDDDDDD));
       final dark = slack.appearanceStyle(SocialButtonAppearance.dark);
-      expect(dark.asset, 'assets/original/slack/SLA-Slack-icon-white-RGB.png');
-      expect(dark.logoColor, isNull);
+      expect(dark.backgroundColor, const Color(0xFF4A154B));
+      expect(dark.foregroundColor, const Color(0xFFFFFFFF));
+      expect(dark.borderColor, isNull);
     });
   });
 
@@ -568,11 +415,12 @@ void main() {
       };
 
       for (final provider in SocialLoginProvider.values) {
-        final expected = signInProviders.contains(provider)
-            ? SocialLoginGuidance.signInButton
-            : unverifiedProviders.contains(provider)
-            ? SocialLoginGuidance.unverified
-            : SocialLoginGuidance.generalBrand;
+        final expected =
+            signInProviders.contains(provider)
+                ? SocialLoginGuidance.signInButton
+                : unverifiedProviders.contains(provider)
+                ? SocialLoginGuidance.unverified
+                : SocialLoginGuidance.generalBrand;
         expect(socialLoginProviderData(provider).guidance, expected);
       }
     });
@@ -618,22 +466,23 @@ void main() {
         Social.google,
         Social.tiktok,
       };
-      const unverified = {
-        Social.nintendo,
-      };
+      const unverified = {Social.nintendo};
 
-      expect(
-        {...authentication, ...authorization, ...both, ...unverified},
-        unorderedEquals(Social.values),
-      );
+      expect({
+        ...authentication,
+        ...authorization,
+        ...both,
+        ...unverified,
+      }, unorderedEquals(Social.values));
       for (final provider in Social.values) {
-        final expected = authentication.contains(provider)
-            ? SocialLoginPurpose.authentication
-            : authorization.contains(provider)
-            ? SocialLoginPurpose.authorization
-            : both.contains(provider)
-            ? SocialLoginPurpose.authenticationAndAuthorization
-            : SocialLoginPurpose.unverified;
+        final expected =
+            authentication.contains(provider)
+                ? SocialLoginPurpose.authentication
+                : authorization.contains(provider)
+                ? SocialLoginPurpose.authorization
+                : both.contains(provider)
+                ? SocialLoginPurpose.authenticationAndAuthorization
+                : SocialLoginPurpose.unverified;
         expect(socialLoginProviderData(provider).purpose, expected);
       }
     });
@@ -677,17 +526,27 @@ void main() {
         Social.notion: 0xFF000000,
       };
       const darkText = {
-        Social.spotify, Social.reddit, Social.gitlab,
-        Social.dropbox, Social.paypal, Social.zoom,
-        Social.telegram, Social.instagram, Social.wechat, Social.snapchat,
+        Social.spotify,
+        Social.reddit,
+        Social.gitlab,
+        Social.dropbox,
+        Social.paypal,
+        Social.zoom,
+        Social.telegram,
+        Social.instagram,
+        Social.wechat,
+        Social.snapchat,
         Social.qq,
       };
 
       expect(backgrounds.keys, unorderedEquals(Social.values));
       for (final provider in SocialLoginProvider.values) {
         final data = socialLoginProviderData(provider);
-        expect(data.backgroundColor.toARGB32(), backgrounds[provider],
-            reason: provider.name);
+        expect(
+          data.backgroundColor.toARGB32(),
+          backgrounds[provider],
+          reason: provider.name,
+        );
 
         if (provider == SocialLoginProvider.kakao) {
           expect(data.foregroundColor.toARGB32(), 0xD9000000);
@@ -706,12 +565,18 @@ void main() {
           expect(data.borderColor, isNull);
           expect(data.paletteBasis, SocialLoginPaletteBasis.signInColors);
         } else {
-          expect(data.foregroundColor.toARGB32(),
-              darkText.contains(provider) ? 0xFF111111 : 0xFFFFFFFF);
+          expect(
+            data.foregroundColor.toARGB32(),
+            darkText.contains(provider) ? 0xFF111111 : 0xFFFFFFFF,
+          );
           expect(
             data.borderColor?.toARGB32(),
-            {Social.dropbox, Social.gitlab, Social.paypal, Social.zoom}
-                    .contains(provider)
+            {
+                  Social.dropbox,
+                  Social.gitlab,
+                  Social.paypal,
+                  Social.zoom,
+                }.contains(provider)
                 ? 0xFFDDDDDD
                 : null,
           );
@@ -724,8 +589,7 @@ void main() {
             .map(socialLoginProviderData)
             .where(
               (data) =>
-                  data.paletteBasis ==
-                  SocialLoginPaletteBasis.neutralFallback,
+                  data.paletteBasis == SocialLoginPaletteBasis.neutralFallback,
             ),
         isEmpty,
       );
@@ -739,11 +603,7 @@ void main() {
           background: data.backgroundColor,
         );
 
-        if ({
-          Social.line,
-          Social.naver,
-          Social.vk,
-        }.contains(provider)) {
+        if ({Social.line, Social.naver, Social.vk}.contains(provider)) {
           expect(
             ratio,
             lessThan(4.5),
@@ -762,10 +622,7 @@ void main() {
   });
 }
 
-double _contrastRatio({
-  required Color foreground,
-  required Color background,
-}) {
+double _contrastRatio({required Color foreground, required Color background}) {
   final foregroundArgb = foreground.toARGB32();
   final backgroundArgb = background.toARGB32();
   final alpha = ((foregroundArgb >> 24) & 0xff) / 255;
@@ -783,14 +640,14 @@ double _contrastRatio({
     compositeChannel(8),
     compositeChannel(0),
   );
-  final lighter = composited.computeLuminance() >
-          background.computeLuminance()
-      ? composited.computeLuminance()
-      : background.computeLuminance();
-  final darker = composited.computeLuminance() >
-          background.computeLuminance()
-      ? background.computeLuminance()
-      : composited.computeLuminance();
+  final lighter =
+      composited.computeLuminance() > background.computeLuminance()
+          ? composited.computeLuminance()
+          : background.computeLuminance();
+  final darker =
+      composited.computeLuminance() > background.computeLuminance()
+          ? background.computeLuminance()
+          : composited.computeLuminance();
 
   return (lighter + 0.05) / (darker + 0.05);
 }

@@ -1,5 +1,8 @@
 # Bundled provider assets
 
+Historical repository and landing assets only. The public code-only package
+ships none of these files and requires an app-supplied logo path.
+
 Checked and downloaded: 2026-09-30
 
 ## 2026-10-03 official default replacement
@@ -60,6 +63,11 @@ the package's logo slot remain preserved separately.
 | Bitbucket | `assets/social/bitbucket.png` | `assets/original/bitbucket/Bitbucket_icon.png` | [Bitbucket app-logo archive](https://atlassian.design/assets/599d0f58b052/logos/bitbucket_app.zip), member `Bitbucket/PNG@2x/Bitbucket_icon.png` | `61e96e6984d1c54df8d9707f5f8288b324d033bf82b15a2dc967e6db796c3a85` |
 
 ## Historical Simple Icons source inventory
+
+This section records the pre-replacement sources, not current runtime mappings.
+Only Reddit, PlayStation, VK, Pinterest, Nintendo, Xbox, and WeChat defaults
+use these sources in the landing catalog. Use the replacement table above for
+the 16 replaced repository defaults; none are declared in `pubspec.yaml`.
 
 This table records the earlier 23 generated files and their source hashes.
 Only Reddit, PlayStation, VK, Pinterest, Nintendo, Xbox and WeChat still use

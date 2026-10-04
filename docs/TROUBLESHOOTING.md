@@ -2,36 +2,11 @@
 
 문제가 생기면 에셋, API 이름, 앱 상태, locale 순서로 확인하세요.
 
-## `Unable to load asset`
+## 로고 이미지가 표시되지 않음
 
-기본 Google, Apple, Kakao, Naver, LINE 로고에서 발생했다면 패키지 자산
-매니페스트 문제입니다.
-
-1. `fvm flutter pub get`을 실행합니다.
-2. hot reload가 아니라 앱을 다시 시작합니다.
-3. 빌드 결과의 `packages/social_signin_kit/assets/social/`을 확인합니다.
-4. 계속 실패하면 [자산 매니페스트](../assets/README.md)의 경로와 해시를
-   첨부해 패키지 문제로 보고합니다.
-
-직접 전달한 `logo`에서 발생했다면 소비 앱 파일, 대소문자,
-`pubspec.yaml`의 `flutter.assets` 등록을 확인합니다.
-
-```dart
-SocialButton(
-  social: Social.notion,
-  logo: 'assets/brands/notion.png',
-  onPressed: startNotionSignIn,
-)
-```
-
-자세한 내용은 [에셋](ASSETS.md)을 참고하세요.
-
-## `No bundled logo` 아이콘이 표시됨
-
-오류가 아니라 해당 제공자에 검토된 기본 자산이 없다는 명시적 상태입니다.
-현재 기본 자산은 Google, Apple, Kakao, Naver, LINE에만 있습니다. 허용된
-앱 자산이 있다면 `logo`로 경로를 전달하고, 공식 완성형 제어가 필요한
-제공자는 `SocialButton` 대신 해당 제어를 사용합니다.
+패키지는 브랜드 이미지를 제공하지 않습니다. `logo`는 소비 앱의 필수
+이미지 경로이며 앱의 `flutter/assets` 선언과 대소문자를 확인하세요.
+로딩 오류는 해당 경로와 앱 자산 선언 안내를 포함합니다.
 
 ## 버튼 너비가 서로 다름
 

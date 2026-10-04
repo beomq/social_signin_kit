@@ -62,13 +62,14 @@ Requirements:
 
    SocialButton(
      social: Social.notion,
+     logo: 'assets/brand/notion.png',
      onPressed: isSigningIn ? null : startNotionSignIn,
    )
 
-   `social` and `onPressed` are required. `onPressed: null` disables the button.
+   `social`, `logo`, and `onPressed` are required. `onPressed: null` disables the button.
    The package doesn't own loading state and doesn't report authentication
    success.
-6. The optional `logo` value is a String asset path in the consuming app:
+6. The required `logo` value is a String asset path in the consuming app:
 
    SocialButton(
      social: Social.google,
@@ -76,14 +77,9 @@ Requirements:
      onPressed: startGoogleSignIn,
    )
 
-   When `logo` is omitted, all 35 providers use PNGs bundled by the package.
-   Google, Apple, Microsoft, Kakao, Naver, LINE, X, LinkedIn, Twitch, Spotify,
-   Bitbucket, and GitHub use reviewed provider-supplied originals (12 total).
-   The other 23 use package adaptations rendered
-   from pinned Simple Icons SVGs and are not official provider controls. No
-   consuming-app asset setup is required for these defaults. Pass a permitted
-   app asset path when the app has a different approved asset, and register
-   only that override in the consuming app's pubspec.
+   No brand logos are bundled. Register the app-owned image in the consuming
+   app's pubspec. Appearance changes never replace or recolor it. Wide marks
+   can supply logoAspectRatio; circle slots remain square.
 7. Available shapes are:
 
    SocialButtonShape.rounded
@@ -100,10 +96,12 @@ Requirements:
      items: [
        SocialButton(
          social: Social.google,
+         logo: 'assets/brand/google.png',
          onPressed: startGoogleSignIn,
        ),
        SocialButton(
          social: Social.apple,
+         logo: 'assets/brand/apple.png',
          onPressed: startAppleSignIn,
        ),
      ],
@@ -131,6 +129,7 @@ Requirements:
       supportedLocales: context.supportedLocales,
       home: SocialButton(
         social: Social.notion,
+        logo: 'assets/brand/notion.png',
         label: 'auth.continue_with_notion'.tr(),
         onPressed: startNotionSignIn,
       ),
