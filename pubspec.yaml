@@ -1,6 +1,6 @@
 name: social_signin_kit
 description: Social sign-in and connection button styles for 35 providers with caller-supplied logos and Korean/English labels.
-version: 0.1.0
+version: 0.1.1
 repository: https://github.com/beomq/social_signin_kit
 homepage: https://beomq.github.io/social_signin_kit/
 issue_tracker: https://github.com/beomq/social_signin_kit/issues

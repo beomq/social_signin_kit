@@ -1,68 +1,26 @@
 # social_signin_kit
 
-Flutter 앱에서 35개 소셜 서비스의 로그인 버튼을 일관된 API로 표시하는
-UI 패키지입니다. 버튼을 누르면 앱이 전달한 콜백만 실행합니다.
-OAuth, 토큰, 네트워크 요청, 로딩 상태는 앱에서 관리합니다.
+A Flutter UI package for displaying sign-in buttons for 35 social providers
+through a consistent API. Pressing a button invokes the callback supplied by
+your app. Your app owns OAuth, tokens, network requests, and loading state.
 
-[랜딩페이지](https://beomq.github.io/social_signin_kit/landing/index.html) · [GitHub 저장소](https://github.com/beomq/social_signin_kit) · [pub.dev](https://pub.dev/packages/social_signin_kit)
+[Live selector](https://beomq.github.io/social_signin_kit/landing/index.html) | [GitHub](https://github.com/beomq/social_signin_kit) | [pub.dev](https://pub.dev/packages/social_signin_kit)
 
-> 이 패키지의 색상, 모양, 상태 스타일은 공식 인증을 뜻하지 않습니다.
-> 패키지는 35개 제공자의 UI 스타일·한국어/영어 문구만 제공합니다.
-> 브랜드 로고 이미지를 포함하지 않습니다. 앱에서 사용 권한을 확인한
-> 이미지 경로를 필수 `logo`로 전달하세요. 외형은 패키지 프리셋이며
-> 제공자의 승인된 로그인 컨트롤이나 인증 구현을 보장하지 않습니다.
+> This package provides provider style presets and Korean/English labels, not
+> official certification. It does not bundle brand logos. Supply an image your
+> app is permitted to use through the required `logo` asset path. The presets
+> are not a replacement for a provider's approved sign-in control or SDK.
 
-## 로그인 화면 선택기
+## Install
 
-`landing/index.html`은 35개 제공자의 실제 로컬 로고를 보면서 소비 앱의
-로그인 화면을 구성하는 정식 선택기입니다. `?lang=en`과 `?lang=ko`로 언어를
-바꾸며 선택 상태와 배치 설정은 그대로 유지됩니다. 저장소 루트에서 정적 HTTP
-서버를 실행한 뒤 `landing/`을 여세요. `file://`에서는 브라우저의 `fetch`
-제한 때문에 `landing/logo-catalog.json`을 읽지 못할 수 있습니다.
-
-선택기에서 다음을 한 번에 정할 수 있습니다.
-
-- 사용할 제공자와 화면 표시 순서
-- 세로/가로 목록
-- `rounded`/`pill`/`circle` 모양
-- 실제 로고를 사용한 미리보기
-- 소비 앱의 명시적 로고 경로가 포함된 Dart 코드
-- 에이전트용 작업 지시 텍스트와 JSON 매니페스트
-
-내보낸 전달문은 현재 앱에서 이미 사용할 수 있는 패키지 의존성을
-찾도록 지시합니다. 존재하지 않는 버전이나 GitHub URL을 만들지 않습니다. 또한 각 로고의 출처 페이지, canonical 다운로드 URL, 원본 형식,
-SHA-256, 라이선스, 공식/서드파티 구분, 저장 경로를 포함합니다.
-카탈로그의 `archiveMember`·`archiveSha256`과
-`rasterization { color, width, height }`가 있으면 그대로 보존하며,
-상대 다운로드 URL은 현재 랜딩 문서를 기준으로 해석합니다. localhost URL은
-같은 머신에서만 유효하다고 표시하고 에이전트가 기존 변환 도구로 앱용 PNG를
-만들도록 안내합니다. 내보낼 때 ZIP 다운로드 해시와 추출 멤버 해시를 별도
-필드로 구분합니다. 래스터화는 명시적 메타데이터가 있는 SVG에만 적용합니다.
-직접 받은 PNG와 ZIP에서 추출한 PNG는 크기·투명도·내부 패딩을 포함한 원본
-바이트를 그대로 보존하며 128px 캔버스로 다시 배치하지 않습니다.
-기본값으로 `flutter_svg` 같은 런타임 의존성을 추가하지 않습니다.
-
-생성된 콜백 이름은 연결 위치를 보여주는 자리표시자입니다. 소비 앱의 기존
-로그인 또는 연결 함수로 바꿔야 하며, 선택기는 OAuth·토큰·리다이렉트 코드를
-생성하거나 원격 에이전트를 실행하지 않습니다.
-
-선택기가 내보낸 Dart는 미리보기와 같은 언어를 재현하도록
-`locale: const Locale('en')` 또는 `locale: const Locale('ko')`를 명시하고,
-매니페스트와 에이전트 전달문에도 같은 locale을 기록합니다. 소비 앱의 현재
-locale을 자동으로 상속하려면 통합할 때 이 명시적 `locale` 인자만 제거하세요.
-
-## 빠른 시작
-
-소비 앱의 `pubspec.yaml`에 패키지 의존성을 추가합니다.
+Requires Flutter 3.29.0 or later and Dart 3.7.0 or later.
 
 ```yaml
 dependencies:
-  social_signin_kit: ^0.1.0
+  social_signin_kit: ^0.1.1
 ```
 
-로컬 clone을 사용하려면 위 버전 항목 대신 아래 경로 의존성을 사용합니다.
-`/absolute/path/to/social_signin_kit`은 실제 clone 경로로 바꾸세요.
-앱의 형제 디렉터리에 둘 필요는 없습니다.
+For a local clone, replace the version dependency with a path dependency:
 
 ```yaml
 dependencies:
@@ -70,18 +28,20 @@ dependencies:
     path: /absolute/path/to/social_signin_kit
 ```
 
-선택한 의존성을 저장한 뒤 앱 디렉터리에서 다음 명령을 실행합니다.
+Use the actual clone path; the package does not need to be a sibling of your
+app. Save your dependency changes and run this in the app directory:
 
 ```sh
 fvm flutter pub get
 ```
 
-이 패키지를 추가하려고 앱의 Flutter 또는 Dart SDK 제약을 올리지 마세요.
+Check compatibility with your app's existing SDK constraints before adding
+the package; do not change those constraints just to install it.
 
-## 앱에서 로고 제공하기
+## Supply your own logo
 
-`SocialButton.logo`는 필수 소비 앱 이미지 자산 경로입니다. 앱의
-`pubspec.yaml`에 선언하며 패키지 자산 경로나 자동 로고 대체가 없습니다.
+`SocialButton.logo` is a required image asset path in the consuming app.
+Register your images in your app's `pubspec.yaml`:
 
 ```yaml
 flutter:
@@ -89,17 +49,20 @@ flutter:
     - assets/brand/
 ```
 
-패키지는 로고를 재색칠·자르지 않으며 `BoxFit.contain`으로 표시합니다.
-라이트·다크 모드에서 필요한 파일을 앱이 직접 선택하세요. 가로 마크는
-`logoAspectRatio`에 원본 너비/높이를 전달하면 일반 버튼에서 비율을 유지합니다.
-기본값은 1이고 원형 버튼은 정사각형 슬롯 안에 전체 이미지를 표시합니다.
-커스텀 위젯은 `SocialLoginButton(logo: widget, ...)`로 전달할 수 있습니다.
+There is no package asset path or automatic logo replacement. Images are
+displayed with `BoxFit.contain`, without cropping or recoloring. Your app
+chooses the appropriate image for each appearance.
 
-브랜드 파일의 사용 조건은 앱에서 별도로 확인해야 합니다.
-[로고 조건과 기존 자산 기록](https://github.com/beomq/social_signin_kit/blob/main/docs/ASSETS.md)은
-저장소 참고 자료이며 패키지 번들 또는 사용 허가가 아닙니다.
+For a wide mark, set `logoAspectRatio` to its original width divided by its
+height. Regular buttons use this ratio; the default is `1`. Circle buttons
+display the complete image inside a square slot. To supply a custom widget,
+use the compatibility API `SocialLoginButton(logo: widget, ...)`.
 
-## 버튼 하나 사용하기
+Your app must check the conditions for using each brand asset.
+[Asset conditions and historical records](https://github.com/beomq/social_signin_kit/blob/main/docs/ASSETS.md)
+are repository references, not bundled assets or permission to use a logo.
+
+## Display a button
 
 ```dart
 import 'package:flutter/material.dart';
@@ -112,35 +75,29 @@ SocialButton(
 )
 ```
 
-기본값은 다음과 같습니다.
+`social`, `logo`, and `onPressed` are required. Pass `null` to `onPressed` to
+disable the button. The callback names in these examples stand for your app's
+existing authentication functions; the package does not implement them.
 
-- 모양: `SocialButtonShape.rounded`
-- 표시 모드: `SocialButtonAppearance.providerDefault`
-- 높이와 원형 지름: `48`
-- 로고: 앱에서 전달한 필수 이미지 자산 경로
-- 언어: 현재 앱의 `Locale`, 한국어 외 언어는 영어
+## Shapes and appearances
 
-`size`가 `48`보다 작아도 최소 터치 영역은 48 logical pixel을 유지합니다.
-레이블 버튼은 텍스트 배율에 따라 지정한 높이보다 커질 수 있습니다.
-
-모양과 크기를 바꿀 수 있습니다.
+The supported shapes are `rounded`, `pill`, and `circle`. An unsupported
+provider/shape combination falls back to that provider's default shape.
 
 ```dart
 SocialButton(
-  social: Social.apple,
-  logo: 'assets/brand/apple.png',
-  onPressed: startAppleSignIn,
+  social: Social.notion,
+  logo: 'assets/brand/notion.png',
+  onPressed: startNotionSignIn,
   shape: SocialButtonShape.pill,
-  size: 56,
 )
 ```
 
-공식 출처로 확인된 제공자는 `light`/`dark` 표시 모드를 선택할 수 있습니다.
-지원 목록은 `socialLoginProviderData(Social.notion).capabilities.appearances`로
-확인할 수 있습니다. 외형 설정은 배경·문자·테두리에만 적용됩니다.
-로고 경로와 색상은 앱의 책임이며 자동으로 교체하거나 색칠하지 않습니다.
-지원되지 않은 외형을 요청하면 제공자 기본 외형으로 돌아가며 디버그에서
-한 번 안내합니다. 프로파일·릴리스에서는 출력하지 않습니다. 앱이 명시한 `logo` 경로는 유지합니다.
+The appearances are `providerDefault`, `light`, and `dark`. These are package
+palette presets based on sign-in controls, brand references, or custom styles;
+availability does not imply provider approval. An unsupported appearance falls
+back to `providerDefault` and reports once in debug mode, not in profile or
+release mode. Your explicit `logo` path is preserved.
 
 ```dart
 SocialButton(
@@ -151,7 +108,8 @@ SocialButton(
 )
 ```
 
-`circle`은 화면 레이블을 숨기지만 tooltip과 접근성 이름은 유지합니다.
+Circle buttons hide the visible label while retaining a tooltip and an
+accessible name:
 
 ```dart
 SocialButton(
@@ -162,20 +120,71 @@ SocialButton(
 )
 ```
 
-형태 지원 상태는
-`socialLoginProviderData(provider).capabilities.shapes`에서 확인합니다.
-`unverified`는 금지가 아니라 패키지 맞춤 스타일이며 요청한 형태를 그대로
-렌더링합니다. `restricted`도 런타임 금지가 아니라 제공자 규칙과 충돌한다는
-경고용 메타데이터이며, 요청한 형태를 그대로 렌더링합니다. 현재 Kakao의
-`pill`과 `circle`은 고정 12px 컨테이너 반경과 충돌하는 비공식 커스텀
-표현이므로 출시 전 해당 제공자 규칙을 확인해야 합니다.
+## Display a list
 
-## 세로 목록
+`SocialButtonList.vertical` and `SocialButtonList.horizontal` accept
+`SocialButton` items. Each item owns its
+provider and callback. Omitted `shape`, `appearance`, and `size` values inherit
+from the list; an explicit child value takes precedence. Unsupported settings
+fall back independently for each provider. Each logo path remains unchanged.
 
-세로 목록은 기본적으로 `rounded` 모양을 사용하며, 같은 너비로 정렬됩니다.
+### Vertical list
 
 ```dart
 SocialButtonList.vertical(
+  shape: SocialButtonShape.pill,
+  appearance: SocialButtonAppearance.dark,
+  size: 48,
+  items: [
+    SocialButton(
+      social: Social.google,
+      logo: 'assets/brand/google.png',
+      onPressed: startGoogleSignIn,
+    ),
+    SocialButton(
+      social: Social.apple,
+      logo: 'assets/brand/apple.png',
+      onPressed: startAppleSignIn,
+    ),
+    SocialButton(
+      social: Social.notion,
+      logo: 'assets/brand/notion.png',
+      onPressed: startNotionSignIn,
+    ),
+  ],
+)
+```
+
+An individual item can override the list appearance:
+
+```dart
+SocialButtonList.vertical(
+  appearance: SocialButtonAppearance.dark,
+  items: [
+    SocialButton(
+      social: Social.google,
+      logo: 'assets/brand/google.png',
+      appearance: SocialButtonAppearance.light,
+      onPressed: startGoogleSignIn,
+    ),
+    SocialButton(
+      social: Social.apple,
+      logo: 'assets/brand/apple.png',
+      onPressed: startAppleSignIn,
+    ),
+  ],
+)
+```
+
+### Horizontal list
+
+The horizontal layout uses a `Wrap`, allowing buttons to move onto additional
+lines on narrow screens.
+
+```dart
+SocialButtonList.horizontal(
+  shape: SocialButtonShape.circle,
+  size: 48,
   spacing: 12,
   items: [
     SocialButton(
@@ -197,80 +206,25 @@ SocialButtonList.vertical(
 )
 ```
 
-목록의 공통 설정은 각 버튼에 기본값처럼 적용됩니다.
+## Labels and localization
 
-```dart
-SocialButtonList.vertical(
-  shape: SocialButtonShape.pill,
-  appearance: SocialButtonAppearance.dark,
-  size: 56,
-  locale: const Locale('ko'),
-  spacing: 8,
-  items: [
-    SocialButton(
-      social: Social.kakao,
-      logo: 'assets/brand/kakao.png',
-      onPressed: startKakaoSignIn,
-    ),
-    SocialButton(
-      social: Social.naver,
-      logo: 'assets/brand/naver.png',
-      onPressed: startNaverSignIn,
-      size: 48,
-    ),
-  ],
-)
-```
-
-설정 우선순위는 `각 버튼 > 목록 > 패키지 기본값`입니다. `appearance`도 같은
-규칙을 따릅니다. 위 예제에서 Naver 버튼 크기만 `48`이고 나머지는 목록의
-`56`을 사용합니다.
-
-## 가로 목록
-
-가로 목록은 기본적으로 `circle`을 사용하고, 공간이 부족하면 `Wrap`처럼 다음
-줄로 넘어갑니다.
-
-```dart
-SocialButtonList.horizontal(
-  spacing: 8,
-  items: [
-    SocialButton(
-      social: Social.google,
-      logo: 'assets/brand/google.png',
-      onPressed: startGoogleSignIn,
-    ),
-    SocialButton(
-      social: Social.apple,
-      logo: 'assets/brand/apple.png',
-      onPressed: startAppleSignIn,
-    ),
-    SocialButton(
-      social: Social.notion,
-      logo: 'assets/brand/notion.png',
-      onPressed: startNotionSignIn,
-    ),
-  ],
-)
-```
-
-## 언어와 문구
-
-`locale`을 생략하면 앱의 현재 locale을 사용합니다. `ko`는 한국어 레이블을,
-그 외 언어는 영어 레이블을 사용합니다.
+When `locale` is omitted, buttons use the app's current locale. Language code
+`ko` selects Korean labels; other languages use English labels. Pass `locale`
+explicitly to override that choice, or supply `label` to override the preset:
 
 ```dart
 SocialButton(
   social: Social.notion,
   logo: 'assets/brand/notion.png',
   onPressed: startNotionSignIn,
-  label: '팀 Notion으로 계속',
+  locale: const Locale('en'),
+  label: 'Continue with your team in Notion',
 )
 ```
 
-`label`을 직접 전달하면 기본 번역보다 우선합니다. 앱이
-`easy_localization`을 사용한다면 패키지 의존성을 추가하지 않고 앱에서
-번역한 문자열만 넘깁니다.
+If your app uses `easy_localization`, pass the string translated by your app.
+The package does not require that dependency. The following example assumes
+your app has already configured its translation extension and localization:
 
 ```dart
 MaterialApp(
@@ -286,12 +240,13 @@ MaterialApp(
 )
 ```
 
-자세한 규칙은 [로컬라이제이션](https://github.com/beomq/social_signin_kit/blob/main/docs/LOCALIZATION.md)을 참고하세요.
+See [localization](https://github.com/beomq/social_signin_kit/blob/main/docs/LOCALIZATION.md)
+for the selection rules.
 
-## 비활성과 로딩
+## Disabled and loading states
 
-`onPressed: null`이면 버튼이 비활성화됩니다. 패키지는 `isLoading` 상태를
-갖지 않습니다. 요청 중 상태와 중복 요청 방지는 앱이 관리합니다.
+`onPressed: null` disables a button. The package does not expose an `isLoading`
+state. Your app manages in-flight requests and prevents duplicate submissions:
 
 ```dart
 SocialButton(
@@ -301,37 +256,78 @@ SocialButton(
 )
 ```
 
-로딩 표시가 필요하면 앱 화면에서 별도 진행 표시를 제공하세요. 일부 제공자는
-공개된 상태·간격·크기 값을 렌더러에 반영하고, 나머지는 제공자 팔레트에서
-패키지 상태를 계산합니다. 이 구현이 제공자의 완성형 컨트롤 인증을 보장하지는
-않습니다.
-자세한 내용은 [상태와 접근성](https://github.com/beomq/social_signin_kit/blob/main/docs/STATES.md)을 참고하세요.
+Provide a separate progress indicator in your screen if needed. Some providers
+use published state, spacing, and size values; others derive package states
+from the provider palette. This does not certify a complete official control.
+See [states and accessibility](https://github.com/beomq/social_signin_kit/blob/main/docs/STATES.md).
 
-## 지원 범위
+## Build a screen with the web selector
 
-- `Social`은 기존 34개 제공자와 `notion`을 포함합니다.
-- 패키지는 UI 렌더링과 `onPressed` 호출만 담당합니다.
-- 제공자 원본을 포함한 모든 자산의 실제 사용 조건과 인증 SDK, OAuth, 토큰, 오류
-  화면, 로딩 상태는 앱 책임입니다.
-- 공식 완성형 버튼이나 SDK 제어가 필수인 제공자는 해당 공식 구현을
-  사용하세요.
+The repository's `landing/index.html` lets you select providers using actual
+local logos. The selector is separate from the code-only pub.dev archive.
+Use `?lang=en` or `?lang=ko` to switch its language without losing the selection
+or layout settings. For local use, serve the repository root over HTTP and open
+`landing/`; `file://` fetch restrictions can prevent the logo catalog loading.
 
-## 상세 문서
+The selector supports:
+
+- Provider selection and display order.
+- Vertical or horizontal lists.
+- `rounded`, `pill`, and `circle` shapes.
+- Previews using actual repository logos.
+- Dart snippets with explicit app-owned logo paths.
+- Agent instructions and a JSON handoff manifest.
+
+Exported instructions ask the consuming app to use an existing package
+dependency instead of inventing versions or repository URLs. The manifest
+includes source pages, canonical download URLs, original formats, SHA-256
+hashes, licenses, official/third-party status, and destination paths.
+Archive members and archive hashes remain separate from extracted file hashes.
+Relative download URLs resolve against the landing page; localhost URLs are
+marked as available only on the same machine.
+
+Explicit `archiveMember`, `archiveSha256`, and
+`rasterization { color, width, height }` metadata is preserved. Rasterization
+applies only to SVGs with explicit conversion metadata. Downloaded or extracted
+PNGs retain their original bytes, dimensions, transparency, and internal
+padding; they are not resized onto a 128px canvas. Instructions use the app's
+existing conversion tools rather than adding a runtime dependency such as
+`flutter_svg` by default.
+
+Generated callback names are integration placeholders. Replace them with your
+app's existing sign-in or account-linking functions. The selector does not
+create OAuth, token, or redirect handling.
+
+## Scope and provider requirements
+
+- `Social` contains 35 providers, including Notion.
+- The package renders UI and invokes `onPressed`; it does not authenticate users.
+- Your app is responsible for asset permissions, authentication SDKs, OAuth,
+  tokens, error screens, and loading state.
+- Use the provider's official implementation when its complete button or SDK
+  control is required.
+
+## Documentation
 
 - [API](https://github.com/beomq/social_signin_kit/blob/main/docs/API.md)
-- [로컬라이제이션](https://github.com/beomq/social_signin_kit/blob/main/docs/LOCALIZATION.md)
-- [에셋](https://github.com/beomq/social_signin_kit/blob/main/docs/ASSETS.md)
-- [상태와 접근성](https://github.com/beomq/social_signin_kit/blob/main/docs/STATES.md)
-- [문제 해결](https://github.com/beomq/social_signin_kit/blob/main/docs/TROUBLESHOOTING.md)
-- [이전 API에서 마이그레이션](https://github.com/beomq/social_signin_kit/blob/main/docs/MIGRATION.md)
-- [제공자별 출처와 한계](https://github.com/beomq/social_signin_kit/blob/main/docs/PROVIDER_GUIDE.md)
-- [테마·형태 지원 근거](https://github.com/beomq/social_signin_kit/blob/main/research/theme-shape-support.md)
-- [에이전트 통합 프롬프트](https://github.com/beomq/social_signin_kit/blob/main/docs/AGENT_SETUP.md)
-- [웹 선택기 자산 계약](https://github.com/beomq/social_signin_kit/blob/main/docs/LANDING_ASSETS.md)
+- [Localization](https://github.com/beomq/social_signin_kit/blob/main/docs/LOCALIZATION.md)
+- [Assets](https://github.com/beomq/social_signin_kit/blob/main/docs/ASSETS.md)
+- [States and accessibility](https://github.com/beomq/social_signin_kit/blob/main/docs/STATES.md)
+- [Troubleshooting](https://github.com/beomq/social_signin_kit/blob/main/docs/TROUBLESHOOTING.md)
+- [Migration from the compatibility API](https://github.com/beomq/social_signin_kit/blob/main/docs/MIGRATION.md)
+- [Provider sources and limitations](https://github.com/beomq/social_signin_kit/blob/main/docs/PROVIDER_GUIDE.md)
+- [Appearance and shape references](https://github.com/beomq/social_signin_kit/blob/main/research/theme-shape-support.md)
+- [Agent integration instructions](https://github.com/beomq/social_signin_kit/blob/main/docs/AGENT_SETUP.md)
+- [Web selector asset contract](https://github.com/beomq/social_signin_kit/blob/main/docs/LANDING_ASSETS.md)
 
-## 게시 준비와 검증
+## Publication checks
 
-게시 전
-`fvm flutter pub publish --dry-run`의 포함 파일과 경고를 확인하세요.
-코드 전용 패키지는 브랜드 이미지·취득 기록을 배포하지 않습니다.
-[게시 검증 기록](https://github.com/beomq/social_signin_kit/blob/main/docs/PUBLISHING.md)을 참고하세요.
+Before publishing, inspect the included files and warnings from:
+
+```sh
+fvm flutter pub publish --dry-run
+```
+
+The code-only archive excludes brand images and acquisition records. See the
+[publication verification record](https://github.com/beomq/social_signin_kit/blob/main/docs/PUBLISHING.md)
+for the packaging and SDK checks.

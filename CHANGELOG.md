@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.1
+
+- Rewrote the public README in English with ASCII-only text for pub.dev validation.
+- Corrected list examples to use `SocialButtonList.vertical`,
+  `SocialButtonList.horizontal`, and `items` from the current public API.
+- No runtime or public API changes.
+
 ## 0.1.0
 
 - Public package contains UI code only; applications provide a required logo asset path.
