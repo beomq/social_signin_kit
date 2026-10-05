@@ -18,6 +18,8 @@ docs/
 DOWNLOAD_GUIDE.md
 download-plan.json
 .github/
+.coderabbit.yaml
+AGENTS.md
 .gitignore
 .worktrees/
 .fvmrc
