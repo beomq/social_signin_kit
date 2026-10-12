@@ -50,8 +50,10 @@ flutter:
 ```
 
 There is no package asset path or automatic logo replacement. Images are
-displayed with `BoxFit.contain`, without cropping or recoloring. Your app
-chooses the appropriate image for each appearance.
+displayed with `BoxFit.contain`, without cropping or permanent recoloring.
+During press, hover, or keyboard focus, the logo and button background share
+one animated feedback wash; the label keeps its contrast. Your app chooses
+the appropriate image for each appearance.
 
 For a wide mark, set `logoAspectRatio` to its original width divided by its
 height. Regular buttons use this ratio; the default is `1`. Circle buttons

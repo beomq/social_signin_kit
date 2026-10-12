@@ -483,9 +483,8 @@ void main() {
           {WidgetState.pressed},
         ]) {
           final base = style.backgroundColor!.resolve(states)!;
-          final overlay = style.overlayColor!.resolve(states);
-          final background =
-              overlay == null ? base : Color.alphaBlend(overlay, base);
+          final overlay = _feedbackColor(tester, style, states);
+          final background = Color.alphaBlend(overlay, base);
           final foreground = style.foregroundColor!.resolve(states)!;
 
           final ratio = _contrastRatio(
@@ -519,8 +518,10 @@ void main() {
           socialLoginProviderData(provider).foregroundColor,
         );
         final data = socialLoginProviderData(provider);
-        final compositedForeground =
-            Color.alphaBlend(data.foregroundColor, data.backgroundColor);
+        final compositedForeground = Color.alphaBlend(
+          data.foregroundColor,
+          data.backgroundColor,
+        );
         const disabled = {WidgetState.disabled};
         final disabledBackground = style.backgroundColor!.resolve(disabled)!;
         final disabledForeground = style.foregroundColor!.resolve(disabled)!;
@@ -557,9 +558,14 @@ void main() {
         expect(disabledForeground, isNot(data.foregroundColor));
         expect(disabledBorder.width, 1);
         expect(style.overlayColor!.resolve(disabled), isNull);
-        expect(style.overlayColor!.resolve({
-          WidgetState.disabled, WidgetState.focused, WidgetState.pressed,
-        }), isNull);
+        expect(
+          style.overlayColor!.resolve({
+            WidgetState.disabled,
+            WidgetState.focused,
+            WidgetState.pressed,
+          }),
+          isNull,
+        );
         final disabledContrast = _contrastRatio(
           foreground: disabledForeground,
           background: disabledBackground,
@@ -587,6 +593,21 @@ void main() {
 }
 
 void _noop() {}
+
+Color _feedbackColor(
+  WidgetTester tester,
+  ButtonStyle style,
+  Set<WidgetState> states,
+) {
+  final layer =
+      style.backgroundBuilder!(
+            tester.element(find.byType(TextButton)),
+            states,
+            const SizedBox(),
+          )
+          as TweenAnimationBuilder<Color?>;
+  return layer.tween.end!;
+}
 
 Widget _app(Widget child, {TextScaler textScaler = TextScaler.noScaling}) {
   return MaterialApp(

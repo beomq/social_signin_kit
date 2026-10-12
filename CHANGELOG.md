@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2
+
+- Keep opaque logo backgrounds in sync with button press, hover, and focus
+  feedback, including intermediate animation frames.
+- Replace ink ripples with a shared animated feedback wash while preserving
+  label contrast, original logo assets, and button input semantics.
+- Add pixel regression coverage for circular and rectangular logo backgrounds.
+
 ## 0.1.1
 
 - Rewrote the public README in English with ASCII-only text for pub.dev validation.

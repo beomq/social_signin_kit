@@ -899,8 +899,12 @@ void main() {
         );
         final style = tester.widget<TextButton>(find.byType(TextButton)).style!;
         final base = style.backgroundColor!.resolve({})!;
-        final hover = style.overlayColor!.resolve({WidgetState.hovered})!;
-        final pressed = style.overlayColor!.resolve({WidgetState.pressed})!;
+        final hover = _feedbackColor(tester, style, {WidgetState.hovered});
+        final pressed = _feedbackColor(tester, style, {WidgetState.pressed});
+        expect(
+          style.overlayColor!.resolve({WidgetState.pressed}),
+          Colors.transparent,
+        );
         if (social == Social.vk) {
           expect(Color.alphaBlend(hover, base), base);
           expect(
@@ -920,7 +924,7 @@ void main() {
           expect(pressed, isNot(hover));
         }
         expect(
-          style.overlayColor!.resolve({
+          _feedbackColor(tester, style, {
             WidgetState.hovered,
             WidgetState.focused,
             WidgetState.pressed,
@@ -949,14 +953,14 @@ void main() {
 
     expect(
       Color.alphaBlend(
-        style.overlayColor!.resolve({WidgetState.hovered})!,
+        _feedbackColor(tester, style, {WidgetState.hovered}),
         const Color(0xFF06C755),
       ),
       Color.alphaBlend(const Color(0x1A000000), const Color(0xFF06C755)),
     );
     expect(
       Color.alphaBlend(
-        style.overlayColor!.resolve({WidgetState.pressed})!,
+        _feedbackColor(tester, style, {WidgetState.pressed}),
         const Color(0xFF06C755),
       ),
       Color.alphaBlend(const Color(0x4D000000), const Color(0xFF06C755)),
@@ -1151,6 +1155,21 @@ void main() {
 }
 
 void _noop() {}
+
+Color _feedbackColor(
+  WidgetTester tester,
+  ButtonStyle style,
+  Set<WidgetState> states,
+) {
+  final layer =
+      style.backgroundBuilder!(
+            tester.element(find.byType(TextButton)),
+            states,
+            const SizedBox(),
+          )
+          as TweenAnimationBuilder<Color?>;
+  return layer.tween.end!;
+}
 
 ButtonStyle _style(WidgetTester tester, Key key) =>
     tester

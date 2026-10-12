@@ -426,7 +426,7 @@ class _SocialButton extends StatelessWidget {
     // with global greys. Composite translucent text first (for example Kakao),
     // so all disabled colors remain opaque and independent of the app surface.
     // These derived states are package presets, not provider specifications.
-    // The caller-owned logo is never tinted or faded.
+    // The caller-owned logo keeps its original colors outside interaction.
     final compositedForeground = Color.alphaBlend(
       appearanceStyle.foregroundColor,
       appearanceStyle.backgroundColor,
@@ -479,8 +479,43 @@ class _SocialButton extends StatelessWidget {
       return appearanceStyle.foregroundColor;
     }
 
+    Color feedbackFor(Set<WidgetState> states) {
+      if (states.contains(WidgetState.disabled) ||
+          spec.hoverOpacity != null ||
+          spec.pressedOpacity != null) {
+        return Colors.transparent;
+      }
+      if (states.contains(WidgetState.pressed)) {
+        return spec.pressedOverlay ?? overlayBase.withValues(alpha: 0.12);
+      }
+      if (states.contains(WidgetState.focused)) {
+        return overlayBase.withValues(alpha: 0.12);
+      }
+      if (states.contains(WidgetState.hovered)) {
+        return spec.hoverOverlay ?? overlayBase.withValues(alpha: 0.08);
+      }
+      return Colors.transparent;
+    }
+
     return ButtonStyle(
       elevation: const WidgetStatePropertyAll(0),
+      // Ink paints below opaque caller-owned logos. Give the logo the same
+      // state wash without dimming the label or adding another input owner.
+      splashFactory: NoSplash.splashFactory,
+      backgroundBuilder:
+          (context, states, child) => TweenAnimationBuilder<Color?>(
+            tween: ColorTween(begin: feedbackFor({}), end: feedbackFor(states)),
+            duration: kThemeChangeDuration,
+            builder:
+                (context, color, child) => Stack(
+                  fit: StackFit.passthrough,
+                  children: [
+                    Positioned.fill(child: ColoredBox(color: color!)),
+                    _LogoFeedback(color: color, child: child!),
+                  ],
+                ),
+            child: child,
+          ),
       backgroundColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
           return disabledBackground;
@@ -503,19 +538,7 @@ class _SocialButton extends StatelessWidget {
         if (states.contains(WidgetState.disabled)) {
           return null;
         }
-        if (spec.hoverOpacity != null || spec.pressedOpacity != null) {
-          return Colors.transparent;
-        }
-        if (states.contains(WidgetState.pressed)) {
-          return spec.pressedOverlay ?? overlayBase.withValues(alpha: 0.12);
-        }
-        if (states.contains(WidgetState.focused)) {
-          return overlayBase.withValues(alpha: 0.12);
-        }
-        if (states.contains(WidgetState.hovered)) {
-          return spec.hoverOverlay ?? overlayBase.withValues(alpha: 0.08);
-        }
-        return null;
+        return Colors.transparent;
       }),
       side: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
@@ -699,6 +722,15 @@ _ProviderButtonSpec _buttonSpec(
   _ => _ProviderButtonSpec(logoSize: usesProviderLogoLayout ? 24 : null),
 };
 
+class _LogoFeedback extends InheritedWidget {
+  const _LogoFeedback({required this.color, required super.child});
+
+  final Color color;
+
+  @override
+  bool updateShouldNotify(_LogoFeedback oldWidget) => color != oldWidget.color;
+}
+
 class _LogoSlot extends StatelessWidget {
   const _LogoSlot({
     required this.logo,
@@ -711,11 +743,26 @@ class _LogoSlot extends StatelessWidget {
   final double aspectRatio;
 
   @override
-  Widget build(BuildContext context) => SizedBox(
-    width: size * aspectRatio,
-    height: size,
-    child: ExcludeSemantics(child: logo),
-  );
+  Widget build(BuildContext context) {
+    final feedback =
+        context.dependOnInheritedWidgetOfExactType<_LogoFeedback>()!;
+    return SizedBox(
+      width: size * aspectRatio,
+      height: size,
+      child: ExcludeSemantics(
+        child:
+            feedback.color.a == 0
+                ? logo
+                : ColorFiltered(
+                  colorFilter: ColorFilter.mode(
+                    feedback.color,
+                    BlendMode.srcATop,
+                  ),
+                  child: logo,
+                ),
+      ),
+    );
+  }
 }
 
 // Report each failed image once, while keeping the visual failure inside the
