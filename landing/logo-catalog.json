@@ -4308,7 +4308,7 @@
       },
       "conditions": {
         "identificationUse": "The retained Simple Icons-derived default identifies VK in the labeled action; it is not provider-supplied or an official complete control.",
-        "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+        "transformation": "Pinned Simple Icons SVG is recolored white (#FFFFFF), independently of the dark label foreground (#111111), and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
         "redistribution": "VK supplies SDK and custom-button markup for authentication; extracted static-logo redistribution is not separately stated.",
         "sources": [
           "https://id.vk.ru/about/business/go/docs/ru/vkid/latest/vk-id/connection/elements/custom-button/custom-button-web",
@@ -4332,7 +4332,7 @@
           },
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies VK in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Pinned Simple Icons SVG is recolored white (#FFFFFF), independently of the dark label foreground (#111111), and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
             "redistribution": "VK supplies SDK and custom-button markup for authentication; extracted static-logo redistribution is not separately stated.",
             "sources": [
               "https://id.vk.ru/about/business/go/docs/ru/vkid/latest/vk-id/connection/elements/custom-button/custom-button-web",
@@ -4366,7 +4366,7 @@
           },
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies VK in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Pinned Simple Icons SVG is recolored white (#FFFFFF), independently of the dark label foreground (#111111), and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
             "redistribution": "VK supplies SDK and custom-button markup for authentication; extracted static-logo redistribution is not separately stated.",
             "sources": [
               "https://id.vk.ru/about/business/go/docs/ru/vkid/latest/vk-id/connection/elements/custom-button/custom-button-web",
@@ -4400,7 +4400,7 @@
           },
           "conditions": {
             "identificationUse": "The retained Simple Icons-derived default identifies VK in the labeled action; it is not provider-supplied or an official complete control.",
-            "transformation": "Pinned Simple Icons SVG is recolored to the catalog foreground and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
+            "transformation": "Pinned Simple Icons SVG is recolored white (#FFFFFF), independently of the dark label foreground (#111111), and rasterized to a transparent 128x128 PNG; the provider shape is not redrawn.",
             "redistribution": "VK supplies SDK and custom-button markup for authentication; extracted static-logo redistribution is not separately stated.",
             "sources": [
               "https://id.vk.ru/about/business/go/docs/ru/vkid/latest/vk-id/connection/elements/custom-button/custom-button-web",
