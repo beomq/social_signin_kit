@@ -15,7 +15,7 @@ const providerPracticalSummaries = {
   x:
     "Do not treat publishing-button guidance as authentication guidance. No current login-specific visual specification was verified.",
   line:
-    "The renderer uses LINE's verified white foreground and state values. Use the official template when exact complete-control geometry is required.",
+    "The package uses dark labels and shared interaction washes for accessible contrast, rather than LINE's official white-label treatment. Use the official template for an exact control.",
   discord:
     "The Blurple package treatment is an unofficial adaptation. Do not present it as a verified Discord OAuth-button specification.",
   linkedin:
@@ -49,7 +49,7 @@ const providerPracticalSummaries = {
   snapchat:
     "Use the documented “Log in with Snapchat” wording and official Ghost asset without making the surrounding app look like Snapchat.",
   vk:
-    "The renderer follows the documented custom-button colors, sizing, and opacity states. Prefer OneTap when the provider-rendered control is required.",
+    "The package uses dark labels and shared interaction washes for accessible contrast, rather than VK's white-label opacity treatment. Prefer OneTap for a provider-rendered control.",
   weibo:
     "Use the official configurator and recheck the fixed sizes and current SDK suitability before production use.",
   qq:
@@ -67,7 +67,7 @@ const providerPracticalSummaries = {
   kakao:
     "The renderer uses documented Kakao colors and a package-selected 16 px label for the default button size. It is not the official complete control; shared shape overrides are custom treatments.",
   naver:
-    "The renderer uses verified Naver foreground, sizing, and spacing values. Use an official complete asset when exact full-button composition is required.",
+    "The package uses dark labels for accessible contrast instead of Naver's official white labels. Use an official complete asset for exact composition.",
   google:
     "Prefer Google Identity Services or an official complete SVG or PNG. Do not describe the shared widget as equivalent to Google's rendered control.",
   apple:

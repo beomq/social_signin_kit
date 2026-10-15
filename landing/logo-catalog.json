@@ -765,7 +765,7 @@
     },
     "name": "LINE",
     "background": "#06C755",
-    "foreground": "#FFFFFF",
+    "foreground": "#111111",
     "rendering": {
       "logoSize": 30
     },
@@ -927,11 +927,11 @@
     "appearances": {
       "light": {
         "background": "#06C755",
-        "foreground": "#FFFFFF"
+        "foreground": "#111111"
       },
       "dark": {
         "background": "#06C755",
-        "foreground": "#FFFFFF"
+        "foreground": "#111111"
       }
     },
     "appearanceSupport": {
@@ -4285,7 +4285,7 @@
     },
     "name": "VK",
     "background": "#0077FF",
-    "foreground": "#FFFFFF",
+    "foreground": "#111111",
     "rendering": {
       "logoSize": 28
     },
@@ -5934,7 +5934,7 @@
     },
     "name": "Naver",
     "background": "#05AC4F",
-    "foreground": "#FFFFFF",
+    "foreground": "#111111",
     "rendering": {
       "logoSize": 45
     },
@@ -6106,11 +6106,11 @@
     "appearances": {
       "light": {
         "background": "#03A94D",
-        "foreground": "#FFFFFF"
+        "foreground": "#111111"
       },
       "dark": {
         "background": "#05AC4F",
-        "foreground": "#FFFFFF"
+        "foreground": "#111111"
       }
     },
     "appearanceSupport": {

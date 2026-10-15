@@ -1044,9 +1044,10 @@ function buildManifest(dartCode) {
     purpose: "social_signin_kit consuming-app handoff",
     package: {
       name: "social_signin_kit",
-      publication: "unpublished",
+      publication: "pub.dev",
+      version: "^0.2.0",
       dependencyInstruction:
-        "Reuse the app's existing dependency, or add a Git dependency from https://github.com/beomq/social_signin_kit.git at ref main (pin a verified commit for reproducibility). A local checkout path is also supported. No pub.dev release is available yet.",
+        "Add social_signin_kit: ^0.2.0 from pub.dev, or reuse the app's existing compatible dependency. Use a Git dependency pinned to a verified commit or a local checkout path only for package development.",
     },
     layout: {
       direction: state.direction,
@@ -1125,9 +1126,9 @@ function buildAgentHandoff(manifest) {
   return `Integrate the selected social login design into the current Flutter app.
 
 Package:
-- social_signin_kit is unpublished.
-- Reuse the app's existing dependency, or add social_signin_kit as a Git dependency: url https://github.com/beomq/social_signin_kit.git, ref main. Pin a verified commit for reproducibility.
-- A local checkout path is also supported. Do not invent a pub.dev release; none is available yet.
+- social_signin_kit 0.2.0 is published on pub.dev.
+- Add social_signin_kit: ^0.2.0 under dependencies, or reuse the app's existing compatible dependency.
+- Use a Git dependency pinned to a verified commit, or a local checkout path, only for package development.
 - Do not modify the package repository.
 
 Selected design:

@@ -1403,13 +1403,13 @@ body[data-locale="ko"] .provider-detail > summary strong {
 .specimen-button--naver {
   border-color: var(--provider-naver-bg);
   background: var(--provider-naver-bg);
-  color: var(--provider-light-fg);
+  color: var(--provider-dark-fg);
 }
 
 .specimen-button--line {
   border-color: var(--provider-line-bg);
   background: var(--provider-line-bg);
-  color: var(--provider-light-fg);
+  color: var(--provider-dark-fg);
 }
 
 .specimen-button--large {

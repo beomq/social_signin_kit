@@ -37,6 +37,7 @@
                   <p class="specimen-code__label">Dart / public API</p>
                   <pre><code><span class="token-accent">SocialButton</span>(
   social: Social.google,
+  logo: 'assets/brand/google.png',
   shape: SocialButtonShape.pill,
   onPressed: startSignIn,
 )</code></pre>
@@ -131,8 +132,8 @@
           <section class="showcase-card" aria-labelledby="showcase-status">
             <h2 id="showcase-status">Status strips</h2>
             <div class="status-strip">
-              <span class="status-strip__label">Unpublished</span>
-              <span>Local path only. No pub.dev release.</span>
+              <span class="status-strip__label">pub.dev 0.2.0</span>
+              <span>Hosted release. Local path is for package development.</span>
             </div>
             <div class="status-strip">
               <span class="status-strip__label">Unofficial UI</span>
@@ -186,11 +187,10 @@
             <h2 id="showcase-code">Code panel</h2>
             <div class="code-panel">
               <div class="code-panel__toolbar">
-                <span class="code-panel__language">YAML / local path</span>
+                <span class="code-panel__language">YAML / dependency</span>
               </div>
               <pre><code>dependencies:
-  social_signin_kit:
-    path: ../social_signin_kit</code></pre>
+  social_signin_kit: ^0.2.0</code></pre>
             </div>
           </section>
 
