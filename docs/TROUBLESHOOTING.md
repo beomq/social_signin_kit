@@ -17,10 +17,12 @@ SocialButtonList.vertical(
   items: [
     SocialButton(
       social: Social.google,
+      logo: 'assets/brand/google.png',
       onPressed: startGoogleSignIn,
     ),
     SocialButton(
       social: Social.apple,
+      logo: 'assets/brand/apple.png',
       onPressed: startAppleSignIn,
     ),
   ],
@@ -74,8 +76,9 @@ SocialButtonList.vertical(
 
 ## 로딩 표시가 없음
 
-패키지에는 `isLoading`이 없습니다. 앱 상태로 진행 표시를 렌더링하고 요청
-중에는 `onPressed: null`을 전달하세요. 예제는
+0.1.2는 별도 진행 표시와 `onPressed: null`을 사용합니다. 0.2.0부터
+`isLoading: true`로 버튼 전체를 로딩 표시로 바꿀 수 있습니다.
+앱이 성공·실패 시 값을 해제해야 합니다. 예제는
 [상태와 접근성](STATES.md)에 있습니다.
 
 ## 원형 버튼의 제공자를 구분하기 어려움

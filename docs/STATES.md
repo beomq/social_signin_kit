@@ -12,26 +12,22 @@
 | hover | 팔레트 명도에 맞춘 8% overlay 표시 |
 | focus | 팔레트 명도에 맞춘 12% overlay와 전경색 테두리 표시 |
 | pressed | 누르는 동안 팔레트 명도에 맞춘 12% overlay 표시 |
-| disabled | 제공자 팔레트에서 파생한 색상 적용, 콜백 호출 안 함 |
+| disabled | 로고를 포함한 버튼 전체에 50% 불투명도 적용, 콜백 호출 안 함 |
 
 제공자 메타데이터에 공식 색상 출처가 있더라도 hover, focus, pressed,
 disabled 조합까지 공식 승인을 받았다는 뜻은 아닙니다. 자세한 출처는
 [제공자 자산 가이드](PROVIDER_GUIDE.md)를 확인하세요.
 
-## 비활성 색상 계산
+## 비활성 표시
 
-모든 제공자를 같은 회색으로 바꾸지 않습니다. 패키지는 각 제공자의 기본
-팔레트에서 불투명한 비활성 색상을 계산합니다.
+기본 팔레트를 바꾸지 않고 로고·문구·배경·테두리를 하나로 합성한 뒤 전체를
+50% 불투명도로 표시합니다. 원래 배경과 일치하는 불투명 로고는 비활성에서도
+경계가 생기지 않습니다. 애초에 다른 배경색을 가진 이미지를 자동 보정하지는
+않습니다. 비활성 상태의 최종 대비는 앱 배경에 따라 달라집니다.
+이 표현은 패키지 선택이며 제공자의 공식 disabled 상태 규격이 아닙니다.
 
-- 배경: 기본 배경에서 합성된 전경색 방향으로 8% 혼합
-- 전경: 합성된 전경색에서 기본 배경 방향으로 12% 혼합
-- 테두리: 제공자 테두리가 있으면 그 색, 없으면 합성된 전경색과 비활성
-  배경의 중간색
-- 로고: 앱이 제공한 원본을 tint하거나 흐리게 만들지 않음
-
-Kakao처럼 투명도가 있는 전경색은 먼저 기본 배경 위에 합성합니다. 이렇게
-계산한 색상과 8%, 12% 비율은 패키지 선택입니다. 제공자의 공식 disabled
-상태 규격이 아닙니다.
+LINE·Naver·VK는 활성 문구 대비 4.5:1 이상을 위해 `#111111` 글자를 사용합니다.
+원래 배경·로고를 유지하되 공식 버튼의 흰색 문구와는 다릅니다.
 
 ## 비활성
 
@@ -40,6 +36,7 @@ Kakao처럼 투명도가 있는 전경색은 먼저 기본 배경 위에 합성�
 ```dart
 SocialButton(
   social: Social.google,
+  logo: 'assets/brand/google.png',
   onPressed: canStartSignIn ? startGoogleSignIn : null,
 )
 ```
@@ -49,29 +46,32 @@ SocialButton(
 
 ## 로딩
 
-패키지는 `isLoading`을 제공하지 않습니다. 인증 요청의 수명과 결과를 모르는
-UI 패키지가 로딩을 소유하면 중복 요청, 오류 복구, 화면 전환 시점이 앱 상태와
-어긋날 수 있기 때문입니다.
+0.2.0의 `isLoading: true`는 버튼의 로고와 문구 대신 진행 표시를
+보여주고 입력을 차단합니다. 버튼 크기와 숨겨진 로고의 상태는 유지하며,
+접근성 값으로 한국어 `로딩 중` 또는 영어 `Loading`을 알립니다.
+요청 실행·완료·실패는 앱이 관리하고 `isLoading` 값을 전달합니다.
+0.1.2에는 이 옵션이 없으므로 의존성을 0.2.0 이상으로 갱신하세요.
 
 ```dart
-Column(
-  children: [
-    SocialButton(
-      social: Social.notion,
-      onPressed: isSigningIn ? null : startNotionSignIn,
-    ),
-    if (isSigningIn) const LinearProgressIndicator(),
-  ],
+SocialButton(
+  social: Social.notion,
+  logo: 'assets/brand/notion.png',
+  isLoading: isSigningIn,
+  onPressed: startNotionSignIn,
 )
 ```
 
 앱은 다음을 함께 관리해야 합니다.
 
 - 요청 시작부터 완료 또는 실패까지의 로딩 상태
-- 요청 중 `onPressed: null` 처리
+- 요청 중 `isLoading: true` 전달
 - 오류 메시지와 재시도
 - 화면 이탈 뒤 상태 정리
 - 같은 요청의 중복 실행 방지
+
+로딩 중에는 활성 팔레트와 불투명도를 유지합니다. 일반 `onPressed: null`은
+버튼 전체를 흐리게 표시합니다. VK도 다른 제공자와 동일한 공유 overlay를
+사용하므로 활성 문구를 흐리게 만들지 않습니다.
 
 ## 접근성 이름
 
@@ -82,6 +82,7 @@ Column(
 ```dart
 SocialButton(
   social: Social.notion,
+  logo: 'assets/brand/notion.png',
   shape: SocialButtonShape.circle,
   label: 'Notion 워크스페이스 연결',
   onPressed: startNotionSignIn,
@@ -113,6 +114,7 @@ SocialButton(
 ```dart
 SocialButton(
   social: Social.apple,
+  logo: 'assets/brand/apple.png',
   size: 56,
   onPressed: startAppleSignIn,
 )

@@ -369,26 +369,27 @@ _catalog = Map<SocialLoginProvider, SocialLoginProviderData>.unmodifiable({
     assetGuidance:
         'Supply the official logo-only LINE Login PNG from the app. Prefer the complete official template where its full control is required.',
     limitations:
-        'Official colors, no-wrap text, proportional spacing, separator, and state rules apply; the package renderer implements the verified values.',
+        'Official no-wrap text, proportional spacing, separator, and state rules inform the renderer; the label color is contrast-adjusted by the package.',
     backgroundColor: const Color(0xFF06C755),
-    foregroundColor: const Color(0xFFFFFFFF),
+    foregroundColor: const Color(0xFF111111),
     borderColor: null,
     paletteBasis: SocialLoginPaletteBasis.signInColors,
     paletteNotes:
-        'LINE specifies the base, white foreground, hover, pressed, '
-        'disabled, separator, and disabled-border colors used by this '
-        'preset. The surrounding Flutter geometry remains package-rendered.',
+        'LINE specifies the green base and white content. The dark #111111 '
+        'label is a package accessibility choice for text contrast, not the '
+        'exact official brand treatment. Original logo artwork is preserved. '
+        'The surrounding Flutter geometry remains package-rendered.',
     interactionStateNotes:
         'LINE documents the hover, pressed, and disabled colors used here; '
         'the focus treatment remains a package preset.',
     appearanceStyles: const {
       SocialButtonAppearance.light: SocialButtonAppearanceStyle(
         backgroundColor: Color(0xFF06C755),
-        foregroundColor: Color(0xFFFFFFFF),
+        foregroundColor: Color(0xFF111111),
       ),
       SocialButtonAppearance.dark: SocialButtonAppearanceStyle(
         backgroundColor: Color(0xFF06C755),
-        foregroundColor: Color(0xFFFFFFFF),
+        foregroundColor: Color(0xFF111111),
       ),
     },
   ),
@@ -811,11 +812,13 @@ _catalog = Map<SocialLoginProvider, SocialLoginProviderData>.unmodifiable({
     limitations:
         'The custom example specifies white content, 8px radius, 44px minimum height, 28px icon, 8×10px padding, and opacity states; SDK OneTap remains preferred.',
     backgroundColor: const Color(0xFF0077FF),
-    foregroundColor: const Color(0xFFFFFFFF),
+    foregroundColor: const Color(0xFF111111),
     paletteBasis: SocialLoginPaletteBasis.signInColors,
     paletteNotes:
         'The official VK ID custom-button example supplies the blue '
-        'background and white foreground. CSS opacity and active scaling '
+        'background and white content. The dark #111111 label is a package '
+        'accessibility choice for text contrast, not the exact official brand '
+        'treatment. Original logo artwork is preserved. CSS opacity and active scaling '
         'cannot be reproduced independently of the host surface.',
     interactionStateNotes:
         'The VK ID custom-button example documents hover and active '
@@ -1038,23 +1041,26 @@ _catalog = Map<SocialLoginProvider, SocialLoginProviderData>.unmodifiable({
     limitations:
         'Official colors, 16px complete-button N minimum, and 8px centered spacing apply; account for internal padding in the app-supplied template.',
     backgroundColor: const Color(0xFF05AC4F),
-    foregroundColor: const Color(0xFFFFFFFF),
+    foregroundColor: const Color(0xFF111111),
     borderColor: null,
     paletteBasis: SocialLoginPaletteBasis.signInColors,
     paletteNotes:
         'The active background matches the dominant opaque #05AC4F pixels '
         'in the preserved provider-supplied green icon PNG; Naver specifies '
         'a green background with a white logo and label. '
+        'The dark #111111 label is a package accessibility choice for text '
+        'contrast, not the exact official brand treatment. Original logo '
+        'artwork is preserved. '
         'The package sizes the complete icon template from its measured '
         'internal N bounds rather than treating its canvas as a raw glyph.',
     appearanceStyles: const {
       SocialButtonAppearance.light: SocialButtonAppearanceStyle(
         backgroundColor: Color(0xFF03A94D),
-        foregroundColor: Color(0xFFFFFFFF),
+        foregroundColor: Color(0xFF111111),
       ),
       SocialButtonAppearance.dark: SocialButtonAppearanceStyle(
         backgroundColor: Color(0xFF05AC4F),
-        foregroundColor: Color(0xFFFFFFFF),
+        foregroundColor: Color(0xFF111111),
       ),
     },
   ),

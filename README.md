@@ -17,10 +17,21 @@ Requires Flutter 3.29.0 or later and Dart 3.7.0 or later.
 
 ```yaml
 dependencies:
-  social_signin_kit: ^0.1.1
+  social_signin_kit: ^0.2.0
 ```
 
-For a local clone, replace the version dependency with a path dependency:
+For development against unreleased changes, you can use a pinned Git
+dependency instead. Pin `ref` to a verified commit SHA or release tag:
+
+```yaml
+dependencies:
+  social_signin_kit:
+    git:
+      url: https://github.com/beomq/social_signin_kit.git
+      ref: <commit-sha-or-tag>
+```
+
+For a local clone, use a path dependency:
 
 ```yaml
 dependencies:
@@ -83,8 +94,10 @@ existing authentication functions; the package does not implement them.
 
 ## Shapes and appearances
 
-The supported shapes are `rounded`, `pill`, and `circle`. An unsupported
-provider/shape combination falls back to that provider's default shape.
+The supported shapes are `rounded`, `pill`, and `circle`. The requested shape
+is always rendered. Provider shape support is advisory metadata, available
+through `capabilities.shapeSupport`; a `restricted` or `unverified` status
+doesn't change the shape.
 
 ```dart
 SocialButton(
@@ -127,8 +140,9 @@ SocialButton(
 `SocialButtonList.vertical` and `SocialButtonList.horizontal` accept
 `SocialButton` items. Each item owns its
 provider and callback. Omitted `shape`, `appearance`, and `size` values inherit
-from the list; an explicit child value takes precedence. Unsupported settings
-fall back independently for each provider. Each logo path remains unchanged.
+from the list; an explicit child value takes precedence. Requested shapes are
+preserved, and unsupported appearances fall back independently for each
+provider. Each logo path remains unchanged.
 
 ### Vertical list
 
@@ -247,21 +261,47 @@ for the selection rules.
 
 ## Disabled and loading states
 
-`onPressed: null` disables a button. The package does not expose an `isLoading`
-state. Your app manages in-flight requests and prevents duplicate submissions:
+`onPressed: null` disables a button. Since 0.2.0,
+`isLoading: true` replaces the logo and label with a progress indicator,
+preserves button size and logo state, and blocks activation. Your app owns
+the request and sets loading back to false after success or failure:
 
 ```dart
 SocialButton(
   social: Social.naver,
   logo: 'assets/brand/naver.png',
-  onPressed: isSigningIn ? null : startNaverSignIn,
+  isLoading: isSigningIn,
+  onPressed: startNaverSignIn,
 )
 ```
 
-Provide a separate progress indicator in your screen if needed. Some providers
-use published state, spacing, and size values; others derive package states
-from the provider palette. This does not certify a complete official control.
+A loading button keeps its active palette. A regular disabled button fades
+the complete control to 50% opacity, including its logo, avoiding seams when
+the original logo background matches the button. LINE, Naver, and VK use dark
+labels for at least 4.5:1 active text contrast, rather than exact official white
+labels. Interaction washes preserve that contrast. These are package choices,
+not certified official controls.
 See [states and accessibility](https://github.com/beomq/social_signin_kit/blob/main/docs/STATES.md).
+
+## Widget logos and keyboard focus
+
+Use `SocialButton.custom` for an app-owned widget, including SVG renderers or
+memory images. The package adds no image dependency. Both button APIs accept
+`focusNode` and `autofocus`; the app owns and disposes a supplied focus node.
+
+```dart
+SocialButton.custom(
+  social: Social.google,
+  logo: Image.memory(googleLogoBytes),
+  focusNode: signInFocusNode,
+  autofocus: true,
+  onPressed: startGoogleSignIn,
+)
+```
+
+Existing asset-path calls remain valid. The `SocialButton.logo` getter is now
+nullable (`null` for `.custom`); custom content is in `logoWidget`. If your app
+reads this getter directly, handle the two constructors explicitly.
 
 ## Build a screen with the web selector
 

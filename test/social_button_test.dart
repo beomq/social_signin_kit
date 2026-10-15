@@ -10,6 +10,47 @@ const _appLogo = 'images/app-logo.png';
 
 void main() {
   testWidgets(
+    'loading retains every shape size and blocks pointer keyboard semantics',
+    (tester) async {
+      final semantics = tester.ensureSemantics();
+      for (final shape in SocialButtonShape.values) {
+        var calls = 0;
+        Widget button(bool loading) => SocialButton(
+          social: Social.google,
+          logo: _appLogo,
+          shape: shape,
+          isLoading: loading,
+          onPressed: () => calls++,
+        );
+        await _pump(tester, button(false));
+        final original = tester.getSize(find.byType(TextButton));
+        await _pump(tester, button(true));
+        expect(tester.getSize(find.byType(TextButton)), original);
+        expect(find.byType(CircularProgressIndicator), findsOneWidget);
+        final node = tester.getSemantics(find.byType(TextButton));
+        expect(node.getSemanticsData().value, 'Loading');
+        expect(node.getSemanticsData().hasAction(SemanticsAction.tap), isFalse);
+        await tester.tap(find.byType(TextButton));
+        await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        await tester.sendKeyEvent(LogicalKeyboardKey.space);
+        node.owner!.performAction(node.id, SemanticsAction.tap);
+        await tester.pump();
+        expect(calls, 0);
+        await _pump(tester, button(false));
+        await tester.pumpAndSettle();
+        expect(find.byType(CircularProgressIndicator), findsNothing);
+        expect(tester.getSize(find.byType(TextButton)), original);
+        await tester.tap(find.byType(TextButton));
+        await tester.pumpAndSettle();
+        expect(calls, 1);
+        expect(tester.takeException(), isNull);
+      }
+      semantics.dispose();
+    },
+  );
+
+  testWidgets(
     'explicit wide app mark ratios use proportional slots and square circles',
     (tester) async {
       for (final (social, ratio) in [
@@ -578,7 +619,7 @@ void main() {
         expect(side == BorderSide.none ? null : side.color, colors[2]);
         expect(
           style.backgroundColor!.resolve({WidgetState.disabled}),
-          isNot(colors[0]),
+          colors[0],
         );
         expect(style.overlayColor!.resolve({WidgetState.hovered}), isNotNull);
         expect(style.overlayColor!.resolve({WidgetState.pressed}), isNotNull);
@@ -610,7 +651,12 @@ void main() {
           expect(image.color, isNull);
           expect(image.colorBlendMode, isNull);
           expect(image.fit, BoxFit.contain);
-          expect(find.byType(ColorFiltered), findsNothing);
+          expect(
+            tester
+                .widget<ColorFiltered>(find.byType(ColorFiltered))
+                .colorFilter,
+            const ColorFilter.mode(Colors.transparent, BlendMode.srcATop),
+          );
           expect(
             find.ancestor(
               of: find.byType(Image),
@@ -905,24 +951,8 @@ void main() {
           style.overlayColor!.resolve({WidgetState.pressed}),
           Colors.transparent,
         );
-        if (social == Social.vk) {
-          expect(Color.alphaBlend(hover, base), base);
-          expect(
-            style.backgroundColor!.resolve({WidgetState.hovered})!.a,
-            closeTo(0.8, 0.001),
-          );
-          expect(
-            style.backgroundColor!.resolve({WidgetState.pressed})!.a,
-            closeTo(0.7, 0.001),
-          );
-        } else {
-          expect(
-            Color.alphaBlend(hover, base),
-            isNot(base),
-            reason: social.name,
-          );
-          expect(pressed, isNot(hover));
-        }
+        expect(Color.alphaBlend(hover, base), isNot(base), reason: social.name);
+        expect(pressed, isNot(hover));
         expect(
           _feedbackColor(tester, style, {
             WidgetState.hovered,
@@ -956,27 +986,30 @@ void main() {
         _feedbackColor(tester, style, {WidgetState.hovered}),
         const Color(0xFF06C755),
       ),
-      Color.alphaBlend(const Color(0x1A000000), const Color(0xFF06C755)),
+      Color.alphaBlend(
+        Colors.white.withValues(alpha: 0.08),
+        const Color(0xFF06C755),
+      ),
     );
     expect(
       Color.alphaBlend(
         _feedbackColor(tester, style, {WidgetState.pressed}),
         const Color(0xFF06C755),
       ),
-      Color.alphaBlend(const Color(0x4D000000), const Color(0xFF06C755)),
+      Color.alphaBlend(
+        Colors.white.withValues(alpha: 0.12),
+        const Color(0xFF06C755),
+      ),
     );
     expect(
       style.backgroundColor!.resolve({WidgetState.disabled}),
-      const Color(0xFFFFFFFF),
+      const Color(0xFF06C755),
     );
     expect(
       style.foregroundColor!.resolve({WidgetState.disabled}),
-      const Color(0x331E1E1E),
+      const Color(0xFF111111),
     );
-    expect(
-      style.side!.resolve({WidgetState.disabled})!.color,
-      const Color(0x99E5E5E5),
-    );
+    expect(style.side!.resolve({WidgetState.disabled}), BorderSide.none);
     expect(find.byKey(const ValueKey('line-separator')), findsOneWidget);
     final lineRow = tester.widget<Row>(find.byType(Row));
     final lineGaps = lineRow.children.whereType<SizedBox>().toList();
@@ -994,7 +1027,7 @@ void main() {
       tester
           .widget<Container>(find.byKey(const ValueKey('line-separator')))
           .color,
-      const Color(0x99E5E5E5),
+      const Color(0x14000000),
     );
   });
 

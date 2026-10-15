@@ -461,9 +461,6 @@ void main() {
     });
 
     testWidgets('resolved state palettes retain text contrast', (tester) async {
-      final disabledBackgrounds = <Color>{};
-      final disabledForegrounds = <Color>{};
-      final disabledBorders = <Color>{};
       for (final provider in SocialLoginProvider.values) {
         await tester.pumpWidget(
           _app(
@@ -491,24 +488,11 @@ void main() {
             foreground: foreground,
             background: background,
           );
-          if ({
-            SocialLoginProvider.line,
-            SocialLoginProvider.naver,
-            SocialLoginProvider.vk,
-          }.contains(provider)) {
-            expect(
-              ratio,
-              lessThan(4.5),
-              reason:
-                  '${provider.name} intentionally preserves provider colors',
-            );
-          } else {
-            expect(
-              ratio,
-              greaterThanOrEqualTo(4.5),
-              reason: '${provider.name} failed for $states',
-            );
-          }
+          expect(
+            ratio,
+            greaterThanOrEqualTo(4.5),
+            reason: '${provider.name} failed for $states',
+          );
         }
 
         final focusedSide = style.side!.resolve({WidgetState.focused})!;
@@ -518,45 +502,13 @@ void main() {
           socialLoginProviderData(provider).foregroundColor,
         );
         final data = socialLoginProviderData(provider);
-        final compositedForeground = Color.alphaBlend(
-          data.foregroundColor,
-          data.backgroundColor,
-        );
         const disabled = {WidgetState.disabled};
         final disabledBackground = style.backgroundColor!.resolve(disabled)!;
         final disabledForeground = style.foregroundColor!.resolve(disabled)!;
         final disabledBorder = style.side!.resolve(disabled)!;
-        if (provider == SocialLoginProvider.line) {
-          expect(disabledBackground, const Color(0xFFFFFFFF));
-          expect(disabledForeground, const Color(0x331E1E1E));
-          expect(disabledBorder.color, const Color(0x99E5E5E5));
-        } else if (provider == SocialLoginProvider.naver) {
-          expect(disabledBackground, const Color(0xFF039B47));
-          expect(disabledForeground, const Color(0xFFF7FCFA));
-        } else if (provider == SocialLoginProvider.vk) {
-          expect(disabledBackground, const Color(0xFF006DEB));
-          expect(disabledForeground, const Color(0xFFF7FBFF));
-        } else {
-          expect(
-            disabledBackground,
-            Color.lerp(data.backgroundColor, compositedForeground, 0.08),
-          );
-          expect(
-            disabledForeground,
-            Color.lerp(compositedForeground, data.backgroundColor, 0.12),
-          );
-          expect(
-            disabledBorder.color,
-            Color.lerp(
-              data.borderColor ?? compositedForeground,
-              disabledBackground,
-              0.5,
-            ),
-          );
-        }
-        expect(disabledBackground, isNot(data.backgroundColor));
-        expect(disabledForeground, isNot(data.foregroundColor));
-        expect(disabledBorder.width, 1);
+        expect(disabledBackground, data.backgroundColor);
+        expect(disabledForeground, data.foregroundColor);
+        expect(disabledBorder, style.side!.resolve({}));
         expect(style.overlayColor!.resolve(disabled), isNull);
         expect(
           style.overlayColor!.resolve({
@@ -570,24 +522,8 @@ void main() {
           foreground: disabledForeground,
           background: disabledBackground,
         );
-        if (provider == SocialLoginProvider.line) {
-          expect(disabledContrast, lessThan(3));
-        } else {
-          expect(
-            disabledContrast,
-            greaterThanOrEqualTo(3),
-            reason: '${provider.name} disabled text must remain readable',
-          );
-        }
-        disabledBackgrounds.add(disabledBackground);
-        disabledForegrounds.add(disabledForeground);
-        disabledBorders.add(disabledBorder.color);
+        expect(disabledContrast, greaterThanOrEqualTo(4.5));
       }
-      // Shared monochrome identities may coincide, but states cannot collapse
-      // to one global grey palette for all the distinct service colors.
-      expect(disabledBackgrounds.length, greaterThanOrEqualTo(25));
-      expect(disabledForegrounds.length, greaterThanOrEqualTo(25));
-      expect(disabledBorders.length, greaterThanOrEqualTo(25));
     });
   });
 }

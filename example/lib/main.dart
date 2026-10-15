@@ -31,6 +31,7 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
   SocialButtonAppearance _appearance = SocialButtonAppearance.providerDefault;
   Social _selectedProvider = Social.google;
   bool _disabled = false;
+  bool _loading = false;
   int _activationCount = 0;
   Social? _lastActivatedProvider;
 
@@ -275,6 +276,19 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
                 ),
               ),
             ),
+            _ControlGroup(
+              label: _isKorean ? '진행 표시' : 'Progress',
+              child: SizedBox(
+                width: GalleryLayout.controlWidth,
+                child: SwitchListTile(
+                  key: const ValueKey<String>('loading-control'),
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(_isKorean ? '미리보기 로딩' : 'Preview loading'),
+                  value: _loading,
+                  onChanged: (value) => setState(() => _loading = value),
+                ),
+              ),
+            ),
           ];
 
           if (stacked) {
@@ -432,6 +446,7 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
               key: const ValueKey<String>('selected-provider-button'),
               social: _selectedProvider,
               logo: demoLogoAsset,
+              isLoading: _loading,
               onPressed:
                   _disabled ? null : () => _recordActivation(_selectedProvider),
               shape: _shape,

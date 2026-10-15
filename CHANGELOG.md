@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.0
+
+- Preserve stateful logos through press, hover, focus, and disabled transitions.
+- Show feedback for quick taps without delaying activation callbacks.
+- Use a shared contrast-preserving wash for LINE and VK interactions.
+- Use dark labels for LINE, Naver, and VK to meet 4.5:1 active text contrast.
+- Fade the complete disabled button uniformly, preserving opaque logo edges.
+- Add `SocialButton.custom` for widget logos and `focusNode`/`autofocus` to both
+  button APIs. `SocialButton.logo` is now nullable for the custom constructor.
+- Add app-controlled `isLoading` to both button APIs, retaining size and logo
+  state while replacing content with progress and blocking activation.
+- Correct installation instructions, required-logo examples, and shape guidance.
+
 ## 0.1.2
 
 - Keep opaque logo backgrounds in sync with button press, hover, and focus
