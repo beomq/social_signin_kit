@@ -380,8 +380,9 @@ _catalog = Map<SocialLoginProvider, SocialLoginProviderData>.unmodifiable({
         'exact official brand treatment. Original logo artwork is preserved. '
         'The surrounding Flutter geometry remains package-rendered.',
     interactionStateNotes:
-        'LINE documents the hover, pressed, and disabled colors used here; '
-        'the focus treatment remains a package preset.',
+        'Hover, pressed, and focus use package contrast-preserving washes. '
+        'Disabled opacity is applied to the complete button, including the logo; '
+        'these states are package choices, not official LINE state colors.',
     appearanceStyles: const {
       SocialButtonAppearance.light: SocialButtonAppearanceStyle(
         backgroundColor: Color(0xFF06C755),
