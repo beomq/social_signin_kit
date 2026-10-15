@@ -22,6 +22,7 @@ SocialButton(
 | --- | --- | --- |
 | `social` | `Social` | 표시할 제공자, 필수 |
 | `onPressed` | `VoidCallback?` | 앱의 인증 진입 콜백, `null`이면 비활성 |
+| `isLoading` | `bool` | 0.2.0부터 기본 `false`; 진행 표시로 내용 대체, 크기·로고 상태 유지, 입력 차단 |
 | `logo` | `String` | 필수 소비 앱 이미지 자산 경로 |
 | `logoAspectRatio` | `double` | 원본 너비/높이 비율, 기본 1; 원형은 정사각형 슬롯 |
 | `shape` | `SocialButtonShape?` | `rounded`, `pill`, `circle` |
@@ -30,8 +31,11 @@ SocialButton(
 | `locale` | `Locale?` | 기본 레이블을 고를 locale |
 | `label` | `String?` | 화면과 기본 접근성 이름에 사용할 앱 소유 문구 |
 | `semanticLabel` | `String?` | 화면 문구와 다른 접근성 이름이 필요할 때 사용 |
+| `focusNode` | `FocusNode?` | 앱이 소유하고 dispose하는 포커스 노드 |
+| `autofocus` | `bool` | 기본 `false`; 초기 포커스 요청 |
 
-`logo`는 필수 소비 앱 자산 경로이며 자동 선택·재색칠하지 않습니다.
+`logo`는 필수 소비 앱 자산 경로이며 자동 교체하거나 원본 파일을 변경하지 않습니다.
+상호작용 중에는 배경과 동일한 피드백 색을 합성하고, 평상시에는 원래 색으로 표시합니다.
 단독 버튼의 선택 인자를 생략하면 다음 기본값을 사용합니다.
 
 - `shape`: `SocialButtonShape.rounded`
@@ -42,6 +46,27 @@ SocialButton(
 
 `onPressed`는 인증 성공 콜백이 아닙니다. 패키지는 콜백을 호출할 뿐이며 인증
 결과를 알 수 없습니다.
+
+`isLoading`은 `SocialButton`과 호환 `SocialLoginButton` 모두에서 지원하며
+앱이 값을 제어합니다. 목록 전체에 상속되지 않습니다. 0.2.0 이상이 필요합니다.
+
+`SocialButton.custom`은 같은 옵션과 필수 `Widget logo`를 받습니다. SVG 렌더러,
+메모리 이미지 등 앱 소유 위젯을 전달할 수 있으며 패키지는 의존성을 추가하지
+않습니다. 두 생성자 모두 목록 기본값을 상속합니다. 공개 `logo` 필드는 이제
+`String?`이고 custom일 때 `null`, `logoWidget`에 전달한 위젯이 들어갑니다.
+기존 생성자 호출은 그대로 사용하고, 필드를 직접 읽는 코드는 null을 처리하세요.
+
+```dart
+SocialButton.custom(
+  social: Social.google,
+  logo: Image.memory(googleLogoBytes),
+  focusNode: signInFocusNode,
+  autofocus: true,
+  onPressed: startGoogleSignIn,
+)
+```
+
+`focusNode`와 `autofocus`는 호환 `SocialLoginButton`에도 전달할 수 있습니다.
 
 지원하지 않는 `appearance`도 컴파일되지만 실제 표시는 `providerDefault`를
 유지합니다. 디버그 콘솔에는 제공자·요청 외형 조합당 한 번 안내합니다.

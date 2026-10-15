@@ -561,7 +561,7 @@ void main() {
           SocialLoginProvider.naver,
           SocialLoginProvider.vk,
         }.contains(provider)) {
-          expect(data.foregroundColor.toARGB32(), 0xFFFFFFFF);
+          expect(data.foregroundColor.toARGB32(), 0xFF111111);
           expect(data.borderColor, isNull);
           expect(data.paletteBasis, SocialLoginPaletteBasis.signInColors);
         } else {
@@ -595,30 +595,24 @@ void main() {
       );
     });
 
-    test('active text contrast is at least 4.5 to 1 after compositing', () {
-      for (final provider in SocialLoginProvider.values) {
-        final data = socialLoginProviderData(provider);
-        final ratio = _contrastRatio(
-          foreground: data.foregroundColor,
-          background: data.backgroundColor,
-        );
-
-        if ({Social.line, Social.naver, Social.vk}.contains(provider)) {
-          expect(
-            ratio,
-            lessThan(4.5),
-            reason:
-                '${provider.name} intentionally preserves the provider palette',
+    for (final provider in SocialLoginProvider.values) {
+      final data = socialLoginProviderData(provider);
+      for (final appearance in data.capabilities.appearances) {
+        test('${provider.name} ${appearance.name} active text contrast '
+            'is at least 4.5 to 1 after compositing', () {
+          final style = data.appearanceStyle(appearance);
+          final ratio = _contrastRatio(
+            foreground: style.foregroundColor,
+            background: style.backgroundColor,
           );
-        } else {
           expect(
             ratio,
             greaterThanOrEqualTo(4.5),
-            reason: '${provider.name} contrast was $ratio',
+            reason: '${provider.name} ${appearance.name} contrast was $ratio',
           );
-        }
+        });
       }
-    });
+    }
   });
 }
 

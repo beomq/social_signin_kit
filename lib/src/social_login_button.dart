@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +20,8 @@ class SocialButton extends StatelessWidget {
     super.key,
     required this.social,
     required this.onPressed,
-    required this.logo,
+    required String this.logo,
+    this.isLoading = false,
     this.logoAspectRatio = 1,
     this.shape,
     this.appearance,
@@ -26,11 +29,38 @@ class SocialButton extends StatelessWidget {
     this.locale,
     this.label,
     this.semanticLabel,
-  });
+    this.focusNode,
+    this.autofocus = false,
+  }) : logoWidget = null;
+
+  /// Supplies an app-owned widget, including SVG or memory-backed images.
+  const SocialButton.custom({
+    super.key,
+    required this.social,
+    required this.onPressed,
+    required Widget logo,
+    this.isLoading = false,
+    this.logoAspectRatio = 1,
+    this.shape,
+    this.appearance,
+    this.size,
+    this.locale,
+    this.label,
+    this.semanticLabel,
+    this.focusNode,
+    this.autofocus = false,
+  }) : logo = null,
+       logoWidget = logo;
 
   final Social social;
   final VoidCallback? onPressed;
-  final String logo;
+  final String? logo;
+  final Widget? logoWidget;
+  final FocusNode? focusNode;
+  final bool autofocus;
+
+  /// App-owned progress state. Hides content, preserves size, and blocks input.
+  final bool isLoading;
 
   /// Width divided by height of the caller-supplied logo. Circles stay square.
   final double logoAspectRatio;
@@ -55,7 +85,7 @@ class SocialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    assert(logo.trim().isNotEmpty, 'logo must not be blank.');
+    assert(logo == null || logo!.trim().isNotEmpty, 'logo must not be blank.');
     assert(
       logoAspectRatio.isFinite && logoAspectRatio > 0,
       'logoAspectRatio must be positive and finite.',
@@ -84,19 +114,27 @@ class SocialButton extends StatelessWidget {
       }
       return true;
     }());
-    final logoWidget = Image.asset(
-      logo,
-      key: ValueKey(logo),
-      fit: BoxFit.contain,
-      excludeFromSemantics: true,
-      errorBuilder:
-          (context, error, stackTrace) =>
-              _LogoAssetError(path: logo, error: error, stackTrace: stackTrace),
-    );
+    final resolvedLogo =
+        logoWidget ??
+        Image.asset(
+          logo!,
+          key: ValueKey(logo),
+          fit: BoxFit.contain,
+          excludeFromSemantics: true,
+          errorBuilder:
+              (context, error, stackTrace) => _LogoAssetError(
+                path: logo!,
+                error: error,
+                stackTrace: stackTrace,
+              ),
+        );
     return _SocialButton(
       provider: social,
-      logo: logoWidget,
+      logo: resolvedLogo,
+      focusNode: focusNode,
+      autofocus: autofocus,
       onPressed: onPressed,
+      isLoading: isLoading,
       shape: effectiveShape,
       appearance: effectiveAppearance,
       size: size ?? defaults?.size ?? 48,
@@ -236,16 +274,22 @@ class SocialLoginButton extends StatelessWidget {
     required this.provider,
     required this.logo,
     required this.onPressed,
+    this.isLoading = false,
     this.shape = SocialLoginButtonShape.rectangle,
     this.appearance = SocialButtonAppearance.providerDefault,
     this.locale,
     this.label,
     this.semanticLabel,
+    this.focusNode,
+    this.autofocus = false,
   });
 
   final SocialLoginProvider provider;
   final Widget logo;
   final VoidCallback? onPressed;
+  final bool isLoading;
+  final FocusNode? focusNode;
+  final bool autofocus;
   final SocialLoginButtonShape shape;
   final SocialButtonAppearance appearance;
   final Locale? locale;
@@ -264,7 +308,10 @@ class SocialLoginButton extends StatelessWidget {
     return _SocialButton(
       provider: provider,
       logo: logo,
+      focusNode: focusNode,
+      autofocus: autofocus,
       onPressed: onPressed,
+      isLoading: isLoading,
       shape: effectiveShape,
       appearance: appearance,
       size: 48,
@@ -277,11 +324,14 @@ class SocialLoginButton extends StatelessWidget {
   }
 }
 
-class _SocialButton extends StatelessWidget {
+class _SocialButton extends StatefulWidget {
   const _SocialButton({
     required this.provider,
     required this.logo,
     required this.onPressed,
+    required this.isLoading,
+    required this.focusNode,
+    required this.autofocus,
     required this.shape,
     required this.appearance,
     required this.size,
@@ -296,6 +346,9 @@ class _SocialButton extends StatelessWidget {
   final Social provider;
   final Widget logo;
   final VoidCallback? onPressed;
+  final bool isLoading;
+  final FocusNode? focusNode;
+  final bool autofocus;
   final SocialButtonShape shape;
   final SocialButtonAppearance appearance;
   final double size;
@@ -307,7 +360,58 @@ class _SocialButton extends StatelessWidget {
   final double logoAspectRatio;
 
   @override
+  State<_SocialButton> createState() => _SocialButtonState();
+}
+
+class _SocialButtonState extends State<_SocialButton> {
+  final _states = WidgetStatesController();
+  bool _tapFeedback = false;
+  Timer? _feedbackTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    _states.update(
+      WidgetState.disabled,
+      widget.onPressed == null || widget.isLoading,
+    );
+  }
+
+  @override
+  void didUpdateWidget(_SocialButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _states.update(
+      WidgetState.disabled,
+      widget.onPressed == null || widget.isLoading,
+    );
+    if (widget.onPressed == null || widget.isLoading) {
+      _states.update(WidgetState.pressed, false);
+      _feedbackTimer?.cancel();
+      _tapFeedback = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _feedbackTimer?.cancel();
+    _states.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final provider = widget.provider;
+    final appearance = widget.appearance;
+    final locale = widget.locale;
+    final label = widget.label;
+    final semanticLabel = widget.semanticLabel;
+    final size = widget.size;
+    final usesProviderLogoLayout = widget.usesProviderLogoLayout;
+    final shape = widget.shape;
+    final logo = widget.logo;
+    final logoAspectRatio = widget.logoAspectRatio;
+    final onPressed = widget.isLoading ? null : widget.onPressed;
+    final expand = widget.expand;
     assert(_debugCheckInput());
     final data = socialLoginProviderData(provider);
     final appearanceStyle = data.appearanceStyle(appearance);
@@ -320,8 +424,21 @@ class _SocialButton extends StatelessWidget {
       size: size,
       usesProviderLogoLayout: usesProviderLogoLayout,
     );
-    final button = TextButton(
-      onPressed: onPressed,
+    final content = TextButton(
+      focusNode: widget.focusNode,
+      autofocus: widget.autofocus,
+      statesController: _states,
+      onPressed:
+          onPressed == null
+              ? null
+              : () {
+                setState(() => _tapFeedback = true);
+                _feedbackTimer?.cancel();
+                _feedbackTimer = Timer(kThemeChangeDuration, () {
+                  setState(() => _tapFeedback = false);
+                });
+                onPressed();
+              },
       style: _buttonStyle(
         data,
         appearanceStyle,
@@ -330,42 +447,81 @@ class _SocialButton extends StatelessWidget {
       ),
       child: Semantics(
         label: accessibilityLabel,
+        value:
+            widget.isLoading
+                ? (resolvedLocale.languageCode.toLowerCase() == 'ko'
+                    ? '로딩 중'
+                    : 'Loading')
+                : null,
+        liveRegion: widget.isLoading,
         excludeSemantics: true,
-        child:
-            shape == SocialButtonShape.circle
-                ? _LogoSlot(logo: logo, size: spec.logoSize ?? size / 2)
-                : Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _LogoSlot(
-                      logo: logo,
-                      size: spec.logoSize ?? size / 2,
-                      aspectRatio: logoAspectRatio,
-                    ),
-                    if (spec.separatorColor != null) ...[
-                      SizedBox(width: spec.logoLabelSpacing),
-                      Container(
-                        key: const ValueKey('line-separator'),
-                        width: 1,
-                        height: spec.logoSize ?? size / 2,
-                        color:
-                            onPressed == null
-                                ? spec.disabledSeparatorColor ??
-                                    spec.separatorColor
-                                : spec.separatorColor,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Visibility(
+              visible: !widget.isLoading,
+              maintainState: true,
+              maintainAnimation: true,
+              maintainSize: true,
+              child:
+                  shape == SocialButtonShape.circle
+                      ? _LogoSlot(logo: logo, size: spec.logoSize ?? size / 2)
+                      : Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _LogoSlot(
+                            logo: logo,
+                            size: spec.logoSize ?? size / 2,
+                            aspectRatio: logoAspectRatio,
+                          ),
+                          if (spec.separatorColor != null) ...[
+                            SizedBox(width: spec.logoLabelSpacing),
+                            Container(
+                              key: const ValueKey('line-separator'),
+                              width: 1,
+                              height: spec.logoSize ?? size / 2,
+                              color: spec.separatorColor,
+                            ),
+                          ],
+                          SizedBox(width: spec.logoLabelSpacing),
+                          Flexible(
+                            child: Text(
+                              visibleLabel,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                    SizedBox(width: spec.logoLabelSpacing),
-                    Flexible(
-                      child: Text(
-                        visibleLabel,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
+            ),
+            if (widget.isLoading)
+              SizedBox.square(
+                dimension:
+                    shape == SocialButtonShape.circle
+                        ? (size / 2).clamp(1, 20).toDouble()
+                        : 20,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: appearanceStyle.foregroundColor,
                 ),
+              ),
+          ],
+        ),
       ),
+    );
+
+    final button = ValueListenableBuilder<Set<WidgetState>>(
+      valueListenable: _states,
+      builder:
+          (context, states, child) => AnimatedOpacity(
+            opacity:
+                states.contains(WidgetState.disabled)
+                    ? (widget.isLoading ? 1 : 0.5)
+                    : 1,
+            duration: kThemeChangeDuration,
+            child: child,
+          ),
+      child: content,
     );
 
     if (shape == SocialButtonShape.circle) {
@@ -399,17 +555,20 @@ class _SocialButton extends StatelessWidget {
   }
 
   bool _debugCheckInput() {
+    final size = widget.size;
+    final label = widget.label;
+    final semanticLabel = widget.semanticLabel;
     assert(size.isFinite && size > 0, 'size must be positive and finite.');
     assert(
-      label == null || label!.trim().isNotEmpty,
+      label == null || label.trim().isNotEmpty,
       'label must not be blank.',
     );
     assert(
-      label == null || (!label!.contains('\n') && !label!.contains('\r')),
+      label == null || (!label.contains('\n') && !label.contains('\r')),
       'label must not contain line breaks.',
     );
     assert(
-      semanticLabel == null || semanticLabel!.trim().isNotEmpty,
+      semanticLabel == null || semanticLabel.trim().isNotEmpty,
       'semanticLabel must not be blank.',
     );
     return true;
@@ -421,37 +580,11 @@ class _SocialButton extends StatelessWidget {
     _ProviderButtonSpec spec,
     TextStyle themeTextStyle,
   ) {
+    final shape = widget.shape;
+    final size = widget.size;
     final isCircle = shape == SocialButtonShape.circle;
-    // Muting each palette preserves its hue instead of replacing every service
-    // with global greys. Composite translucent text first (for example Kakao),
-    // so all disabled colors remain opaque and independent of the app surface.
-    // These derived states are package presets, not provider specifications.
-    // The caller-owned logo is never tinted or faded.
-    final compositedForeground = Color.alphaBlend(
-      appearanceStyle.foregroundColor,
-      appearanceStyle.backgroundColor,
-    );
-    final disabledBackground =
-        spec.disabledBackground ??
-        Color.lerp(
-          appearanceStyle.backgroundColor,
-          compositedForeground,
-          0.08,
-        )!;
-    final disabledForeground =
-        spec.disabledForeground ??
-        Color.lerp(
-          compositedForeground,
-          appearanceStyle.backgroundColor,
-          0.12,
-        )!;
-    final disabledBorder =
-        spec.disabledBorder ??
-        Color.lerp(
-          appearanceStyle.borderColor ?? compositedForeground,
-          disabledBackground,
-          0.5,
-        )!;
+    // Disabled opacity is applied once to the complete button, including the
+    // caller-owned logo. Keeping the base palette avoids opaque logo seams.
     // Choose a visible wash without reducing the tested text contrast.
     // These washes are package choices, not official interaction colors.
     final overlayBase =
@@ -463,39 +596,45 @@ class _SocialButton extends StatelessWidget {
                 ? Colors.white
                 : Colors.black);
     Color foregroundFor(Set<WidgetState> states) {
-      if (states.contains(WidgetState.disabled)) {
-        return disabledForeground;
-      }
-      if (states.contains(WidgetState.pressed) && spec.pressedOpacity != null) {
-        return appearanceStyle.foregroundColor.withValues(
-          alpha: spec.pressedOpacity!,
-        );
-      }
-      if (states.contains(WidgetState.hovered) && spec.hoverOpacity != null) {
-        return appearanceStyle.foregroundColor.withValues(
-          alpha: spec.hoverOpacity!,
-        );
-      }
       return appearanceStyle.foregroundColor;
+    }
+
+    Color feedbackFor(Set<WidgetState> states) {
+      if (states.contains(WidgetState.disabled)) {
+        return Colors.transparent;
+      }
+      if (states.contains(WidgetState.pressed) || _tapFeedback) {
+        return overlayBase.withValues(alpha: 0.12);
+      }
+      if (states.contains(WidgetState.focused)) {
+        return overlayBase.withValues(alpha: 0.12);
+      }
+      if (states.contains(WidgetState.hovered)) {
+        return overlayBase.withValues(alpha: 0.08);
+      }
+      return Colors.transparent;
     }
 
     return ButtonStyle(
       elevation: const WidgetStatePropertyAll(0),
+      // Ink paints below opaque caller-owned logos. Give the logo the same
+      // state wash without dimming the label or adding another input owner.
+      splashFactory: NoSplash.splashFactory,
+      backgroundBuilder:
+          (context, states, child) => TweenAnimationBuilder<Color?>(
+            tween: ColorTween(begin: feedbackFor({}), end: feedbackFor(states)),
+            duration: kThemeChangeDuration,
+            builder:
+                (context, color, child) => Stack(
+                  fit: StackFit.passthrough,
+                  children: [
+                    Positioned.fill(child: ColoredBox(color: color!)),
+                    _LogoFeedback(color: color, child: child!),
+                  ],
+                ),
+            child: child,
+          ),
       backgroundColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.disabled)) {
-          return disabledBackground;
-        }
-        if (states.contains(WidgetState.pressed) &&
-            spec.pressedOpacity != null) {
-          return appearanceStyle.backgroundColor.withValues(
-            alpha: spec.pressedOpacity!,
-          );
-        }
-        if (states.contains(WidgetState.hovered) && spec.hoverOpacity != null) {
-          return appearanceStyle.backgroundColor.withValues(
-            alpha: spec.hoverOpacity!,
-          );
-        }
         return appearanceStyle.backgroundColor;
       }),
       foregroundColor: WidgetStateProperty.resolveWith(foregroundFor),
@@ -503,25 +642,11 @@ class _SocialButton extends StatelessWidget {
         if (states.contains(WidgetState.disabled)) {
           return null;
         }
-        if (spec.hoverOpacity != null || spec.pressedOpacity != null) {
-          return Colors.transparent;
-        }
-        if (states.contains(WidgetState.pressed)) {
-          return spec.pressedOverlay ?? overlayBase.withValues(alpha: 0.12);
-        }
-        if (states.contains(WidgetState.focused)) {
-          return overlayBase.withValues(alpha: 0.12);
-        }
-        if (states.contains(WidgetState.hovered)) {
-          return spec.hoverOverlay ?? overlayBase.withValues(alpha: 0.08);
-        }
-        return null;
+        return Colors.transparent;
       }),
       side: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.disabled)) {
-          return BorderSide(color: disabledBorder);
-        }
-        if (states.contains(WidgetState.focused)) {
+        if (!states.contains(WidgetState.disabled) &&
+            states.contains(WidgetState.focused)) {
           return BorderSide(color: appearanceStyle.foregroundColor, width: 2);
         }
         final borderColor = appearanceStyle.borderColor;
@@ -572,7 +697,6 @@ final class _ProviderButtonSpec {
     this.logoSize,
     this.logoLabelSpacing = 8,
     this.separatorColor,
-    this.disabledSeparatorColor,
     this.cornerRadius = 8,
     this.minimumHeight = 48,
     this.preferredWidth = 280,
@@ -580,19 +704,11 @@ final class _ProviderButtonSpec {
     this.lineHeight,
     this.fontWeight = FontWeight.w600,
     this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-    this.hoverOverlay,
-    this.pressedOverlay,
-    this.disabledBackground,
-    this.disabledForeground,
-    this.disabledBorder,
-    this.hoverOpacity,
-    this.pressedOpacity,
   });
 
   final double? logoSize;
   final double logoLabelSpacing;
   final Color? separatorColor;
-  final Color? disabledSeparatorColor;
   final double cornerRadius;
   final double minimumHeight;
   final double preferredWidth;
@@ -600,13 +716,6 @@ final class _ProviderButtonSpec {
   final double? lineHeight;
   final FontWeight fontWeight;
   final EdgeInsets padding;
-  final Color? hoverOverlay;
-  final Color? pressedOverlay;
-  final Color? disabledBackground;
-  final Color? disabledForeground;
-  final Color? disabledBorder;
-  final double? hoverOpacity;
-  final double? pressedOpacity;
 }
 
 _ProviderButtonSpec _buttonSpec(
@@ -623,26 +732,12 @@ _ProviderButtonSpec _buttonSpec(
           logoSize: 30,
           logoLabelSpacing: size * 4 / 11,
           separatorColor: const Color(0x14000000),
-          disabledSeparatorColor: const Color(0x99E5E5E5),
           padding: EdgeInsets.symmetric(
             horizontal: size * 4 / 11,
             vertical: size * 2 / 11,
           ),
-          hoverOverlay: const Color(0x1A000000),
-          pressedOverlay: const Color(0x4D000000),
-          disabledBackground: const Color(0xFFFFFFFF),
-          disabledForeground: const Color(0x331E1E1E),
-          disabledBorder: const Color(0x99E5E5E5),
         )
-        : const _ProviderButtonSpec(
-          separatorColor: Color(0x14000000),
-          disabledSeparatorColor: Color(0x99E5E5E5),
-          hoverOverlay: Color(0x1A000000),
-          pressedOverlay: Color(0x4D000000),
-          disabledBackground: Color(0xFFFFFFFF),
-          disabledForeground: Color(0x331E1E1E),
-          disabledBorder: Color(0x99E5E5E5),
-        ),
+        : const _ProviderButtonSpec(separatorColor: Color(0x14000000)),
   Social.slack => const _ProviderButtonSpec(
     logoSize: 20,
     logoLabelSpacing: 12,
@@ -656,10 +751,6 @@ _ProviderButtonSpec _buttonSpec(
     minimumHeight: 44,
     fontSize: 16,
     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-    hoverOpacity: 0.8,
-    pressedOpacity: 0.7,
-    disabledBackground: Color(0xFF006DEB),
-    disabledForeground: Color(0xFFF7FBFF),
   ),
   Social.kakao => const _ProviderButtonSpec(
     logoSize: 48,
@@ -673,8 +764,6 @@ _ProviderButtonSpec _buttonSpec(
     logoLabelSpacing: 8,
     minimumHeight: 56,
     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-    disabledBackground: const Color(0xFF039B47),
-    disabledForeground: const Color(0xFFF7FCFA),
   ),
   Social.google => _ProviderButtonSpec(
     logoSize: usesProviderLogoLayout ? 20 : null,
@@ -699,6 +788,15 @@ _ProviderButtonSpec _buttonSpec(
   _ => _ProviderButtonSpec(logoSize: usesProviderLogoLayout ? 24 : null),
 };
 
+class _LogoFeedback extends InheritedWidget {
+  const _LogoFeedback({required this.color, required super.child});
+
+  final Color color;
+
+  @override
+  bool updateShouldNotify(_LogoFeedback oldWidget) => color != oldWidget.color;
+}
+
 class _LogoSlot extends StatelessWidget {
   const _LogoSlot({
     required this.logo,
@@ -711,11 +809,20 @@ class _LogoSlot extends StatelessWidget {
   final double aspectRatio;
 
   @override
-  Widget build(BuildContext context) => SizedBox(
-    width: size * aspectRatio,
-    height: size,
-    child: ExcludeSemantics(child: logo),
-  );
+  Widget build(BuildContext context) {
+    final feedback =
+        context.dependOnInheritedWidgetOfExactType<_LogoFeedback>()!;
+    return SizedBox(
+      width: size * aspectRatio,
+      height: size,
+      child: ExcludeSemantics(
+        child: ColorFiltered(
+          colorFilter: ColorFilter.mode(feedback.color, BlendMode.srcATop),
+          child: logo,
+        ),
+      ),
+    );
+  }
 }
 
 // Report each failed image once, while keeping the visual failure inside the

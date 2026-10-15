@@ -21,6 +21,7 @@
 ```dart
 SocialButton(
   social: Social.kakao,
+  logo: 'assets/brand/kakao.png',
   locale: const Locale('ko'),
   onPressed: startKakaoSignIn,
 )
@@ -40,6 +41,7 @@ MaterialApp(
   ],
   home: SocialButton(
     social: Social.notion,
+    logo: 'assets/brand/notion.png',
     onPressed: startNotionSignIn,
   ),
 )
@@ -58,10 +60,12 @@ SocialButtonList.vertical(
   items: [
     SocialButton(
       social: Social.google,
+      logo: 'assets/brand/google.png',
       onPressed: startGoogleSignIn,
     ),
     SocialButton(
       social: Social.notion,
+      logo: 'assets/brand/notion.png',
       label: '워크스페이스 연결',
       onPressed: startNotionSignIn,
     ),
@@ -79,6 +83,7 @@ SocialButtonList.vertical(
 ```dart
 SocialButton(
   social: Social.github,
+  logo: 'assets/brand/github.png',
   label: appStrings.continueWithGitHub,
   onPressed: startGitHubSignIn,
 )
@@ -93,6 +98,7 @@ SocialButton(
 ```dart
 SocialButton(
   social: Social.github,
+  logo: 'assets/brand/github.png',
   label: 'GitHub로 계속',
   semanticLabel: '회사 GitHub 계정으로 로그인',
   onPressed: startGitHubSignIn,
@@ -114,6 +120,7 @@ MaterialApp(
   supportedLocales: context.supportedLocales,
   home: SocialButton(
     social: Social.notion,
+    logo: 'assets/brand/notion.png',
     label: 'auth.continue_with_notion'.tr(),
     onPressed: startNotionSignIn,
   ),

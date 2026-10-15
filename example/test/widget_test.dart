@@ -8,6 +8,36 @@ import 'package:social_signin_kit_example/gallery_design.dart';
 import 'package:social_signin_kit_example/main.dart';
 
 void main() {
+  testWidgets(
+    'loading control preserves preview geometry and restores content',
+    (tester) async {
+      await tester.pumpWidget(const SocialLoginExampleApp());
+      await tester.pumpAndSettle();
+      final preview = find.byKey(
+        const ValueKey<String>('selected-provider-button'),
+      );
+      final size = tester.getSize(preview);
+      final toggle = find.byKey(const ValueKey<String>('loading-control'));
+      await tester.ensureVisible(toggle);
+      await tester.pumpAndSettle();
+      await tester.tap(toggle);
+      await tester.pump();
+      expect(tester.widget<SocialButton>(preview).isLoading, isTrue);
+      expect(tester.getSize(preview), size);
+      expect(
+        find.descendant(
+          of: preview,
+          matching: find.byType(CircularProgressIndicator),
+        ),
+        findsOneWidget,
+      );
+      await tester.tap(toggle);
+      await tester.pumpAndSettle();
+      expect(tester.widget<SocialButton>(preview).isLoading, isFalse);
+      expect(tester.getSize(preview), size);
+    },
+  );
+
   testWidgets('consumer demo bundle supplies a decodable neutral PNG', (
     tester,
   ) async {

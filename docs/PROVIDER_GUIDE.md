@@ -377,8 +377,8 @@ archive and terms evidence.
 ### Package status and user caveats
 
 - **Current bundle:** `assets/social/line.png`.
-- The provider renderer uses LINE's verified white foreground, separator,
-  hover, pressed, disabled, and disabled-border values.
+- The package uses dark labels and contrast-preserving shared interaction
+  washes. Disabled controls fade uniformly, including the app-owned logo.
 - This remains a package-rendered common button. Use the complete official
   template when the provider's exact complete-control geometry is required.
 - Link the control only to LINE Login and update it when LY Corporation requests
@@ -1393,8 +1393,8 @@ logo remains **unclear**.
 
 ### Package-user caveats
 
-- The provider renderer uses the documented blue, white foreground, 44 px
-  minimum height, 28 px logo, padding, and opacity states. Its translated
+- The package keeps the blue background, 44 px minimum height and 28 px logo,
+  but uses dark labels and shared washes rather than opacity states. Its translated
   package wording is not the provider's documented Russian wording.
 - Prefer the SDK OneTap control or reproduce the official custom-button
   example and current design rules, not an isolated circular icon.
@@ -1909,7 +1909,7 @@ user authentication information based on OAuth 2.0 and supports OIDC.
 - Current bundle: `assets/social/naver.png`, preserved from the official Korean
   archive as
   `assets/original/naver/NAVER_login_Dark_KR_green_icon_H56.png`.
-- The provider renderer uses the verified white foreground, 56 px minimum
+- The package uses dark labels for accessible contrast, 56 px minimum
   height, 8 px logo-label spacing, and 20 px horizontal padding. It sizes the
   preserved icon template from its measured internal N bounds.
 - Use the complete official asset when exact full-button composition is

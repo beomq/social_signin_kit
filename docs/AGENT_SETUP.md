@@ -1,8 +1,8 @@
 # 에이전트 통합 프롬프트
 
-다음 프롬프트는 pub.dev에 미게시된 패키지를 공개 Git 저장소에서 Flutter 앱에
-연결할 때 사용합니다. 로컬 clone을 쓰는 경우에는 실제 경로로 바꾸세요.
-앱의 형제 디렉터리에 둘 필요는 없습니다.
+다음 프롬프트는 pub.dev에 게시된 패키지를 Flutter 앱에 연결할 때 사용합니다.
+개발 중에는 고정한 Git ref나 로컬 clone 경로를 대신 쓸 수 있습니다. 로컬
+clone은 앱의 형제 디렉터리에 둘 필요가 없습니다.
 
 35개 제공자 가운데 사용할 항목과 순서·배치·모양을 먼저 정하려면 정식
 `landing/index.html` 선택기를 사용하세요. `?lang=en`과 `?lang=ko`로 언어를
@@ -23,27 +23,31 @@
 `flutter_svg` 같은 런타임 의존성을 설치하지 않습니다.
 
 ```text
-Integrate the Flutter package `social_signin_kit` (unpublished on pub.dev) into the
+Integrate the Flutter package `social_signin_kit` from pub.dev into the
 current app.
 
-Public Git repository:
-https://github.com/beomq/social_signin_kit.git
+Package page:
+https://pub.dev/packages/social_signin_kit
 
 Requirements:
 1. Read the app's project instructions, pubspec, authentication entry points,
    asset conventions, and related tests before editing.
-2. Reuse a valid existing dependency, or add this Git dependency without changing
-   Flutter or Dart SDK constraints:
+2. Reuse a valid existing dependency, or add this pub.dev dependency without
+   changing Flutter or Dart SDK constraints:
+
+   dependencies:
+     social_signin_kit: ^0.2.0
+
+   For development against unreleased changes, use a pinned Git dependency
+   instead, with `ref` set to a verified commit SHA or release tag:
 
    dependencies:
      social_signin_kit:
        git:
          url: https://github.com/beomq/social_signin_kit.git
-         ref: main
+         ref: <commit-sha-or-tag>
 
-   `main` is suitable for onboarding but can change. For reproducible installs,
-   pin `ref` to a verified commit SHA or an existing release tag.
-   Alternatively, replace the Git entry with:
+   Or use a local clone:
 
    dependencies:
      social_signin_kit:
@@ -52,8 +56,8 @@ Requirements:
    Substitute the actual local clone path; a sibling directory is not required.
    Run `fvm flutter pub get` in the app directory.
 
-3. Use `fvm flutter` and `fvm dart` for commands. Don't use a pub.dev version or
-   an unverified Git URL.
+3. Use `fvm flutter` and `fvm dart` for commands. Don't invent package versions
+   or use an unverified Git URL.
 4. Import:
 
    import 'package:social_signin_kit/social_signin_kit.dart';
@@ -153,7 +157,7 @@ Requirements:
 Before finishing, report:
 - files changed
 - provider, shape, size, and list layout used
-- whether each logo used the package default or a caller-owned override
+- the app-owned logo asset path used for each provider
 - tests, analysis, and build commands with exit codes
 - authentication behavior actually exercised
 - remaining asset-license, provider approval, app-review, and device checks
