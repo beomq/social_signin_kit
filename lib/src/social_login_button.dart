@@ -20,7 +20,7 @@ class SocialButton extends StatelessWidget {
     super.key,
     required this.social,
     required this.onPressed,
-    required this.logo,
+    required String this.logo,
     this.isLoading = false,
     this.logoAspectRatio = 1,
     this.shape,
