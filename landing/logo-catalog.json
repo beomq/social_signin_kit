@@ -38,14 +38,14 @@
     },
     "asset": {
       "preview": "../assets/social/facebook.png",
-      "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
+      "download": null,
       "format": "zip",
       "sha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57",
       "source": "https://www.meta.com/brand/resources/facebook/logo/",
       "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
       "official": true,
       "conditions": {
-        "identificationUse": "The retained Simple Icons-derived default identifies Facebook in the labeled action; it is not provider-supplied or an official complete control.",
+        "identificationUse": "The logo identifies Facebook in the preview and comes from Meta's official logo pack.",
         "transformation": "Complete official PNG bytes preserved; proportional display only.",
         "redistribution": "Meta publishes the general logo pack under its guidelines; standalone login-logo package redistribution is not stated.",
         "sources": [
@@ -61,14 +61,14 @@
       "variants": {
         "providerDefault": {
           "preview": "../assets/social/facebook.png",
-          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
+          "download": null,
           "format": "zip",
           "sha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57",
           "source": "https://www.meta.com/brand/resources/facebook/logo/",
           "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Facebook in the labeled action; it is not provider-supplied or an official complete control.",
+            "identificationUse": "The logo identifies Facebook in the preview and comes from Meta's official logo pack.",
             "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta publishes the general logo pack under its guidelines; standalone login-logo package redistribution is not stated.",
             "sources": [
@@ -85,7 +85,6 @@
           "implemented": true,
           "authControlApproved": false,
           "archive": {
-            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
             "sha256": "5c51e2c9c2377b1656a3294b391ed4a42f88dd8c46fc05b98d3bc27affc97f3a",
             "member": "Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png",
             "memberSha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57"
@@ -93,14 +92,14 @@
         },
         "light": {
           "preview": "../assets/social/facebook.png",
-          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
+          "download": null,
           "format": "zip",
           "sha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57",
           "source": "https://www.meta.com/brand/resources/facebook/logo/",
           "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Facebook in the labeled action; it is not provider-supplied or an official complete control.",
+            "identificationUse": "The logo identifies Facebook in the preview and comes from Meta's official logo pack.",
             "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta publishes the general logo pack under its guidelines; standalone login-logo package redistribution is not stated.",
             "sources": [
@@ -117,7 +116,6 @@
           "implemented": true,
           "authControlApproved": false,
           "archive": {
-            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
             "sha256": "5c51e2c9c2377b1656a3294b391ed4a42f88dd8c46fc05b98d3bc27affc97f3a",
             "member": "Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png",
             "memberSha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57"
@@ -125,14 +123,14 @@
         },
         "dark": {
           "preview": "../assets/social/facebook.png",
-          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
+          "download": null,
           "format": "zip",
           "sha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57",
           "source": "https://www.meta.com/brand/resources/facebook/logo/",
           "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Facebook in the labeled action; it is not provider-supplied or an official complete control.",
+            "identificationUse": "The logo identifies Facebook in the preview and comes from Meta's official logo pack.",
             "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta publishes the general logo pack under its guidelines; standalone login-logo package redistribution is not stated.",
             "sources": [
@@ -149,7 +147,6 @@
           "implemented": true,
           "authControlApproved": false,
           "archive": {
-            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
             "sha256": "5c51e2c9c2377b1656a3294b391ed4a42f88dd8c46fc05b98d3bc27affc97f3a",
             "member": "Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png",
             "memberSha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57"
@@ -160,7 +157,6 @@
       "implemented": true,
       "authControlApproved": false,
       "archive": {
-        "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/380701377_2250872795121673_2315381206050858273_n.zip/Facebook-Brand-Asset-Pack.zip?sdl=1&_nc_cat=109&ccb=1-7&_nc_sid=fcf380&_nc_ohc=Bor8Q5ZVyIgQ7kNvwH8xV0v&_nc_oc=AdoIf_ZKv793xE2fXstA7aj8SoiDT2Ar1QHVGjyMEoVA8tvQurew1obzDXMmCZPoFzE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=kgVrTap0Hy2PUt5I-sa7vg&_nc_ss=7b20f&oh=00_AQMjBzp-BwdvHYnrfKQn_8kIxZYlRJa541qGwOsVooQPoQ&oe=6AC5D4DD",
         "sha256": "5c51e2c9c2377b1656a3294b391ed4a42f88dd8c46fc05b98d3bc27affc97f3a",
         "member": "Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png",
         "memberSha256": "eed4f69a017b533e7115397e47b6ba75077d0af5fb13369c0c5e819694ceef57"
@@ -3572,14 +3568,14 @@
     },
     "asset": {
       "preview": "../assets/social/instagram.png",
-      "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
+      "download": null,
       "format": "zip",
       "sha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61",
       "source": "https://www.meta.com/brand/resources/instagram/instagram-brand/",
       "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
       "official": true,
       "conditions": {
-        "identificationUse": "The retained Simple Icons-derived default identifies Instagram in the labeled action; it is not provider-supplied or an official complete control.",
+        "identificationUse": "The logo identifies Instagram in the preview and comes from Meta's official logo pack.",
         "transformation": "Complete official PNG bytes preserved; proportional display only.",
         "redistribution": "Meta supplies the logo pack under Instagram guidelines; package redistribution is not separately stated.",
         "sources": [
@@ -3595,14 +3591,14 @@
       "variants": {
         "providerDefault": {
           "preview": "../assets/social/instagram.png",
-          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
+          "download": null,
           "format": "zip",
           "sha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61",
           "source": "https://www.meta.com/brand/resources/instagram/instagram-brand/",
           "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Instagram in the labeled action; it is not provider-supplied or an official complete control.",
+            "identificationUse": "The logo identifies Instagram in the preview and comes from Meta's official logo pack.",
             "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta supplies the logo pack under Instagram guidelines; package redistribution is not separately stated.",
             "sources": [
@@ -3619,7 +3615,6 @@
           "implemented": true,
           "authControlApproved": false,
           "archive": {
-            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
             "sha256": "a9e5cbe63dc01279b3d12d536ea9d94ab5236521601bd5cc4b4caf7ba7060e82",
             "member": "01 Static Glyph/02 White Glyph/Instagram_Glyph_White.png",
             "memberSha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61"
@@ -3627,14 +3622,14 @@
         },
         "light": {
           "preview": "../assets/social/instagram.png",
-          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
+          "download": null,
           "format": "zip",
           "sha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61",
           "source": "https://www.meta.com/brand/resources/instagram/instagram-brand/",
           "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Instagram in the labeled action; it is not provider-supplied or an official complete control.",
+            "identificationUse": "The logo identifies Instagram in the preview and comes from Meta's official logo pack.",
             "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta supplies the logo pack under Instagram guidelines; package redistribution is not separately stated.",
             "sources": [
@@ -3651,7 +3646,6 @@
           "implemented": true,
           "authControlApproved": false,
           "archive": {
-            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
             "sha256": "a9e5cbe63dc01279b3d12d536ea9d94ab5236521601bd5cc4b4caf7ba7060e82",
             "member": "01 Static Glyph/02 White Glyph/Instagram_Glyph_White.png",
             "memberSha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61"
@@ -3659,14 +3653,14 @@
         },
         "dark": {
           "preview": "../assets/social/instagram.png",
-          "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
+          "download": null,
           "format": "zip",
           "sha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61",
           "source": "https://www.meta.com/brand/resources/instagram/instagram-brand/",
           "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Instagram in the labeled action; it is not provider-supplied or an official complete control.",
+            "identificationUse": "The logo identifies Instagram in the preview and comes from Meta's official logo pack.",
             "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "Meta supplies the logo pack under Instagram guidelines; package redistribution is not separately stated.",
             "sources": [
@@ -3683,7 +3677,6 @@
           "implemented": true,
           "authControlApproved": false,
           "archive": {
-            "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
             "sha256": "a9e5cbe63dc01279b3d12d536ea9d94ab5236521601bd5cc4b4caf7ba7060e82",
             "member": "01 Static Glyph/02 White Glyph/Instagram_Glyph_White.png",
             "memberSha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61"
@@ -3694,7 +3687,6 @@
       "implemented": true,
       "authControlApproved": false,
       "archive": {
-        "download": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.8562-6/10000000_295565596234104_6752419821643487968_n.zip/IG_brand_asset_pack_2023.zip?sdl=1&_nc_cat=104&ccb=1-7&_nc_sid=fcf380&_nc_ohc=BRYd2JYAO5wQ7kNvwFiR56Q&_nc_oc=AdoWx_nYWyS7HAnBwl8Oc4tz0Fn2-Ths-1Quw8EBsH0spjUErEAy8LHy_lNQBHPb7Eg&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dn0ZKOI6karVsKt9QNEFpw&_nc_ss=7b20f&oh=00_AQP6fyolHr53cNCMpkZ0O1MfjA7yLm46qSVyXvXcsMOaww&oe=6AC5C207",
         "sha256": "a9e5cbe63dc01279b3d12d536ea9d94ab5236521601bd5cc4b4caf7ba7060e82",
         "member": "01 Static Glyph/02 White Glyph/Instagram_Glyph_White.png",
         "memberSha256": "10cf9fdef34e843b3e6c0dc031385d08d84c3d8f53553a09cf2a2636b000fb61"
@@ -6664,14 +6656,14 @@
     },
     "asset": {
       "preview": "../assets/social/notion.png",
-      "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
+      "download": null,
       "format": "zip",
       "sha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03",
       "source": "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
       "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
       "official": true,
       "conditions": {
-        "identificationUse": "The retained Simple Icons-derived default identifies Notion in the labeled action; it is not provider-supplied or an official complete control.",
+        "identificationUse": "The logo identifies Notion in the preview and comes from Notion's official logo pack.",
         "transformation": "Complete official PNG bytes preserved; proportional display only.",
         "redistribution": "No public reusable authorization-logo asset or package-redistribution terms were verified.",
         "sources": [
@@ -6687,14 +6679,14 @@
       "variants": {
         "providerDefault": {
           "preview": "../assets/social/notion.png",
-          "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
+          "download": null,
           "format": "zip",
           "sha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03",
           "source": "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
           "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Notion in the labeled action; it is not provider-supplied or an official complete control.",
+            "identificationUse": "The logo identifies Notion in the preview and comes from Notion's official logo pack.",
             "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "No public reusable authorization-logo asset or package-redistribution terms were verified.",
             "sources": [
@@ -6711,7 +6703,6 @@
           "implemented": true,
           "authControlApproved": false,
           "archive": {
-            "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
             "sha256": "c722766606c8ad314d1008d9419eb5b2e14b2418d9f535d8d52db84329bdf4dc",
             "member": "notion-logo-block-main.png",
             "memberSha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03"
@@ -6719,14 +6710,14 @@
         },
         "light": {
           "preview": "../assets/social/notion.png",
-          "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
+          "download": null,
           "format": "zip",
           "sha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03",
           "source": "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
           "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Notion in the labeled action; it is not provider-supplied or an official complete control.",
+            "identificationUse": "The logo identifies Notion in the preview and comes from Notion's official logo pack.",
             "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "No public reusable authorization-logo asset or package-redistribution terms were verified.",
             "sources": [
@@ -6743,7 +6734,6 @@
           "implemented": true,
           "authControlApproved": false,
           "archive": {
-            "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
             "sha256": "c722766606c8ad314d1008d9419eb5b2e14b2418d9f535d8d52db84329bdf4dc",
             "member": "notion-logo-block-main.png",
             "memberSha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03"
@@ -6751,14 +6741,14 @@
         },
         "dark": {
           "preview": "../assets/social/notion.png",
-          "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
+          "download": null,
           "format": "zip",
           "sha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03",
           "source": "https://notion.notion.site/Media-Kit-205535b1d9c4440497a3d7a2ac096286",
           "license": "Provider artwork and trademark conditions; not Simple Icons licensing.",
           "official": true,
           "conditions": {
-            "identificationUse": "The retained Simple Icons-derived default identifies Notion in the labeled action; it is not provider-supplied or an official complete control.",
+            "identificationUse": "The logo identifies Notion in the preview and comes from Notion's official logo pack.",
             "transformation": "Complete official PNG bytes preserved; proportional display only.",
             "redistribution": "No public reusable authorization-logo asset or package-redistribution terms were verified.",
             "sources": [
@@ -6775,7 +6765,6 @@
           "implemented": true,
           "authControlApproved": false,
           "archive": {
-            "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
             "sha256": "c722766606c8ad314d1008d9419eb5b2e14b2418d9f535d8d52db84329bdf4dc",
             "member": "notion-logo-block-main.png",
             "memberSha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03"
@@ -6786,7 +6775,6 @@
       "implemented": true,
       "authControlApproved": false,
       "archive": {
-        "download": "https://file.notion.so/f/f/e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2/310d5334-8f40-4275-9a0c-a9eaf0ccb0c7/NotionLogoFiles.zip?table=block&id=343efdee-ad05-8034-8730-ced3252ffb15&spaceId=e12b42ac-4e54-476f-a4f5-7d6bdb1e61e2&expirationTimestamp=1791072000000&signature=wGKKzmvcVwtoLLvgokGTkWWeHX5JYWHhBZt9z1BiKKY&downloadName=NotionLogoFiles.zip",
         "sha256": "c722766606c8ad314d1008d9419eb5b2e14b2418d9f535d8d52db84329bdf4dc",
         "member": "notion-logo-block-main.png",
         "memberSha256": "1fe030ebdd7d98d247caa7869f2994c0574ec96a32a5fe5d45c277fac4a84d03"

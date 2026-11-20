@@ -313,11 +313,17 @@ void main() {
       reason: 'VK hover must not expose the logo background',
     );
     expect(hover.$1, isNot(rest.$1));
-    expect(
-      pressed.$1,
-      pressed.$2,
-      reason: 'VK press must not expose the logo background',
-    );
+    // The engine can round the filtered logo and the background wash to
+    // adjacent byte values even though both use the same paint color.
+    for (final shift in [24, 16, 8, 0]) {
+      final logoChannel = (pressed.$1 >> shift) & 0xff;
+      final backgroundChannel = (pressed.$2 >> shift) & 0xff;
+      expect(
+        logoChannel,
+        closeTo(backgroundChannel, 1),
+        reason: 'VK press must not expose the logo background',
+      );
+    }
     expect(pressed.$1, isNot(hover.$1));
   });
 

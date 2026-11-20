@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:ui' show SemanticsAction, SemanticsFlag;
+import 'dart:ui' show SemanticsAction;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -660,7 +660,9 @@ void main() {
           expect(
             find.ancestor(
               of: find.byType(Image),
-              matching: find.byType(ColoredBox),
+              matching: find.byWidgetPredicate(
+                (widget) => widget is ColoredBox && widget.color.a > 0,
+              ),
             ),
             findsNothing,
           );
@@ -857,7 +859,7 @@ void main() {
       }
       await _pump(
         tester,
-        SizedBox(width: 160, child: list),
+        SingleChildScrollView(child: SizedBox(width: 160, child: list)),
         textScaler: const TextScaler.linear(2),
       );
       expect(
@@ -916,11 +918,18 @@ void main() {
         );
         final before = count;
         final node = tester.getSemantics(find.byType(TextButton));
-        final data = node.getSemanticsData();
-        expect(data.label, 'Unique action');
-        expect(data.hasFlag(SemanticsFlag.isButton), isTrue);
-        expect(data.hasFlag(SemanticsFlag.isEnabled), enabled);
-        expect(data.hasAction(SemanticsAction.tap), enabled);
+        expect(
+          node,
+          // Flutter 3.29 does not expose isSemantics.
+          // ignore: deprecated_member_use
+          containsSemantics(
+            label: 'Unique action',
+            isButton: true,
+            hasEnabledState: true,
+            isEnabled: enabled,
+            hasTapAction: enabled,
+          ),
+        );
         expect(find.bySemanticsLabel('Unique action'), findsOneWidget);
         await tester.tap(find.byType(TextButton));
         await tester.pump();
@@ -1010,13 +1019,7 @@ void main() {
       const Color(0xFF111111),
     );
     expect(style.side!.resolve({WidgetState.disabled}), BorderSide.none);
-    expect(find.byKey(const ValueKey('line-separator')), findsOneWidget);
-    final lineRow = tester.widget<Row>(find.byType(Row));
-    final lineGaps = lineRow.children.whereType<SizedBox>().toList();
-    expect(lineGaps, hasLength(2));
-    for (final gap in lineGaps) {
-      expect(gap.width, closeTo(48 * 4 / 11, 0.001));
-    }
+    _expectLineGaps(tester);
 
     await _pump(
       tester,
@@ -1073,13 +1076,9 @@ void main() {
     );
     expect(tester.getSize(find.byType(Image)), const Size.square(24));
     expect(
-      tester
-          .widget<Row>(find.byType(Row))
-          .children
-          .whereType<SizedBox>()
-          .single
-          .width,
-      12,
+      _labelRect(tester, Social.spotify).left -
+          tester.getRect(find.byType(Image)).right,
+      closeTo(12, 0.001),
     );
 
     await _pump(
@@ -1094,8 +1093,11 @@ void main() {
       tester.getSize(find.byType(Image)).width,
       greaterThanOrEqualTo(44.8),
     );
-    final row = tester.widget<Row>(find.byType(Row));
-    expect(row.children.whereType<SizedBox>().single.width, 8);
+    expect(
+      _labelRect(tester, Social.naver).left -
+          tester.getRect(find.byType(Image)).right,
+      closeTo(8, 0.001),
+    );
   });
 
   testWidgets('different app assets retain provider logo geometry', (
@@ -1131,8 +1133,11 @@ void main() {
         tester,
         SocialButton(social: Social.google, logo: logo, onPressed: _noop),
       );
-      final row = tester.widget<Row>(find.byType(Row));
-      expect(row.children.whereType<SizedBox>().single.width, 10);
+      expect(
+        _labelRect(tester, Social.google).left -
+            tester.getRect(find.byType(Image)).right,
+        closeTo(10, 0.001),
+      );
     }
 
     for (final logo in [_appLogo, 'images/line.png']) {
@@ -1140,10 +1145,7 @@ void main() {
         tester,
         SocialButton(social: Social.line, logo: logo, onPressed: _noop),
       );
-      final row = tester.widget<Row>(find.byType(Row));
-      for (final gap in row.children.whereType<SizedBox>()) {
-        expect(gap.width, closeTo(48 * 4 / 11, 0.001));
-      }
+      _expectLineGaps(tester);
     }
   });
 
@@ -1213,6 +1215,21 @@ ButtonStyle _style(WidgetTester tester, Key key) =>
           ),
         )
         .style!;
+
+Rect _labelRect(WidgetTester tester, Social social) => tester.getRect(
+  find.text(socialLoginProviderData(social).labelFor(const Locale('en'))),
+);
+
+void _expectLineGaps(WidgetTester tester) {
+  final logo = tester.getRect(find.byType(Image));
+  final separator = tester.getRect(
+    find.byKey(const ValueKey('line-separator')),
+  );
+  final label = _labelRect(tester, Social.line);
+  final gap = closeTo(48 * 4 / 11, 0.001);
+  expect(separator.left - logo.right, gap);
+  expect(label.left - separator.right, gap);
+}
 
 Future<void> _pump(
   WidgetTester tester,

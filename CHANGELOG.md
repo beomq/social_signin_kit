@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Support buttons and button lists in dialogs that measure intrinsic size.
+- Keep labels readable and wide logos proportional in narrow layouts.
+- Restore keyboard focus after loading when the user has left focus in place.
+- Preserve wide logo ratios in Dart exported by the web selector and use
+  provider source pages for logos with temporary download URLs.
+
 ## 0.2.0
 
 - Preserve stateful logos through press, hover, focus, and disabled transitions.

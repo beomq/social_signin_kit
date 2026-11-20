@@ -75,7 +75,6 @@ function assertCatalog(catalog) {
 
     const requiredAssetFields = [
       "preview",
-      "download",
       "format",
       "sha256",
       "source",
@@ -87,6 +86,10 @@ function assertCatalog(catalog) {
       if (entry.asset[field] == null) {
         throw new Error(`Missing asset.${field} for ${entry.id}`);
       }
+    }
+    const download = entry.asset.download;
+    if (download !== null && (typeof download !== "string" || !download.trim())) {
+      throw new Error(`Invalid asset.download for ${entry.id}`);
     }
 
     for (const field of [
@@ -126,6 +129,10 @@ function assertCatalog(catalog) {
         entry.rendering.logoSize > DEFAULT_RUNTIME_BUTTON_SIZE)
     ) {
       throw new Error(`Invalid rendering.logoSize for ${entry.id}`);
+    }
+    const aspectRatio = runtimeLogoAspectRatio(entry);
+    if (!Number.isFinite(aspectRatio) || aspectRatio <= 0) {
+      throw new Error(`Invalid rendering.logoAspectRatio for ${entry.id}`);
     }
     if (entry.capabilities != null) {
       const capabilities = entry.capabilities;
@@ -297,6 +304,10 @@ function appAssetPath(id) {
 
 function runtimeLogoSize(provider) {
   return provider.rendering?.logoSize ?? DEFAULT_RUNTIME_LOGO_SIZE;
+}
+
+function runtimeLogoAspectRatio(provider) {
+  return provider.rendering?.logoAspectRatio ?? 1;
 }
 
 function scaledLogoSize(provider, containerSize) {
@@ -637,7 +648,7 @@ function renderPreview() {
     const logo = document.createElement("span");
     logo.className = "generated-button__logo";
     const logoSize = runtimeLogoSize(provider);
-    const aspectRatio = shape === "circle" ? 1 : provider.rendering?.logoAspectRatio || 1;
+    const aspectRatio = shape === "circle" ? 1 : runtimeLogoAspectRatio(provider);
     logo.style.inlineSize = `${logoSize * aspectRatio}px`;
     logo.style.blockSize = `${logoSize}px`;
     logo.append(createLogo(provider, logoSize, visual.preview, aspectRatio));
@@ -875,9 +886,14 @@ function buildDart() {
     .map((id) => {
       const provider = state.byId.get(id);
       const callback = callbackName(id);
+      const aspectRatio = runtimeLogoAspectRatio(provider);
+      const ratioParameter =
+        shape !== "circle" && aspectRatio !== 1
+          ? `\n      logoAspectRatio: ${aspectRatio},`
+          : "";
       return `    SocialButton(
       social: Social.${id},
-      logo: '${appAssetPath(id)}',
+      logo: '${appAssetPath(id)}',${ratioParameter}
       appearance: SocialButtonAppearance.${effectiveProviderAppearance(provider)},
       onPressed: ${callback},
     )`;
@@ -905,16 +921,18 @@ function assetManifest(provider) {
   const variantAppearance =
     variants?.[visual.appearance] === asset ? visual.appearance : null;
   const previewUrl = new URL(asset.preview, document.baseURI).href;
-  const downloadUrl = new URL(asset.download, document.baseURI).href;
+  const downloadUrl =
+    asset.download === null ? null : new URL(asset.download, document.baseURI).href;
   const logo = {
     previewPath: asset.preview,
     previewUrl,
     sourcePage: asset.source,
     catalogDownload: asset.download,
+    downloadMethod: downloadUrl === null ? "source-page" : "direct",
     downloadUrl,
-    localDownload: /^https?:\/\/(?:localhost|127\.0\.0\.1)(?::|\/)/.test(
-      downloadUrl,
-    ),
+    localDownload:
+      downloadUrl !== null &&
+      /^https?:\/\/(?:localhost|127\.0\.0\.1)(?::|\/)/.test(downloadUrl),
     sourceFormat: asset.format,
     catalogSha256: asset.sha256,
     downloadSha256: asset.archiveSha256 || asset.sha256,
@@ -929,12 +947,11 @@ function assetManifest(provider) {
     },
   };
 
-  if (asset.archive) {
-    logo.archive = { ...asset.archive };
-  } else if (asset.archiveMember) {
+  if (asset.archive || asset.archiveMember) {
     logo.archive = {
-      member: asset.archiveMember,
-      memberSha256: asset.sha256,
+      ...asset.archive,
+      member: asset.archive?.member ?? asset.archiveMember,
+      memberSha256: asset.archive?.memberSha256 ?? asset.sha256,
     };
   }
   if (asset.rasterization) {
@@ -950,7 +967,7 @@ function assetManifest(provider) {
     foreground: provider.foreground,
     rendering: {
       logoSize: runtimeLogoSize(provider),
-      logoAspectRatio: provider.rendering?.logoAspectRatio || 1,
+      logoAspectRatio: runtimeLogoAspectRatio(provider),
     },
     capabilities: providerCapabilities(provider),
     ...(provider.appearances
@@ -1040,7 +1057,7 @@ function buildManifest(dartCode) {
   );
 
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     purpose: "social_signin_kit consuming-app handoff",
     package: {
       name: "social_signin_kit",
@@ -1076,7 +1093,7 @@ function buildManifest(dartCode) {
     },
     integration: {
       instruction:
-        "Replace each callback placeholder with the app's existing login or connect function. If the app already has a loading state, use it to pass null while busy; do not invent a new state requirement for this snippet. Do not generate fake OAuth, token, redirect, or authentication-success code.",
+        "Replace each callback placeholder with the app's existing login or connect function. If the app already tracks a sign-in request, pass that state to isLoading and keep the callback in onPressed. Use onPressed: null to disable an unavailable action. The app owns OAuth, tokens, redirects, and authentication results.",
       dart: dartCode,
     },
   };
@@ -1086,6 +1103,14 @@ function buildAgentHandoff(manifest) {
   const assetSteps = manifest.providers
     .map((provider, index) => {
       const logo = provider.logo;
+      const download =
+        logo.downloadMethod === "source-page"
+          ? `   - Acquisition: Get the current logo pack from the source page.
+   - Recorded archive SHA-256: ${logo.downloadSha256}`
+          : `   - Catalog download value: ${logo.catalogDownload}
+   - Download: ${logo.downloadUrl}
+   - Same-machine-only download: ${String(logo.localDownload)}
+   - Download SHA-256: ${logo.downloadSha256}`;
       const archive = logo.archive
         ? `\n   - Archive member: ${logo.archive.member}\n   - Archive member SHA-256: ${logo.archive.memberSha256}`
         : "";
@@ -1100,11 +1125,8 @@ function buildAgentHandoff(manifest) {
       return `${index + 1}. ${provider.name} (${provider.id})
    - Source page: ${logo.sourcePage}
    - Local preview PNG: ${logo.previewUrl}
-   - Catalog download value: ${logo.catalogDownload}
-   - Download: ${logo.downloadUrl}
-   - Same-machine-only download: ${String(logo.localDownload)}
+${download}
    - Source format: ${logo.sourceFormat}
-   - Download SHA-256: ${logo.downloadSha256}
    - Selected source SHA-256: ${logo.sourceSha256}
    - License: ${logo.license}
    - Provider-supplied original: ${String(logo.official)} (source identity, not permission or approval)
@@ -1148,11 +1170,11 @@ ${assetSteps}
 
 Asset procedure:
 Review each logo.conditions and its source URLs for identification use, transformation, and package redistribution separately. Unresolved terms are neither permission nor a prohibition; report them explicitly. Do not claim provider approval or legal clearance from the source flag.
-1. Download each selected appearance's canonical source above. logo.provenance records the original catalog asset and selected variant separately; use logo.downloadUrl and its checks, not the original asset, for the effective logo.
-2. Verify logo.downloadSha256 against the downloaded file.
-3. If logo.archive is present, extract only logo.archive.member and verify logo.archive.memberSha256 against that extracted member.
-4. Prefer the canonical download. The local preview PNG is available for exact visual matching when its URL is reachable. A localhost or 127.0.0.1 URL works only on the same machine.
-5. For Kakao, if the same-machine local download is unavailable, reuse the existing social_signin_kit package-cache logo or the equivalent deployed-site PNG. Do not substitute a KakaoTalk chat mark or another lookalike.
+1. Follow the selected appearance's logo.downloadMethod. For direct, download logo.downloadUrl. For source-page, get a fresh official logo pack from logo.sourcePage. If that pack is unavailable, report it and request an app-approved asset.
+2. Compare the downloaded file with logo.downloadSha256. A direct download must match. A source-page pack can be repackaged; report a changed archive hash and verify the selected member separately.
+3. If logo.archive is present, extract only logo.archive.member and verify logo.archive.memberSha256. If the member is missing or its hash differs, report it and request an app-approved asset before copying.
+4. Use the preview PNG to compare appearance. A localhost or 127.0.0.1 URL works only on the same machine.
+5. If the Kakao download is unavailable, use an app-approved Kakao Login asset from the official source page. Check that it matches the selected appearance and report any difference from the recorded asset.
 6. For SVG sources only, require and apply logo.rasterization exactly with an existing conversion tool. Its canvas dimensions and rendering mode are authoritative. When preserveColors is true, keep original SVG fills and do not recolor; otherwise use its explicit color. Do not add flutter_svg or another runtime SVG dependency by default.
 7. For direct PNG downloads and PNG archive members, copy the verified PNG unchanged to the exact save path. Do not rescale, normalize, recolor, crop, repad, or place it on a new canvas; original byte layout and padding are part of the selected design.
 8. Register only these exact paths in pubspec.yaml:
@@ -1168,9 +1190,7 @@ Integration rules:
 - Use the selected shape and effective appearance shown in the Dart. Preserve custom-shape warnings and provider source conditions; a preview is not evidence of provider approval. Do not synthesize a light/dark inversion.
 - Keep each item's explicit appearance when it differs from the list request; providerDefault is the safe fallback for unsupported light/dark appearances.
 - Treat unverified shape choices as usable package styling, not provider approval and not a prohibition.
-- Replace callback placeholders with the app's existing login or connect functions.
-- If the app already has a loading state, use it to pass null while busy. Do not add an undeclared state variable just to use this snippet.
-- Do not create fake OAuth, token, redirect, or authentication-success code.
+- ${manifest.integration.instruction}
 - Keep loading, duplicate-request prevention, errors, tokens, and navigation in the app.
 - Add or update focused tests for provider order, layout, shape, asset paths, disabled state, and callback wiring.
 - Run the app's focused tests, fvm flutter analyze, and its affected build or real entry point.

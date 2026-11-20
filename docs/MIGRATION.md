@@ -159,7 +159,8 @@ SocialButtonList.vertical(
 SocialButton(
   social: Social.notion,
   logo: 'assets/brand/notion.png',
-  onPressed: isSigningIn ? null : startNotionSignIn,
+  isLoading: isSigningIn,
+  onPressed: startNotionSignIn,
 )
 ```
 

@@ -63,6 +63,7 @@ class SocialButton extends StatelessWidget {
   final bool isLoading;
 
   /// Width divided by height of the caller-supplied logo. Circles stay square.
+  /// Labelled buttons can shrink the logo proportionally in narrow layouts.
   final double logoAspectRatio;
 
   /// Null inherits the list shape, then defaults to [SocialButtonShape.rounded].
@@ -199,42 +200,25 @@ class SocialButtonList extends StatelessWidget {
       size: size,
       locale: locale,
       expand: _vertical,
-      child:
-          _vertical
-              ? LayoutBuilder(
-                builder:
-                    (context, constraints) => SizedBox(
-                      width:
-                          constraints.hasBoundedWidth
-                              ? constraints.maxWidth
-                              : 280,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          for (
-                            var index = 0;
-                            index < items.length;
-                            index++
-                          ) ...[
-                            if (index > 0) SizedBox(height: spacing),
-                            items[index],
-                          ],
-                        ],
-                      ),
-                    ),
-              )
-              : LayoutBuilder(
-                builder:
-                    (context, constraints) => SizedBox(
-                      width: constraints.hasBoundedWidth ? null : 280,
-                      child: Wrap(
-                        spacing: spacing,
-                        runSpacing: spacing,
-                        children: items,
-                      ),
-                    ),
-              ),
+      child: LimitedBox(
+        maxWidth: 280,
+        child:
+            _vertical
+                ? SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      for (var index = 0; index < items.length; index++) ...[
+                        if (index > 0) SizedBox(height: spacing),
+                        items[index],
+                      ],
+                    ],
+                  ),
+                )
+                : Wrap(spacing: spacing, runSpacing: spacing, children: items),
+      ),
     );
   }
 }
@@ -365,8 +349,13 @@ class _SocialButton extends StatefulWidget {
 
 class _SocialButtonState extends State<_SocialButton> {
   final _states = WidgetStatesController();
+  FocusNode? _ownedFocusNode;
+  FocusNode? _focusFallback;
   bool _tapFeedback = false;
   Timer? _feedbackTimer;
+
+  FocusNode get _focusNode =>
+      widget.focusNode ?? (_ownedFocusNode ??= FocusNode());
 
   @override
   void initState() {
@@ -380,6 +369,7 @@ class _SocialButtonState extends State<_SocialButton> {
   @override
   void didUpdateWidget(_SocialButton oldWidget) {
     super.didUpdateWidget(oldWidget);
+    _updateLoadingFocus(oldWidget);
     _states.update(
       WidgetState.disabled,
       widget.onPressed == null || widget.isLoading,
@@ -393,9 +383,72 @@ class _SocialButtonState extends State<_SocialButton> {
 
   @override
   void dispose() {
+    _stopTrackingLoadingFocus();
+    _ownedFocusNode?.dispose();
     _feedbackTimer?.cancel();
     _states.dispose();
     super.dispose();
+  }
+
+  void _updateLoadingFocus(_SocialButton oldWidget) {
+    if (widget.focusNode != oldWidget.focusNode) {
+      _stopTrackingLoadingFocus();
+      return;
+    }
+    if (widget.isLoading == oldWidget.isLoading) return;
+    if (widget.isLoading) {
+      final scope = _focusNode.enclosingScope;
+      if (!_focusNode.hasPrimaryFocus ||
+          scope == null ||
+          scope.focusedChild != _focusNode ||
+          MediaQuery.maybeNavigationModeOf(context) ==
+              NavigationMode.directional) {
+        return;
+      }
+      // Capture the native disabled-button fallback before an app's
+      // post-frame focus request can replace it.
+      _focusNode.unfocus(
+        disposition: UnfocusDisposition.previouslyFocusedChild,
+      );
+      FocusNode fallback = scope;
+      while (fallback is FocusScopeNode && fallback.focusedChild != null) {
+        fallback = fallback.focusedChild!;
+      }
+      _focusFallback = fallback;
+      FocusManager.instance.addListener(_trackLoadingFocus);
+      return;
+    }
+
+    final fallback = _focusFallback;
+    _stopTrackingLoadingFocus();
+    if (fallback == null || widget.onPressed == null) return;
+    final target = _focusNode;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Wait for the TextButton to become focusable and for any focus request
+      // made by the app in the same frame to be applied.
+      scheduleMicrotask(() {
+        if (mounted &&
+            !widget.isLoading &&
+            widget.onPressed != null &&
+            _focusNode == target &&
+            ModalRoute.isCurrentOf(context) != false &&
+            FocusManager.instance.primaryFocus == fallback) {
+          target.requestFocus();
+        }
+      });
+    });
+  }
+
+  void _trackLoadingFocus() {
+    if (FocusManager.instance.primaryFocus != _focusFallback) {
+      _stopTrackingLoadingFocus();
+    }
+  }
+
+  void _stopTrackingLoadingFocus() {
+    if (_focusFallback == null) return;
+    FocusManager.instance.removeListener(_trackLoadingFocus);
+    _focusFallback = null;
   }
 
   @override
@@ -424,8 +477,14 @@ class _SocialButtonState extends State<_SocialButton> {
       size: size,
       usesProviderLogoLayout: usesProviderLogoLayout,
     );
+    final logoSize = spec.logoSize ?? size / 2;
+    final logoSlot = _LogoSlot(
+      logo: logo,
+      size: logoSize,
+      aspectRatio: shape == SocialButtonShape.circle ? 1 : logoAspectRatio,
+    );
     final content = TextButton(
-      focusNode: widget.focusNode,
+      focusNode: _focusNode,
       autofocus: widget.autofocus,
       statesController: _states,
       onPressed:
@@ -465,44 +524,22 @@ class _SocialButtonState extends State<_SocialButton> {
               maintainSize: true,
               child:
                   shape == SocialButtonShape.circle
-                      ? _LogoSlot(logo: logo, size: spec.logoSize ?? size / 2)
-                      : Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          _LogoSlot(
-                            logo: logo,
-                            size: spec.logoSize ?? size / 2,
-                            aspectRatio: logoAspectRatio,
-                          ),
-                          if (spec.separatorColor != null) ...[
-                            SizedBox(width: spec.logoLabelSpacing),
-                            Container(
-                              key: const ValueKey('line-separator'),
-                              width: 1,
-                              height: spec.logoSize ?? size / 2,
-                              color: spec.separatorColor,
-                            ),
-                          ],
-                          SizedBox(width: spec.logoLabelSpacing),
-                          Flexible(
-                            child: Text(
-                              visibleLabel,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
-                      ),
+                      ? logoSlot
+                      : _labelledContent(spec, logoSlot, visibleLabel),
             ),
             if (widget.isLoading)
-              SizedBox.square(
-                dimension:
-                    shape == SocialButtonShape.circle
-                        ? (size / 2).clamp(1, 20).toDouble()
-                        : 20,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  color: appearanceStyle.foregroundColor,
+              Positioned.fill(
+                child: Center(
+                  child: SizedBox.square(
+                    dimension:
+                        shape == SocialButtonShape.circle
+                            ? (size / 2).clamp(1, 20).toDouble()
+                            : 20,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: appearanceStyle.foregroundColor,
+                    ),
+                  ),
                 ),
               ),
           ],
@@ -542,15 +579,48 @@ class _SocialButtonState extends State<_SocialButton> {
 
     if (!expand) return button;
 
-    return LayoutBuilder(
-      builder:
-          (context, constraints) => SizedBox(
-            width:
-                constraints.hasBoundedWidth
-                    ? constraints.maxWidth
-                    : spec.preferredWidth,
-            child: button,
+    return LimitedBox(
+      maxWidth: spec.preferredWidth,
+      child: SizedBox(width: double.infinity, child: button),
+    );
+  }
+
+  Widget _labelledContent(
+    _ProviderButtonSpec spec,
+    _LogoSlot logoSlot,
+    String label,
+  ) {
+    final spacing = spec.logoLabelSpacing;
+    final separator = spec.separatorColor;
+    return OverflowBar(
+      alignment: MainAxisAlignment.center,
+      spacing: spacing,
+      overflowSpacing: 4,
+      overflowAlignment: OverflowBarAlignment.center,
+      children: [
+        if (separator == null)
+          logoSlot
+        else
+          Stack(
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.only(end: spacing + 1),
+                child: logoSlot,
+              ),
+              PositionedDirectional(
+                end: 0,
+                top: 0,
+                bottom: 0,
+                width: 1,
+                child: Container(
+                  key: const ValueKey('line-separator'),
+                  color: separator,
+                ),
+              ),
+            ],
           ),
+        Text(label, textAlign: TextAlign.center),
+      ],
     );
   }
 
@@ -815,10 +885,15 @@ class _LogoSlot extends StatelessWidget {
     return SizedBox(
       width: size * aspectRatio,
       height: size,
-      child: ExcludeSemantics(
-        child: ColorFiltered(
-          colorFilter: ColorFilter.mode(feedback.color, BlendMode.srcATop),
-          child: logo,
+      child: Center(
+        child: AspectRatio(
+          aspectRatio: aspectRatio,
+          child: ExcludeSemantics(
+            child: ColorFiltered(
+              colorFilter: ColorFilter.mode(feedback.color, BlendMode.srcATop),
+              child: logo,
+            ),
+          ),
         ),
       ),
     );
