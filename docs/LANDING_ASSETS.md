@@ -1,35 +1,13 @@
 # Landing asset handoff
 
-Prepared: 2026-09-29
-
 The package and the landing chooser have different asset responsibilities.
 
-## Package defaults
+## App logo assets
 
-The package has default PNGs for all 35 providers. Eleven use reviewed
-provider-supplied originals:
-
-| Provider | Runtime package path |
-| --- | --- |
-| Google | `assets/social/google.png` |
-| Apple | `assets/social/apple.png` |
-| Microsoft | `assets/social/microsoft.png` |
-| Kakao | `assets/social/kakao.png` |
-| Naver | `assets/social/naver.png` |
-| LINE | `assets/social/line.png` |
-| X | `assets/social/x.png` |
-| LinkedIn | `assets/social/linkedin.png` |
-| Twitch | `assets/social/twitch.png` |
-| Spotify | `assets/social/spotify.png` |
-| Bitbucket | `assets/social/bitbucket.png` |
-
-The other 24 defaults are transparent 128×128 package PNGs rendered from
-pinned Simple Icons SVGs with the catalog `foreground` color. They are not
-provider-supplied originals or official login controls.
-
-When an app omits `logo`, `SocialButton` loads the matching
-`assets/social/<id>.png` with `package: 'social_signin_kit'`. The app does
-not copy or register these package defaults.
+The published package ships UI code without provider logos. Use an app-owned
+asset path for `SocialButton`, or an app-owned widget for
+`SocialButton.custom`. The chooser previews PNGs from the repository and
+exports paths for the consuming app to register in its own asset bundle.
 
 ## Chooser previews and exports
 
@@ -47,7 +25,8 @@ Each catalog entry has this shape:
   "background": "#000000",
   "foreground": "#ffffff",
   "rendering": {
-    "logoSize": 24
+    "logoSize": 24,
+    "logoAspectRatio": 2
   },
   "label": {
     "en": "Continue with Provider",
@@ -113,34 +92,46 @@ an `asset`, that value is the complete asset manifest shape shown above rather
 than a shortened path.
 
 For a selected non-default appearance, the chooser exports that appearance's
-complete `asset` object as the canonical download and hash source. The
+complete asset and verification metadata. The
 consuming-app save path remains the stable `assets/social/<id>.png`, so the
 generated Dart's explicit `logo` path loads the selected bytes without an
 appearance suffix. Apple light, for example, downloads and verifies the
 official `color=white` response, saves those bytes to
 `assets/social/apple.png` in the consuming app, and generates
-`logo: 'assets/social/apple.png'`. This handoff path is separate from this
-package's runtime variant path, `assets/social/apple-light.png`.
+`logo: 'assets/social/apple.png'`.
 
 `archiveMember`, `archiveSha256`, and `rasterization` are optional.
 `rendering.logoSize` is optional and defaults to 24 logical pixels in a
 48-logical-pixel button. It records the package canvas footprint, including
 provider-supplied internal padding; it never instructs an agent to crop,
 rescale, or repad the source file.
+`rendering.logoAspectRatio` defaults to 1 and records the original width
+divided by its height. The generated Dart passes a non-default ratio for
+rounded and pill buttons. Circle buttons use a square slot.
 `conditions` is required for every provider. `asset.official` records that the
 selected file came from the provider; it does not mean the provider approved
 this package, its shared button, or package redistribution. Identification
 use, transformation, and redistribution are recorded separately, and a missing
 permission statement is not rewritten as a prohibition.
 For ZIP rows, `archiveSha256` verifies the downloaded ZIP while `sha256`
-verifies the extracted `archiveMember`. `download` may point to PNG, SVG,
-or ZIP; consumers must not assume PNG. Relative download values are resolved
-against the landing document's `baseURI`. A localhost or `127.0.0.1` export is
-marked as same-machine-only. The generated handoff tells the receiving agent
-to:
+verifies the extracted `archiveMember`. A direct `download` may point to
+PNG, SVG, or ZIP. Relative URLs resolve against the landing document's
+`baseURI`. The manifest marks localhost and `127.0.0.1` URLs as
+same-machine-only.
 
-1. download the canonical source;
-2. verify the exported `downloadSha256` against the downloaded file;
+Manifest schema version 2 uses `logo.downloadMethod` to distinguish two
+acquisition routes. With `direct`, `logo.downloadUrl` identifies the file
+and `downloadSha256` must match its bytes. With `source-page`, both
+`logo.catalogDownload` and `logo.downloadUrl` are null. Open
+`logo.sourcePage` to get a fresh pack. The manifest keeps the recorded
+archive and member hashes. If the official pack has been repackaged, report
+the changed archive hash and verify the selected member. If the pack or
+member is missing, or the member hash differs, request an app-approved asset.
+
+The generated handoff tells the receiving agent to:
+
+1. obtain the selected appearance's source using its acquisition route;
+2. check the exported file or archive hash as described above;
 3. extract only `archive.member` when present and verify the exported
    `archive.memberSha256` against the extracted member;
 4. rasterize SVG sources only, using explicit `rasterization` metadata and
@@ -154,12 +145,8 @@ to:
 7. register that exact PNG path in the consuming app's `pubspec.yaml`.
 
 The default flow does not add `flutter_svg` or another runtime SVG dependency.
-The generated Dart always passes explicit consuming-app logo paths, so the
-handoff remains self-contained even though all 35 providers already have
-package defaults. `SocialButton` applies the same provider rendering footprint
-to explicit paths, and the exported manifest repeats `rendering.logoSize`.
-Eleven defaults originate from providers; that provenance does not imply
-approval or redistribution permission.
+The generated Dart passes explicit consuming-app logo paths, and the manifest
+exports each provider's rendering footprint as `rendering.logoSize`.
 
 The chooser does not download assets or execute a remote agent. It produces
 reviewable text and JSON instructions for a separate implementation step.

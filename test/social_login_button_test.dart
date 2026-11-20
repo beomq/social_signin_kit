@@ -1,6 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:social_signin_kit/social_signin_kit.dart';
@@ -263,10 +262,16 @@ void main() {
         expect(count, 0);
 
         final disabledNode = tester.getSemantics(find.byType(TextButton));
-        final disabledData = disabledNode.getSemanticsData();
-        expect(disabledData.hasFlag(SemanticsFlag.hasEnabledState), isTrue);
-        expect(disabledData.hasFlag(SemanticsFlag.isEnabled), isFalse);
-        expect(disabledData.hasAction(SemanticsAction.tap), isFalse);
+        expect(
+          disabledNode,
+          // Flutter 3.29 does not expose isSemantics.
+          // ignore: deprecated_member_use
+          containsSemantics(
+            hasEnabledState: true,
+            isEnabled: false,
+            hasTapAction: false,
+          ),
+        );
 
         await tester.pumpWidget(
           _app(
@@ -300,12 +305,18 @@ void main() {
       );
 
       final node = tester.getSemantics(find.byType(TextButton));
-      final data = node.getSemanticsData();
-      expect(data.label, 'Sign in with Google');
-      expect(data.hasFlag(SemanticsFlag.isButton), isTrue);
-      expect(data.hasFlag(SemanticsFlag.hasEnabledState), isTrue);
-      expect(data.hasFlag(SemanticsFlag.isEnabled), isTrue);
-      expect(data.hasAction(SemanticsAction.tap), isTrue);
+      expect(
+        node,
+        // Flutter 3.29 does not expose isSemantics.
+        // ignore: deprecated_member_use
+        containsSemantics(
+          label: 'Sign in with Google',
+          isButton: true,
+          hasEnabledState: true,
+          isEnabled: true,
+          hasTapAction: true,
+        ),
+      );
       expect(find.bySemanticsLabel('logo semantics'), findsNothing);
       expect(find.bySemanticsLabel('Sign in with Google'), findsOneWidget);
       semantics.dispose();
@@ -386,7 +397,7 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('long labels ellipsize and scaled text grows vertically', (
+    testWidgets('long labels wrap and scaled text grows vertically', (
       tester,
     ) async {
       await tester.pumpWidget(
@@ -402,11 +413,10 @@ void main() {
           ),
         ),
       );
-      final text = tester.widget<Text>(
-        find.text('A deliberately very long custom label'),
-      );
-      expect(text.maxLines, 1);
-      expect(text.overflow, TextOverflow.ellipsis);
+      final label = find.text('A deliberately very long custom label');
+      final paragraph = tester.renderObject<RenderParagraph>(label);
+      expect(paragraph.didExceedMaxLines, isFalse);
+      expect(tester.getSize(label).height, greaterThan(14));
       expect(tester.takeException(), isNull);
 
       await tester.pumpWidget(

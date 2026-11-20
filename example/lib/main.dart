@@ -267,12 +267,15 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
               label: _isKorean ? '상태' : 'State',
               child: SizedBox(
                 width: GalleryLayout.controlWidth,
-                child: SwitchListTile(
-                  key: const ValueKey<String>('disabled-control'),
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(_isKorean ? '비활성화' : 'Disabled'),
-                  value: _disabled,
-                  onChanged: (value) => setState(() => _disabled = value),
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: SwitchListTile(
+                    key: const ValueKey<String>('disabled-control'),
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(_isKorean ? '비활성화' : 'Disabled'),
+                    value: _disabled,
+                    onChanged: (value) => setState(() => _disabled = value),
+                  ),
                 ),
               ),
             ),
@@ -280,12 +283,15 @@ class _SocialLoginExampleAppState extends State<SocialLoginExampleApp> {
               label: _isKorean ? '진행 표시' : 'Progress',
               child: SizedBox(
                 width: GalleryLayout.controlWidth,
-                child: SwitchListTile(
-                  key: const ValueKey<String>('loading-control'),
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(_isKorean ? '미리보기 로딩' : 'Preview loading'),
-                  value: _loading,
-                  onChanged: (value) => setState(() => _loading = value),
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: SwitchListTile(
+                    key: const ValueKey<String>('loading-control'),
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(_isKorean ? '미리보기 로딩' : 'Preview loading'),
+                    value: _loading,
+                    onChanged: (value) => setState(() => _loading = value),
+                  ),
                 ),
               ),
             ),

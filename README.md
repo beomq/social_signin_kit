@@ -68,8 +68,8 @@ the appropriate image for each appearance.
 
 For a wide mark, set `logoAspectRatio` to its original width divided by its
 height. Regular buttons use this ratio; the default is `1`. Circle buttons
-display the complete image inside a square slot. To supply a custom widget,
-use the compatibility API `SocialLoginButton(logo: widget, ...)`.
+display the complete image inside a square slot. Use `SocialButton.custom`
+to supply an app-owned widget.
 
 Your app must check the conditions for using each brand asset.
 [Asset conditions and historical records](https://github.com/beomq/social_signin_kit/blob/main/docs/ASSETS.md)
@@ -317,13 +317,18 @@ The selector supports:
 - Vertical or horizontal lists.
 - `rounded`, `pill`, and `circle` shapes.
 - Previews using actual repository logos.
-- Dart snippets with explicit app-owned logo paths.
+- Dart snippets with explicit app-owned logo paths and wide logo ratios for
+  labelled buttons.
 - Agent instructions and a JSON handoff manifest.
 
 Exported instructions ask the consuming app to use an existing package
 dependency instead of inventing versions or repository URLs. The manifest
-includes source pages, canonical download URLs, original formats, SHA-256
-hashes, licenses, official/third-party status, and destination paths.
+includes source pages, original formats, SHA-256 hashes, licenses,
+official/third-party status, and destination paths. Manifest schema version 2
+uses `logo.downloadMethod` to identify the acquisition route. A
+`direct` logo has a download URL. A `source-page` logo has a null
+`downloadUrl`; get the current pack from the provider's `sourcePage` and
+verify the selected archive member.
 Archive members and archive hashes remain separate from extracted file hashes.
 Relative download URLs resolve against the landing page; localhost URLs are
 marked as available only on the same machine.

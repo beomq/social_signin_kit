@@ -81,6 +81,14 @@ SocialButtonList.vertical(
 앱이 성공·실패 시 값을 해제해야 합니다. 예제는
 [상태와 접근성](STATES.md)에 있습니다.
 
+## 독립 `material_ui` 앱에서 버튼 글꼴이 다름
+
+이 패키지는 Flutter SDK의 Material 테마를 읽습니다.
+`package:material_ui`로 이전한 앱에서 버튼이 앱 글꼴을 상속하지 않으면
+`MaterialApp.builder`에 `MaterialUiCompatibilityBridge`를 적용하세요.
+[Flutter 마이그레이션 가이드](https://docs.flutter.dev/release/breaking-changes/material-ui-and-cupertino-ui#compatibility-bridge)를
+참고하세요.
+
 ## 원형 버튼의 제공자를 구분하기 어려움
 
 `circle`은 화면 레이블이 없으므로 정확한 로고와 레이블이 모두 필요합니다.
