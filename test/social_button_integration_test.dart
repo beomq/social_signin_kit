@@ -162,7 +162,7 @@ void main() {
     );
   }
 
-  testWidgets('finishing loading respects focus the user moved elsewhere', (
+  testWidgets('loading respects explicit focus changes and route navigation', (
     tester,
   ) async {
     final buttonFocus = FocusNode();
@@ -206,10 +206,14 @@ void main() {
         ),
       ),
     );
-    firstFocus.requestFocus();
-    await tester.pump();
-    buttonFocus.requestFocus();
-    await tester.pump();
+    Future<void> focusButton() async {
+      firstFocus.requestFocus();
+      await tester.pump();
+      buttonFocus.requestFocus();
+      await tester.pump();
+    }
+
+    await focusButton();
     update(() => loading = true);
     await tester.pump();
 
@@ -220,6 +224,45 @@ void main() {
     update(() => loading = false);
     await tester.pumpAndSettle();
     expect(firstFocus.hasPrimaryFocus, isTrue);
+
+    // A form can focus its next field in the same frame as either transition.
+    for (final moveOnStart in [true, false]) {
+      await focusButton();
+      update(() => loading = true);
+      if (moveOnStart) {
+        WidgetsBinding.instance.addPostFrameCallback(
+          (_) => otherFocus.requestFocus(),
+        );
+      }
+      await tester.pump();
+      update(() => loading = false);
+      if (!moveOnStart) {
+        WidgetsBinding.instance.addPostFrameCallback(
+          (_) => otherFocus.requestFocus(),
+        );
+      }
+      await tester.pumpAndSettle();
+      expect(
+        otherFocus.hasPrimaryFocus,
+        isTrue,
+        reason: 'moveOnStart=$moveOnStart',
+      );
+    }
+
+    await focusButton();
+    update(() => loading = true);
+    await tester.pump();
+    final navigator = tester.state<NavigatorState>(find.byType(Navigator));
+    navigator.push<void>(
+      MaterialPageRoute<void>(
+        requestFocus: false,
+        builder: (context) => const Scaffold(body: Text('Next screen')),
+      ),
+    );
+    update(() => loading = false);
+    await tester.pumpAndSettle();
+    expect(find.text('Next screen'), findsOneWidget);
+    expect(buttonFocus.hasPrimaryFocus, isFalse);
   });
 }
 

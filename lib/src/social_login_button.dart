@@ -351,7 +351,6 @@ class _SocialButtonState extends State<_SocialButton> {
   final _states = WidgetStatesController();
   FocusNode? _ownedFocusNode;
   FocusNode? _focusFallback;
-  bool _trackingLoadingFocus = false;
   bool _tapFeedback = false;
   Timer? _feedbackTimer;
 
@@ -398,10 +397,25 @@ class _SocialButtonState extends State<_SocialButton> {
     }
     if (widget.isLoading == oldWidget.isLoading) return;
     if (widget.isLoading) {
-      if (_focusNode.hasPrimaryFocus) {
-        _trackingLoadingFocus = true;
-        FocusManager.instance.addListener(_trackLoadingFocus);
+      final scope = _focusNode.enclosingScope;
+      if (!_focusNode.hasPrimaryFocus ||
+          scope == null ||
+          scope.focusedChild != _focusNode ||
+          MediaQuery.maybeNavigationModeOf(context) ==
+              NavigationMode.directional) {
+        return;
       }
+      // Capture the native disabled-button fallback before an app's
+      // post-frame focus request can replace it.
+      _focusNode.unfocus(
+        disposition: UnfocusDisposition.previouslyFocusedChild,
+      );
+      FocusNode fallback = scope;
+      while (fallback is FocusScopeNode && fallback.focusedChild != null) {
+        fallback = fallback.focusedChild!;
+      }
+      _focusFallback = fallback;
+      FocusManager.instance.addListener(_trackLoadingFocus);
       return;
     }
 
@@ -417,6 +431,7 @@ class _SocialButtonState extends State<_SocialButton> {
             !widget.isLoading &&
             widget.onPressed != null &&
             _focusNode == target &&
+            ModalRoute.isCurrentOf(context) != false &&
             FocusManager.instance.primaryFocus == fallback) {
           target.requestFocus();
         }
@@ -425,20 +440,15 @@ class _SocialButtonState extends State<_SocialButton> {
   }
 
   void _trackLoadingFocus() {
-    // The disabled TextButton first falls back to another node. A subsequent
-    // move means the button should leave focus where it is.
-    if (_focusFallback == null) {
-      _focusFallback = FocusManager.instance.primaryFocus;
-    } else {
+    if (FocusManager.instance.primaryFocus != _focusFallback) {
       _stopTrackingLoadingFocus();
     }
   }
 
   void _stopTrackingLoadingFocus() {
-    if (!_trackingLoadingFocus) return;
+    if (_focusFallback == null) return;
     FocusManager.instance.removeListener(_trackLoadingFocus);
     _focusFallback = null;
-    _trackingLoadingFocus = false;
   }
 
   @override

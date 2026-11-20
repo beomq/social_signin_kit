@@ -947,12 +947,11 @@ function assetManifest(provider) {
     },
   };
 
-  if (asset.archive) {
-    logo.archive = { ...asset.archive };
-  } else if (asset.archiveMember) {
+  if (asset.archive || asset.archiveMember) {
     logo.archive = {
-      member: asset.archiveMember,
-      memberSha256: asset.sha256,
+      ...asset.archive,
+      member: asset.archive?.member ?? asset.archiveMember,
+      memberSha256: asset.archive?.memberSha256 ?? asset.sha256,
     };
   }
   if (asset.rasterization) {
@@ -1094,7 +1093,7 @@ function buildManifest(dartCode) {
     },
     integration: {
       instruction:
-        "Replace each callback placeholder with the app's existing login or connect function. If the app already has a loading state, use it to pass null while busy; do not invent a new state requirement for this snippet. Do not generate fake OAuth, token, redirect, or authentication-success code.",
+        "Replace each callback placeholder with the app's existing login or connect function. If the app already tracks a sign-in request, pass that state to isLoading and keep the callback in onPressed. Use onPressed: null to disable an unavailable action. The app owns OAuth, tokens, redirects, and authentication results.",
       dart: dartCode,
     },
   };
@@ -1191,9 +1190,7 @@ Integration rules:
 - Use the selected shape and effective appearance shown in the Dart. Preserve custom-shape warnings and provider source conditions; a preview is not evidence of provider approval. Do not synthesize a light/dark inversion.
 - Keep each item's explicit appearance when it differs from the list request; providerDefault is the safe fallback for unsupported light/dark appearances.
 - Treat unverified shape choices as usable package styling, not provider approval and not a prohibition.
-- Replace callback placeholders with the app's existing login or connect functions.
-- If the app already has a loading state, use it to pass null while busy. Do not add an undeclared state variable just to use this snippet.
-- Do not create fake OAuth, token, redirect, or authentication-success code.
+- ${manifest.integration.instruction}
 - Keep loading, duplicate-request prevention, errors, tokens, and navigation in the app.
 - Add or update focused tests for provider order, layout, shape, asset paths, disabled state, and callback wiring.
 - Run the app's focused tests, fvm flutter analyze, and its affected build or real entry point.

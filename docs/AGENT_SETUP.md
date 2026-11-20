@@ -67,7 +67,8 @@ Requirements:
    SocialButton(
      social: Social.notion,
      logo: 'assets/brand/notion.png',
-     onPressed: isSigningIn ? null : startNotionSignIn,
+     isLoading: isSigningIn,
+     onPressed: startNotionSignIn,
    )
 
    `social`, `logo`, and `onPressed` are required. `onPressed: null` disables the button.
@@ -171,7 +172,7 @@ Before finishing, report:
 3. `rounded`, `pill`, `circle` 중 사용한 모양과 크기를 확인합니다.
 4. 한국어와 영어에서 기본 레이블을 확인합니다.
 5. 활성 버튼의 콜백이 한 번 실행되는지 확인합니다.
-6. 로딩 중 `onPressed: null`이 입력을 막는지 확인합니다.
+6. `isLoading: true`에서 진행 표시가 보이고 입력이 차단되는지 확인합니다.
 7. 키보드 focus, 화면 읽기 이름, 원형 버튼 tooltip을 확인합니다.
 8. 실제 인증 결과가 앱 인증 계층에서 오는지 확인합니다.
 
